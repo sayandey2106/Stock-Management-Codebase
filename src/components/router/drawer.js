@@ -24,12 +24,11 @@ import Logout from '../../containers/router/Lg_Cont';
 import { Link } from "react-router-dom";
 // import LG_Cont from "../../containers/router/Lg_Cont";
 import {
+  // all_super_admin_option,
   all_admin_option,
-  all_super_admin_option,
-  all_account_option,
-  all_marketing_option,
-  all_student_options,
-  all_intrainer_option
+  all_manager_option,
+  all_executive_option,
+  // all_client_option,
 } from "../../constants/router/router_consts";
 // import Footer from "../courses/footer";
 import Nav from "../../containers/home/navCont";
@@ -156,53 +155,33 @@ export function SideBar({ type, open, close }) {
       {open ? (
         <div>
           <Avatar
-            alt={localStorage.getItem("skyyrider_name")}
-            src={localStorage.getItem("skyyrider_profile_pic")}
+            alt={localStorage.getItem("taxopliance_name")}
+            src={localStorage.getItem("taxopliance_profile_pic")}
             className="drawer_img"
           >
-            {localStorage.getItem("skyyrider_name") == null
+            {localStorage.getItem("taxopliance_name") == null
               ? ""
-              : localStorage.getItem("skyyrider_name").substring(0, 1).toUpperCase()}
+              : localStorage.getItem("taxopliance_name").substring(0, 1).toUpperCase()}
           </Avatar>
           <Typography variant="subtitle1" className="profile-name">
-            Hi! {localStorage.getItem("skyyrider_name")}
+            Hi! {localStorage.getItem("taxopliance_name")}
           </Typography>
         </div>
       ) : (
           <Avatar
-            alt={localStorage.getItem("skyyrider_name")}
-            src={localStorage.getItem("skyyrider_profile_pic")}
+            alt={localStorage.getItem("taxopliance_name")}
+            src={localStorage.getItem("taxopliance_profile_pic")}
             className="drawer_img_closed"
           >
-            {localStorage.getItem("skyyrider_name") == null
+            {localStorage.getItem("taxopliance_name") == null
               ? ""
-              : localStorage.getItem("skyyrider_name").substring(0, 1).toUpperCase()}
+              : localStorage.getItem("taxopliance_name").substring(0, 1).toUpperCase()}
           </Avatar>
         )}
     </div>
   );
 
-  if (type === "S") {
-    return (
-      <div style={{ marginTop: 10 }}>
-        {side_top}
-        {all_student_options.map((option) => (
-          <Link
-            key={option.id}
-            to={option.link}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <ListItem button key={option.name}>
-              <ListItemIcon>
-                <Icon>{option.icon}</Icon>
-              </ListItemIcon>
-              <ListItemText primary={option.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </div>
-    );
-  } else if (type === "A") {
+   if (type === "A") {
     return (
       <div style={{ marginTop: 10 }}>
         {side_top}
@@ -259,11 +238,33 @@ export function SideBar({ type, open, close }) {
             ))}
       </div>
     );
-  } else if (type === "SA") {
+  } 
+  // else if (type === "SA") {
+  //   return (
+  //     <div style={{ marginTop: 10 }}>
+  //       {side_top}
+  //       {all_super_admin_option.map((option) => (
+  //         <Link
+  //           key={option.link}
+  //           to={option.link}
+  //           style={{ textDecoration: "none", color: "black" }}
+  //         >
+  //           <ListItem button key={option.name}>
+  //             <ListItemIcon>
+  //               <Icon>{option.icon}</Icon>
+  //             </ListItemIcon>
+  //             <ListItemText primary={option.name} />
+  //           </ListItem>
+  //         </Link>
+  //       ))}
+  //     </div>
+  //   );
+  // } 
+  else if (type === "M") {
     return (
       <div style={{ marginTop: 10 }}>
         {side_top}
-        {all_super_admin_option.map((option) => (
+        {all_manager_option.map((option) => (
           <Link
             key={option.link}
             to={option.link}
@@ -279,11 +280,11 @@ export function SideBar({ type, open, close }) {
         ))}
       </div>
     );
-  } else if (type === "T") {
+  } else if (type === "E") {
     return (
       <div style={{ marginTop: 10 }}>
         {side_top}
-        {all_intrainer_option.map((option) => (
+        {all_executive_option.map((option) => (
           <Link
             key={option.link}
             to={option.link}
@@ -299,47 +300,28 @@ export function SideBar({ type, open, close }) {
         ))}
       </div>
     );
-  } else if (type === "AT") {
-    return (
-      <div style={{ marginTop: 10 }}>
-        {side_top}
-        {all_account_option.map((option) => (
-          <Link
-            key={option.link}
-            to={option.link}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <ListItem button key={option.name}>
-              <ListItemIcon>
-                <Icon>{option.icon}</Icon>
-              </ListItemIcon>
-              <ListItemText primary={option.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </div>
-    );
-  } else if (type === "M") {
-    return (
-      <div style={{ marginTop: 10 }}>
-        {side_top}
-        {all_marketing_option.map((option) => (
-          <Link
-            key={option.link}
-            to={option.link}
-            style={{ textDecoration: "none", color: "black" }}
-          >
-            <ListItem button key={option.name}>
-              <ListItemIcon>
-                <Icon>{option.icon}</Icon>
-              </ListItemIcon>
-              <ListItemText primary={option.name} />
-            </ListItem>
-          </Link>
-        ))}
-      </div>
-    );
-  }
+  } 
+  // else if (type === "C") {
+  //   return (
+  //     <div style={{ marginTop: 10 }}>
+  //       {side_top}
+  //       {all_client_option.map((option) => (
+  //         <Link
+  //           key={option.link}
+  //           to={option.link}
+  //           style={{ textDecoration: "none", color: "black" }}
+  //         >
+  //           <ListItem button key={option.name}>
+  //             <ListItemIcon>
+  //               <Icon>{option.icon}</Icon>
+  //             </ListItemIcon>
+  //             <ListItemText primary={option.name} />
+  //           </ListItem>
+  //         </Link>
+  //       ))}
+  //     </div>
+  //   );
+  // }
 }
 
 

@@ -14,7 +14,7 @@ import {
 const initial_state = {
   email: "taxo@gmail.com",
   isHome: false,
-  token: "bhjjhhjhjhjhj",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJib2R5Ijoic3R1ZmYiLCJpYXQiOjE2MDYyMzUxNzR9.5ZConmKlwrhE7cnvkMxoUauxCtnYekjEDSwdum20hL8",
   name: "taxo",
   // password: "",
   // confirmpassword: "",

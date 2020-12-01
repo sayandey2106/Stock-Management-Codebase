@@ -24,6 +24,7 @@ export function get_all_admin(token) {
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
+                console.log(responseJson)
                 if (responseJson.status) {
 
                     dispatch(set_all_admin(responseJson.result))

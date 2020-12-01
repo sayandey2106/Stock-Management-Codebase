@@ -4,39 +4,35 @@ import {
   // Link,
   Redirect
 } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
 
 export default class LG extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirect: false
+      // redirect: false
     }
   }
 
   render() {
-    
-    if(this.state.redirect)
-      return <Redirect to="/" />
-    
+    const { login} = this.props; 
+
+    if (login.loggedIn === false) {
+      return <Redirect to="/login" />
+    }
     return (
-      // <Link to="/" style={{textDecoration:'none'}}>
-        <Button color="inherit" className="logout-btn"
-          onClick={() => {
-            localStorage.removeItem("skyyrider_type");
-            localStorage.removeItem("skyyrider_token");
-            localStorage.removeItem("skyyrider_name");
-            localStorage.removeItem("skyyrider_profile_pic");
-            localStorage.removeItem("skyyrider_user_id");
-            this.setState({
-              redirect: true
-            });
-            this.props.onLogout();
-          }}>
-          {/* <Icon style={{ color: "#3f51b5" }}>power_settings_new</Icon> */}
-          Log Out
-        </Button>
-     
+      <IconButton color="inherit"
+        onClick={() => {
+          localStorage.removeItem("name");
+          localStorage.removeItem("email");
+          localStorage.removeItem("profile_img");
+          localStorage.removeItem("user_token");
+          localStorage.removeItem("type");
+          localStorage.removeItem("uuid");
+          this.props.onLogout()
+        }}>
+        <Icon style={{ color: "#3f51b5" }}>power_settings_new</Icon>
+      </IconButton>
     )
   }
 }

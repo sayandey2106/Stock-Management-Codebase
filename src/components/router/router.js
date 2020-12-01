@@ -3,25 +3,10 @@ import {
   BrowserRouter as Router,
   Route
 } from "react-router-dom";
-
-import Login from "../../containers/loginCon";
-import AdminCont from "../../containers/admin/adminCont";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-
-const styles = theme => ({
-  root: {
-    display: "flex",
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(1) * 3,
-  },
-  content2: {
-    flexGrow: 1,
-  },
-
-});
+import Controller_con from "../../containers/router/controller_cont";
+import Login from "../../containers/loginContt";
+// Admin Imports
+import AdminCont from "../../containers/admin/adminCont"
 
 class Routes extends Component {
 
@@ -29,23 +14,52 @@ class Routes extends Component {
     const { login, classes, onLogout } = this.props;
     let body;
 
-    body =
-      login.isHome ?
-        <div className={classes.root}>
-          <main className={classes.content2}>
+    if (login.isHome === true) {
+      body =
+        <div
+          style={{
+            display: "flex",
+          }}>
+          <main
+            style={{
+              flexGrow: 1
+            }}>
+            {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/" component={Login} />
+            {/* <Route path="/" component={Controller_con} /> */}
+            {/* <Route path="/survey" component={Survey} /> */}
           </main>
         </div>
-        :
-        <div className={classes.root}>
-          <main className={classes.content}
-            style={{ marginTop: 50 }}
+    } else {
+
+      body =
+        <div
+          style={{
+            display: "flex",
+          }}>
+          <Drawer_option_con
+            type={login.type}
+            onLogout={onLogout}
+          />
+          <main
+            style={{
+              flexGrow: 1,
+              marginTop: 20
+            }}
           >
             <Route exact path="/" component={Login} />
-            <Route exact path="/admin" component={AdminCont} />
+            {/* <Route exact path="/login" component={Login} /> */}
+            {/* <Route path="/" component={Controller_con} /> */}
+            {/* ADMIN ROUTES */}
+            {/* <Route exact path="/add_admin" component={AddAdminCont} /> */}
+            <Route exact path="/view_admin" component={AdminCont} />
+
+            {/* STUDENT ROUTES */}
+            
           </main>
+          {/* <Footer /> */}
         </div>
-      ;
+    }
 
     return (
       <Router>
@@ -55,8 +69,4 @@ class Routes extends Component {
   }
 }
 
-Routes.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Routes);
+export default (Routes);

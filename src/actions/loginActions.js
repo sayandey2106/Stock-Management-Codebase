@@ -29,7 +29,7 @@ export function setPwd(payload) {
 export function login_email(login) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "login_email", {
+        return fetch(UNIVERSAL.BASEURL + "login", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -41,6 +41,7 @@ export function login_email(login) {
                 }),
             }).then((response) => response.json())
             .then((responseJson) => {
+                console.log(responseJson)
                 if (responseJson.status) {
                     // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
                         dispatch(setLogin(responseJson.result))

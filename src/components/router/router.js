@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 
 import Login from "../../containers/loginCon";
-
+import AdminCont from "../../containers/admin/adminCont";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
@@ -42,6 +42,7 @@ class Routes extends Component {
             style={{ marginTop: 50 }}
           >
             <Route exact path="/" component={Login} />
+            <Route exact path="/admin" component={AdminCont} />
           </main>
         </div>
       ;

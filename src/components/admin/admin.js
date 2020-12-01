@@ -46,26 +46,11 @@ class Amenities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            editredirect: false,
-            amenity_desc: "",
-            amenity_name: "",
-            amenity_fullday_price: "",
-            amenity_halfday_price: "",
-            guest_fullday_price: "",
-            guest_halfday_price: "",
-            amenitiy_images: [],
-            start_time: new Date(),
-            end_time: new Date(),
-            amenity_id: "",
-            isfree: "",
-            no_of_slots: "",
-            confirm_delete: false,
-            id: "",
+
         }
     }
     componentDidMount() {
-        // this.props.reset_amenities_pagination();
-        // this.props.get_all_amenities(this.props.login.token, this.props.login.building_id, this.props.amenities.limit, this.props.amenities.starting_after);
+        this.props.get_all_admin(this.props.login.user_token)
     }
     // ed = (s) => {
     //     this.setState({
@@ -89,7 +74,9 @@ class Amenities extends Component {
     // }
     render() {
         const {
-            
+            snackbar,
+            close_snack_bar,
+            admin
         } = this.props;
         return (
             <Grid container justify="center">
@@ -116,13 +103,15 @@ class Amenities extends Component {
                                     <TableRow>
                                         <TableCell></TableCell>
                                         <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
-                                        <TableCell align="left">Description</TableCell>
-                                        <TableCell align="left">Number Of Slot</TableCell>
-                                        <TableCell align="right">Action</TableCell>
+                                        <TableCell align="left">E-Mail</TableCell>
+                                        <TableCell align="left">Department</TableCell>
+                                        <TableCell align="left">Position</TableCell>
+                                        <TableCell align="left">Employee-ID</TableCell>
+                                        <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    
+                                    {}
                                 </TableBody>
                             </Table>
                         </CardContent>

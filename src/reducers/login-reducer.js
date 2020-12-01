@@ -12,14 +12,14 @@ import {
   CLOSE_LOGIN_MODAL
 } from "../constants/ActionTypes";
 const initial_state = {
-  email: "",
-  isHome: true,
-  token: "",
-  name: "",
+  email: "taxo@gmail.com",
+  isHome: false,
+  token: "bhjjhhjhjhjhj",
+  name: "taxo",
   // password: "",
   // confirmpassword: "",
   // newpassword: "",
-  type: "",
+  type: "A",
   // isRegistered: false,
   // response_received: false,
   // isPasswordchange: false,

@@ -1,6 +1,6 @@
 export const all_admin_option = [
   { id: 0, name: "Dashboard", icon: "home", link: "/" },
-
+  { id: 1, name: "Dashboard", icon: "home", link: "/admin" },
 ];
 export const all_manager_options = [
   { id: 0, name: "Home", icon: "home", link: "/" },

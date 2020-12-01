@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import { firebase_config } from "../../constants/ActionTypes";
+// import { firebase_config } from "../../constants/ActionTypes";
 
 export default class LoginController extends Component {
 
@@ -13,12 +13,12 @@ export default class LoginController extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem("user_token") !== null) {
-      this.props.setLogin(localStorage.getItem("type"), localStorage.getItem("email"), localStorage.getItem("user_token"), localStorage.getItem("profile_img"), localStorage.getItem("name"));
-      if (!firebase.apps.length) {
-        firebase.initializeApp(firebase_config);
-      }
-    }
+    // if (localStorage.getItem("user_token") !== null) {
+    //   this.props.setLogin(localStorage.getItem("type"), localStorage.getItem("email"), localStorage.getItem("user_token"), localStorage.getItem("profile_img"), localStorage.getItem("name"));
+    //   // if (!firebase.apps.length) {
+    //   //   firebase.initializeApp(firebase_config);
+    //   // }
+    // }
   }
 
   render() {

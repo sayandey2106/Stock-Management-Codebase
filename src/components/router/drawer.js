@@ -17,8 +17,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import View_user_profile_cont from "../../containers/user/user_view_profile_cont";
-import NotificationsCont from "../../containers/notifications/notificationCont";
+// import View_user_profile_cont from "../../containers/user/user_view_profile_cont";
+// import NotificationsCont from "../../containers/notifications/notificationCont";
 
 import {
   Link
@@ -29,7 +29,7 @@ import {
   // all_super_admin_option,
   all_executive_option,
   all_manager_options,
-  
+
 } from "../../constants/router/router_consts";
 
 const drawerWidth = 220;
@@ -257,9 +257,9 @@ function MiniDrawer(props) {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <View_user_profile_cont />
+                  {/* <View_user_profile_cont /> */}
                 </Menu>
-                <NotificationsCont />
+                {/* <NotificationsCont /> */}
               </span>
             }
             <LG_Cont />

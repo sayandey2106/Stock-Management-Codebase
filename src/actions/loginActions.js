@@ -81,13 +81,13 @@ export function setLogin(payload) {
     };
 }
 
-// export function handleDrawerToggle(mobileOpen) {
-//     mobileOpen = !mobileOpen;
-//     return {
-//         type: HANDLEDRAWER,
-//         payload: mobileOpen
-//     };
-// }
+export function handleDrawerToggle(mobileOpen) {
+    mobileOpen = !mobileOpen;
+    return {
+        type: HANDLEDRAWER,
+        payload: mobileOpen
+    };
+}
 export function onLogout() {
     return {
         type: LOGOUT

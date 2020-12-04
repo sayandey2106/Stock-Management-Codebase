@@ -13,12 +13,12 @@ export default class LoginController extends Component {
   }
 
   componentDidMount() {
-    // if (localStorage.getItem("user_token") !== null) {
-    //   this.props.setLogin(localStorage.getItem("type"), localStorage.getItem("email"), localStorage.getItem("user_token"), localStorage.getItem("profile_img"), localStorage.getItem("name"));
-    //   // if (!firebase.apps.length) {
-    //   //   firebase.initializeApp(firebase_config);
-    //   // }
-    // }
+    if (localStorage.getItem("user_token") !== null) {
+      this.props.setLogin(localStorage.getItem("type"), localStorage.getItem("email"), localStorage.getItem("user_token"), localStorage.getItem("profile_img"), localStorage.getItem("name"), localStorage.getItem("organization_id"));
+      // if (!firebase.apps.length) {
+      //   firebase.initializeApp(firebase_config);
+      // }
+    }
   }
 
   render() {

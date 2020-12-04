@@ -17,7 +17,7 @@ export default class LG extends React.Component {
   render() {
     const { login} = this.props; 
 
-    if (login.loggedIn === false) {
+    if (login.isHome === false) {
       return <Redirect to="/login" />
     }
     return (

@@ -48,9 +48,9 @@ class Routes extends Component {
               marginTop: 20
             }}
           >
-            <Route exact path="/" component={Login} />
             {/* <Route exact path="/login" component={Login} /> */}
-            {/* <Route path="/" component={Controller_con} /> */}
+            <Route exact path="/login" component={Login} />
+            <Route path="/" component={Controller_con} />
             {/* ADMIN ROUTES */}
             {/* <Route exact path="/add_admin" component={AddAdminCont} /> */}
             <Route exact path="/view_admin" component={AdminCont} />

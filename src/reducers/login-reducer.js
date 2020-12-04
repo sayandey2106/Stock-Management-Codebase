@@ -12,14 +12,15 @@ import {
   CLOSE_LOGIN_MODAL
 } from "../constants/ActionTypes";
 const initial_state = {
-  email: "taxo@gmail.com",
-  isHome: false,
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJib2R5Ijoic3R1ZmYiLCJpYXQiOjE2MDYyMzUxNzR9.5ZConmKlwrhE7cnvkMxoUauxCtnYekjEDSwdum20hL8",
-  name: "taxo",
+  email: "",
+  isHome: true,
+  token: "",
+  name: "",
+  organization_id: "",
   // password: "",
   // confirmpassword: "",
   // newpassword: "",
-  type: "A",
+  type: "",
   // isRegistered: false,
   // response_received: false,
   // isPasswordchange: false,
@@ -49,6 +50,7 @@ export default function reducer(state = initial_state, action) {
         name: action.payload.name,
         profile_img: action.payload.profile_pic,
         user_id: action.payload._id,
+        organization_id: action.payload.organization_id
       };
     case LOGOUT:
       return state = {
@@ -57,8 +59,10 @@ export default function reducer(state = initial_state, action) {
         type: "",
         email: "",
         password: "",
-        user_id:"",
-        isHome:true
+        user_id: "",
+        profile_img: "",
+        organization_id: "",
+        isHome: true
       };
     case HANDLEDRAWER:
       return state = { ...state, mobileOpen: action.payload };
@@ -69,7 +73,7 @@ export default function reducer(state = initial_state, action) {
     case OPEN_LOGIN_MODAL:
       return { ...state, loginModal: true };
     case CLOSE_LOGIN_MODAL:
-      return { ...state, loginModal:false };
+      return { ...state, loginModal: false };
     default:
       return state;
   }

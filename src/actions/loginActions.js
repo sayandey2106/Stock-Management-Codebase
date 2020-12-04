@@ -41,7 +41,7 @@ export function login_email(login) {
                 }),
             }).then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson)
+                // console.log(responseJson)
                 if (responseJson.status) {
                     // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
                         dispatch(setLogin(responseJson.result))
@@ -74,7 +74,8 @@ export function setLogin(payload) {
     localStorage.setItem('taxopliance_token', payload.user_token);
     localStorage.setItem('taxopliance_name', payload.name);
     localStorage.setItem('taxopliance_profile_pic', payload.profile_pic);
-    localStorage.setItem('taxopliance_user_id', payload._id)
+    localStorage.setItem('taxopliance_user_id', payload._id);
+    localStorage.setItem('taxopliance_organization_id', payload.organization_id);
     return {
         type: LOGIN,
         payload: payload,

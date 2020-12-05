@@ -1,20 +1,20 @@
 import {
-    RESET_ADMIN,
-    SET_ADMIN_DEPARTMENT,
-    SET_ADMIN_EMAIL, SET_ADMIN_EMPLOYEE_ID,
-    SET_ADMIN_NAME, SET_ADMIN_PASSWORD, SET_ADMIN_POSITION, SET_ADMIN_PROFILE,
-    SET_ALL_ADMIN
-} from "../../constants/admin/adminConst";
+    RESET_MANAGER,
+    SET_MANAGER_DEPARTMENT,
+    SET_MANAGER_EMAIL, SET_MANAGER_EMPLOYEE_ID,
+    SET_MANAGER_NAME, SET_MANAGER_PASSWORD, SET_MANAGER_POSITION, SET_MANAGER_PROFILE,
+    SET_ALL_MANAGER
+} from "../../constants/manager/managerConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 
 
-export function get_all_admin(token, oid) {
+export function get_all_manager(token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_admin", {
+        return fetch(UNIVERSAL.BASEURL + "view_all_manager", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -31,13 +31,13 @@ export function get_all_admin(token, oid) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(set_all_admin(responseJson.result));
+                    dispatch(set_all_manager(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
                     dispatch(set_snack_bar(responseJson.status, responseJson.message));
-                    // dispatch(set_all_admin([]));
+                    // dispatch(set_all_manager([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -47,10 +47,10 @@ export function get_all_admin(token, oid) {
     };
 }
 
-export function delete_admin(id,token,oid) {
+export function delete_manager(id,token,oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "delete_admin", {
+        return fetch(UNIVERSAL.BASEURL + "delete_manager", {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
@@ -61,14 +61,14 @@ export function delete_admin(id,token,oid) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                admin_id:id
+                manager_id:id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_admin(token, oid))
+                    dispatch(get_all_manager(token, oid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -83,10 +83,10 @@ export function delete_admin(id,token,oid) {
     };
 }
 
-export function update_admin(id, name, profile, email, password, position, department, employee_id, token, oid) {
+export function update_manager(id, name, profile, email, password, position, department, employee_id, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "update_admin", {
+        return fetch(UNIVERSAL.BASEURL + "update_manager", {
             method: "PUT",
             headers: {
                 Accept: "application/json",
@@ -97,21 +97,21 @@ export function update_admin(id, name, profile, email, password, position, depar
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                admin_id:id,
-                admin_name:name,
-                admin_profile_pic:profile,
+                manager_id:id,
+                manager_name:name,
+                manager_profile_pic:profile,
                 email:email,
                 password:password,
-                admin_position:position,
-                admin_department:department,
-                admin_employee_id:employee_id
+                manager_position:position,
+                manager_department:department,
+                manager_employee_id:employee_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_admin(token, oid))
+                    dispatch(get_all_manager(token, oid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -126,10 +126,10 @@ export function update_admin(id, name, profile, email, password, position, depar
     };
 }
 
-export function add_admin(admin, token, oid) {
+export function add_manager(manager, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "add_admin", {
+        return fetch(UNIVERSAL.BASEURL + "add_manager", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -140,22 +140,22 @@ export function add_admin(admin, token, oid) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                admin_name:admin.name,
-                admin_profile_pic:admin.profile,
-                email:admin.email,
-                password:admin.password,
-                admin_position:admin.position,
-                admin_department:admin.department,
-                admin_employee_id:admin.employee_id
+                manager_name:manager.name,
+                manager_profile_pic:manager.profile,
+                email:manager.email,
+                password:manager.password,
+                manager_position:manager.position,
+                manager_department:manager.department,
+                manager_employee_id:manager.employee_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_admin(token, oid))
+                    dispatch(get_all_manager(token, oid))
 
-                    dispatch(reset_admin())
+                    dispatch(reset_manager())
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -170,65 +170,65 @@ export function add_admin(admin, token, oid) {
     };
 }
 
-export function set_all_admin(payload){
+export function set_all_manager(payload){
     console.log(payload)
     return{
-        type:SET_ALL_ADMIN,
+        type:SET_ALL_MANAGER,
         payload:payload
     }
 }
 
-export function set_admin_name(payload){
+export function set_manager_name(payload){
     return{
-        type:SET_ADMIN_NAME,
+        type:SET_MANAGER_NAME,
         payload:payload
     }
 }
 
-export function set_admin_profile(payload){
+export function set_manager_profile(payload){
     return{
-        type:SET_ADMIN_PROFILE,
+        type:SET_MANAGER_PROFILE,
         payload:payload
     }
 }
 
-export function set_admin_email(payload){
+export function set_manager_email(payload){
     return{
-        type:SET_ADMIN_EMAIL,
+        type:SET_MANAGER_EMAIL,
         payload:payload
     }
 }
 
-export function set_admin_password(payload){
+export function set_manager_password(payload){
     return{
-        type:SET_ADMIN_PASSWORD,
+        type:SET_MANAGER_PASSWORD,
         payload:payload
     }
 }
 
-export function set_admin_position(payload){
+export function set_manager_position(payload){
     return{
-        type:SET_ADMIN_POSITION,
+        type:SET_MANAGER_POSITION,
         payload:payload
     }
 }
 
-export function set_admin_department(payload){
+export function set_manager_department(payload){
     return{
-        type:SET_ADMIN_DEPARTMENT,
+        type:SET_MANAGER_DEPARTMENT,
         payload:payload
     }
 }
 
-export function set_admin_employee_id(payload){
+export function set_manager_employee_id(payload){
     return{
-        type:SET_ADMIN_EMPLOYEE_ID,
+        type:SET_MANAGER_EMPLOYEE_ID,
         payload:payload
     }
 }
 
-export function reset_admin(){
+export function reset_manager(){
     return{
-        type:RESET_ADMIN
+        type:RESET_MANAGER
     }
 }

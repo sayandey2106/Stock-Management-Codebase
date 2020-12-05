@@ -9,6 +9,10 @@ import Drawer_option_con from "../../containers/router/drawer_cont"
 // Admin Imports
 import AdminCont from "../../containers/admin/adminCont"
 import AddAdminCont from "../../containers/admin/addAdminCont";
+import ManagerContainer from "../../containers/manager/managerContainer";
+import AddManagerContainer from "../../containers/manager/addManagerContainer";
+import AddExecutiveContainer from "../../containers/executive/addExecutiveContainer";
+import ExecutiveContainer from "../../containers/executive/executiveContainer";
 
 class Routes extends Component {
 
@@ -55,8 +59,13 @@ class Routes extends Component {
             {/* ADMIN ROUTES */}
              <Route exact path="/add_admin" component={AddAdminCont} />
             <Route exact path="/view_admin" component={AdminCont} />
+              <Route exact path="/view_manager" component={ManagerContainer} />
+              <Route exact path="/add_manager" component={AddManagerContainer} />
+              <Route exact path="/add_executive" component={AddExecutiveContainer} />
+              <Route exact path="/view_executive" component={ExecutiveContainer} />
 
-            {/* STUDENT ROUTES */}
+
+              {/* STUDENT ROUTES */}
             
           </main>
           {/* <Footer /> */}

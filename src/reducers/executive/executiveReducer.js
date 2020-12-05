@@ -1,12 +1,12 @@
 import {
-    RESET_ADMIN,
-    SET_ADMIN_DEPARTMENT,
-    SET_ADMIN_EMAIL, SET_ADMIN_EMPLOYEE_ID,
-    SET_ADMIN_NAME, SET_ADMIN_PASSWORD, SET_ADMIN_POSITION, SET_ADMIN_PROFILE,
-    SET_ALL_ADMIN
-} from "../../constants/admin/adminConst";
+    RESET_EXECUTIVE,
+    SET_EXECUTIVE_DEPARTMENT,
+    SET_EXECUTIVE_EMAIL, SET_EXECUTIVE_EMPLOYEE_ID,
+    SET_EXECUTIVE_NAME, SET_EXECUTIVE_PASSWORD, SET_EXECUTIVE_POSITION, SET_EXECUTIVE_PROFILE,
+    SET_ALL_EXECUTIVE
+} from "../../constants/executive/executiveConstants";
 const initial_state = {
-    all_admin:[],
+    all_executive:[],
     name:"",
     profile:"",
     email:"",
@@ -18,23 +18,23 @@ const initial_state = {
 export default function reducer(state = initial_state, action) {
     console.log(action)
     switch (action.type) {
-        case SET_ALL_ADMIN:
-            return state = { ...state, all_admin: action.payload };
-        case SET_ADMIN_NAME:
+        case SET_ALL_EXECUTIVE:
+            return state = { ...state, all_executive: action.payload };
+        case SET_EXECUTIVE_NAME:
             return state = { ...state, name: action.payload };
-        case SET_ADMIN_PROFILE:
+        case SET_EXECUTIVE_PROFILE:
             return state = { ...state, profile: action.payload };
-        case SET_ADMIN_EMAIL:
+        case SET_EXECUTIVE_EMAIL:
             return state = { ...state, email: action.payload };
-        case SET_ADMIN_PASSWORD:
+        case SET_EXECUTIVE_PASSWORD:
             return state = { ...state, password: action.payload };
-        case SET_ADMIN_POSITION:
+        case SET_EXECUTIVE_POSITION:
             return state = { ...state, position: action.payload };
-        case SET_ADMIN_DEPARTMENT:
+        case SET_EXECUTIVE_DEPARTMENT:
             return state = { ...state, department: action.payload };
-        case SET_ADMIN_EMPLOYEE_ID:
+        case SET_EXECUTIVE_EMPLOYEE_ID:
             return state = { ...state, employee_id: action.payload };
-        case RESET_ADMIN:
+        case RESET_EXECUTIVE:
             return state = { ...state, name:"", profile: "", email: "", password: "", position: "", department: "", employee_id: ""};
         default:
             return state;

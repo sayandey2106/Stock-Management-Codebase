@@ -44,7 +44,7 @@ const properties = {
     arrows: true
 }
 
-class Amenities extends Component {
+class ManagerComponents extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,7 +62,7 @@ class Amenities extends Component {
     }
 
     componentDidMount() {
-        this.props.get_all_admin(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_manager(this.props.login.token, this.props.login.organization_id)
     }
 
     // ed = (s) => {
@@ -94,12 +94,12 @@ class Amenities extends Component {
         const {
             snackbar,
             close_snack_bar,
-            admin,
-            delete_admin,
-            update_admin,
+            manager,
+            delete_manager,
+            update_manager,
             login
         } = this.props;
-        console.log(admin.all_admin)
+        console.log(manager.all_manager)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -107,13 +107,13 @@ class Amenities extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW ADMIN
+                                    VIEW MANAGER
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
                             <Grid item lg={12}>
-                                <Link to="add_admin" style={{textDecoration: "none"}}>
+                                <Link to="add_manager" style={{textDecoration: "none"}}>
                                     <IconButton>
                                         <Icon>add</Icon>
                                     </IconButton>
@@ -133,7 +133,7 @@ class Amenities extends Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {admin.all_admin.map(row =>
+                                    {manager.all_manager.map(row =>
                                         <TableRow>
                                             <TableCell></TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
@@ -141,12 +141,11 @@ class Amenities extends Component {
                                             <TableCell align="left">{row.department}</TableCell>
                                             <TableCell align="left">{row.position}</TableCell>
                                             <TableCell align="left">{row.employee_id}</TableCell>
-                                            {login.user_id !==row._id &&
                                             <TableCell align={"right"}>
-                                                 <IconButton onClick={() => {
+                                                <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
-                                                        id: row._id,
+                                                        id:row._id,
                                                         name: row.name,
                                                         email: row.email,
                                                         department: row.department,
@@ -156,19 +155,19 @@ class Amenities extends Component {
                                                 }}>
                                                     <Icon>edit</Icon>
                                                 </IconButton>
-                                                    <IconButton onClick={() => {
+                                                <IconButton onClick={() => {
                                                     this.setState({delete: true, id: row._id})
                                                 }}>
                                                     <Icon>delete</Icon>
-                                                    </IconButton>
-                                            </TableCell>}
+                                                </IconButton>
+                                            </TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>
                                 <Dialog open={this.state.delete}
                                         onClose={this.handleClose}
                                         aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Delete Admin</DialogTitle>
+                                    <DialogTitle id="form-dialog-title">Delete Manager</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             Are you sure?
@@ -186,7 +185,7 @@ class Amenities extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                delete_admin(this.state.id, login.token, login.organization_id)
+                                                delete_manager(this.state.id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -295,7 +294,7 @@ class Amenities extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_admin(this.state.id, this.state.name, this.state.profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
+                                                update_manager(this.state.id, this.state.name, this.state.profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -318,4 +317,4 @@ class Amenities extends Component {
     }
 }
 
-export default withStyles(styles)(Amenities);
+export default withStyles(styles)(ManagerComponents);

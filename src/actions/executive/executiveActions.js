@@ -1,20 +1,20 @@
 import {
-    RESET_ADMIN,
-    SET_ADMIN_DEPARTMENT,
-    SET_ADMIN_EMAIL, SET_ADMIN_EMPLOYEE_ID,
-    SET_ADMIN_NAME, SET_ADMIN_PASSWORD, SET_ADMIN_POSITION, SET_ADMIN_PROFILE,
-    SET_ALL_ADMIN
-} from "../../constants/admin/adminConst";
+    RESET_EXECUTIVE,
+    SET_EXECUTIVE_DEPARTMENT,
+    SET_EXECUTIVE_EMAIL, SET_EXECUTIVE_EMPLOYEE_ID,
+    SET_EXECUTIVE_NAME, SET_EXECUTIVE_PASSWORD, SET_EXECUTIVE_POSITION, SET_EXECUTIVE_PROFILE,
+    SET_ALL_EXECUTIVE
+} from "../../constants/executive/executiveConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 
 
-export function get_all_admin(token, oid) {
+export function get_all_executive(token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_admin", {
+        return fetch(UNIVERSAL.BASEURL + "view_all_executive", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -31,13 +31,13 @@ export function get_all_admin(token, oid) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(set_all_admin(responseJson.result));
+                    dispatch(set_all_executive(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
                     dispatch(set_snack_bar(responseJson.status, responseJson.message));
-                    // dispatch(set_all_admin([]));
+                    // dispatch(set_all_executive([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -47,10 +47,10 @@ export function get_all_admin(token, oid) {
     };
 }
 
-export function delete_admin(id,token,oid) {
+export function delete_executive(id,token,oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "delete_admin", {
+        return fetch(UNIVERSAL.BASEURL + "delete_executive", {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
@@ -61,14 +61,14 @@ export function delete_admin(id,token,oid) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                admin_id:id
+                executive_id:id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_admin(token, oid))
+                    dispatch(get_all_executive(token, oid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -83,10 +83,10 @@ export function delete_admin(id,token,oid) {
     };
 }
 
-export function update_admin(id, name, profile, email, password, position, department, employee_id, token, oid) {
+export function update_executive(id, name, profile, email, password, position, department, employee_id, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "update_admin", {
+        return fetch(UNIVERSAL.BASEURL + "update_executive", {
             method: "PUT",
             headers: {
                 Accept: "application/json",
@@ -97,21 +97,21 @@ export function update_admin(id, name, profile, email, password, position, depar
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                admin_id:id,
-                admin_name:name,
-                admin_profile_pic:profile,
+                executive_id:id,
+                executive_name:name,
+                executive_profile_pic:profile,
                 email:email,
                 password:password,
-                admin_position:position,
-                admin_department:department,
-                admin_employee_id:employee_id
+                executive_position:position,
+                executive_department:department,
+                executive_employee_id:employee_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_admin(token, oid))
+                    dispatch(get_all_executive(token, oid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -126,10 +126,10 @@ export function update_admin(id, name, profile, email, password, position, depar
     };
 }
 
-export function add_admin(admin, token, oid) {
+export function add_executive(executive, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "add_admin", {
+        return fetch(UNIVERSAL.BASEURL + "add_executive", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -140,22 +140,22 @@ export function add_admin(admin, token, oid) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                admin_name:admin.name,
-                admin_profile_pic:admin.profile,
-                email:admin.email,
-                password:admin.password,
-                admin_position:admin.position,
-                admin_department:admin.department,
-                admin_employee_id:admin.employee_id
+                executive_name:executive.name,
+                executive_profile_pic:executive.profile,
+                email:executive.email,
+                password:executive.password,
+                executive_position:executive.position,
+                executive_department:executive.department,
+                executive_employee_id:executive.employee_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_admin(token, oid))
+                    dispatch(get_all_executive(token, oid))
 
-                    dispatch(reset_admin())
+                    dispatch(reset_executive())
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -170,65 +170,65 @@ export function add_admin(admin, token, oid) {
     };
 }
 
-export function set_all_admin(payload){
+export function set_all_executive(payload){
     console.log(payload)
     return{
-        type:SET_ALL_ADMIN,
+        type:SET_ALL_EXECUTIVE,
         payload:payload
     }
 }
 
-export function set_admin_name(payload){
+export function set_executive_name(payload){
     return{
-        type:SET_ADMIN_NAME,
+        type:SET_EXECUTIVE_NAME,
         payload:payload
     }
 }
 
-export function set_admin_profile(payload){
+export function set_executive_profile(payload){
     return{
-        type:SET_ADMIN_PROFILE,
+        type:SET_EXECUTIVE_PROFILE,
         payload:payload
     }
 }
 
-export function set_admin_email(payload){
+export function set_executive_email(payload){
     return{
-        type:SET_ADMIN_EMAIL,
+        type:SET_EXECUTIVE_EMAIL,
         payload:payload
     }
 }
 
-export function set_admin_password(payload){
+export function set_executive_password(payload){
     return{
-        type:SET_ADMIN_PASSWORD,
+        type:SET_EXECUTIVE_PASSWORD,
         payload:payload
     }
 }
 
-export function set_admin_position(payload){
+export function set_executive_position(payload){
     return{
-        type:SET_ADMIN_POSITION,
+        type:SET_EXECUTIVE_POSITION,
         payload:payload
     }
 }
 
-export function set_admin_department(payload){
+export function set_executive_department(payload){
     return{
-        type:SET_ADMIN_DEPARTMENT,
+        type:SET_EXECUTIVE_DEPARTMENT,
         payload:payload
     }
 }
 
-export function set_admin_employee_id(payload){
+export function set_executive_employee_id(payload){
     return{
-        type:SET_ADMIN_EMPLOYEE_ID,
+        type:SET_EXECUTIVE_EMPLOYEE_ID,
         payload:payload
     }
 }
 
-export function reset_admin(){
+export function reset_executive(){
     return{
-        type:RESET_ADMIN
+        type:RESET_EXECUTIVE
     }
 }

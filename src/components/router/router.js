@@ -38,7 +38,9 @@ class Routes extends Component {
           style={{
             display: "flex",
           }}>
-          <Drawer_option_con/>
+          <Drawer_option_con 
+          type={login.type}
+            onLogout={onLogout}/>
           <main
             style={{
               flexGrow: 1,
@@ -46,7 +48,7 @@ class Routes extends Component {
             }}
           >
             {/* <Route exact path="/login" component={Login} /> */}
-            <Route exact path="/login" component={Login} />
+            {/* <Route exact path="/login" component={Login} /> */}
             <Route path="/" component={Controller_con} />
             {/* ADMIN ROUTES */}
              <Route exact path="/add_admin" component={AddAdminCont} />

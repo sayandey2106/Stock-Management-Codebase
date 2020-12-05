@@ -27,8 +27,8 @@ export const mapStateToProps = store => {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    onLogout: (user_token, uuid) => {
-      dispatch(onLogout(user_token, uuid));
+    onLogout: () => {
+      dispatch(onLogout());
     },
   };
 };

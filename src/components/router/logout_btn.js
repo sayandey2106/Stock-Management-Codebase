@@ -10,25 +10,26 @@ export default class LG extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // redirect: false
+      redirect: false
     }
   }
 
   render() {
     const { login} = this.props; 
 
-    if (login.isHome === false) {
-      return <Redirect to="/login" />
+    if (this.state.redirect === true) {
+      return <Redirect to="/" />
     }
     return (
       <IconButton color="inherit"
         onClick={() => {
-          localStorage.removeItem("name");
-          localStorage.removeItem("email");
-          localStorage.removeItem("profile_img");
-          localStorage.removeItem("user_token");
-          localStorage.removeItem("type");
-          localStorage.removeItem("uuid");
+          localStorage.removeItem("taxopliance_type");
+          localStorage.removeItem("taxopliance_user_id");
+          localStorage.removeItem("taxopliance_token");
+          localStorage.removeItem("taxopliance_profile_pic");
+          localStorage.removeItem("taxopliance_name");
+          localStorage.removeItem("taxopliance_organization_id");
+          this.setState({redirect:true})
           this.props.onLogout()
         }}>
         <Icon style={{ color: "#3f51b5" }}>power_settings_new</Icon>

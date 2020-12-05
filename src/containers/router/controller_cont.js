@@ -26,8 +26,8 @@ export const mapStateToProps = store => {
 
 export const mapDispatchToProps = dispatch => {
     return {
-      setLogin: (type, email, user_token, profile_img, name) => {
-        dispatch(setLogin(type, email, user_token, profile_img, name));
+      setLogin: (payload) => {
+        dispatch(setLogin(payload));
       }
     };
   };

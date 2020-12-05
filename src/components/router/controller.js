@@ -13,7 +13,7 @@ export default class LoginController extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem("user_token") !== null) {
+    if (localStorage.getItem("taxopliance_token") !== null) {
       this.props.setLogin({
         type: localStorage.getItem("taxopliance_type"),
         _id: localStorage.getItem("taxopliance_user_id"),
@@ -30,9 +30,9 @@ export default class LoginController extends Component {
 
   render() {
     return (
-      <div>
+      <div />
 
-      </div>
+
     );
   }
 }

@@ -238,7 +238,7 @@ function MiniDrawer(props) {
             </IconButton>
           }
           <Link to="/login">
-            <img src={"https://firebasestorage.googleapis.com/v0/b/nextstacks.appspot.com/o/NextStack%20Logo.png?alt=media&token=6c4ba45d-05a9-4e1f-a7dc-9ee86006218c"} alt="no_img" height="45" />
+            <img src={"https://firebasestorage.googleapis.com/v0/b/taxopliance-5dd90.appspot.com/o/logo%2FSonic%20Broadband-01%20(1).png?alt=media&token=07f899cf-3f82-4aae-868d-9202edbfb9f9"} alt="no_img" height="45" />
           </Link>
           <span style={{ color: "#b30047", marginLeft: 4 }}>alpha</span>
           <div className={classes.grow} />

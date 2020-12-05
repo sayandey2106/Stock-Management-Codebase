@@ -32,21 +32,17 @@ class Routes extends Component {
             }}>
             {/* <Route exact path="/" component={Home} /> */}
             <Route exact path="/" component={Login} />
-            {/* <Route path="/" component={Controller_con} /> */}
+            <Route path="/" component={Controller_con} />
             {/* <Route path="/survey" component={Survey} /> */}
           </main>
         </div>
     } else {
-
       body =
         <div
           style={{
             display: "flex",
           }}>
-          <Drawer_option_con
-            type={login.type}
-            onLogout={onLogout}
-          />
+          <Drawer_option_con/>
           <main
             style={{
               flexGrow: 1,

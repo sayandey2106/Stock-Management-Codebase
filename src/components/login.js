@@ -31,7 +31,7 @@ class Login extends Component {
       snackbar,
       close_snack_bar,
     } = this.props;
-    if (login.type === "A" || login.type === "E" || login.type === "SA") {
+    if (login.token!=="") {
       return <Redirect to="/dashboard" />
     }
     return (
@@ -41,7 +41,7 @@ class Login extends Component {
             <Grid item md={4} xs={12} >
               <Card className="login_card">
                 <img
-                  src={"https://firebasestorage.googleapis.com/v0/b/apartment-erp.appspot.com/o/socus%2Fsocus_1.webp?alt=media&token=52f5f2d8-c32d-41ec-8aa0-a523dbd62812"}
+                  src={"https://firebasestorage.googleapis.com/v0/b/taxopliance-5dd90.appspot.com/o/logo%2FSonic%20Broadband-01%20(1).png?alt=media&token=07f899cf-3f82-4aae-868d-9202edbfb9f9"}
                   alt="no_img" style={{ height: 100 }}
                 />
                 <Typography className="login_heading">

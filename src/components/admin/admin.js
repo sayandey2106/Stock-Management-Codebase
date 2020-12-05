@@ -29,6 +29,7 @@ import LoaderCon from "../../containers/loader/loader_cont";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
 const card = {
     borderRadius: "20px",
@@ -46,11 +47,20 @@ class Amenities extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            delete:false,
+            update:false,
+            id:"",
+            name:"",
+            profile:"",
+            email:"",
+            password:"",
+            position:"",
+            department:"",
+            employee_id:""
         }
     }
     componentDidMount() {
-        this.props.get_all_admin(this.props.login.user_token)
+        this.props.get_all_admin(this.props.login.token,this.props.login.organization_id)
     }
     // ed = (s) => {
     //     this.setState({
@@ -72,12 +82,20 @@ class Amenities extends Component {
     //         id: row._id,
     //     })
     // }
+    handleClose=()=>{
+        this.setState({delete:false})
+        this.setState({update:false})
+    }
     render() {
         const {
             snackbar,
             close_snack_bar,
-            admin
+            admin,
+            delete_admin,
+            update_admin,
+            login
         } = this.props;
+        console.log(admin.all_admin)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -91,12 +109,12 @@ class Amenities extends Component {
                         </CardHeader>
                         <CardContent>
                             <Grid item lg={12}>
-                                <Link to="add_amenities" style={{ textDecoration: "none" }}>
+                                <Link to="add_admin" style={{ textDecoration: "none" }}>
                                     <IconButton>
                                         <Icon>add</Icon>
                                     </IconButton>
                                 </Link>
-                                
+
                             </Grid>
                             <Table>
                                 <TableHead>
@@ -111,8 +129,152 @@ class Amenities extends Component {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {}
+                                    {admin.all_admin.map(row=>
+                                        <TableRow>
+                                            <TableCell></TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                                            <TableCell align="left">{row.email}</TableCell>
+                                            <TableCell align="left">{row.department}</TableCell>
+                                            <TableCell align="left">{row.position}</TableCell>
+                                            <TableCell align="left">{row.employee_id}</TableCell>
+                                            <TableCell align={"right"}>
+                                                <IconButton onClick={()=>{this.setState({update:true})}}>
+                                                    <Icon>edit</Icon>
+                                                </IconButton>
+                                                <IconButton onClick={()=>{this.setState({delete:true})}}>
+                                                    <Icon>delete</Icon>
+                                                </IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    )}
                                 </TableBody>
+                                <Dialog open={this.state.delete}
+                                        onClose={this.handleClose}
+                                        aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Delete Admin</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Are you sure?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button
+                                            onClick={()=>{this.handleClose()}}
+                                            color="primary"
+                                        >
+                                            No
+                                        </Button>
+                                        <Button
+                                            onClick={()=>{
+                                                this.handleClose();
+                                            delete_admin(this.state.id, login.token, login.organization_id)}}
+                                            color="primary"
+                                        >
+                                            Yes
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                                <Dialog open={this.state.update} onClose={()=>{this.handleClose()}} aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Enter the required fields, those needs to be updated.
+                                        </DialogContentText>
+                                        <TextField
+                                            autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Admin ID"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({id:event.target.value})}}
+                                            value={this.state.id}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Name"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({name:event.target.value})}}
+                                            value={this.state.name}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Profile Pic"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({profile:event.target.value})}}
+                                            value={this.state.profile}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Email Address"
+                                            type="email"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({email:event.target.value})}}
+                                            value={this.state.email}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Password"
+                                            type="password"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({password:event.target.value})}}
+                                            value={this.state.password}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Position"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({position:event.target.value})}}
+                                            value={this.state.position}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Department"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({department:event.target.value})}}
+                                            value={this.state.department}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Employee ID"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event)=>{this.setState({employee_id:event.target.value})}}
+                                            value={this.state.employee_id}
+                                        />
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={()=>this.handleClose()} color="primary">
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            onClick={()=>{
+                                                this.handleClose();
+                                                update_admin(this.state.id, this.state.name, this.state.profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)}}
+                                            color="primary"
+                                        >
+                                            Update
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
                             </Table>
                         </CardContent>
                     </Card>

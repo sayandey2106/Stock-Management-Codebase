@@ -8,6 +8,7 @@ import Login from "../../containers/loginCont";
 import Drawer_option_con from "../../containers/router/drawer_cont"
 // Admin Imports
 import AdminCont from "../../containers/admin/adminCont"
+import AddAdminCont from "../../containers/admin/addAdminCont";
 
 class Routes extends Component {
 
@@ -52,7 +53,7 @@ class Routes extends Component {
             <Route exact path="/login" component={Login} />
             <Route path="/" component={Controller_con} />
             {/* ADMIN ROUTES */}
-            {/* <Route exact path="/add_admin" component={AddAdminCont} /> */}
+             <Route exact path="/add_admin" component={AddAdminCont} />
             <Route exact path="/view_admin" component={AdminCont} />
 
             {/* STUDENT ROUTES */}

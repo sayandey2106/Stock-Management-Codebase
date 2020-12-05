@@ -14,7 +14,14 @@ export default class LoginController extends Component {
 
   componentDidMount() {
     if (localStorage.getItem("user_token") !== null) {
-      this.props.setLogin(localStorage.getItem("type"), localStorage.getItem("email"), localStorage.getItem("user_token"), localStorage.getItem("profile_img"), localStorage.getItem("name"), localStorage.getItem("organization_id"));
+      this.props.setLogin({
+        type: localStorage.getItem("taxopliance_type"),
+        _id: localStorage.getItem("taxopliance_user_id"),
+        user_token: localStorage.getItem("taxopliance_token"),
+        profile_pic: localStorage.getItem("taxopliance_profile_pic"),
+        name: localStorage.getItem("taxopliance_name"),
+        organization_id: localStorage.getItem("taxopliance_organization_id")
+      });
       // if (!firebase.apps.length) {
       //   firebase.initializeApp(firebase_config);
       // }
@@ -24,7 +31,7 @@ export default class LoginController extends Component {
   render() {
     return (
       <div>
-        
+
       </div>
     );
   }

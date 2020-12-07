@@ -4,6 +4,7 @@ export const all_admin_option = [
   { id: 2, name: "Manager", icon: "home", link: "/view_manager" },
   { id: 3, name: "Executive", icon: "home", link: "/view_executive" },
   { id: 4, name: "MajorHead", icon: "home", link: "/view_majorhead" },
+  { id: 1, name: "Client", icon: "group", link: "/view_client" },
 ];
 export const all_manager_options = [
   { id: 0, name: "Home", icon: "home", link: "/" },

@@ -14,13 +14,13 @@ export const OPEN_LOGIN_MODAL = "OPEN_LOGIN_MODAL";
 export const CLOSE_LOGIN_MODAL = "CLOSE_LOGIN_MODAL";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyDRu-0LRSEY4_A5xV3akLse3AjTNyKwFbw",
-  authDomain: "skyyrider-36fe0.firebaseapp.com",
-  databaseURL: "https://skyyrider-36fe0.firebaseio.com",
-  projectId: "skyyrider-36fe0",
-  storageBucket: "skyyrider-36fe0.appspot.com",
-  messagingSenderId: "109960021698",
-  appId: "1:109960021698:web:4ae48a844f8415e478dd5b",
-  measurementId: "G-ZSXZ2CCLSZ"
+  apiKey: "AIzaSyDAYepm9F5Z4M7WtirzHDFfwLh166CJqng",
+  authDomain: "taxopliance-5dd90.firebaseapp.com",
+  databaseURL: "https://taxopliance-5dd90.firebaseio.com",
+  projectId: "taxopliance-5dd90",
+  storageBucket: "taxopliance-5dd90.appspot.com",
+  messagingSenderId: "18175422347",
+  appId: "1:18175422347:web:7bb8bf3c43bbcc4206498e",
+  measurementId: "G-TEDTTC6JYV"
 };
 export const fb = firebase.initializeApp(firebaseConfig);

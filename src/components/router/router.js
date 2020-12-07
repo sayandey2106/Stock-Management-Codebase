@@ -13,6 +13,8 @@ import ManagerContainer from "../../containers/manager/managerContainer";
 import AddManagerContainer from "../../containers/manager/addManagerContainer";
 import AddExecutiveContainer from "../../containers/executive/addExecutiveContainer";
 import ExecutiveContainer from "../../containers/executive/executiveContainer";
+import ClientContainer from "../../containers/client/clientContainer";
+import AddClientContainer from "../../containers/client/addClientContainer";
 
 class Routes extends Component {
 
@@ -42,9 +44,9 @@ class Routes extends Component {
           style={{
             display: "flex",
           }}>
-          <Drawer_option_con 
-          type={login.type}
-            onLogout={onLogout}/>
+          <Drawer_option_con
+            type={login.type}
+            onLogout={onLogout} />
           <main
             style={{
               flexGrow: 1,
@@ -55,16 +57,18 @@ class Routes extends Component {
             {/* <Route exact path="/login" component={Login} /> */}
             <Route path="/" component={Controller_con} />
             {/* ADMIN ROUTES */}
-             <Route exact path="/add_admin" component={AddAdminCont} />
+            <Route exact path="/add_admin" component={AddAdminCont} />
             <Route exact path="/view_admin" component={AdminCont} />
-              <Route exact path="/view_manager" component={ManagerContainer} />
-              <Route exact path="/add_manager" component={AddManagerContainer} />
-              <Route exact path="/add_executive" component={AddExecutiveContainer} />
-              <Route exact path="/view_executive" component={ExecutiveContainer} />
+            <Route exact path="/view_manager" component={ManagerContainer} />
+            <Route exact path="/add_manager" component={AddManagerContainer} />
+            <Route exact path="/add_executive" component={AddExecutiveContainer} />
+            <Route exact path="/view_executive" component={ExecutiveContainer} />
+            <Route exact path="/add_client" component={AddClientContainer} />
+          <Route exact path="/view_client" component={ClientContainer} />
 
 
-              {/* STUDENT ROUTES */}
-            
+            {/* STUDENT ROUTES */}
+
           </main>
           {/* <Footer /> */}
         </div>

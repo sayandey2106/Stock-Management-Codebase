@@ -14,7 +14,7 @@ import { set_snack_bar } from "../snackbar/snackbar_action";
 export function get_all_client(token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_client", {
+        return fetch(UNIVERSAL.BASEURL + "view_all_clients", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -50,7 +50,7 @@ export function get_all_client(token, oid) {
 export function delete_client(id,token,oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "delete_client", {
+        return fetch(UNIVERSAL.BASEURL + "delete_clients", {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
@@ -86,7 +86,7 @@ export function delete_client(id,token,oid) {
 export function update_client(id, name, profile, email, password, position, department, employee_id, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "update_client", {
+        return fetch(UNIVERSAL.BASEURL + "update_clients", {
             method: "PUT",
             headers: {
                 Accept: "application/json",
@@ -129,7 +129,7 @@ export function update_client(id, name, profile, email, password, position, depa
 export function add_client(client, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "add_client", {
+        return fetch(UNIVERSAL.BASEURL + "add_clients", {
             method: "POST",
             headers: {
                 Accept: "application/json",

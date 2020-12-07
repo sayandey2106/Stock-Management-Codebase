@@ -1,15 +1,15 @@
 import {
-    SET_ALL_MAJORHEAD
-} from "../../constants/majorhead/majorheadConst";
+    SET_ALL_MINORHEAD
+} from "../../constants/minorheads/minorheadConstants";
 const initial_state = {
-    all_majorhead:[],
+    all_minorhead:[],
     name:"",
 };
 export default function reducer(state = initial_state, action) {
     console.log(action)
     switch (action.type) {
-        case SET_ALL_MAJORHEAD:
-            return state = { ...state, all_majorhead: action.payload };
+        case SET_ALL_MINORHEAD:
+            return state = { ...state, all_minorhead: action.payload };
         default:
             return state;
     }

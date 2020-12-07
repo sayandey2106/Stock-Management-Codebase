@@ -7,6 +7,7 @@ import manager from './manager/managerReducer'
 import executive from './executive/executiveReducer';
 import client from './client/clientReducer';
 import majorhead from './majorhead/majorheadReducer';
+import minorhead from './minorheads/minorheadReducer';
 // import client from './client/clientReducer'
 export default combineReducers({
   loader,
@@ -16,5 +17,6 @@ export default combineReducers({
   manager,
   executive,
   majorhead,
+  minorhead,
   client
 });

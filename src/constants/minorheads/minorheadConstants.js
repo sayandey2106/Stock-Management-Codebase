@@ -1,0 +1,1 @@
+export const SET_ALL_MINORHEAD="SET_ALL_MINORHEAD";

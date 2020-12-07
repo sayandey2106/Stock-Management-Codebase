@@ -5,11 +5,13 @@ import login from "./login-reducer";
 import admin from "./admin/adminReducer"
 import manager from './manager/managerReducer'
 import executive from './executive/executiveReducer'
+import majorhead from './majorhead/majorheadReducer'
 export default combineReducers({
   loader,
   snackbar,
   login,
   admin,
   manager,
-  executive
+  executive,
+  majorhead
 });

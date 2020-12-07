@@ -13,6 +13,7 @@ import ManagerContainer from "../../containers/manager/managerContainer";
 import AddManagerContainer from "../../containers/manager/addManagerContainer";
 import AddExecutiveContainer from "../../containers/executive/addExecutiveContainer";
 import ExecutiveContainer from "../../containers/executive/executiveContainer";
+import MajorheadContainer from "../../containers/majorhead/majorheadContainer";
 
 class Routes extends Component {
 
@@ -61,6 +62,7 @@ class Routes extends Component {
               <Route exact path="/add_manager" component={AddManagerContainer} />
               <Route exact path="/add_executive" component={AddExecutiveContainer} />
               <Route exact path="/view_executive" component={ExecutiveContainer} />
+              <Route exact path="/view_majorhead" component={MajorheadContainer} />
 
 
               {/* STUDENT ROUTES */}

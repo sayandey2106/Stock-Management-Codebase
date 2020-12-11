@@ -1,19 +1,25 @@
 import {
     RESET_CLIENT,
-    SET_CLIENT_DEPARTMENT,
-    SET_CLIENT_EMAIL, SET_CLIENT_EMPLOYEE_ID,
-    SET_CLIENT_NAME, SET_CLIENT_PASSWORD, SET_CLIENT_POSITION, SET_CLIENT_PROFILE,
-    SET_ALL_CLIENT
+    SET_CLIENT_EMAIL,
+    SET_CLIENT_NAME,
+    SET_CLIENT_PROFILE,
+    SET_ALL_CLIENT,
+    SET_CLIENT_CONTACT_NUM,
+    SET_CLIENT_ADDRESS,
+    SET_CLIENT_PAN_NUM,
+    SET_CLIENT_AADHAR_NUM,
+    SET_CLIENT_CLIENT_SOURCE
 } from "../../constants/client/clientConstants";
 const initial_state = {
     all_client:[],
     name:"",
     profile:"",
     email:"",
-    password:"",
-    position:"",
-    department:"",
-    employee_id: ""
+    contact_num:"",
+    address:"",
+    pan_num:"",
+    aadhar_num: "",
+    client_source: ""
 };
 export default function reducer(state = initial_state, action) {
     console.log(action)
@@ -26,16 +32,18 @@ export default function reducer(state = initial_state, action) {
             return state = { ...state, profile: action.payload };
         case SET_CLIENT_EMAIL:
             return state = { ...state, email: action.payload };
-        case SET_CLIENT_PASSWORD:
-            return state = { ...state, password: action.payload };
-        case SET_CLIENT_POSITION:
-            return state = { ...state, position: action.payload };
-        case SET_CLIENT_DEPARTMENT:
-            return state = { ...state, department: action.payload };
-        case SET_CLIENT_EMPLOYEE_ID:
-            return state = { ...state, employee_id: action.payload };
+        case SET_CLIENT_CONTACT_NUM:
+            return state = { ...state, contact_num: action.payload };
+        case SET_CLIENT_ADDRESS:
+            return state = { ...state, address: action.payload };
+        case SET_CLIENT_PAN_NUM:
+            return state = { ...state, pan_num: action.payload };
+        case SET_CLIENT_AADHAR_NUM:
+            return state = { ...state, aadhar_num: action.payload };
+        case SET_CLIENT_CLIENT_SOURCE:
+            return state = { ...state, client_source: action.payload };
         case RESET_CLIENT:
-            return state = { ...state, name:"", profile: "", email: "", password: "", position: "", department: "", employee_id: ""};
+            return state = { ...state, name:"", profile: "", email: "", contact_num: "", address: "", pan_num: "", aadhar_num: "", client_source: ""};
         default:
             return state;
     }

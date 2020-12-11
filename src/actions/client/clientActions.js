@@ -1,14 +1,20 @@
 import {
     RESET_CLIENT,
-    SET_CLIENT_DEPARTMENT,
-    SET_CLIENT_EMAIL, SET_CLIENT_EMPLOYEE_ID,
-    SET_CLIENT_NAME, SET_CLIENT_PASSWORD, SET_CLIENT_POSITION, SET_CLIENT_PROFILE,
-    SET_ALL_CLIENT
+    SET_CLIENT_EMAIL,
+    SET_CLIENT_NAME,
+    SET_CLIENT_PROFILE,
+    SET_ALL_CLIENT,
+    SET_CLIENT_CONTACT_NUM,
+    SET_CLIENT_ADDRESS,
+    SET_CLIENT_PAN_NUM,
+    SET_CLIENT_AADHAR_NUM,
+    SET_CLIENT_CLIENT_SOURCE
 } from "../../constants/client/clientConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
+import firebase from "firebase";
 
 
 export function get_all_client(token, oid) {
@@ -29,6 +35,7 @@ export function get_all_client(token, oid) {
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
+                console.log("client action")
                 if (responseJson.status) {
 
                     dispatch(set_all_client(responseJson.result));
@@ -37,7 +44,7 @@ export function get_all_client(token, oid) {
 
                 } else {
                     dispatch(set_snack_bar(responseJson.status, responseJson.message));
-                    // dispatch(set_all_executive([]));
+                    // dispatch(set_all_client([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -83,7 +90,7 @@ export function delete_client(id,token,oid) {
     };
 }
 
-export function update_client(id, name, profile, email, password, position, department, employee_id, token, oid) {
+export function update_client(id, name, email, profile, contact_num, address, pan_num, aadhar_name, client_source, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_clients", {
@@ -101,10 +108,11 @@ export function update_client(id, name, profile, email, password, position, depa
                 client_name:name,
                 client_profile_pic:profile,
                 email:email,
-                password:password,
-                client_position:position,
-                client_department:department,
-                client_employee_id:employee_id
+                contact_num:contact_num,
+                client_address:address,
+                client_pan_num:pan_num,
+                client_aadhar_num:aadhar_name,
+                client_source:client_source
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -126,9 +134,11 @@ export function update_client(id, name, profile, email, password, position, depa
     };
 }
 
-export function add_client(client, token, oid) {
+export function add_client_api(client, token, oid, URL) {
     return (dispatch) => {
         dispatch(setLoader());
+        console.log("Inside client add action")
+        console.log(client.pan_num)
         return fetch(UNIVERSAL.BASEURL + "add_clients", {
             method: "POST",
             headers: {
@@ -141,12 +151,13 @@ export function add_client(client, token, oid) {
                 // email: login.email,
                 // password: login.password
                 client_name:client.name,
-                client_profile_pic:client.profile,
-                email:client.email,
-                password:client.password,
-                client_position:client.position,
-                client_department:client.department,
-                client_employee_id:client.employee_id
+                client_profile_pic:URL,
+                client_email:client.email,
+                client_contact_num:client.contact_num,
+                client_address:client.address,
+                pan_num:client.pan_num,
+                client_aadhar_num:client.aadhar_num,
+                client_source:client.client_source
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -199,30 +210,37 @@ export function set_client_email(payload){
     }
 }
 
-export function set_client_password(payload){
+export function set_client_contact_num(payload){
     return{
-        type:SET_CLIENT_PASSWORD,
+        type:SET_CLIENT_CONTACT_NUM,
         payload:payload
     }
 }
 
-export function set_client_position(payload){
+export function set_client_address(payload){
     return{
-        type:SET_CLIENT_POSITION,
+        type:SET_CLIENT_ADDRESS,
         payload:payload
     }
 }
 
-export function set_client_department(payload){
+export function set_client_pan_num(payload){
     return{
-        type:SET_CLIENT_DEPARTMENT,
+        type:SET_CLIENT_PAN_NUM,
         payload:payload
     }
 }
 
-export function set_client_employee_id(payload){
+export function set_client_aadhar_num(payload){
     return{
-        type:SET_CLIENT_EMPLOYEE_ID,
+        type:SET_CLIENT_AADHAR_NUM,
+        payload:payload
+    }
+}
+
+export function set_client_client_source(payload){
+    return{
+        type:SET_CLIENT_CLIENT_SOURCE,
         payload:payload
     }
 }
@@ -230,5 +248,25 @@ export function set_client_employee_id(payload){
 export function reset_client(){
     return{
         type:RESET_CLIENT
+    }
+}
+
+export function add_client(client,token,oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        if (client.profile !== null) {
+            var storageRef = firebase.storage().ref();
+            var uploadTask = storageRef.child("profile/client/" + client.name + ".png").put(client.profile);
+            uploadTask.on("state_changed", function (snapshot) {
+            }, function (error) {
+                dispatch(set_snack_bar(true, "Image Could Not Be Uploaded"));
+            }, function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                    dispatch(add_client_api(client,token,oid,downloadURL))
+                });
+            });
+        } else {
+            dispatch(client, token, oid, "")
+        }
     }
 }

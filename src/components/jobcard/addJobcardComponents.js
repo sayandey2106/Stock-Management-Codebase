@@ -43,21 +43,18 @@ const properties = {
     indicators: true,
     arrows: true
 }
-class AddManager extends Component {
+class AddJobcard extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name:"",
-            profile:"",
-            email:"",
-            password:"",
-            position:"",
-            department:"",
-            employee_id:""
+            client_id:"",
+            majorhead_id:"",
+            minorhead_id:"",
         }
     }
     componentDidMount() {
-        this.props.get_all_manager(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_jobcard(this.props.login.token, this.props.login.organization_id)
     }
     // ed = (s) => {
     //     this.setState({
@@ -84,16 +81,14 @@ class AddManager extends Component {
         const {
             snackbar,
             close_snack_bar,
-            manager,
+            jobcard,
             login,
-            add_manager,
-            set_manager_name,
-            set_manager_profile,
-            set_manager_email,
-            set_manager_password,
-            set_manager_position,
-            set_manager_department,
-            set_manager_employee_id
+            add_jobcard,
+            set_jobcard_name,
+            set_jobcard_client_id,
+            set_jobcard_firm_id,
+            set_jobcard_minorhead_id,
+            set_jobcard_majorhead_id
         } = this.props;
         return (
             <Grid container justify="center">
@@ -102,7 +97,7 @@ class AddManager extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    ADD MANAGER
+                                    ADD JOBCARD
                                 </h3>
                             </CardIcon>
                         </CardHeader>
@@ -114,70 +109,50 @@ class AddManager extends Component {
                                 label="Name"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_manager_name(event.target.value)}}
-                                value={manager.name}
-                            />
-                            <TextField
-                                // autoFocus
-                                // margin="dense"
-                                // id="name"
-                                // label="Profile Pic"
-                                type="file"
-                                // fullWidth
-                                onChange={(event)=>{set_manager_profile(event.target.files[0])}}
-                                // value={manager.profile}
+                                onChange={(event)=>{set_jobcard_name(event.target.value)}}
+                                value={jobcard.name}
                             />
                             <TextField
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Email Address"
-                                type="email"
-                                fullWidth
-                                onChange={(event)=>{set_manager_email(event.target.value)}}
-                                value={manager.email}
-                            />
-                            <TextField
-                                // autoFocus
-                                margin="dense"
-                                // id="name"
-                                label="Password"
-                                type="password"
-                                fullWidth
-                                onChange={(event)=>{set_manager_password(event.target.value)}}
-                                value={manager.password}
-                            />
-                            <TextField
-                                // autoFocus
-                                margin="dense"
-                                // id="name"
-                                label="Position"
+                                label="Client ID"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_manager_position(event.target.value)}}
-                                value={manager.position}
+                                onChange={(event)=>{set_jobcard_client_id(event.target.value)}}
+                                value={jobcard.client_id}
                             />
                             <TextField
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Department"
+                                label="Firm ID"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_manager_department(event.target.value)}}
-                                value={manager.department}
+                                onChange={(event)=>{set_jobcard_firm_id(event.target.value)}}
+                                value={jobcard.firm_id}
                             />
                             <TextField
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Employee ID"
+                                label="Majorhead ID"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_manager_employee_id(event.target.value)}}
-                                value={manager.employee_id}
+                                onChange={(event)=>{set_jobcard_majorhead_id(event.target.value)}}
+                                value={jobcard.majorhead_id}
                             />
-                            <Button onClick={()=>{add_manager(manager, login.token, login.organization_id)}}>
+                            <TextField
+                                // autoFocus
+                                margin="dense"
+                                // id="name"
+                                label="Minorhad ID"
+                                type="text"
+                                fullWidth
+                                onChange={(event)=>{set_jobcard_minorhead_id(event.target.value)}}
+                                value={jobcard.minorhead_id}
+                            />
+                            <Button onClick={()=>{add_jobcard(jobcard, login.token, login.organization_id)}}>
                                 SUBMIT
                             </Button>
                         </CardContent>
@@ -193,4 +168,4 @@ class AddManager extends Component {
         )
     }
 }
-export default withStyles(styles)(AddManager);
+export default withStyles(styles)(AddJobcard);

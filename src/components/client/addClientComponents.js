@@ -50,10 +50,11 @@ class AddClient extends Component {
             name:"",
             profile:"",
             email:"",
-            password:"",
-            position:"",
-            department:"",
-            employee_id:""
+            contact_num:"",
+            address:"",
+            pan_num:"",
+            aadhar_num:"",
+            client_source:""
         }
     }
     componentDidMount() {
@@ -90,10 +91,11 @@ class AddClient extends Component {
             set_client_name,
             set_client_profile,
             set_client_email,
-            set_client_password,
-            set_client_position,
-            set_client_department,
-            set_client_employee_id
+            set_client_contact_num,
+            set_client_address,
+            set_client_pan_num,
+            set_client_aadhar_num,
+            set_client_source
         } = this.props;
         return (
             <Grid container justify="center">
@@ -119,13 +121,13 @@ class AddClient extends Component {
                             />
                             <TextField
                                 // autoFocus
-                                margin="dense"
+                                // margin="dense"
                                 // id="name"
-                                label="Profile Pic"
-                                type="text"
-                                fullWidth
-                                onChange={(event)=>{set_client_profile(event.target.value)}}
-                                value={client.profile}
+                                // label="Profile Pic"
+                                type="file"
+                                // fullWidth
+                                onChange={(event)=>{set_client_profile(event.target.files[0])}}
+                                // value={client.profile}
                             />
                             <TextField
                                 // autoFocus
@@ -141,41 +143,51 @@ class AddClient extends Component {
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Password"
-                                type="password"
+                                label="Contact Number"
+                                type="text"
                                 fullWidth
-                                onChange={(event)=>{set_client_password(event.target.value)}}
-                                value={client.password}
+                                onChange={(event)=>{set_client_contact_num(event.target.value)}}
+                                value={client.contact_num}
                             />
                             <TextField
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Position"
+                                label="Address"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_client_position(event.target.value)}}
-                                value={client.position}
+                                onChange={(event)=>{set_client_address(event.target.value)}}
+                                value={client.address}
                             />
                             <TextField
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Department"
+                                label="PAN"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_client_department(event.target.value)}}
-                                value={client.department}
+                                onChange={(event)=>{set_client_pan_num(event.target.value)}}
+                                value={client.pan_num}
                             />
                             <TextField
                                 // autoFocus
                                 margin="dense"
                                 // id="name"
-                                label="Employee ID"
+                                label="AADHAR ID"
                                 type="text"
                                 fullWidth
-                                onChange={(event)=>{set_client_employee_id(event.target.value)}}
-                                value={client.employee_id}
+                                onChange={(event)=>{set_client_aadhar_num(event.target.value)}}
+                                value={client.aadhar_num}
+                            />
+                            <TextField
+                                // autoFocus
+                                margin="dense"
+                                // id="name"
+                                label="Source"
+                                type="text"
+                                fullWidth
+                                onChange={(event)=>{set_client_source(event.target.value)}}
+                                value={client.source}
                             />
                             <Button onClick={()=>{add_client(client, login.token, login.organization_id)}}>
                                 SUBMIT

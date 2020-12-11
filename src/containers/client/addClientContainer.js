@@ -7,14 +7,14 @@ import {
 import {
     get_all_client,
     add_client,
-    set_all_client,
     set_client_name,
     set_client_profile,
     set_client_email,
-    set_client_password,
-    set_client_position,
-    set_client_department,
-    set_client_employee_id
+    set_client_contact_num,
+    set_client_address,
+    set_client_pan_num,
+    set_client_aadhar_num,
+    set_client_client_source
 
 } from "../../actions/client/clientActions";
 
@@ -54,17 +54,20 @@ export const mapDispatchToProps = dispatch => {
         set_client_profile: (token) => {
             dispatch(set_client_profile(token));
         },
-        set_client_password: (token) => {
-            dispatch(set_client_password(token));
+        set_client_contact_num: (token) => {
+            dispatch(set_client_contact_num(token));
         },
-        set_client_position: (token) => {
-            dispatch(set_client_position(token));
+        set_client_address: (token) => {
+            dispatch(set_client_address(token));
         },
-        set_client_department: (token) => {
-            dispatch(set_client_department(token));
+        set_client_pan_num: (token) => {
+            dispatch(set_client_pan_num(token));
         },
-        set_client_employee_id: (token) => {
-            dispatch(set_client_employee_id(token));
+        set_client_aadhar_num: (token) => {
+            dispatch(set_client_aadhar_num(token));
+        },
+        set_client_source: (token) => {
+            dispatch(set_client_client_source(token));
         },
 
     };

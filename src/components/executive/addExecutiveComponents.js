@@ -119,13 +119,13 @@ class AddExecutive extends Component {
                             />
                             <TextField
                                 // autoFocus
-                                margin="dense"
+                                // margin="dense"
                                 // id="name"
-                                label="Profile Pic"
-                                type="text"
-                                fullWidth
-                                onChange={(event)=>{set_executive_profile(event.target.value)}}
-                                value={executive.profile}
+                                // label="Profile Pic"
+                                type="file"
+                                // fullWidth
+                                onChange={(event)=>{set_executive_profile(event.target.files[0])}}
+                                // value={executive.profile}
                             />
                             <TextField
                                 // autoFocus

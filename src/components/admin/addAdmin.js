@@ -119,13 +119,12 @@ class AddAdmin extends Component {
                             />
                             <TextField
                                 // autoFocus
-                                margin="dense"
+                                // margin="dense"
                                 // id="name"
                                 label="Profile Pic"
-                                type="text"
-                                fullWidth
-                                onChange={(event)=>{set_admin_profile(event.target.value)}}
-                                value={admin.profile}
+                                type="file"
+                                onChange={(event)=>{set_admin_profile(event.target.files[0])}}
+                                // value={admin.profile}
                             />
                             <TextField
                                 // autoFocus

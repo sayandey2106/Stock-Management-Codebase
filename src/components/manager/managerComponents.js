@@ -219,10 +219,10 @@ class ManagerComponents extends Component {
                                             margin="dense"
                                             // id="name"
                                             label="Profile Pic"
-                                            type="text"
+                                            type="file"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({profile: event.target.value})
+                                                this.setState({profile: event.target.files[0]})
                                             }}
                                             value={this.state.profile}
                                         />

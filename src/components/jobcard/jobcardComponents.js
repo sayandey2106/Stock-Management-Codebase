@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar,} from "@material-ui/core";
+import {Avatar, MenuItem,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -44,7 +44,7 @@ const properties = {
     arrows: true
 }
 
-class ClientComponents extends Component {
+class JobcardComponents extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,18 +52,15 @@ class ClientComponents extends Component {
             update: false,
             id: "",
             name: "",
-            profile: "",
-            email: "",
-            contact_num: "",
-            address: "",
-            pan_num: "",
-            aadhar_num: "",
-            client_source:""
+            client_id: "",
+            firm_id: "",
+            majorhead_id: "",
+            minorhead_id: ""
         }
     }
 
     componentDidMount() {
-        this.props.get_all_client(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_jobcard(this.props.login.token, this.props.login.organization_id)
     }
 
     // ed = (s) => {
@@ -95,12 +92,19 @@ class ClientComponents extends Component {
         const {
             snackbar,
             close_snack_bar,
+            jobcard,
+            // delete_jobcard,
+            update_jobcard,
+            login,
             client,
-            delete_client,
-            update_client,
-            login
+            get_all_client,
+            get_all_majorhead,
+            get_all_minorhead,
+            firm,
+            majorhead,
+            minorhead
         } = this.props;
-        console.log(client.all_client)
+        console.log(jobcard.all_jobcard)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -108,13 +112,13 @@ class ClientComponents extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW client
+                                    VIEW JOBCARD
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
                             <Grid item lg={12}>
-                                <Link to="add_client" style={{textDecoration: "none"}}>
+                                <Link to="add_jobcard" style={{textDecoration: "none"}}>
                                     <IconButton>
                                         <Icon>add</Icon>
                                     </IconButton>
@@ -126,26 +130,21 @@ class ClientComponents extends Component {
                                     <TableRow>
                                         <TableCell></TableCell>
                                         <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
-                                        <TableCell align="left">E-Mail</TableCell>
-                                        <TableCell align="left">Contact Number</TableCell>
-                                        <TableCell align="left">Address</TableCell>
-                                        <TableCell align="left">PAN</TableCell>
-                                        <TableCell align="left">AADHAR Number</TableCell>
-                                        <TableCell align="left">Client Source</TableCell>
+                                        <TableCell align="left">Client ID</TableCell>
+                                        <TableCell align="left">Majorhead ID</TableCell>
+                                        <TableCell align="left">Minohead ID</TableCell>
                                         <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {client.all_client.map(row =>
+                                    {jobcard.all_jobcard.map(row =>
                                         <TableRow>
                                             <TableCell></TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
-                                            <TableCell align="left">{row.contact_num}</TableCell>
-                                            <TableCell align="left">{row.address}</TableCell>
-                                            <TableCell align="left">{row.pan_num}</TableCell>
-                                            <TableCell align="left">{row.aadhar_num}</TableCell>
-                                            <TableCell align="left">{row.client_source}</TableCell>
+                                            <TableCell align="left">{row.department}</TableCell>
+                                            <TableCell align="left">{row.position}</TableCell>
+                                            <TableCell align="left">{row.employee_id}</TableCell>
                                             <TableCell align={"right"}>
                                                 <IconButton onClick={() => {
                                                     this.setState({
@@ -153,28 +152,27 @@ class ClientComponents extends Component {
                                                         id:row._id,
                                                         name: row.name,
                                                         email: row.email,
-                                                        contact_num: row.contact_num,
-                                                        address: row.address,
-                                                        pan_num: row.pan_num,
-                                                        aadhar_num:row.aadhar_num,
-                                                        client_source:row.client_id
-                                                    })
+                                                        department: row.department,
+                                                        position: row.position,
+                                                        employee_id: row.employee_id
+                                                    });
+                                                    get_all_client(login.token, login.organization_id)
                                                 }}>
                                                     <Icon>edit</Icon>
                                                 </IconButton>
-                                                <IconButton onClick={() => {
+                                                {/*<IconButton onClick={() => {
                                                     this.setState({delete: true, id: row._id})
                                                 }}>
                                                     <Icon>delete</Icon>
-                                                </IconButton>
+                                                </IconButton>*/}
                                             </TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>
-                                <Dialog open={this.state.delete}
+                                {/*<Dialog open={this.state.delete}
                                         onClose={this.handleClose}
                                         aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Delete client</DialogTitle>
+                                    <DialogTitle id="form-dialog-title">Delete Jobcard</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             Are you sure?
@@ -192,14 +190,14 @@ class ClientComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                delete_client(this.state.id, login.token, login.organization_id)
+                                                delete_jobcard(this.state.id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
                                             Yes
                                         </Button>
                                     </DialogActions>
-                                </Dialog>
+                                </Dialog>*/}
                                 <Dialog open={this.state.update} onClose={() => {
                                     this.handleClose()
                                 }} aria-labelledby="form-dialog-title">
@@ -223,88 +221,86 @@ class ClientComponents extends Component {
                                         />
                                         <TextField
                                             // autoFocus
-                                            // margin="dense"
-                                            // id="name"
-                                            // label="Profile Pic"
-                                            type="file"
-                                            // fullWidth
-                                            onChange={(event) => {
-                                                this.setState({profile: event.target.files[0]})
-                                            }}
-                                            // value={this.state.profile}
-                                        />
-                                        <TextField
-                                            // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Email Address"
-                                            type="email"
-                                            fullWidth
-                                            onChange={(event) => {
-                                                this.setState({email: event.target.value})
-                                            }}
-                                            value={this.state.email}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            margin="dense"
-                                            // id="name"
-                                            label="Contact Number"
+                                            select
+                                            label="Client ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({contact_num: event.target.value})
+                                                this.setState({client_id: event.target.value})
                                             }}
-                                            value={this.state.contact_num}
-                                        />
+                                            value={this.state.client_id}
+                                            InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                        >
+                                            {client.all_client.map(row1=>(
+                                                <MenuItem value={row1._id} key={row1.client_id}>
+                                                    {row1.name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+                                        {/*<TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            select
+                                            label="Firm ID"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({firm_id: event.target.value})
+                                            }}
+                                            value={this.state.firm_id}
+                                            InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                        >
+                                            {firm.all_firm.map(row1=>(
+                                                <MenuItem value={row1.firm_id} key={row1.firm_id}>
+                                                    {row1.firm_name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>*/}
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Address"
+                                            select
+                                            label="Majorhead ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({address: event.target.value})
+                                                this.setState({majorhead_id: event.target.value})
                                             }}
-                                            value={this.state.address}
-                                        />
+                                            value={this.state.majorhead_id}
+                                            InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                        >
+                                            {majorhead.all_majorhead.map(row1=>(
+                                                <MenuItem value={row1._id} key={row1.majorhead_id}>
+                                                    {row1.majorhead_name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="PAN"
+                                            select
+                                            label="Minorhead ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({pan_num: event.target.value})
+                                                this.setState({minorhead_id: event.target.value})
                                             }}
-                                            value={this.state.pan_num}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            margin="dense"
-                                            // id="name"
-                                            label="AADHAR Number"
-                                            type="text"
-                                            fullWidth
-                                            onChange={(event) => {
-                                                this.setState({aadhar_num: event.target.value})
-                                            }}
-                                            value={this.state.aadhar_num}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            margin="dense"
-                                            // id="name"
-                                            label="Source"
-                                            type="text"
-                                            fullWidth
-                                            onChange={(event) => {
-                                                this.setState({client_source: event.target.value})
-                                            }}
-                                            value={this.state.client_source}
-                                        />
+                                            value={this.state.minorhead_id}
+                                            InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                        >
+                                            {minorhead.all_minorhead.map(row1=>(
+                                                <MenuItem value={row1._id} key={row1.minorhead_id}>
+                                                    {row1.minorhead_name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+
                                     </DialogContent>
                                     <DialogActions>
                                         <Button onClick={() => this.handleClose()} color="primary">
@@ -313,7 +309,7 @@ class ClientComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+                                                update_jobcard(this.state.id, this.state.client_id, this.state.firm_id, this.state.majorhead_id, this.state.minorhead_id, this.state.name, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -336,4 +332,4 @@ class ClientComponents extends Component {
     }
 }
 
-export default withStyles(styles)(ClientComponents);
+export default withStyles(styles)(JobcardComponents);

@@ -1,21 +1,19 @@
 import {
-    RESET_MANAGER,
-    SET_MANAGER_DEPARTMENT,
-    SET_MANAGER_EMAIL, SET_MANAGER_EMPLOYEE_ID,
-    SET_MANAGER_NAME, SET_MANAGER_PASSWORD, SET_MANAGER_POSITION, SET_MANAGER_PROFILE,
-    SET_ALL_MANAGER
-} from "../../constants/manager/managerConstants";
+    SET_JOBCARD_NAME,
+    SET_ALL_JOBCARD, SET_JOBCARD_CLIENT_ID, SET_JOBCARD_FIRM_ID, SET_JOBCARD_MAJORHEAD_ID, SET_JOBCARD_MINORHEAD_ID,
+    RESET_JOBCARD
+} from "../../constants/jobcard/jobcardConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
-import firebase from "firebase";
+import {RESET_EXECUTIVE} from "../../constants/executive/executiveConstants";
 
 
-export function get_all_manager(token, oid) {
+export function get_all_jobcard(token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_manager", {
+        return fetch(UNIVERSAL.BASEURL + "view_all_jobcard", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -32,13 +30,13 @@ export function get_all_manager(token, oid) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(set_all_manager(responseJson.result));
+                    dispatch(set_all_jobcard(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
                     dispatch(set_snack_bar(responseJson.status, responseJson.message));
-                    // dispatch(set_all_manager([]));
+                    // dispatch(set_all_jobcard([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -48,10 +46,11 @@ export function get_all_manager(token, oid) {
     };
 }
 
-export function delete_manager(id,token,oid) {
+/*
+export function delete_jobcard(id,token,oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "delete_manager", {
+        return fetch(UNIVERSAL.BASEURL + "delete_jobcard", {
             method: "DELETE",
             headers: {
                 Accept: "application/json",
@@ -62,14 +61,14 @@ export function delete_manager(id,token,oid) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                manager_id:id
+                jobcard_id:id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_manager(token, oid))
+                    dispatch(get_all_jobcard(token, oid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -83,11 +82,12 @@ export function delete_manager(id,token,oid) {
             });
     };
 }
+*/
 
-export function update_manager(id, name, profile, email, password, position, department, employee_id, token, oid) {
+export function update_jobcard(id, client_id, firm_id, majorhead_id, minorhead_id, name, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "update_manager", {
+        return fetch(UNIVERSAL.BASEURL + "update_jobcard", {
             method: "PUT",
             headers: {
                 Accept: "application/json",
@@ -98,21 +98,19 @@ export function update_manager(id, name, profile, email, password, position, dep
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                manager_id:id,
-                manager_name:name,
-                manager_profile_pic:profile,
-                email:email,
-                password:password,
-                manager_position:position,
-                manager_department:department,
-                manager_employee_id:employee_id
+                jobcard_id:id,
+                jobcard_name:name,
+                client_id:client_id,
+                firm_id:firm_id,
+                majorhead_id:majorhead_id,
+                minorhead_id:minorhead_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_manager(token, oid))
+                    dispatch(get_all_jobcard(token, oid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -127,10 +125,10 @@ export function update_manager(id, name, profile, email, password, position, dep
     };
 }
 
-export function add_manager_api(manager, token, oid, URL) {
+export function add_jobcard(jobcard, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "add_manager", {
+        return fetch(UNIVERSAL.BASEURL + "add_jobcard", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -141,22 +139,21 @@ export function add_manager_api(manager, token, oid, URL) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                manager_name:manager.name,
-                manager_profile_pic:URL,
-                email:manager.email,
-                password:manager.password,
-                manager_position:manager.position,
-                manager_department:manager.department,
-                manager_employee_id:manager.employee_id
+                jobcard_id:jobcard.id,
+                jobcard_name:jobcard.name,
+                client_id:jobcard.client_id,
+                firm_id:jobcard.firm_id,
+                majorhead_id:jobcard.majorhead_id,
+                minorhead_id:jobcard.minorhead_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_manager(token, oid))
+                    dispatch(get_all_jobcard(token, oid))
 
-                    dispatch(reset_manager())
+                    dispatch(reset_jobcard())
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -171,85 +168,51 @@ export function add_manager_api(manager, token, oid, URL) {
     };
 }
 
-export function set_all_manager(payload){
+export function set_all_jobcard(payload){
     console.log(payload)
     return{
-        type:SET_ALL_MANAGER,
+        type:SET_ALL_JOBCARD,
         payload:payload
     }
 }
 
-export function set_manager_name(payload){
+export function set_jobcard_name(payload){
     return{
-        type:SET_MANAGER_NAME,
+        type:SET_JOBCARD_NAME,
         payload:payload
     }
 }
 
-export function set_manager_profile(payload){
+export function set_jobcard_client_id(payload){
     return{
-        type:SET_MANAGER_PROFILE,
+        type:SET_JOBCARD_CLIENT_ID,
         payload:payload
     }
 }
 
-export function set_manager_email(payload){
+export function set_jobcard_firm_id(payload){
     return{
-        type:SET_MANAGER_EMAIL,
+        type:SET_JOBCARD_FIRM_ID,
         payload:payload
     }
 }
 
-export function set_manager_password(payload){
+export function set_jobcard_majorhead_id(payload){
     return{
-        type:SET_MANAGER_PASSWORD,
+        type:SET_JOBCARD_MAJORHEAD_ID,
         payload:payload
     }
 }
 
-export function set_manager_position(payload){
+export function set_jobcard_minorhead_id(payload){
     return{
-        type:SET_MANAGER_POSITION,
+        type:SET_JOBCARD_MINORHEAD_ID,
         payload:payload
     }
 }
 
-export function set_manager_department(payload){
+export function reset_jobcard(){
     return{
-        type:SET_MANAGER_DEPARTMENT,
-        payload:payload
-    }
-}
-
-export function set_manager_employee_id(payload){
-    return{
-        type:SET_MANAGER_EMPLOYEE_ID,
-        payload:payload
-    }
-}
-
-export function reset_manager(){
-    return{
-        type:RESET_MANAGER
-    }
-}
-
-export function add_manager(manager,token,oid) {
-    return (dispatch) => {
-        dispatch(setLoader());
-        if (manager.profile !== null) {
-            var storageRef = firebase.storage().ref();
-            var uploadTask = storageRef.child("profile/manager/" + manager.name + ".png").put(manager.profile);
-            uploadTask.on("state_changed", function (snapshot) {
-            }, function (error) {
-                dispatch(set_snack_bar(true, "Image Could Not Be Uploaded"));
-            }, function () {
-                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                    dispatch(add_manager_api(manager,token,oid,downloadURL))
-                });
-            });
-        } else {
-            dispatch(manager, token, oid, "")
-        }
+        type:RESET_JOBCARD
     }
 }

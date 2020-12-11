@@ -9,6 +9,7 @@ import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
+import firebase from "firebase";
 
 
 export function get_all_executive(token, oid) {
@@ -126,7 +127,7 @@ export function update_executive(id, name, profile, email, password, position, d
     };
 }
 
-export function add_executive(executive, token, oid) {
+export function add_executive_api(executive, token, oid, URL) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "add_executive", {
@@ -141,7 +142,7 @@ export function add_executive(executive, token, oid) {
                 // email: login.email,
                 // password: login.password
                 executive_name:executive.name,
-                executive_profile_pic:executive.profile,
+                executive_profile_pic:URL,
                 email:executive.email,
                 password:executive.password,
                 executive_position:executive.position,
@@ -230,5 +231,25 @@ export function set_executive_employee_id(payload){
 export function reset_executive(){
     return{
         type:RESET_EXECUTIVE
+    }
+}
+
+export function add_executive(executive,token,oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        if (executive.profile !== null) {
+            var storageRef = firebase.storage().ref();
+            var uploadTask = storageRef.child("profile/executive/" + executive.name + ".png").put(executive.profile);
+            uploadTask.on("state_changed", function (snapshot) {
+            }, function (error) {
+                dispatch(set_snack_bar(true, "Image Could Not Be Uploaded"));
+            }, function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                    dispatch(add_executive_api(executive,token,oid,downloadURL))
+                });
+            });
+        } else {
+            dispatch(executive, token, oid, "")
+        }
     }
 }

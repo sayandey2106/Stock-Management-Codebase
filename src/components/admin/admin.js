@@ -135,7 +135,9 @@ class Amenities extends Component {
                                 <TableBody>
                                     {admin.all_admin.map(row =>
                                         <TableRow>
-                                            <TableCell></TableCell>
+                                            <TableCell>
+
+                                            </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
                                             <TableCell align="left">{row.department}</TableCell>
@@ -220,10 +222,10 @@ class Amenities extends Component {
                                             margin="dense"
                                             // id="name"
                                             label="Profile Pic"
-                                            type="text"
+                                            type="file"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({profile: event.target.value})
+                                                this.setState({profile: event.target.files[0]})
                                             }}
                                             value={this.state.profile}
                                         />

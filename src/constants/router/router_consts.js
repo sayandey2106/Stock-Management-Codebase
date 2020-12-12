@@ -6,7 +6,7 @@ export const all_admin_option = [
     {id: 4, name: "Client", icon: "branding_watermark", link: "/view_client"},
     {id: 5, name: "MajorHead", icon: "work", link: "/view_majorhead"},
     {id: 6, name: "MinorHead", icon: "work_outline", link: "/view_minorhead"},
-    {id: 7, name: "Jobcard", icon: "payment", link: "/view_jobcard"},
+    {id: 7, name: "Jobcard", icon: "speaker_notes", link: "/view_jobcard"},
 
 
 ];

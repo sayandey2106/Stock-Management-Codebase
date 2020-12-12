@@ -36,8 +36,8 @@ export const mapDispatchToProps = dispatch => {
         delete_executive: (id, token, oid) => {
             dispatch(delete_executive(id, token, oid));
         },
-        update_executive: (id, name, profile, email, password, position, department, employee_id, token, oid) => {
-            dispatch(update_executive(id, name, profile, email, password, position, department, employee_id, token, oid));
+        update_executive: (id, name, profile, old_profile,  email, password, position, department, employee_id, token, oid) => {
+            dispatch(update_executive(id, name, profile, old_profile, email, password, position, department, employee_id, token, oid));
         },
 
     };

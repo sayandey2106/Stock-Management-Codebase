@@ -57,7 +57,8 @@ class ManagerComponents extends Component {
             password: "",
             position: "",
             department: "",
-            employee_id: ""
+            employee_id: "",
+            old_profile:""
         }
     }
 
@@ -135,7 +136,9 @@ class ManagerComponents extends Component {
                                 <TableBody>
                                     {manager.all_manager.map(row =>
                                         <TableRow>
-                                            <TableCell></TableCell>
+                                            <TableCell>
+                                                <Avatar src={row.profile_pic} />
+                                            </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
                                             <TableCell align="left">{row.department}</TableCell>
@@ -150,7 +153,8 @@ class ManagerComponents extends Component {
                                                         email: row.email,
                                                         department: row.department,
                                                         position: row.position,
-                                                        employee_id: row.employee_id
+                                                        employee_id: row.employee_id,
+                                                        old_profile: row.profile_pic
                                                     })
                                                 }}>
                                                     <Icon>edit</Icon>
@@ -216,15 +220,15 @@ class ManagerComponents extends Component {
                                         />
                                         <TextField
                                             // autoFocus
-                                            margin="dense"
+                                            // margin="dense"
                                             // id="name"
-                                            label="Profile Pic"
+                                            // label="Profile Pic"
                                             type="file"
-                                            fullWidth
+                                            // fullWidth
                                             onChange={(event) => {
                                                 this.setState({profile: event.target.files[0]})
                                             }}
-                                            value={this.state.profile}
+                                            // value={this.state.profile}
                                         />
                                         <TextField
                                             // autoFocus
@@ -294,7 +298,7 @@ class ManagerComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_manager(this.state.id, this.state.name, this.state.profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
+                                                update_manager(this.state.id, this.state.name, this.state.profile, this.state.old_profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >

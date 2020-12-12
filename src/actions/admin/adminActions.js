@@ -84,7 +84,7 @@ export function delete_admin(id, token, oid) {
     };
 }
 
-export function update_admin(id, name, profile, email, password, position, department, employee_id, token, oid) {
+export function update_admin_api(id, name, profile, email, password, position, department, employee_id, token, oid, URL) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_admin", {
@@ -100,7 +100,7 @@ export function update_admin(id, name, profile, email, password, position, depar
                 // password: login.password
                 admin_id: id,
                 admin_name: name,
-                admin_profile_pic: profile,
+                admin_profile_pic: URL,
                 email: email,
                 password: password,
                 admin_position: position,
@@ -237,7 +237,7 @@ export function reset_admin() {
 export function add_admin(admin,token,oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        if (admin.profile !== null) {
+        if (admin.profile !== "") {
             var storageRef = firebase.storage().ref();
             var uploadTask = storageRef.child("profile/admin/" + admin.name + ".png").put(admin.profile);
             uploadTask.on("state_changed", function (snapshot) {
@@ -249,7 +249,29 @@ export function add_admin(admin,token,oid) {
                 });
             });
         } else {
-            dispatch(admin, token, oid, "")
+            dispatch(add_admin_api(admin, token, oid, ""))
         }
     }
 }
+
+export function update_admin(id, name, profile, old_profile, email, password, position, department, employee_id, token,oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        console.log(profile);
+        if (profile !== "") {
+            var storageRef = firebase.storage().ref();
+            var uploadTask = storageRef.child("profile/admin/" + name + ".png").put(profile);
+            uploadTask.on("state_changed", function (snapshot) {
+            }, function (error) {
+                dispatch(set_snack_bar(true, "Image Could Not Be Uploaded"));
+            }, function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                    dispatch(update_admin_api(id, name, profile, email, password, position, department, employee_id, token,oid,downloadURL))
+                });
+            });
+        } else {
+            dispatch(update_admin_api(id, name, profile, email, password, position, department, employee_id, token, oid, old_profile))
+        }
+    }
+}
+

@@ -31,6 +31,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
 
+
 const card = {
     borderRadius: "20px",
     backgroundColor: "#ffffff",
@@ -58,7 +59,8 @@ class ClientComponents extends Component {
             address: "",
             pan_num: "",
             aadhar_num: "",
-            client_source:""
+            client_source:"",
+            old_profile: ""
         }
     }
 
@@ -138,14 +140,16 @@ class ClientComponents extends Component {
                                 <TableBody>
                                     {client.all_client.map(row =>
                                         <TableRow>
-                                            <TableCell></TableCell>
+                                            <TableCell>
+                                                <Avatar src={row.profile_pic} />
+                                            </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
                                             <TableCell align="left">{row.contact_num}</TableCell>
                                             <TableCell align="left">{row.address}</TableCell>
-                                            <TableCell align="left">{row.pan_num}</TableCell>
-                                            <TableCell align="left">{row.aadhar_num}</TableCell>
-                                            <TableCell align="left">{row.client_source}</TableCell>
+                                            <TableCell align="left">{row.pan_number}</TableCell>
+                                            <TableCell align="left">{row.aadhar_number}</TableCell>
+                                            <TableCell align="left">{row.source}</TableCell>
                                             <TableCell align={"right"}>
                                                 <IconButton onClick={() => {
                                                     this.setState({
@@ -155,9 +159,10 @@ class ClientComponents extends Component {
                                                         email: row.email,
                                                         contact_num: row.contact_num,
                                                         address: row.address,
-                                                        pan_num: row.pan_num,
-                                                        aadhar_num:row.aadhar_num,
-                                                        client_source:row.client_id
+                                                        pan_num: row.pan_number,
+                                                        aadhar_num:row.aadhar_number,
+                                                        client_source:row.source,
+                                                        old_profile: row.profile_pic
                                                     })
                                                 }}>
                                                     <Icon>edit</Icon>
@@ -313,7 +318,7 @@ class ClientComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+                                                update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >

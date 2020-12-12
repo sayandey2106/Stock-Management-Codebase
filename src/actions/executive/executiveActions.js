@@ -10,6 +10,7 @@ import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import firebase from "firebase";
+import {update_admin_api} from "../admin/adminActions";
 
 
 export function get_all_executive(token, oid) {
@@ -84,7 +85,7 @@ export function delete_executive(id,token,oid) {
     };
 }
 
-export function update_executive(id, name, profile, email, password, position, department, employee_id, token, oid) {
+export function update_executive_api(id, name, profile, email, password, position, department, employee_id, token, oid, URL) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_executive", {
@@ -100,7 +101,7 @@ export function update_executive(id, name, profile, email, password, position, d
                 // password: login.password
                 executive_id:id,
                 executive_name:name,
-                executive_profile_pic:profile,
+                executive_profile_pic:URL,
                 email:email,
                 password:password,
                 executive_position:position,
@@ -253,3 +254,25 @@ export function add_executive(executive,token,oid) {
         }
     }
 }
+
+export function update_executive(id, name, profile, old_profile, email, password, position, department, employee_id, token,oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        console.log(profile);
+        if (profile !== "") {
+            var storageRef = firebase.storage().ref();
+            var uploadTask = storageRef.child("profile/executive/" + name + ".png").put(profile);
+            uploadTask.on("state_changed", function (snapshot) {
+            }, function (error) {
+                dispatch(set_snack_bar(true, "Image Could Not Be Uploaded"));
+            }, function () {
+                uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                    dispatch(update_executive_api(id, name, profile, email, password, position, department, employee_id, token,oid,downloadURL))
+                });
+            });
+        } else {
+            dispatch(update_executive_api(id, name, profile, email, password, position, department, employee_id, token, oid, old_profile))
+        }
+    }
+}
+

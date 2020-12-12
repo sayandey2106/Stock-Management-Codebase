@@ -36,8 +36,8 @@ export const mapDispatchToProps = dispatch => {
         delete_admin: (id, token, oid) => {
             dispatch(delete_admin(id, token, oid));
         },
-        update_admin: (id, name, profile, email, password, position, department, employee_id, token, oid) => {
-            dispatch(update_admin(id, name, profile, email, password, position, department, employee_id, token, oid));
+        update_admin: (id, name, profile, old, email, password, position, department, employee_id, token, oid) => {
+            dispatch(update_admin(id, name, profile, old, email, password, position, department, employee_id, token, oid));
         },
 
     };

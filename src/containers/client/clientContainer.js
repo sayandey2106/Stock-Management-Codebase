@@ -36,8 +36,8 @@ export const mapDispatchToProps = dispatch => {
         delete_client: (id, token, oid) => {
             dispatch(delete_client(id, token, oid));
         },
-        update_client: (id, name, profile, email, contact, address, pan, aadhar, source,  token, oid) => {
-            dispatch(update_client(id, name, profile, email, contact, address, pan, aadhar, source, token, oid));
+        update_client: (id, name, profile, old, email, contact, address, pan, aadhar, source,  token, oid) => {
+            dispatch(update_client(id, name, profile, old, email, contact, address, pan, aadhar, source, token, oid));
         },
 
     };

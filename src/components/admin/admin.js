@@ -44,7 +44,7 @@ const properties = {
     arrows: true
 }
 
-class Amenities extends Component {
+class Admin extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -57,7 +57,8 @@ class Amenities extends Component {
             password: "",
             position: "",
             department: "",
-            employee_id: ""
+            employee_id: "",
+            old_profile: ""
         }
     }
 
@@ -136,7 +137,7 @@ class Amenities extends Component {
                                     {admin.all_admin.map(row =>
                                         <TableRow>
                                             <TableCell>
-
+                                                <Avatar src={row.profile_pic} />
                                             </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
@@ -151,6 +152,9 @@ class Amenities extends Component {
                                                         id: row._id,
                                                         name: row.name,
                                                         email: row.email,
+                                                        old_profile: row.profile_pic,
+                                                        profile: "",
+                                                        password:row.password,
                                                         department: row.department,
                                                         position: row.position,
                                                         employee_id: row.employee_id
@@ -227,7 +231,7 @@ class Amenities extends Component {
                                             onChange={(event) => {
                                                 this.setState({profile: event.target.files[0]})
                                             }}
-                                            value={this.state.profile}
+                                            // value={this.state.profile}
                                         />
                                         <TextField
                                             // autoFocus
@@ -297,7 +301,7 @@ class Amenities extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_admin(this.state.id, this.state.name, this.state.profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
+                                                update_admin(this.state.id, this.state.name, this.state.profile, this.state.old_profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -320,4 +324,4 @@ class Amenities extends Component {
     }
 }
 
-export default withStyles(styles)(Amenities);
+export default withStyles(styles)(Admin);

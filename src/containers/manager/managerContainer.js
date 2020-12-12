@@ -36,8 +36,8 @@ export const mapDispatchToProps = dispatch => {
         delete_manager: (id, token, oid) => {
             dispatch(delete_manager(id, token, oid));
         },
-        update_manager: (id, name, profile, email, password, position, department, employee_id, token, oid) => {
-            dispatch(update_manager(id, name, profile, email, password, position, department, employee_id, token, oid));
+        update_manager: (id, name, profile, old_profile,  email, password, position, department, employee_id, token, oid) => {
+            dispatch(update_manager(id, name, profile, old_profile, email, password, position, department, employee_id, token, oid));
         },
 
     };

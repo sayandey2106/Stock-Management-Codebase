@@ -238,7 +238,7 @@ class MajorheadComponents extends Component {
                                     <DialogActions>
                                         <Button
                                             onClick={() => {
-                                                this.handleClose()
+                                                this.handleClose();
                                             }}
                                             color="primary"
                                         >

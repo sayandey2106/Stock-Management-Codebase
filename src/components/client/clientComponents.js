@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar,} from "@material-ui/core";
+import {Avatar, Badge, colors,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -45,6 +45,42 @@ const properties = {
     arrows: true
 }
 
+const StyledBadge = withStyles(theme => ({
+    badge: {
+        backgroundColor: "blue",
+        color: "blue",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
+
+const StyledBadge1 = withStyles(theme => ({
+    badge: {
+        backgroundColor: "blue",
+        // color: "blue",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
+
 class ClientComponents extends Component {
     constructor(props) {
         super(props);
@@ -59,7 +95,7 @@ class ClientComponents extends Component {
             address: "",
             pan_num: "",
             aadhar_num: "",
-            client_source:"",
+            client_source: "",
             old_profile: ""
         }
     }
@@ -141,7 +177,17 @@ class ClientComponents extends Component {
                                     {client.all_client.map(row =>
                                         <TableRow>
                                             <TableCell>
-                                                <Avatar src={row.profile_pic} />
+                                                <StyledBadge
+                                                    overlap="circle"
+                                                    anchorOrigin={{
+                                                        vertical: "bottom",
+                                                        horizontal: "right"
+                                                    }}
+                                                    // style = {{color:"blue"}}
+                                                    variant="dot"
+                                                >
+                                                    <Avatar src={row.profile_pic}/>
+                                                </StyledBadge>
                                             </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
@@ -154,14 +200,14 @@ class ClientComponents extends Component {
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
-                                                        id:row._id,
+                                                        id: row._id,
                                                         name: row.name,
                                                         email: row.email,
                                                         contact_num: row.contact_num,
                                                         address: row.address,
                                                         pan_num: row.pan_number,
-                                                        aadhar_num:row.aadhar_number,
-                                                        client_source:row.source,
+                                                        aadhar_num: row.aadhar_number,
+                                                        client_source: row.source,
                                                         old_profile: row.profile_pic
                                                     })
                                                 }}>

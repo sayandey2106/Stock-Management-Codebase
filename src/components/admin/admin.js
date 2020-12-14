@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar,} from "@material-ui/core";
+import {Avatar, Badge, Switch,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -43,6 +43,24 @@ const properties = {
     indicators: true,
     arrows: true
 }
+
+const StyledBadge = withStyles(theme => ({
+    badge: {
+        backgroundColor: "green",
+        color: "green",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
 
 class Admin extends Component {
     constructor(props) {
@@ -146,6 +164,13 @@ class Admin extends Component {
                                             <TableCell align="left">{row.employee_id}</TableCell>
                                             {login.user_id !==row._id &&
                                             <TableCell align={"right"}>
+                                                <Switch
+                                                    checked={row.active}
+                                                    // onChange={}
+                                                    color="secondary"
+                                                    name="checkedB"
+                                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                                />
                                                  <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,

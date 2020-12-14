@@ -63,7 +63,7 @@ class MinorheadComponents extends Component {
     }
 
     handleClose = () => {
-        this.setState({delete: false, update:false, add:false, id:"", name:""})
+        this.setState({delete: false, update:false, add:false, id:"", name:"", majorhead_id:""})
     }
 
     render() {
@@ -189,7 +189,7 @@ class MinorheadComponents extends Component {
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Name"
+                                            label="Majorhead ID"
                                             type="dropdown"
                                             select
                                             fullWidth
@@ -245,7 +245,7 @@ class MinorheadComponents extends Component {
                                                 // autoFocus
                                                 margin="dense"
                                                 // id="name"
-                                                label="Name"
+                                                label="Major Head"
                                                 type="dropdown"
                                                 select
                                                 fullWidth

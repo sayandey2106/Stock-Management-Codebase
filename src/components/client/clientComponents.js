@@ -45,7 +45,25 @@ const properties = {
     arrows: true
 }
 
-const StyledBadge = withStyles(theme => ({
+const StyledBadgeRed = withStyles(theme => ({
+    badge: {
+        backgroundColor: "red",
+        color: "red",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
+
+const StyledBadgeBlue = withStyles(theme => ({
     badge: {
         backgroundColor: "blue",
         color: "blue",
@@ -63,10 +81,10 @@ const StyledBadge = withStyles(theme => ({
     }
 }))(Badge);
 
-const StyledBadge1 = withStyles(theme => ({
+const StyledBadgeGreen = withStyles(theme => ({
     badge: {
-        backgroundColor: "blue",
-        // color: "blue",
+        backgroundColor: "green",
+        color: "green",
         boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
         "&::after": {
             position: "absolute",
@@ -96,7 +114,8 @@ class ClientComponents extends Component {
             pan_num: "",
             aadhar_num: "",
             client_source: "",
-            old_profile: ""
+            old_profile: "",
+            color:''
         }
     }
 
@@ -177,7 +196,7 @@ class ClientComponents extends Component {
                                     {client.all_client.map(row =>
                                         <TableRow>
                                             <TableCell>
-                                                <StyledBadge
+                                                {this.state.color === 'R' ? <StyledBadgeRed
                                                     overlap="circle"
                                                     anchorOrigin={{
                                                         vertical: "bottom",
@@ -187,7 +206,27 @@ class ClientComponents extends Component {
                                                     variant="dot"
                                                 >
                                                     <Avatar src={row.profile_pic}/>
-                                                </StyledBadge>
+                                                </StyledBadgeRed> : this.state.color === 'B' ? <StyledBadgeBlue
+                                                    overlap="circle"
+                                                    anchorOrigin={{
+                                                        vertical: "bottom",
+                                                        horizontal: "right"
+                                                    }}
+                                                    // style = {{color:"blue"}}
+                                                    variant="dot"
+                                                >
+                                                    <Avatar src={row.profile_pic}/>
+                                                </StyledBadgeBlue> : <StyledBadgeGreen
+                                                    overlap="circle"
+                                                    anchorOrigin={{
+                                                        vertical: "bottom",
+                                                        horizontal: "right"
+                                                    }}
+                                                    // style = {{color:"blue"}}
+                                                    variant="dot"
+                                                >
+                                                    <Avatar src={row.profile_pic}/>
+                                                </StyledBadgeGreen>}
                                             </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>

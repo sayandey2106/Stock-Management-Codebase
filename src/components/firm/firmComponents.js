@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar, Badge, colors,} from "@material-ui/core";
+import {Avatar, Badge, colors, MenuItem,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -119,7 +119,8 @@ class FirmComponents extends Component {
     }
 
     componentDidMount() {
-        this.props.get_all_firm(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_firm(this.props.login.token, this.props.login.organization_id);
+        this.props.get_all_client(this.props.login.token, this.props.login.organization_id);
     }
 
 
@@ -133,6 +134,7 @@ class FirmComponents extends Component {
             snackbar,
             close_snack_bar,
             firm,
+            client,
             delete_firm,
             update_firm,
             login
@@ -163,7 +165,7 @@ class FirmComponents extends Component {
                                     <TableRow>
                                         <TableCell></TableCell>
                                         <TableCell align="left">&nbsp;&nbsp;ID</TableCell>
-                                        <TableCell align="left">Client_ID</TableCell>
+                                        {/*<TableCell align="left">Client_ID</TableCell>*/}
                                         <TableCell align="left">Type</TableCell>
                                         <TableCell align="left">Registration Number</TableCell>
                                         <TableCell align="left">GST</TableCell>
@@ -178,8 +180,9 @@ class FirmComponents extends Component {
                                 <TableBody>
                                     {firm.all_firm.map(row =>
                                         <TableRow>
+                                            <TableCell></TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row._id}</TableCell>
-                                            <TableCell align="left">{row.client_id}</TableCell>
+                                            {/*<TableCell align="left">{row.client_id}</TableCell>*/}
                                             <TableCell align="left">{row.type}</TableCell>
                                             <TableCell align="left">{row.reg_num}</TableCell>
                                             <TableCell align="left">{row.gst_num}</TableCell>
@@ -258,26 +261,450 @@ class FirmComponents extends Component {
                                             margin="dense"
                                             // id="name"
                                             label="Client ID"
-                                            type="text"
+                                            // type="text"
+                                            select
                                             fullWidth
                                             onChange={(event) => {
                                                 this.setState({client_id: event.target.value})
                                             }}
                                             value={this.state.client_id}
-                                        />
+                                            InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        >
+                                            {client.all_client.map(row1 => (
+                                                <MenuItem value={row1._id}>
+                                                    {row1.name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
                                             label="Type"
-                                            type="text"
+                                            // type="text"
+                                            select
                                             fullWidth
                                             onChange={(event) => {
                                                 this.setState({type: event.target.value})
                                             }}
                                             value={this.state.type}
-                                        />
-                                        <TextField
+                                            InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        >
+                                            <MenuItem value={"C"}>
+                                                Company
+                                            </MenuItem>
+                                            <MenuItem value={"G"}>
+                                                Govt.entity
+                                            </MenuItem>
+                                            <MenuItem value={"I"}>
+                                                Individual
+                                            </MenuItem>
+                                            <MenuItem value={"LP"}>
+                                                LLP
+                                            </MenuItem>
+                                            <MenuItem value={"P"}>
+                                                Partnership Firms
+                                            </MenuItem>
+                                            <MenuItem value={"PR"}>
+                                                Proprietorship Firms
+                                            </MenuItem>
+                                            <MenuItem value={"T"}>
+                                                Trust
+                                            </MenuItem>
+                                        </TextField>
+                                        {this.state.type === 'C' ?
+                                            <Grid><TextField
+                                                // autoFocus
+                                                margin="dense"
+                                                // id="name"
+                                                label="Registration Number"
+                                                type="text"
+                                                fullWidth
+                                                onChange={(event) => {
+                                                    this.setState({type:event.target.value})
+                                                }}
+                                                value={this.state.reg}
+                                            />
+                                                <TextField
+                                                    // autoFocus
+                                                    margin="dense"
+                                                    // id="name"
+                                                    label="GST"
+                                                    type="text"
+                                                    fullWidth
+                                                    onChange={(event) => {
+                                                        this.setState({gst:event.target.value})
+                                                    }}
+                                                    value={this.state.gst}
+                                                />
+                                                <TextField
+                                                    // autoFocus
+                                                    margin="dense"
+                                                    // id="name"
+                                                    label="PT"
+                                                    type="text"
+                                                    fullWidth
+                                                    onChange={(event) => {
+                                                        this.setState({pt:event.target.value})
+                                                    }}
+                                                    value={this.state.pt}
+                                                />
+                                                <TextField
+                                                    // autoFocus
+                                                    margin="dense"
+                                                    // id="name"
+                                                    label="PF_ESI ID"
+                                                    type="text"
+                                                    fullWidth
+                                                    onChange={(event) => {
+                                                        this.setState({pf_esi:event.target.value})
+                                                    }}
+                                                    value={this.state.pf_esi}
+                                                />
+                                                <TextField
+                                                    // autoFocus
+                                                    margin="dense"
+                                                    // id="name"
+                                                    label="IEC"
+                                                    type="text"
+                                                    fullWidth
+                                                    onChange={(event) => {
+                                                        this.setState({iec:event.target.value})
+                                                    }}
+                                                    value={this.state.iec}
+                                                /></Grid>
+                                            : this.state.type === 'G' ?
+                                                <TextField
+                                                    // autoFocus
+                                                    margin="dense"
+                                                    // id="name"
+                                                    label="DDO"
+                                                    type="text"
+                                                    fullWidth
+                                                    onChange={(event) => {
+                                                        this.setState({ddo:event.target.value})
+                                                    }}
+                                                    value={this.state.ddo}
+                                                />
+                                                : this.state.type === 'I' ?
+                                                    <TextField
+                                                        // autoFocus
+                                                        margin="dense"
+                                                        // id="name"
+                                                        label="DIN"
+                                                        type="text"
+                                                        fullWidth
+                                                        onChange={(event) => {
+                                                            this.setState({din:event.target.value})
+                                                        }}
+                                                        value={this.state.din}
+                                                    />
+                                                    : this.state.type === 'T' ?
+                                                        <Grid><TextField
+                                                            // autoFocus
+                                                            margin="dense"
+                                                            // id="name"
+                                                            label="Registration Number"
+                                                            type="text"
+                                                            fullWidth
+                                                            onChange={(event) => {
+                                                                this.setState({reg:event.target.value})
+                                                            }}
+                                                            value={this.state.reg}
+                                                        />
+                                                            <TextField
+                                                                // autoFocus
+                                                                margin="dense"
+                                                                // id="name"
+                                                                label="GST"
+                                                                type="text"
+                                                                fullWidth
+                                                                onChange={(event) => {
+                                                                    this.setState({gst:event.target.value})
+                                                                }}
+                                                                value={this.state.gst}
+                                                            />
+                                                            <TextField
+                                                                // autoFocus
+                                                                margin="dense"
+                                                                // id="name"
+                                                                label="PT"
+                                                                type="text"
+                                                                fullWidth
+                                                                onChange={(event) => {
+                                                                    this.setState({pt:event.target.value})
+                                                                }}
+                                                                value={this.state.pt}
+                                                            />
+                                                            <TextField
+                                                                // autoFocus
+                                                                margin="dense"
+                                                                // id="name"
+                                                                label="PF_ESI ID"
+                                                                type="text"
+                                                                fullWidth
+                                                                onChange={(event) => {
+                                                                    this.setState({pf_esi:event.target.value})
+                                                                }}
+                                                                value={this.state.pf_esi}
+                                                            />
+                                                            <TextField
+                                                                // autoFocus
+                                                                margin="dense"
+                                                                // id="name"
+                                                                label="IEC"
+                                                                type="text"
+                                                                fullWidth
+                                                                onChange={(event) => {
+                                                                    this.setState({iec:event.target.value})
+                                                                }}
+                                                                value={this.state.iec}
+                                                            /></Grid>
+                                                        : this.state.type === 'LP' ?
+                                                            <Grid><TextField
+                                                                // autoFocus
+                                                                margin="dense"
+                                                                // id="name"
+                                                                label="Registration Number"
+                                                                type="text"
+                                                                fullWidth
+                                                                onChange={(event) => {
+                                                                    this.setState({reg:event.target.value})
+                                                                }}
+                                                                value={this.state.reg}
+                                                            />
+                                                                <TextField
+                                                                    // autoFocus
+                                                                    margin="dense"
+                                                                    // id="name"
+                                                                    label="PT"
+                                                                    type="text"
+                                                                    fullWidth
+                                                                    onChange={(event) => {
+                                                                        this.setState({pt:event.target.value})
+                                                                    }}
+                                                                    value={this.state.pt}
+                                                                />
+                                                                <TextField
+                                                                    // autoFocus
+                                                                    margin="dense"
+                                                                    // id="name"
+                                                                    label="PF_ESI ID"
+                                                                    type="text"
+                                                                    fullWidth
+                                                                    onChange={(event) => {
+                                                                        this.setState({pf_esi:event.target.value})
+                                                                    }}
+                                                                    value={this.state.pf_esi}
+                                                                />
+                                                                <TextField
+                                                                    // autoFocus
+                                                                    margin="dense"
+                                                                    // id="name"
+                                                                    label="IEC"
+                                                                    type="text"
+                                                                    fullWidth
+                                                                    onChange={(event) => {
+                                                                        this.setState({iec:event.target.value})
+                                                                    }}
+                                                                    value={this.state.iec}
+                                                                /></Grid>
+                                                            : this.state.type === 'P' ?
+                                                                <Grid><TextField
+                                                                    // autoFocus
+                                                                    margin="dense"
+                                                                    // id="name"
+                                                                    label="Registration Number"
+                                                                    type="text"
+                                                                    fullWidth
+                                                                    onChange={(event) => {
+                                                                        this.setState({reg:event.target.value})
+                                                                    }}
+                                                                    value={this.state.reg}
+                                                                />
+                                                                    <TextField
+                                                                        // autoFocus
+                                                                        margin="dense"
+                                                                        // id="name"
+                                                                        label="GST"
+                                                                        type="text"
+                                                                        fullWidth
+                                                                        onChange={(event) => {
+                                                                            this.setState({gst:event.target.value})
+                                                                        }}
+                                                                        value={this.state.gst}
+                                                                    />
+                                                                    <TextField
+                                                                        // autoFocus
+                                                                        margin="dense"
+                                                                        // id="name"
+                                                                        label="PT"
+                                                                        type="text"
+                                                                        fullWidth
+                                                                        onChange={(event) => {
+                                                                            this.setState({pt:event.target.value})
+                                                                        }}
+                                                                        value={this.state.pt}
+                                                                    />
+                                                                    <TextField
+                                                                        // autoFocus
+                                                                        margin="dense"
+                                                                        // id="name"
+                                                                        label="PF_ESI ID"
+                                                                        type="text"
+                                                                        fullWidth
+                                                                        onChange={(event) => {
+                                                                            this.setState({pf_esi:event.target.value})
+                                                                        }}
+                                                                        value={this.state.pf_esi}
+                                                                    />
+                                                                    <TextField
+                                                                        // autoFocus
+                                                                        margin="dense"
+                                                                        // id="name"
+                                                                        label="IEC"
+                                                                        type="text"
+                                                                        fullWidth
+                                                                        onChange={(event) => {
+                                                                            this.setState({iec:event.target.value})
+                                                                        }}
+                                                                        value={this.state.iec}
+                                                                    /></Grid>
+                                                                : this.state.type === '' ?
+                                                                    <Grid><TextField
+                                                                        // autoFocus
+                                                                        margin="dense"
+                                                                        // id="name"
+                                                                        label="Registration Number"
+                                                                        type="text"
+                                                                        fullWidth
+                                                                        onChange={(event) => {
+                                                                            this.setState({reg:event.target.value})
+                                                                        }}
+                                                                        value={this.state.reg}
+                                                                    />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="GST"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({gst:event.target.value})
+                                                                            }}
+                                                                            value={this.state.gst}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="DIN"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({din:event.target.value})
+                                                                            }}
+                                                                            value={this.state.din}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="PT"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({pt:event.target.value})
+                                                                            }}
+                                                                            value={this.state.pt}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="PF_ESI ID"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({pf_esi:event.target.value})
+                                                                            }}
+                                                                            value={this.state.pf_esi}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="IEC"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({iec:event.target.value})
+                                                                            }}
+                                                                            value={this.state.iec}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="DDO"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({ddo:event.target.value})
+                                                                            }}
+                                                                            value={this.state.ddo}
+                                                                        /></Grid>
+                                                                    : <Grid> <TextField
+                                                                        // autoFocus
+                                                                        margin="dense"
+                                                                        // id="name"
+                                                                        label="PT"
+                                                                        type="text"
+                                                                        fullWidth
+                                                                        onChange={(event) => {
+                                                                            this.setState({pt:event.target.value})
+                                                                        }}
+                                                                        value={this.state.pt}
+                                                                    />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="PF_ESI ID"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({pf_esi:event.target.value})
+                                                                            }}
+                                                                            value={this.state.pf_esi}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="IEC"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({iec:event.target.value})
+                                                                            }}
+                                                                            value={this.state.iec}
+                                                                        />
+                                                                        <TextField
+                                                                            // autoFocus
+                                                                            margin="dense"
+                                                                            // id="name"
+                                                                            label="GST"
+                                                                            type="text"
+                                                                            fullWidth
+                                                                            onChange={(event) => {
+                                                                                this.setState({gst:event.target.value})
+                                                                            }}
+                                                                            value={this.state.gst}
+                                                                        /></Grid>}
+
+                                        {/*<TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
@@ -360,7 +787,7 @@ class FirmComponents extends Component {
                                                 this.setState({ddo: event.target.value})
                                             }}
                                             value={this.state.ddo}
-                                        />
+                                        />*/}
                                     </DialogContent>
                                     <DialogActions>
                                         <Button onClick={() => this.handleClose()} color="primary">

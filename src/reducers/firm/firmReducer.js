@@ -19,7 +19,8 @@ const initial_state = {
     pt:"",
     pf_esi:"",
     iec: "",
-    ddo: ""
+    ddo: "",
+    client_id:""
 };
 export default function reducer(state = initial_state, action) {
     console.log(action)
@@ -43,7 +44,7 @@ export default function reducer(state = initial_state, action) {
         case SET_FIRM_IEC:
             return state = { ...state, iec: action.payload };
         case RESET_FIRM:
-            return state = { ...state, type:"", reg: "", gst: "", din: "", ddo: "", pt: "", pf_esi: "", iec: ""};
+            return state = { ...state, type:"", client_id:"", reg: "", gst: "", din: "", ddo: "", pt: "", pf_esi: "", iec: ""};
         default:
             return state;
     }

@@ -25,6 +25,7 @@ export const mapStateToProps = store => {
         loader: store.loader,
         snackbar: store.snackbar,
         firm:store.firm,
+        client:store.client,
     };
 };
 export const mapDispatchToProps = dispatch => {

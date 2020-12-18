@@ -99,7 +99,7 @@ export function delete_firm(id,token,oid) {
     };
 }
 
-export function update_firm_api(id, name, email, profile, contact_num, address, pan_num, aadhar_name, firm_source, token, oid, URL) {
+export function update_firm(id, client_id, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_firm", {
@@ -114,14 +114,15 @@ export function update_firm_api(id, name, email, profile, contact_num, address, 
                 // email: login.email,
                 // password: login.password
                 firm_id:id,
-                firm_name:name,
-                firm_profile_pic:URL,
-                firm_email:email,
-                firm_contact_num:contact_num,
-                firm_address:address,
-                firm_pan_number:pan_num,
-                firm_aadhar_number:aadhar_name,
-                firm_source:firm_source
+                client_id:client_id,
+                firm_type:type,
+                firm_reg_num:reg,
+                firm_gst_num:gst,
+                firm_din_num:din,
+                firm_pt_num:pt,
+                firm_pf_esi_num:pf_esi,
+                firm_iec_num:iec,
+                firm_ddo_num:ddo
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -147,12 +148,10 @@ export function update_firm_api(id, name, email, profile, contact_num, address, 
     };
 }
 
-export function add_firm_api(firm, token, oid, URL) {
+export function add_firm(firm, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        console.log("Inside firm add action")
-        console.log(firm.pan_num)
-        return fetch(UNIVERSAL.BASEURL + "add_firms", {
+        return fetch(UNIVERSAL.BASEURL + "add_firm", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -161,16 +160,16 @@ export function add_firm_api(firm, token, oid, URL) {
                 organization_id:oid
             },
             body: JSON.stringify({
-                // email: login.email,
-                // password: login.password
-                firm_name:firm.name,
-                firm_profile_pic:URL,
-                firm_email:firm.email,
-                firm_contact_num:firm.contact_num,
-                firm_address:firm.address,
-                firm_pan_number:firm.pan_num,
-                firm_aadhar_number:firm.aadhar_num,
-                firm_source:firm.firm_source
+                firm_id:firm.id,
+                client_id:firm.client_id,
+                firm_type:firm.type,
+                firm_reg_num:firm.reg,
+                firm_gst_num:firm.gst,
+                firm_din_num:firm.din,
+                firm_pt_num:firm.pt,
+                firm_pf_esi_num:firm.pf_esi,
+                firm_iec_num:firm.iec,
+                firm_ddo_num:firm.ddo
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -275,6 +274,7 @@ export function reset_firm(){
     }
 }
 
+/*
 export function add_firm(firm,token,oid) {
     return (dispatch) => {
         dispatch(setLoader());
@@ -316,3 +316,4 @@ export function update_firm(id, name, email, profile, old_profile, contact_num, 
     }
 }
 
+*/

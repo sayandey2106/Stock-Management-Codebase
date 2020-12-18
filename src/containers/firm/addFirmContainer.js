@@ -7,6 +7,7 @@ import {
 import {
     get_all_firm,
     add_firm,
+    set_firm_name,
     set_firm_type,
     set_firm_reg,
     set_firm_gst,
@@ -53,6 +54,9 @@ export const mapDispatchToProps = dispatch => {
         },
         add_firm: (firm,token,oid) => {
             dispatch(add_firm(firm,token,oid));
+        },
+        set_firm_name: (token) => {
+            dispatch(set_firm_name(token));
         },
         set_firm_type: (token) => {
             dispatch(set_firm_type(token));

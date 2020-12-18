@@ -107,6 +107,7 @@ class FirmComponents extends Component {
             update: false,
             id: "",
             client_id:"",
+            name:"",
             type: "",
             reg: "",
             gst: "",
@@ -164,7 +165,7 @@ class FirmComponents extends Component {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell></TableCell>
-                                        <TableCell align="left">&nbsp;&nbsp;ID</TableCell>
+                                        <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
                                         {/*<TableCell align="left">Client_ID</TableCell>*/}
                                         <TableCell align="left">Type</TableCell>
                                         <TableCell align="left">Registration Number</TableCell>
@@ -181,7 +182,7 @@ class FirmComponents extends Component {
                                     {firm.all_firm.map(row =>
                                         <TableRow>
                                             <TableCell></TableCell>
-                                            <TableCell align="left">&nbsp;&nbsp;{row._id}</TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             {/*<TableCell align="left">{row.client_id}</TableCell>*/}
                                             <TableCell align="left">{row.type}</TableCell>
                                             <TableCell align="left">{row.reg_num}</TableCell>
@@ -196,6 +197,7 @@ class FirmComponents extends Component {
                                                     this.setState({
                                                         update: true,
                                                         id: row._id,
+                                                        name: row.name,
                                                         type: row.type,
                                                         reg: row.reg_num,
                                                         gst: row.gst_num,
@@ -256,6 +258,20 @@ class FirmComponents extends Component {
                                             Enter the required fields, those needs to be updated.
                                         </DialogContentText>
 
+                                        <TextField
+                                            autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Name"
+                                            type="text"
+                                            // select
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({name: event.target.value})
+                                            }}
+                                            value={this.state.name}
+                                            // InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        />
                                         <TextField
                                             autoFocus
                                             margin="dense"

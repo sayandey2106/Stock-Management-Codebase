@@ -43,8 +43,8 @@ export const mapDispatchToProps = dispatch => {
         delete_firm: (id, token, oid) => {
             dispatch(delete_firm(id, token, oid));
         },
-        update_firm: (id, client_id, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid) => {
-            dispatch(update_firm(id, client_id, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid));
+        update_firm: (id, client_id, name, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid) => {
+            dispatch(update_firm(id, client_id, name, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid));
         },
 
     };

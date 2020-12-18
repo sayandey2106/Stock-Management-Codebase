@@ -1,4 +1,5 @@
 export const SET_ALL_FIRM="SET_ALL_FIRM";
+export const SET_FIRM_NAME="SET_FIRM_Name";
 export const SET_FIRM_TYPE="SET_FIRM_TYPE";
 export const SET_FIRM_REG="SET_FIRM_REG";
 export const SET_FIRM_GST="SET_FIRM_GST";

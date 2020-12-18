@@ -50,6 +50,7 @@ class AddFirm extends Component {
         super(props);
         this.state = {
             client_id: "",
+            name:"",
             type: "",
             reg: "",
             gst: "",
@@ -72,6 +73,7 @@ class AddFirm extends Component {
             firm,
             login,
             add_firm,
+            set_firm_name,
             set_firm_type,
             set_firm_reg,
             set_firm_gst,
@@ -95,6 +97,20 @@ class AddFirm extends Component {
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                // id="name"
+                                label="Name"
+                                type="text"
+                                // select
+                                fullWidth
+                                onChange={(event) => {
+                                    this.setState({name: event.target.value})
+                                }}
+                                value={this.state.name}
+                                // InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                            />
                             <TextField
                                 autoFocus
                                 margin="dense"

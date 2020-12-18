@@ -1,6 +1,6 @@
 import {
     RESET_FIRM,
-    SET_ALL_FIRM, SET_FIRM_CLIENT_ID,
+    SET_ALL_FIRM, SET_FIRM_CLIENT_ID, SET_FIRM_NAME,
     SET_FIRM_DDO,
     SET_FIRM_DIN,
     SET_FIRM_GST,
@@ -99,7 +99,7 @@ export function delete_firm(id,token,oid) {
     };
 }
 
-export function update_firm(id, client_id, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid) {
+export function update_firm(id, client_id, name, type, reg, gst, din, pt, pf_esi, iec, ddo, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_firm", {
@@ -115,6 +115,7 @@ export function update_firm(id, client_id, type, reg, gst, din, pt, pf_esi, iec,
                 // password: login.password
                 firm_id:id,
                 client_id:client_id,
+                firm_name:name,
                 firm_type:type,
                 firm_reg_num:reg,
                 firm_gst_num:gst,
@@ -162,6 +163,7 @@ export function add_firm(firm, token, oid) {
             body: JSON.stringify({
                 firm_id:firm.id,
                 client_id:firm.client_id,
+                firm_name:firm.name,
                 firm_type:firm.type,
                 firm_reg_num:firm.reg,
                 firm_gst_num:firm.gst,
@@ -201,6 +203,13 @@ export function set_all_firm(payload){
     console.log(payload)
     return{
         type:SET_ALL_FIRM,
+        payload:payload
+    }
+}
+
+export function set_firm_name(payload){
+    return{
+        type:SET_FIRM_NAME,
         payload:payload
     }
 }

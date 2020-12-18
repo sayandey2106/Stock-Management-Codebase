@@ -7,8 +7,7 @@ export const all_admin_option = [
     {id: 5, name: "MajorHead", icon: "work", link: "/view_majorhead"},
     {id: 6, name: "MinorHead", icon: "work_outline", link: "/view_minorhead"},
     {id: 7, name: "Jobcard", icon: "speaker_notes", link: "/view_jobcard"},
-
-
+    {id: 7, name: "Organization", icon: "business", link: "/view_firm"},
 ];
 export const all_manager_options = [
     {id: 0, name: "Home", icon: "home", link: "/"},

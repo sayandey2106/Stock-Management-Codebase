@@ -76,7 +76,7 @@ class MinorheadComponents extends Component {
             update_minorhead,
             login,
             add_minorhead,
-            get_all_majorhead
+            get_all_majorhead,
         } = this.props;
         console.log(minorhead.all_minorhead)
         return (

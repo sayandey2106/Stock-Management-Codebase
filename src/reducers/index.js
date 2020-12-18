@@ -9,6 +9,7 @@ import client from './client/clientReducer';
 import majorhead from './majorhead/majorheadReducer';
 import minorhead from './minorheads/minorheadReducer';
 import jobcard from './jobcard/jobcardReducer'
+import firm from './firm/firmReducer'
 // import client from './client/clientReducer'
 export default combineReducers({
     loader,
@@ -20,5 +21,6 @@ export default combineReducers({
     majorhead,
     minorhead,
     client,
-    jobcard
+    jobcard,
+    firm
 });

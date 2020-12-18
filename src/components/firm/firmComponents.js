@@ -99,29 +99,29 @@ const StyledBadgeGreen = withStyles(theme => ({
     }
 }))(Badge);
 
-class ClientComponents extends Component {
+class FirmComponents extends Component {
     constructor(props) {
         super(props);
         this.state = {
             delete: false,
             update: false,
             id: "",
-            name: "",
-            profile: "",
-            email: "",
-            contact_num: "",
-            address: "",
-            pan_num: "",
-            aadhar_num: "",
-            client_source: "",
-            old_profile: "",
-            color:''
+            client_id:"",
+            type: "",
+            reg: "",
+            gst: "",
+            din: "",
+            pt: "",
+            pf_esi: "",
+            iec: "",
+            ddo: "",
         }
     }
 
     componentDidMount() {
-        this.props.get_all_client(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_firm(this.props.login.token, this.props.login.organization_id)
     }
+
 
     handleClose = () => {
         this.setState({delete: false})
@@ -132,12 +132,12 @@ class ClientComponents extends Component {
         const {
             snackbar,
             close_snack_bar,
-            client,
-            delete_client,
-            update_client,
+            firm,
+            delete_firm,
+            update_firm,
             login
         } = this.props;
-        console.log(client.all_client)
+        // console.log(firm.all_firm)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -145,13 +145,13 @@ class ClientComponents extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW client
+                                    VIEW firm
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
                             <Grid item lg={12}>
-                                <Link to="add_client" style={{textDecoration: "none"}}>
+                                <Link to="add_firm" style={{textDecoration: "none"}}>
                                     <IconButton>
                                         <Icon>add</Icon>
                                     </IconButton>
@@ -162,72 +162,46 @@ class ClientComponents extends Component {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell></TableCell>
-                                        <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
-                                        <TableCell align="left">E-Mail</TableCell>
-                                        <TableCell align="left">Contact Number</TableCell>
-                                        <TableCell align="left">Address</TableCell>
-                                        <TableCell align="left">PAN</TableCell>
-                                        <TableCell align="left">AADHAR Number</TableCell>
-                                        <TableCell align="left">Client Source</TableCell>
+                                        <TableCell align="left">&nbsp;&nbsp;ID</TableCell>
+                                        <TableCell align="left">Client_ID</TableCell>
+                                        <TableCell align="left">Type</TableCell>
+                                        <TableCell align="left">Registration Number</TableCell>
+                                        <TableCell align="left">GST</TableCell>
+                                        <TableCell align="left">DIN</TableCell>
+                                        <TableCell align="left">PT</TableCell>
+                                        <TableCell align="left">PF_ESI</TableCell>
+                                        <TableCell align="left">IEC</TableCell>
+                                        <TableCell align="left">DDO</TableCell>
                                         <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {client.all_client.map(row =>
+                                    {firm.all_firm.map(row =>
                                         <TableRow>
-                                            <TableCell>
-                                                {this.state.color === 'R' ? <StyledBadgeRed
-                                                    overlap="circle"
-                                                    anchorOrigin={{
-                                                        vertical: "bottom",
-                                                        horizontal: "right"
-                                                    }}
-                                                    // style = {{color:"blue"}}
-                                                    variant="dot"
-                                                >
-                                                    <Avatar src={row.profile_pic}/>
-                                                </StyledBadgeRed> : this.state.color === 'B' ? <StyledBadgeBlue
-                                                    overlap="circle"
-                                                    anchorOrigin={{
-                                                        vertical: "bottom",
-                                                        horizontal: "right"
-                                                    }}
-                                                    // style = {{color:"blue"}}
-                                                    variant="dot"
-                                                >
-                                                    <Avatar src={row.profile_pic}/>
-                                                </StyledBadgeBlue> : <StyledBadgeGreen
-                                                    overlap="circle"
-                                                    anchorOrigin={{
-                                                        vertical: "bottom",
-                                                        horizontal: "right"
-                                                    }}
-                                                    // style = {{color:"blue"}}
-                                                    variant="dot"
-                                                >
-                                                    <Avatar src={row.profile_pic}/>
-                                                </StyledBadgeGreen>}
-                                            </TableCell>
-                                            <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
-                                            <TableCell align="left">{row.email}</TableCell>
-                                            <TableCell align="left">{row.contact_num}</TableCell>
-                                            <TableCell align="left">{row.address}</TableCell>
-                                            <TableCell align="left">{row.pan_number}</TableCell>
-                                            <TableCell align="left">{row.aadhar_number}</TableCell>
-                                            <TableCell align="left">{row.source}</TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row._id}</TableCell>
+                                            <TableCell align="left">{row.client_id}</TableCell>
+                                            <TableCell align="left">{row.type}</TableCell>
+                                            <TableCell align="left">{row.reg_num}</TableCell>
+                                            <TableCell align="left">{row.gst_num}</TableCell>
+                                            <TableCell align="left">{row.din_num}</TableCell>
+                                            <TableCell align="left">{row.pt_num}</TableCell>
+                                            <TableCell align="left">{row.pf_esi_num}</TableCell>
+                                            <TableCell align="left">{row.iec_num}</TableCell>
+                                            <TableCell align="left">{row.ddo_num}</TableCell>
                                             <TableCell align={"right"}>
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
                                                         id: row._id,
-                                                        name: row.name,
-                                                        email: row.email,
-                                                        contact_num: row.contact_num,
-                                                        address: row.address,
-                                                        pan_num: row.pan_number,
-                                                        aadhar_num: row.aadhar_number,
-                                                        client_source: row.source,
-                                                        old_profile: row.profile_pic
+                                                        type: row.type,
+                                                        reg: row.reg_num,
+                                                        gst: row.gst_num,
+                                                        din: row.din_num,
+                                                        pt: row.pt_num,
+                                                        pf_esi: row.pf_esi_num,
+                                                        iec: row.iec_num,
+                                                        ddo: row.ddo_num,
+                                                        client_id: row.client_id
                                                     })
                                                 }}>
                                                     <Icon>edit</Icon>
@@ -244,7 +218,7 @@ class ClientComponents extends Component {
                                 <Dialog open={this.state.delete}
                                         onClose={this.handleClose}
                                         aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Delete client</DialogTitle>
+                                    <DialogTitle id="form-dialog-title">Delete firm</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             Are you sure?
@@ -262,7 +236,7 @@ class ClientComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                delete_client(this.state.id, login.token, login.organization_id)
+                                                delete_firm(this.state.id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -280,100 +254,112 @@ class ClientComponents extends Component {
                                         </DialogContentText>
 
                                         <TextField
-                                            // autoFocus
+                                            autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Name"
+                                            label="Client ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({name: event.target.value})
+                                                this.setState({client_id: event.target.value})
                                             }}
-                                            value={this.state.name}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            // margin="dense"
-                                            // id="name"
-                                            // label="Profile Pic"
-                                            type="file"
-                                            // fullWidth
-                                            onChange={(event) => {
-                                                this.setState({profile: event.target.files[0]})
-                                            }}
-                                            // value={this.state.profile}
+                                            value={this.state.client_id}
                                         />
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Email Address"
-                                            type="email"
-                                            fullWidth
-                                            onChange={(event) => {
-                                                this.setState({email: event.target.value})
-                                            }}
-                                            value={this.state.email}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            margin="dense"
-                                            // id="name"
-                                            label="Contact Number"
+                                            label="Type"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({contact_num: event.target.value})
+                                                this.setState({type: event.target.value})
                                             }}
-                                            value={this.state.contact_num}
+                                            value={this.state.type}
                                         />
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Address"
+                                            label="Registration Number"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({address: event.target.value})
+                                                this.setState({reg: event.target.value})
                                             }}
-                                            value={this.state.address}
+                                            value={this.state.reg}
                                         />
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="PAN"
+                                            label="GST"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({pan_num: event.target.value})
+                                                this.setState({gst: event.target.value})
                                             }}
-                                            value={this.state.pan_num}
+                                            value={this.state.gst}
                                         />
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="AADHAR Number"
+                                            label="DIN"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({aadhar_num: event.target.value})
+                                                this.setState({din: event.target.value})
                                             }}
-                                            value={this.state.aadhar_num}
+                                            value={this.state.din}
                                         />
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Source"
+                                            label="PT"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({client_source: event.target.value})
+                                                this.setState({pt: event.target.value})
                                             }}
-                                            value={this.state.client_source}
+                                            value={this.state.pt}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="PF_ESI"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({pf_esi: event.target.value})
+                                            }}
+                                            value={this.state.pf_esi}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="IEC"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({iec: event.target.value})
+                                            }}
+                                            value={this.state.iec}
+                                        />
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="DDO"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({ddo: event.target.value})
+                                            }}
+                                            value={this.state.ddo}
                                         />
                                     </DialogContent>
                                     <DialogActions>
@@ -383,7 +369,7 @@ class ClientComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+                                                update_firm(this.state.id, this.state.client_id, this.state.type, this.state.reg, this.state.gst, this.state.din, this.state.pt, this.state.pf_esi, this.state.iec, this.state.ddo, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -406,4 +392,4 @@ class ClientComponents extends Component {
     }
 }
 
-export default withStyles(styles)(ClientComponents);
+export default withStyles(styles)(FirmComponents);

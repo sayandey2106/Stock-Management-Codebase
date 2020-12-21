@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar, Badge, colors,} from "@material-ui/core";
+import {Avatar, Badge, colors, MenuItem,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -105,6 +105,7 @@ class ClientComponents extends Component {
         this.state = {
             delete: false,
             update: false,
+            color_dialog: false,
             id: "",
             name: "",
             profile: "",
@@ -115,7 +116,7 @@ class ClientComponents extends Component {
             aadhar_num: "",
             client_source: "",
             old_profile: "",
-            color:''
+            color: ''
         }
     }
 
@@ -126,6 +127,18 @@ class ClientComponents extends Component {
     handleClose = () => {
         this.setState({delete: false})
         this.setState({update: false})
+        this.setState({color_dialog: false})
+        this.setState({id: ""})
+        this.setState({name: ""})
+        this.setState({profile: ""})
+        this.setState({email: ""})
+        this.setState({contact_num: ""})
+        this.setState({address: ""})
+        this.setState({pan_num: ""})
+        this.setState({aadhar_num: ""})
+        this.setState({client_source: ""})
+        this.setState({old_profile: ""})
+        this.setState({color: ''})
     }
 
     render() {
@@ -176,37 +189,40 @@ class ClientComponents extends Component {
                                     {client.all_client.map(row =>
                                         <TableRow>
                                             <TableCell>
-                                                {this.state.color === 'R' ? <StyledBadgeRed
-                                                    overlap="circle"
-                                                    anchorOrigin={{
-                                                        vertical: "bottom",
-                                                        horizontal: "right"
-                                                    }}
-                                                    // style = {{color:"blue"}}
-                                                    variant="dot"
-                                                >
-                                                    <Avatar src={row.profile_pic}/>
-                                                </StyledBadgeRed> : this.state.color === 'B' ? <StyledBadgeBlue
-                                                    overlap="circle"
-                                                    anchorOrigin={{
-                                                        vertical: "bottom",
-                                                        horizontal: "right"
-                                                    }}
-                                                    // style = {{color:"blue"}}
-                                                    variant="dot"
-                                                >
-                                                    <Avatar src={row.profile_pic}/>
-                                                </StyledBadgeBlue> : <StyledBadgeGreen
-                                                    overlap="circle"
-                                                    anchorOrigin={{
-                                                        vertical: "bottom",
-                                                        horizontal: "right"
-                                                    }}
-                                                    // style = {{color:"blue"}}
-                                                    variant="dot"
-                                                >
-                                                    <Avatar src={row.profile_pic}/>
-                                                </StyledBadgeGreen>}
+                                                <Button onClick={() => {
+                                                    this.setState({color_dialog: true})
+                                                }}>
+                                                    {this.state.color === 'R' ? <StyledBadgeRed
+                                                        overlap="circle"
+                                                        anchorOrigin={{
+                                                            vertical: "bottom",
+                                                            horizontal: "right"
+                                                        }}
+                                                        // style = {{color:"blue"}}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src={row.profile_pic}/>
+                                                    </StyledBadgeRed> : this.state.color === 'B' ? <StyledBadgeBlue
+                                                        overlap="circle"
+                                                        anchorOrigin={{
+                                                            vertical: "bottom",
+                                                            horizontal: "right"
+                                                        }}
+                                                        // style = {{color:"blue"}}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src={row.profile_pic}/>
+                                                    </StyledBadgeBlue> : <StyledBadgeGreen
+                                                        overlap="circle"
+                                                        anchorOrigin={{
+                                                            vertical: "bottom",
+                                                            horizontal: "right"
+                                                        }}
+                                                        // style = {{color:"blue"}}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src={row.profile_pic}/>
+                                                    </StyledBadgeGreen>}</Button>
                                             </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
@@ -384,6 +400,53 @@ class ClientComponents extends Component {
                                             onClick={() => {
                                                 this.handleClose();
                                                 update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+                                            }}
+                                            color="primary"
+                                        >
+                                            Update
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                                <Dialog open={this.state.color_dialog} onClose={() => {
+                                    this.handleClose()
+                                }} aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Color Code</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            This client should be :
+                                        </DialogContentText>
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Color Code"
+                                            // type="text"
+                                            select
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({color: event.target.value})
+                                            }}
+                                            value={this.state.color}
+                                        >
+                                            <MenuItem value={'G'}>
+                                                Marked as Green
+                                            </MenuItem>
+                                            <MenuItem value={'B'}>
+                                                Marked as Blue
+                                            </MenuItem>
+                                            <MenuItem value={'R'}>
+                                                Marked as Red
+                                            </MenuItem>
+                                        </TextField>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={() => this.handleClose()} color="primary">
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose();
+                                                // update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >

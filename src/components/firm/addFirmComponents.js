@@ -50,7 +50,7 @@ class AddFirm extends Component {
         super(props);
         this.state = {
             client_id: "",
-            name:"",
+            name: "",
             type: "",
             reg: "",
             gst: "",

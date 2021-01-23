@@ -9,6 +9,9 @@ import {
     delete_manager,
     update_manager
 } from "../../actions/manager/managerActions";
+import {
+    toggle_active_admin
+} from "../../actions/admin/adminActions";
 export class ManagerCont extends Component {
     render() {
         return (
@@ -39,7 +42,9 @@ export const mapDispatchToProps = dispatch => {
         update_manager: (id, name, profile, old_profile,  email, password, position, department, employee_id, token, oid) => {
             dispatch(update_manager(id, name, profile, old_profile, email, password, position, department, employee_id, token, oid));
         },
-
+        toggle_active_admin: (id, token, oid) => {
+            dispatch(toggle_active_admin(id, token, oid));
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ManagerCont);

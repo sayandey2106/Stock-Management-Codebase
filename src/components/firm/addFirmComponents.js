@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar, MenuItem,} from "@material-ui/core";
+import {Avatar, Checkbox, MenuItem,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -30,6 +30,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import {view_majorheads_minorhead} from "../../actions/minorheads/minorheadActions";
+// import {view_majorheads_minorhead} from "../../actions/minorheads/minorheadActions";
 
 
 const card = {
@@ -58,12 +60,17 @@ class AddFirm extends Component {
             pt: "",
             pf_esi: "",
             iec: "",
-            ddo: ""
+            ddo: "",
+            majorhead_id:"",
+            minorhead_id:"",
+            checkedF: false
         }
     }
 
     componentDidMount() {
         this.props.get_all_client(this.props.login.token, this.props.login.organization_id);
+        this.props.get_all_majorhead(this.props.login.token, this.props.login.organization_id);
+        this.props.get_all_minorhead(this.props.login.token, this.props.login.organization_id);
     }
 
     render() {
@@ -82,7 +89,10 @@ class AddFirm extends Component {
             set_firm_pf_esi,
             set_firm_iec,
             set_firm_ddo,
-            client
+            client,
+            majorhead,
+            minorhead,
+            view_majorheads_minorhead
 
         } = this.props;
         return (
@@ -92,7 +102,7 @@ class AddFirm extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    ADD FIRM
+                                    ADD ORGANIZATION
                                 </h3>
                             </CardIcon>
                         </CardHeader>
@@ -558,6 +568,56 @@ class AddFirm extends Component {
                                                                 }}
                                                                 value={firm.gst}
                                                             /></Grid>}
+
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                // id="name"
+                                label="Majorhead ID"
+                                // type="text"
+                                select
+                                fullWidth
+                                onChange={(event) => {
+                                    this.setState({majorhead_id: event.target.value});
+                                    view_majorheads_minorhead(this.state.majorhead_id, this.props.login.token);
+                                }}
+                                value={this.state.majorhead_id}
+                                InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                            >
+                                {majorhead.all_majorhead.map(row1 => (
+                                    <MenuItem value={row1._id} key={row1._id}>
+                                        {row1.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <TextField
+                                autoFocus
+                                margin="dense"
+                                // id="name"
+                                label="Minorhead ID"
+                                // type="text"
+                                select
+                                fullWidth
+                                onChange={(event) => {
+                                    this.setState({minorhead_id: event.target.value});
+                                }}
+                                value={this.state.minorhead_id}
+                                InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                            >
+                                {minorhead.majorhead_minorhead.map(row1 => (
+                                    <MenuItem value={row1._id} key={row1._id}>
+                                        {row1.name}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                            <Checkbox
+                                checked={this.state.checkedF}
+                                onChange={(event) => {
+                                    this.setState({checkedF: !this.state.checkedF})
+                                }}
+                                // indeterminate
+                                color={"default"}
+                            /> Is Recursive?<br />
                             <Button onClick={() => {
                                 add_firm(firm, login.token, login.organization_id)
                             }}>

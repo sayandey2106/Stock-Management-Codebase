@@ -8,7 +8,7 @@ import {
     SET_FIRM_PF_ESI,
     SET_FIRM_PT,
     SET_FIRM_REG,
-    SET_FIRM_TYPE,
+    SET_FIRM_TYPE
 } from "../../constants/firm/firmConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
@@ -16,6 +16,7 @@ import { setLoader, unsetLoader }
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import firebase from "firebase";
 import {onLogout} from "../loginActions";
+import {reset_client} from "../client/clientActions";
 
 
 export function get_all_firm(token, oid) {
@@ -282,6 +283,98 @@ export function reset_firm(){
         type:RESET_FIRM
     }
 }
+
+export function search_firm(name, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        // console.log("Inside client search action")
+        // console.log(name)
+        return fetch(UNIVERSAL.BASEURL + "search_firm", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token:token,
+                organization_id:oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                firm_name:name,
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log("Inside firm search api")
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    // dispatch(get_all_client(token, oid))
+
+                    dispatch(reset_client())
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+export function filter_firm(type, id, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        // console.log("Inside client filter action")
+        // console.log(name)
+        return fetch(UNIVERSAL.BASEURL + "filter_firm", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token:token,
+                organization_id:oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                firm_type:type,
+                client_id: id
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log("Inside firm filter api")
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    // dispatch(get_all_client(token, oid))
+
+                    dispatch(reset_client())
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 
 /*
 export function add_firm(firm,token,oid) {

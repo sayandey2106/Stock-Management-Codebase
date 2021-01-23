@@ -23,6 +23,10 @@ import {
     get_all_client
 
 } from '../../actions/client/clientActions'
+import {
+    get_all_majorhead
+} from "../../actions/majorhead/majorheadActions";
+import {get_all_minorhead,view_majorheads_minorhead} from "../../actions/minorheads/minorheadActions";
 
 export class AddFirmCont extends Component {
     render() {
@@ -38,6 +42,8 @@ export const mapStateToProps = store => {
         snackbar: store.snackbar,
         firm:store.firm,
         client:store.client,
+        majorhead:store.majorhead,
+        minorhead:store.minorhead,
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -51,6 +57,15 @@ export const mapDispatchToProps = dispatch => {
         },
         get_all_client: (token,oid) => {
             dispatch(get_all_client(token,oid));
+        },
+        get_all_majorhead: (token,oid) => {
+            dispatch(get_all_majorhead(token,oid));
+        },
+        get_all_minorhead: (token,oid) => {
+            dispatch(get_all_minorhead(token,oid));
+        },
+        view_majorheads_minorhead: (id, token) => {
+            dispatch(view_majorheads_minorhead(id, token));
         },
         add_firm: (firm,token,oid) => {
             dispatch(add_firm(firm,token,oid));

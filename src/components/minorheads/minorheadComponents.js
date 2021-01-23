@@ -51,10 +51,10 @@ class MinorheadComponents extends Component {
         this.state = {
             delete: false,
             update: false,
-            add:false,
+            add: false,
             id: "",
             name: "",
-            majorhead_id:""
+            majorhead_id: ""
         }
     }
 
@@ -63,7 +63,7 @@ class MinorheadComponents extends Component {
     }
 
     handleClose = () => {
-        this.setState({delete: false, update:false, add:false, id:"", name:"", majorhead_id:""})
+        this.setState({delete: false, update: false, add: false, id: "", name: "", majorhead_id: ""})
     }
 
     render() {
@@ -93,9 +93,10 @@ class MinorheadComponents extends Component {
                         <CardContent>
                             <Grid item lg={12}>
                                 {/*<Link to="add_minorhead" style={{textDecoration: "none"}}>*/}
-                                <IconButton onClick={()=>
-                                {this.setState({add:true});
-                                get_all_majorhead(login.token)}}>
+                                <IconButton onClick={() => {
+                                    this.setState({add: true});
+                                    get_all_majorhead(login.token)
+                                }}>
                                     <Icon>add</Icon>
                                 </IconButton>
                                 {/*</Link>*/}
@@ -118,9 +119,9 @@ class MinorheadComponents extends Component {
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
-                                                        id:row._id,
+                                                        id: row._id,
                                                         name: row.name,
-                                                        majorhead_id:row.majorhead_id
+                                                        majorhead_id: row.majorhead_id
                                                     });
                                                     get_all_majorhead(login.token)
                                                 }}>
@@ -197,10 +198,10 @@ class MinorheadComponents extends Component {
                                                 this.setState({majorhead_id: event.target.value})
                                             }}
                                             value={this.state.majorhead_id}
-                                            InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                            InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
                                             // InputProps={{classes:{input:this.props.classes.dropdown}}}
                                         >
-                                            {majorhead.all_majorhead.map(row1=>(
+                                            {majorhead.all_majorhead.map(row1 => (
                                                 <MenuItem value={row1._id} key={row1._id}>
                                                     {row1.name}
                                                 </MenuItem>
@@ -253,10 +254,10 @@ class MinorheadComponents extends Component {
                                                     this.setState({majorhead_id: event.target.value})
                                                 }}
                                                 value={this.state.majorhead_id}
-                                                InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                                InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
                                                 // InputProps={{classes:{input:this.props.classes.dropdown}}}
                                             >
-                                                {majorhead.all_majorhead.map(row=>(
+                                                {majorhead.all_majorhead.map(row => (
                                                     <MenuItem value={row._id} key={row._id}>
                                                         {row.name}
                                                     </MenuItem>

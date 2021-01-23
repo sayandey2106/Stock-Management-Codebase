@@ -76,7 +76,7 @@ class Admin extends Component {
             position: "",
             department: "",
             employee_id: "",
-            old_profile: ""
+            old_profile: "",
         }
     }
 
@@ -116,6 +116,7 @@ class Admin extends Component {
             admin,
             delete_admin,
             update_admin,
+            toggle_active_admin,
             login
         } = this.props;
         console.log(admin.all_admin)
@@ -170,6 +171,7 @@ class Admin extends Component {
                                                     color="secondary"
                                                     name="checkedB"
                                                     inputProps={{ 'aria-label': 'primary checkbox' }}
+                                                    onChange={()=>toggle_active_admin(row._id, this.props.login.token, this.props.login.organization_id)}
                                                 />
                                                  <IconButton onClick={() => {
                                                     this.setState({
@@ -182,7 +184,7 @@ class Admin extends Component {
                                                         password:row.password,
                                                         department: row.department,
                                                         position: row.position,
-                                                        employee_id: row.employee_id
+                                                        employee_id: row.employee_id,
                                                     })
                                                 }}>
                                                     <Icon>edit</Icon>

@@ -10,6 +10,7 @@ import majorhead from './majorhead/majorheadReducer';
 import minorhead from './minorheads/minorheadReducer';
 import jobcard from './jobcard/jobcardReducer'
 import firm from './firm/firmReducer'
+import checkList from './checkList/checkListReducer'
 // import client from './client/clientReducer'
 export default combineReducers({
     loader,
@@ -22,5 +23,6 @@ export default combineReducers({
     minorhead,
     client,
     jobcard,
-    firm
+    firm,
+    checkList,
 });

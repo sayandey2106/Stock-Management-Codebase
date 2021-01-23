@@ -30,6 +30,9 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import {get_all_client} from "../../actions/client/clientActions";
+import SearchBar from "material-ui-search-bar";
+import {get_all_firm} from "../../actions/firm/firmActions";
 
 
 const card = {
@@ -106,8 +109,8 @@ class FirmComponents extends Component {
             delete: false,
             update: false,
             id: "",
-            client_id:"",
-            name:"",
+            client_id: "",
+            name: "",
             type: "",
             reg: "",
             gst: "",
@@ -116,6 +119,7 @@ class FirmComponents extends Component {
             pf_esi: "",
             iec: "",
             ddo: "",
+            filter_dialog: false
         }
     }
 
@@ -128,6 +132,17 @@ class FirmComponents extends Component {
     handleClose = () => {
         this.setState({delete: false})
         this.setState({update: false})
+        this.setState({id: false})
+        this.setState({client_id: false})
+        this.setState({name: false})
+        this.setState({type: false})
+        this.setState({gst: false})
+        this.setState({din: false})
+        this.setState({pt: false})
+        this.setState({pf_esi: false})
+        this.setState({iec: false})
+        this.setState({ddo: false})
+        this.setState({reg: false})
     }
 
     render() {
@@ -138,6 +153,7 @@ class FirmComponents extends Component {
             client,
             delete_firm,
             update_firm,
+            search_firm,
             login
         } = this.props;
         // console.log(firm.all_firm)
@@ -148,18 +164,57 @@ class FirmComponents extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW firm
+                                    VIEW ORGANIZATIONS
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
                             <Grid item lg={12}>
-                                <Link to="add_firm" style={{textDecoration: "none"}}>
-                                    <IconButton>
-                                        <Icon>add</Icon>
-                                    </IconButton>
-                                </Link>
-
+                                <Grid container>
+                                    <Grid item lg={2}>
+                                        <Link to="add_firm" style={{textDecoration: "none"}}>
+                                            <IconButton>
+                                                <Icon>add</Icon>
+                                            </IconButton>
+                                        </Link>
+                                        <IconButton
+                                            onClick={() => {
+                                                this.setState({filter_dialog: true})
+                                            }}
+                                        >
+                                            <Icon>filter_alt</Icon>
+                                        </IconButton>
+                                        <IconButton
+                                            onClick={() => {
+                                                this.setState({sort_dialog: true})
+                                            }}
+                                        >
+                                            <Icon>sort</Icon>
+                                        </IconButton>
+                                    </Grid>
+                                    <Grid item lg={4}>
+                                        <SearchBar
+                                            value={this.state.value}
+                                            onChange={(newValue) => this.setState({value: newValue})}
+                                            style={{marginLeft: "-18%"}}
+                                            onRequestSearch={() => {
+                                                this.state.value !== '' ?
+                                                    search_firm(this.state.value, this.props.login.token, this.props.login.organization_id)
+                                                    :
+                                                    get_all_firm(this.props.login.token, this.props.login.organization_id);
+                                                this.handleClose()
+                                            }}
+                                        />
+                                    </Grid>
+                                    <Grid item lg={6}>
+                                        <IconButton style={{float: "right"}}>
+                                            <Icon>archive</Icon>
+                                        </IconButton>
+                                        <IconButton style={{float: "right"}}>
+                                            <Icon>unarchive</Icon>
+                                        </IconButton>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                             <Table>
                                 <TableHead>
@@ -193,6 +248,12 @@ class FirmComponents extends Component {
                                             <TableCell align="left">{row.iec_num}</TableCell>
                                             <TableCell align="left">{row.ddo_num}</TableCell>
                                             <TableCell align={"right"}>
+                                                <IconButton>
+                                                    <Icon>account_circle</Icon>
+                                                </IconButton>
+                                                <IconButton>
+                                                    <Icon>supervised_user_circle</Icon>
+                                                </IconButton>
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
@@ -337,7 +398,7 @@ class FirmComponents extends Component {
                                                 type="text"
                                                 fullWidth
                                                 onChange={(event) => {
-                                                    this.setState({type:event.target.value})
+                                                    this.setState({type: event.target.value})
                                                 }}
                                                 value={this.state.reg}
                                             />
@@ -349,7 +410,7 @@ class FirmComponents extends Component {
                                                     type="text"
                                                     fullWidth
                                                     onChange={(event) => {
-                                                        this.setState({gst:event.target.value})
+                                                        this.setState({gst: event.target.value})
                                                     }}
                                                     value={this.state.gst}
                                                 />
@@ -361,7 +422,7 @@ class FirmComponents extends Component {
                                                     type="text"
                                                     fullWidth
                                                     onChange={(event) => {
-                                                        this.setState({pt:event.target.value})
+                                                        this.setState({pt: event.target.value})
                                                     }}
                                                     value={this.state.pt}
                                                 />
@@ -373,7 +434,7 @@ class FirmComponents extends Component {
                                                     type="text"
                                                     fullWidth
                                                     onChange={(event) => {
-                                                        this.setState({pf_esi:event.target.value})
+                                                        this.setState({pf_esi: event.target.value})
                                                     }}
                                                     value={this.state.pf_esi}
                                                 />
@@ -385,7 +446,7 @@ class FirmComponents extends Component {
                                                     type="text"
                                                     fullWidth
                                                     onChange={(event) => {
-                                                        this.setState({iec:event.target.value})
+                                                        this.setState({iec: event.target.value})
                                                     }}
                                                     value={this.state.iec}
                                                 /></Grid>
@@ -398,7 +459,7 @@ class FirmComponents extends Component {
                                                     type="text"
                                                     fullWidth
                                                     onChange={(event) => {
-                                                        this.setState({ddo:event.target.value})
+                                                        this.setState({ddo: event.target.value})
                                                     }}
                                                     value={this.state.ddo}
                                                 />
@@ -411,7 +472,7 @@ class FirmComponents extends Component {
                                                         type="text"
                                                         fullWidth
                                                         onChange={(event) => {
-                                                            this.setState({din:event.target.value})
+                                                            this.setState({din: event.target.value})
                                                         }}
                                                         value={this.state.din}
                                                     />
@@ -424,7 +485,7 @@ class FirmComponents extends Component {
                                                             type="text"
                                                             fullWidth
                                                             onChange={(event) => {
-                                                                this.setState({reg:event.target.value})
+                                                                this.setState({reg: event.target.value})
                                                             }}
                                                             value={this.state.reg}
                                                         />
@@ -436,7 +497,7 @@ class FirmComponents extends Component {
                                                                 type="text"
                                                                 fullWidth
                                                                 onChange={(event) => {
-                                                                    this.setState({gst:event.target.value})
+                                                                    this.setState({gst: event.target.value})
                                                                 }}
                                                                 value={this.state.gst}
                                                             />
@@ -448,7 +509,7 @@ class FirmComponents extends Component {
                                                                 type="text"
                                                                 fullWidth
                                                                 onChange={(event) => {
-                                                                    this.setState({pt:event.target.value})
+                                                                    this.setState({pt: event.target.value})
                                                                 }}
                                                                 value={this.state.pt}
                                                             />
@@ -460,7 +521,7 @@ class FirmComponents extends Component {
                                                                 type="text"
                                                                 fullWidth
                                                                 onChange={(event) => {
-                                                                    this.setState({pf_esi:event.target.value})
+                                                                    this.setState({pf_esi: event.target.value})
                                                                 }}
                                                                 value={this.state.pf_esi}
                                                             />
@@ -472,7 +533,7 @@ class FirmComponents extends Component {
                                                                 type="text"
                                                                 fullWidth
                                                                 onChange={(event) => {
-                                                                    this.setState({iec:event.target.value})
+                                                                    this.setState({iec: event.target.value})
                                                                 }}
                                                                 value={this.state.iec}
                                                             /></Grid>
@@ -485,7 +546,7 @@ class FirmComponents extends Component {
                                                                 type="text"
                                                                 fullWidth
                                                                 onChange={(event) => {
-                                                                    this.setState({reg:event.target.value})
+                                                                    this.setState({reg: event.target.value})
                                                                 }}
                                                                 value={this.state.reg}
                                                             />
@@ -497,7 +558,7 @@ class FirmComponents extends Component {
                                                                     type="text"
                                                                     fullWidth
                                                                     onChange={(event) => {
-                                                                        this.setState({pt:event.target.value})
+                                                                        this.setState({pt: event.target.value})
                                                                     }}
                                                                     value={this.state.pt}
                                                                 />
@@ -509,7 +570,7 @@ class FirmComponents extends Component {
                                                                     type="text"
                                                                     fullWidth
                                                                     onChange={(event) => {
-                                                                        this.setState({pf_esi:event.target.value})
+                                                                        this.setState({pf_esi: event.target.value})
                                                                     }}
                                                                     value={this.state.pf_esi}
                                                                 />
@@ -521,7 +582,7 @@ class FirmComponents extends Component {
                                                                     type="text"
                                                                     fullWidth
                                                                     onChange={(event) => {
-                                                                        this.setState({iec:event.target.value})
+                                                                        this.setState({iec: event.target.value})
                                                                     }}
                                                                     value={this.state.iec}
                                                                 /></Grid>
@@ -534,7 +595,7 @@ class FirmComponents extends Component {
                                                                     type="text"
                                                                     fullWidth
                                                                     onChange={(event) => {
-                                                                        this.setState({reg:event.target.value})
+                                                                        this.setState({reg: event.target.value})
                                                                     }}
                                                                     value={this.state.reg}
                                                                 />
@@ -546,7 +607,7 @@ class FirmComponents extends Component {
                                                                         type="text"
                                                                         fullWidth
                                                                         onChange={(event) => {
-                                                                            this.setState({gst:event.target.value})
+                                                                            this.setState({gst: event.target.value})
                                                                         }}
                                                                         value={this.state.gst}
                                                                     />
@@ -558,7 +619,7 @@ class FirmComponents extends Component {
                                                                         type="text"
                                                                         fullWidth
                                                                         onChange={(event) => {
-                                                                            this.setState({pt:event.target.value})
+                                                                            this.setState({pt: event.target.value})
                                                                         }}
                                                                         value={this.state.pt}
                                                                     />
@@ -570,7 +631,7 @@ class FirmComponents extends Component {
                                                                         type="text"
                                                                         fullWidth
                                                                         onChange={(event) => {
-                                                                            this.setState({pf_esi:event.target.value})
+                                                                            this.setState({pf_esi: event.target.value})
                                                                         }}
                                                                         value={this.state.pf_esi}
                                                                     />
@@ -582,7 +643,7 @@ class FirmComponents extends Component {
                                                                         type="text"
                                                                         fullWidth
                                                                         onChange={(event) => {
-                                                                            this.setState({iec:event.target.value})
+                                                                            this.setState({iec: event.target.value})
                                                                         }}
                                                                         value={this.state.iec}
                                                                     /></Grid>
@@ -595,7 +656,7 @@ class FirmComponents extends Component {
                                                                         type="text"
                                                                         fullWidth
                                                                         onChange={(event) => {
-                                                                            this.setState({reg:event.target.value})
+                                                                            this.setState({reg: event.target.value})
                                                                         }}
                                                                         value={this.state.reg}
                                                                     />
@@ -607,7 +668,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({gst:event.target.value})
+                                                                                this.setState({gst: event.target.value})
                                                                             }}
                                                                             value={this.state.gst}
                                                                         />
@@ -619,7 +680,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({din:event.target.value})
+                                                                                this.setState({din: event.target.value})
                                                                             }}
                                                                             value={this.state.din}
                                                                         />
@@ -631,7 +692,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({pt:event.target.value})
+                                                                                this.setState({pt: event.target.value})
                                                                             }}
                                                                             value={this.state.pt}
                                                                         />
@@ -643,7 +704,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({pf_esi:event.target.value})
+                                                                                this.setState({pf_esi: event.target.value})
                                                                             }}
                                                                             value={this.state.pf_esi}
                                                                         />
@@ -655,7 +716,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({iec:event.target.value})
+                                                                                this.setState({iec: event.target.value})
                                                                             }}
                                                                             value={this.state.iec}
                                                                         />
@@ -667,7 +728,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({ddo:event.target.value})
+                                                                                this.setState({ddo: event.target.value})
                                                                             }}
                                                                             value={this.state.ddo}
                                                                         /></Grid>
@@ -679,7 +740,7 @@ class FirmComponents extends Component {
                                                                         type="text"
                                                                         fullWidth
                                                                         onChange={(event) => {
-                                                                            this.setState({pt:event.target.value})
+                                                                            this.setState({pt: event.target.value})
                                                                         }}
                                                                         value={this.state.pt}
                                                                     />
@@ -691,7 +752,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({pf_esi:event.target.value})
+                                                                                this.setState({pf_esi: event.target.value})
                                                                             }}
                                                                             value={this.state.pf_esi}
                                                                         />
@@ -703,7 +764,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({iec:event.target.value})
+                                                                                this.setState({iec: event.target.value})
                                                                             }}
                                                                             value={this.state.iec}
                                                                         />
@@ -715,7 +776,7 @@ class FirmComponents extends Component {
                                                                             type="text"
                                                                             fullWidth
                                                                             onChange={(event) => {
-                                                                                this.setState({gst:event.target.value})
+                                                                                this.setState({gst: event.target.value})
                                                                             }}
                                                                             value={this.state.gst}
                                                                         /></Grid>}
@@ -817,6 +878,91 @@ class FirmComponents extends Component {
                                             color="primary"
                                         >
                                             Update
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                                <Dialog open={this.state.filter_dialog}
+                                        onClose={this.handleClose}
+                                        aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Filter client</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            Select
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        // id="name"
+                                        label="Client"
+                                        // type="text"
+                                        select
+                                        fullWidth
+                                        onChange={(event) => {
+                                            this.setState({client_id: event.target.value})
+                                        }}
+                                        value={this.state.client_id}
+                                        InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                    >
+                                        {client.all_client.map(row1 => (
+                                            <MenuItem value={row1._id} key={row1._id}>
+                                                {row1.name}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        autoFocus
+                                        margin="dense"
+                                        // id="name"
+                                        label="Type"
+                                        // type="text"
+                                        select
+                                        fullWidth
+                                        onChange={(event) => {
+                                            this.setState({type: event.target.value})
+                                        }}
+                                        value={this.state.type}
+                                        InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                    >
+                                        <MenuItem value='C'>
+                                            Company
+                                        </MenuItem>
+                                        <MenuItem value='G'>
+                                            Govt. Entity
+                                        </MenuItem>
+                                        <MenuItem value='I'>
+                                            Individuals
+                                        </MenuItem>
+                                        <MenuItem value='T'>
+                                            Trust
+                                        </MenuItem>
+                                        <MenuItem value='LP'>
+                                            Limited Liabilities Partnership
+                                        </MenuItem>
+                                        <MenuItem value='P'>
+                                            Partnership
+                                        </MenuItem>
+                                        <MenuItem value='PR'>
+                                            Proprietorship
+                                        </MenuItem>
+                                    </TextField>
+                                    <DialogActions>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose()
+                                            }}
+                                            color="primary"
+                                        >
+                                            No
+                                        </Button>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose();
+                                                delete_firm(this.state.id, login.token, login.organization_id)
+                                            }}
+                                            color="primary"
+                                        >
+                                            Yes
                                         </Button>
                                     </DialogActions>
                                 </Dialog>

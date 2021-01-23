@@ -21,6 +21,7 @@ import JobcardContainer from "../../containers/jobcard/jobcardContainer";
 import AddJobCardContainer from "../../containers/jobcard/addJobCardContainer";
 import AddFirmCont from "../../containers/firm/addFirmContainer";
 import FirmContainer from "../../containers/firm/firmContainer";
+import CheckListContainer from "../../containers/checkList/checkListContainer";
 
 class Routes extends Component {
 
@@ -77,8 +78,7 @@ class Routes extends Component {
                         <Route exact path="/add_jobcard" component={AddJobCardContainer}/>
                         <Route exact path="/view_firm" component={FirmContainer}/>
                         <Route exact path="/add_firm" component={AddFirmCont}/>
-
-
+                        <Route exact path="/view_checkList" component={CheckListContainer}/>
                         {/* STUDENT ROUTES */}
 
                     </main>

@@ -10,7 +10,7 @@ import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import firebase from "firebase";
-import {update_admin_api} from "../admin/adminActions";
+import {get_all_admin, update_admin_api} from "../admin/adminActions";
 import {onLogout} from "../loginActions";
 
 
@@ -161,7 +161,9 @@ export function add_executive_api(executive, token, oid, URL) {
                 password:executive.password,
                 executive_position:executive.position,
                 executive_department:executive.department,
-                executive_employee_id:executive.employee_id
+                executive_employee_id:executive.employee_id,
+                executive_type: 'E',
+                executive_active: true
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -292,4 +294,45 @@ export function update_executive(id, name, profile, old_profile, email, password
         }
     }
 }
+
+export function toggle_active_executive(id, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "toggle_active", {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token: token,
+                organization_id: oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                executive_id: id
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(get_all_executive(token, oid))
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 

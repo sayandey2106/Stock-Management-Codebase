@@ -98,6 +98,7 @@ class ManagerComponents extends Component {
             manager,
             delete_manager,
             update_manager,
+            toggle_active_admin,
             login
         } = this.props;
         console.log(manager.all_manager)
@@ -151,6 +152,7 @@ class ManagerComponents extends Component {
                                                     color="secondary"
                                                     name="checkedB"
                                                     inputProps={{ 'aria-label': 'primary checkbox' }}
+                                                    onChange={()=>toggle_active_admin(row._id, this.props.login.token, this.props.login.organization_id)}
                                                 />
                                                 <IconButton onClick={() => {
                                                     this.setState({

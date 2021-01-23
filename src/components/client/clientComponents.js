@@ -30,6 +30,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import SearchBar from "material-ui-search-bar";
 
 
 const card = {
@@ -116,12 +117,16 @@ class ClientComponents extends Component {
             aadhar_num: "",
             client_source: "",
             old_profile: "",
-            color: ''
+            color: '',
+            value: '',
+            sort_dialog: false,
+            sort_type: ''
         }
     }
 
     componentDidMount() {
         this.props.get_all_client(this.props.login.token, this.props.login.organization_id)
+        // this.props.search_client('',this.props.login.token, this.props.login.organization_id)
     }
 
     handleClose = () => {
@@ -139,6 +144,9 @@ class ClientComponents extends Component {
         this.setState({client_source: ""})
         this.setState({old_profile: ""})
         this.setState({color: ''})
+        this.setState({value: ''})
+        this.setState({sort_dialog: false})
+        this.setState({sort_type: ''})
     }
 
     render() {
@@ -148,9 +156,14 @@ class ClientComponents extends Component {
             client,
             delete_client,
             update_client,
+            search_client,
+            sort_client,
+            change_status,
+            get_all_client,
             login
         } = this.props;
-        console.log(client.all_client)
+        // console.log(client.all_client)
+        // console.log(client.search_client)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -158,18 +171,46 @@ class ClientComponents extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW client
+                                    VIEW CLIENTS
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
-                            <Grid item lg={12}>
-                                <Link to="add_client" style={{textDecoration: "none"}}>
-                                    <IconButton>
-                                        <Icon>add</Icon>
+                            <Grid container>
+                                <Grid item lg={1}>
+                                    <Link to="add_client" style={{textDecoration: "none"}}>
+                                        <IconButton>
+                                            <Icon>add</Icon>
+                                        </IconButton>
+                                    </Link>
+                                    <IconButton
+                                        style={{float: "right"}}
+                                        onClick={()=>{this.setState({sort_dialog: true})}}
+                                    >
+                                        <Icon>sort</Icon>
                                     </IconButton>
-                                </Link>
-
+                                </Grid>
+                                <Grid item lg={4}>
+                                    <SearchBar
+                                        value={this.state.value}
+                                        onChange={(newValue) => this.setState({value: newValue})}
+                                        onRequestSearch={() => {
+                                            this.state.value !== '' ?
+                                                search_client(this.state.value, this.props.login.token, this.props.login.organization_id)
+                                                :
+                                                get_all_client(this.props.login.token, this.props.login.organization_id);
+                                            this.handleClose()
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item lg={7}>
+                                    <IconButton style={{float: "right"}}>
+                                        <Icon>archive</Icon>
+                                    </IconButton>
+                                    <IconButton style={{float: "right"}}>
+                                        <Icon>unarchive</Icon>
+                                    </IconButton>
+                                </Grid>
                             </Grid>
                             <Table>
                                 <TableHead>
@@ -191,8 +232,9 @@ class ClientComponents extends Component {
                                             <TableCell>
                                                 <Button onClick={() => {
                                                     this.setState({color_dialog: true})
+                                                    this.setState({id:row._id})
                                                 }}>
-                                                    {this.state.color === 'R' ? <StyledBadgeRed
+                                                    {row.flag === 'R' ? <StyledBadgeRed
                                                         overlap="circle"
                                                         anchorOrigin={{
                                                             vertical: "bottom",
@@ -202,7 +244,7 @@ class ClientComponents extends Component {
                                                         variant="dot"
                                                     >
                                                         <Avatar src={row.profile_pic}/>
-                                                    </StyledBadgeRed> : this.state.color === 'B' ? <StyledBadgeBlue
+                                                    </StyledBadgeRed> : row.flag === 'B' ? <StyledBadgeBlue
                                                         overlap="circle"
                                                         anchorOrigin={{
                                                             vertical: "bottom",
@@ -232,6 +274,12 @@ class ClientComponents extends Component {
                                             <TableCell align="left">{row.aadhar_number}</TableCell>
                                             <TableCell align="left">{row.source}</TableCell>
                                             <TableCell align={"right"}>
+                                                <IconButton>
+                                                    <Icon>account_circle</Icon>
+                                                </IconButton>
+                                                <IconButton>
+                                                    <Icon>supervised_user_circle</Icon>
+                                                </IconButton>
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
@@ -243,7 +291,7 @@ class ClientComponents extends Component {
                                                         pan_num: row.pan_number,
                                                         aadhar_num: row.aadhar_number,
                                                         client_source: row.source,
-                                                        old_profile: row.profile_pic
+                                                        old_profile: row.profile_pic,
                                                     })
                                                 }}>
                                                     <Icon>edit</Icon>
@@ -286,10 +334,62 @@ class ClientComponents extends Component {
                                         </Button>
                                     </DialogActions>
                                 </Dialog>
+
+                                <Dialog open={this.state.sort_dialog}
+                                        onClose={()=>{this.handleClose()}}
+                                        aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Sort client:</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <TextField
+                                                // autoFocus
+                                                margin="dense"
+                                                // id="name"
+                                                label="According to:"
+                                                // type="dropdown"
+                                                select
+                                                fullWidth
+                                                onChange={(event) => {
+                                                    this.setState({sort_type: event.target.value})
+                                                }}
+                                                value={this.state.sort_type}
+                                                InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                                InputProps={{classes:{input:this.props.classes.dropdown}}}
+                                            >
+                                                <MenuItem value='A' key='A'>
+                                                    Alphabet
+                                                </MenuItem>
+                                                <MenuItem value='L' key='L'>
+                                                    Last Inserted
+                                                </MenuItem>
+                                            </TextField>
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose()
+                                            }}
+                                            color="primary"
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose();
+                                                sort_client(this.state.sort_type, login.token, login.organization_id)
+                                            }}
+                                            color="primary"
+                                        >
+                                            Submit
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+
                                 <Dialog open={this.state.update} onClose={() => {
                                     this.handleClose()
                                 }} aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                                    <DialogTitle id="form-dialog-title">Edit</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             Enter the required fields, those needs to be updated.
@@ -445,8 +545,10 @@ class ClientComponents extends Component {
                                         </Button>
                                         <Button
                                             onClick={() => {
+                                                change_status(this.state.id, this.state.color, this.props.login.token, this.props.login.organization_id);
                                                 this.handleClose();
                                                 // update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+
                                             }}
                                             color="primary"
                                         >

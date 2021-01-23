@@ -45,7 +45,7 @@ export const mapDispatchToProps = dispatch => {
             dispatch(search_client(name, token,oid));
         },
         sort_client: (name, token,oid) => {
-            dispatch(search_client(name, token,oid));
+            dispatch(sort_client(name, token,oid));
         },
         change_status: (id, name, token,oid) => {
             dispatch(change_status(id, name, token,oid));

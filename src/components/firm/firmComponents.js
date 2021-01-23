@@ -143,6 +143,7 @@ class FirmComponents extends Component {
         this.setState({iec: false})
         this.setState({ddo: false})
         this.setState({reg: false})
+        this.setState({filter_dialog:false})
     }
 
     render() {
@@ -154,7 +155,8 @@ class FirmComponents extends Component {
             delete_firm,
             update_firm,
             search_firm,
-            login
+            login,
+            filter_firm
         } = this.props;
         // console.log(firm.all_firm)
         return (
@@ -890,26 +892,26 @@ class FirmComponents extends Component {
                                             Select
                                         </DialogContentText>
                                     </DialogContent>
-                                    <TextField
-                                        autoFocus
-                                        margin="dense"
-                                        // id="name"
-                                        label="Client"
-                                        // type="text"
-                                        select
-                                        fullWidth
-                                        onChange={(event) => {
-                                            this.setState({client_id: event.target.value})
-                                        }}
-                                        value={this.state.client_id}
-                                        InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
-                                    >
-                                        {client.all_client.map(row1 => (
-                                            <MenuItem value={row1._id} key={row1._id}>
-                                                {row1.name}
-                                            </MenuItem>
-                                        ))}
-                                    </TextField>
+                                    {/*<TextField*/}
+                                    {/*    autoFocus*/}
+                                    {/*    margin="dense"*/}
+                                    {/*    // id="name"*/}
+                                    {/*    label="Client"*/}
+                                    {/*    // type="text"*/}
+                                    {/*    select*/}
+                                    {/*    fullWidth*/}
+                                    {/*    onChange={(event) => {*/}
+                                    {/*        this.setState({client_id: event.target.value})*/}
+                                    {/*    }}*/}
+                                    {/*    value={this.state.client_id}*/}
+                                    {/*    InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}*/}
+                                    {/*>*/}
+                                    {/*    {client.all_client.map(row1 => (*/}
+                                    {/*        <MenuItem value={row1._id} key={row1._id}>*/}
+                                    {/*            {row1.name}*/}
+                                    {/*        </MenuItem>*/}
+                                    {/*    ))}*/}
+                                    {/*</TextField>*/}
                                     <TextField
                                         autoFocus
                                         margin="dense"
@@ -958,7 +960,7 @@ class FirmComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                delete_firm(this.state.id, login.token, login.organization_id)
+                                                filter_firm(this.state.type, this.props.login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >

@@ -16,7 +16,10 @@ import {
     set_firm_pf_esi,
     set_firm_iec,
     set_firm_ddo,
-    set_firm_client_id
+    set_firm_client_id,
+    set_firm_recursive,
+    set_firm_minorhead_id,
+    set_firm_majorhead_id
 
 } from "../../actions/firm/firmActions";
 import {
@@ -100,7 +103,15 @@ export const mapDispatchToProps = dispatch => {
         set_firm_client_id: (token) => {
             dispatch(set_firm_client_id(token));
         },
-
+        set_firm_majorhead_id: (token) => {
+            dispatch(set_firm_majorhead_id(token));
+        },
+        set_firm_minorhead_id: (token) => {
+            dispatch(set_firm_minorhead_id(token));
+        },
+        set_firm_recursive: (token) => {
+            dispatch(set_firm_recursive(token));
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AddFirmCont);

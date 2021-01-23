@@ -9,6 +9,11 @@ import {
     SET_FIRM_PT,
     SET_FIRM_REG,
     SET_FIRM_TYPE,
+    SET_FIRM_MINORHEAD_ID,
+    SET_FIRM_MAJORHEAD_ID,
+    SET_FIRM_CLIENT_ID,
+    SET_FIRM_RECURSIVE
+
 } from "../../constants/firm/firmConstants";
 const initial_state = {
     all_firm:[],
@@ -21,7 +26,10 @@ const initial_state = {
     pf_esi:"",
     iec: "",
     ddo: "",
-    client_id:""
+    client_id:"",
+    mjid:"",
+    mnid:"",
+    recursive:""
 };
 export default function reducer(state = initial_state, action) {
     console.log(action)
@@ -46,6 +54,14 @@ export default function reducer(state = initial_state, action) {
             return state = { ...state, ddo: action.payload };
         case SET_FIRM_IEC:
             return state = { ...state, iec: action.payload };
+        case SET_FIRM_CLIENT_ID:
+            return state = { ...state, client_id: action.payload };
+        case SET_FIRM_MAJORHEAD_ID:
+            return state = { ...state, mjid: action.payload };
+        case SET_FIRM_MINORHEAD_ID:
+            return state = { ...state, mnid: action.payload };
+        case SET_FIRM_RECURSIVE:
+            return state = { ...state, recursive: action.payload };
         case RESET_FIRM:
             return state = { ...state, name:"", type:"", client_id:"", reg: "", gst: "", din: "", ddo: "", pt: "", pf_esi: "", iec: ""};
         default:

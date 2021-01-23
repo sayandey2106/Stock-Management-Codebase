@@ -8,7 +8,7 @@ import {
     SET_FIRM_PF_ESI,
     SET_FIRM_PT,
     SET_FIRM_REG,
-    SET_FIRM_TYPE
+    SET_FIRM_TYPE, SET_FIRM_MAJORHEAD_ID, SET_FIRM_MINORHEAD_ID, SET_FIRM_RECURSIVE
 } from "../../constants/firm/firmConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
@@ -172,7 +172,10 @@ export function add_firm(firm, token, oid) {
                 firm_pt_num:firm.pt,
                 firm_pf_esi_num:firm.pf_esi,
                 firm_iec_num:firm.iec,
-                firm_ddo_num:firm.ddo
+                firm_ddo_num:firm.ddo,
+                majorhead_id:firm.mjid,
+                minorhead_id:firm.mnid,
+                is_recursive:firm.recursive
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -271,6 +274,24 @@ export function set_firm_ddo(payload){
     }
 }
 
+export function set_firm_majorhead_id(payload){
+    return{
+        type:SET_FIRM_MAJORHEAD_ID,
+        payload:payload
+    }
+}
+export function set_firm_minorhead_id(payload){
+    return{
+        type:SET_FIRM_MINORHEAD_ID,
+        payload:payload
+    }
+}
+export function set_firm_recursive(payload){
+    return{
+        type:SET_FIRM_RECURSIVE,
+        payload:payload
+    }
+}
 export function set_firm_client_id(payload){
     return{
         type:SET_FIRM_CLIENT_ID,
@@ -329,12 +350,12 @@ export function search_firm(name, token, oid) {
     };
 }
 
-export function filter_firm(type, id, token, oid) {
+export function filter_firm(type, token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
         // console.log("Inside client filter action")
         // console.log(name)
-        return fetch(UNIVERSAL.BASEURL + "filter_firm", {
+        return fetch(UNIVERSAL.BASEURL + "filter_firms", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -346,7 +367,7 @@ export function filter_firm(type, id, token, oid) {
                 // email: login.email,
                 // password: login.password
                 firm_type:type,
-                client_id: id
+                // client_id: id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {

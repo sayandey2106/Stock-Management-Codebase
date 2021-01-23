@@ -6,7 +6,7 @@ import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import {onLogout} from "../loginActions";
-import {set_all_majorhead} from "../majorhead/majorheadActions";
+// import {set_all_majorhead} from "../majorhead/majorheadActions";
 
 
 export function get_all_minorhead(token) {
@@ -185,7 +185,7 @@ export function view_majorheads_minorhead(id, token) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(set_all_majorhead(responseJson.result));
+                    dispatch(set_all_minorhead(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
 

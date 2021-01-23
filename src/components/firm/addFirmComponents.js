@@ -89,10 +89,14 @@ class AddFirm extends Component {
             set_firm_pf_esi,
             set_firm_iec,
             set_firm_ddo,
+            set_firm_client_id,
             client,
             majorhead,
             minorhead,
-            view_majorheads_minorhead
+            view_majorheads_minorhead,
+            set_firm_majorhead_id,
+            set_firm_minorhead_id,
+            set_firm_recursive
 
         } = this.props;
         return (
@@ -117,6 +121,7 @@ class AddFirm extends Component {
                                 fullWidth
                                 onChange={(event) => {
                                     this.setState({name: event.target.value})
+                                    set_firm_name(event.target.value)
                                 }}
                                 value={this.state.name}
                                 // InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
@@ -131,6 +136,7 @@ class AddFirm extends Component {
                                 fullWidth
                                 onChange={(event) => {
                                     this.setState({client_id: event.target.value})
+                                    set_firm_client_id(event.target.value)
                                 }}
                                 value={this.state.client_id}
                                 InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
@@ -578,8 +584,9 @@ class AddFirm extends Component {
                                 select
                                 fullWidth
                                 onChange={(event) => {
-                                    this.setState({majorhead_id: event.target.value});
-                                    view_majorheads_minorhead(this.state.majorhead_id, this.props.login.token);
+                                    this.setState({majorhead_id:event.target.value})
+                                    set_firm_majorhead_id(event.target.value)
+                                    view_majorheads_minorhead(event.target.value, this.props.login.token);
                                 }}
                                 value={this.state.majorhead_id}
                                 InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
@@ -599,12 +606,13 @@ class AddFirm extends Component {
                                 select
                                 fullWidth
                                 onChange={(event) => {
-                                    this.setState({minorhead_id: event.target.value});
+                                    this.setState({minorhead_id:event.target.value})
+                                    set_firm_minorhead_id(event.target.value)
                                 }}
                                 value={this.state.minorhead_id}
                                 InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
                             >
-                                {minorhead.majorhead_minorhead.map(row1 => (
+                                {minorhead.all_minorhead.map(row1 => (
                                     <MenuItem value={row1._id} key={row1._id}>
                                         {row1.name}
                                     </MenuItem>
@@ -614,6 +622,7 @@ class AddFirm extends Component {
                                 checked={this.state.checkedF}
                                 onChange={(event) => {
                                     this.setState({checkedF: !this.state.checkedF})
+                                    set_firm_recursive(!this.state.checkedF)
                                 }}
                                 // indeterminate
                                 color={"default"}

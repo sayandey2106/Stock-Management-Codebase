@@ -8,7 +8,8 @@ import {
     get_all_firm,
     delete_firm,
     update_firm,
-    search_firm
+    search_firm,
+    filter_firm,
 } from "../../actions/firm/firmActions";
 import {
     get_all_client,
@@ -63,6 +64,9 @@ export const mapDispatchToProps = dispatch => {
         },
         search_firm: (name, token,oid) => {
             dispatch(search_firm(name, token,oid));
+        },
+        filter_firm: (name, token,oid) => {
+            dispatch(filter_firm(name, token,oid));
         },
     };
 };

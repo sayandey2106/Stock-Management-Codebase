@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar, Switch,} from "@material-ui/core";
+import {Avatar, MenuItem,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -44,7 +44,7 @@ const properties = {
     arrows: true
 }
 
-class ExecutiveComponents extends Component {
+class CheckListComponents extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,40 +52,21 @@ class ExecutiveComponents extends Component {
             update: false,
             id: "",
             name: "",
-            profile: "",
-            email: "",
-            password: "",
-            position: "",
-            department: "",
-            employee_id: "",
-            old_profile:""
+            // client_id: "",
+            // firm_id: "",
+            majorhead_id: "",
+            minorhead_id: "",
+            checkList: []
         }
     }
 
     componentDidMount() {
-        this.props.get_all_executive(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_checkList(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_majorhead(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_minorhead(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_client(this.props.login.token, this.props.login.organization_id)
     }
 
-    // ed = (s) => {
-    //     this.setState({
-    //         amenity_desc: s.amenity_desc,
-    //         amenity_name: s.amenity_name,
-    //         amenity_fullday_price: s.amenity_price_info.Hourly_price,
-    //         guest_fullday_price: s.guest_price_info.Hourly_price,
-    //         start_time: moment(s.available_timings[0], ["h:mm A"]).format("YYYY-MM-DD HH:mm:ss"),
-    //         end_time: moment(s.available_timings[1], ["h:mm A"]).format("YYYY-MM-DD HH:mm:ss"),
-    //         amenity_id: s._id,
-    //         isfree: s.is_free,
-    //         no_of_slots: s.no_of_slots,
-    //         imgs: s.amenity_imgs
-    //     })
-    // }
-    // del_single_row = (row) => {
-    //     this.setState({
-    //         confirm_delete: true,
-    //         id: row._id,
-    //     })
-    // }
     handleClose = () => {
         this.setState({delete: false})
         this.setState({update: false})
@@ -95,13 +76,19 @@ class ExecutiveComponents extends Component {
         const {
             snackbar,
             close_snack_bar,
-            executive,
-            delete_executive,
-            update_executive,
-            toggle_active_admin,
-            login
+            checkList,
+            // delete_checkList,
+            update_checkList,
+            login,
+            client,
+            get_all_client,
+            majorhead,
+            get_all_majorhead,
+            minorhead,
+            get_all_minorhead,
+
         } = this.props;
-        console.log(executive.all_executive)
+        console.log(checkList.all_checkList)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -109,13 +96,13 @@ class ExecutiveComponents extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW EXECUTIVE
+                                    VIEW CheckList
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
                             <Grid item lg={12}>
-                                <Link to="add_executive" style={{textDecoration: "none"}}>
+                                <Link to="add_checkList" style={{textDecoration: "none"}}>
                                     <IconButton>
                                         <Icon>add</Icon>
                                     </IconButton>
@@ -127,60 +114,50 @@ class ExecutiveComponents extends Component {
                                     <TableRow>
                                         <TableCell></TableCell>
                                         <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
-                                        <TableCell align="left">E-Mail</TableCell>
-                                        <TableCell align="left">Department</TableCell>
-                                        <TableCell align="left">Position</TableCell>
-                                        <TableCell align="left">Employee-ID</TableCell>
+                                        {/*<TableCell align="left">Client ID</TableCell>*/}
+                                        <TableCell align="left">Majorhead</TableCell>
+                                        <TableCell align="left">Minohead</TableCell>
+                                        <TableCell align="left">Check lists</TableCell>
                                         <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {executive.all_executive.map(row =>
+                                    {checkList.all_checkList.map(row =>
                                         <TableRow>
-                                            <TableCell>
-                                                <Avatar src={row.profile_pic} />
-                                            </TableCell>
+                                            <TableCell></TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
                                             <TableCell align="left">{row.department}</TableCell>
                                             <TableCell align="left">{row.position}</TableCell>
                                             <TableCell align="left">{row.employee_id}</TableCell>
                                             <TableCell align={"right"}>
-                                                <Switch
-                                                    checked={row.active}
-                                                    // onChange={}
-                                                    color="secondary"
-                                                    name="checkedB"
-                                                    inputProps={{ 'aria-label': 'primary checkbox' }}
-                                                    onChange={()=>toggle_active_admin(row._id, this.props.login.token, this.props.login.organization_id)}
-                                                />
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
-                                                        id:row._id,
+                                                        id: row._id,
                                                         name: row.name,
                                                         email: row.email,
                                                         department: row.department,
                                                         position: row.position,
-                                                        employee_id: row.employee_id,
-                                                        old_profile: row.profile_pic
-                                                    })
+                                                        employee_id: row.employee_id
+                                                    });
+                                                    get_all_client(login.token, login.organization_id)
                                                 }}>
                                                     <Icon>edit</Icon>
                                                 </IconButton>
-                                                <IconButton onClick={() => {
+                                                {/*<IconButton onClick={() => {
                                                     this.setState({delete: true, id: row._id})
                                                 }}>
                                                     <Icon>delete</Icon>
-                                                </IconButton>
+                                                </IconButton>*/}
                                             </TableCell>
                                         </TableRow>
                                     )}
                                 </TableBody>
-                                <Dialog open={this.state.delete}
+                                {/*<Dialog open={this.state.delete}
                                         onClose={this.handleClose}
                                         aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Delete Executive</DialogTitle>
+                                    <DialogTitle id="form-dialog-title">Delete CheckList</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             Are you sure?
@@ -198,14 +175,14 @@ class ExecutiveComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                delete_executive(this.state.id, login.token, login.organization_id)
+                                                delete_checkList(this.state.id, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
                                             Yes
                                         </Button>
                                     </DialogActions>
-                                </Dialog>
+                                </Dialog>*/}
                                 <Dialog open={this.state.update} onClose={() => {
                                     this.handleClose()
                                 }} aria-labelledby="form-dialog-title">
@@ -229,76 +206,86 @@ class ExecutiveComponents extends Component {
                                         />
                                         <TextField
                                             // autoFocus
-                                            // margin="dense"
-                                            // id="name"
-                                            label="Profile Pic"
-                                            type="file"
-                                            // fullWidth
-                                            onChange={(event) => {
-                                                this.setState({profile: event.target.files[0]})
-                                            }}
-                                            // value={this.state.profile}
-                                        />
-                                        <TextField
-                                            // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Email Address"
-                                            type="email"
-                                            fullWidth
-                                            onChange={(event) => {
-                                                this.setState({email: event.target.value})
-                                            }}
-                                            value={this.state.email}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            margin="dense"
-                                            // id="name"
-                                            label="Password"
-                                            type="password"
-                                            fullWidth
-                                            onChange={(event) => {
-                                                this.setState({password: event.target.value})
-                                            }}
-                                            value={this.state.password}
-                                        />
-                                        <TextField
-                                            // autoFocus
-                                            margin="dense"
-                                            // id="name"
-                                            label="Position"
+                                            select
+                                            label="Client ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({position: event.target.value})
+                                                this.setState({client_id: event.target.value})
                                             }}
-                                            value={this.state.position}
-                                        />
+                                            value={this.state.client_id}
+                                            InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        >
+                                            {client.all_client.map(row1 => (
+                                                <MenuItem value={row1._id} key={row1.client_id}>
+                                                    {row1.name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+                                        {/*<TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            select
+                                            label="Firm ID"
+                                            type="text"
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({firm_id: event.target.value})
+                                            }}
+                                            value={this.state.firm_id}
+                                            InputLabelProps={{classes:{root:this.props.classes.textfieldLabel}}}
+                                        >
+                                            {firm.all_firm.map(row1=>(
+                                                <MenuItem value={row1.firm_id} key={row1.firm_id}>
+                                                    {row1.firm_name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>*/}
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Department"
+                                            select
+                                            label="Majorhead ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({department: event.target.value})
+                                                this.setState({majorhead_id: event.target.value})
                                             }}
-                                            value={this.state.department}
-                                        />
+                                            value={this.state.majorhead_id}
+                                            InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        >
+                                            {majorhead.all_majorhead.map(row1 => (
+                                                <MenuItem value={row1._id} key={row1.majorhead_id}>
+                                                    {row1.majorhead_name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+
                                         <TextField
                                             // autoFocus
                                             margin="dense"
                                             // id="name"
-                                            label="Employee ID"
+                                            select
+                                            label="Minorhead ID"
                                             type="text"
                                             fullWidth
                                             onChange={(event) => {
-                                                this.setState({employee_id: event.target.value})
+                                                this.setState({minorhead_id: event.target.value})
                                             }}
-                                            value={this.state.employee_id}
-                                        />
+                                            value={this.state.minorhead_id}
+                                            InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        >
+                                            {minorhead.all_minorhead.map(row1 => (
+                                                <MenuItem value={row1._id} key={row1.minorhead_id}>
+                                                    {row1.minorhead_name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+
                                     </DialogContent>
                                     <DialogActions>
                                         <Button onClick={() => this.handleClose()} color="primary">
@@ -307,7 +294,7 @@ class ExecutiveComponents extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                update_executive(this.state.id, this.state.name, this.state.profile, this.state.old_profile, this.state.email, this.state.password, this.state.position, this.state.department, this.state.employee_id, login.token, login.organization_id)
+                                                update_checkList(this.state.id, this.state.client_id, this.state.firm_id, this.state.majorhead_id, this.state.minorhead_id, this.state.name, login.token, login.organization_id)
                                             }}
                                             color="primary"
                                         >
@@ -330,4 +317,4 @@ class ExecutiveComponents extends Component {
     }
 }
 
-export default withStyles(styles)(ExecutiveComponents);
+export default withStyles(styles)(CheckListComponents);

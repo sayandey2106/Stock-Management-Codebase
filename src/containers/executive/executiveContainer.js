@@ -9,6 +9,9 @@ import {
     delete_executive,
     update_executive
 } from "../../actions/executive/executiveActions";
+import {
+    toggle_active_admin
+} from "../../actions/admin/adminActions"
 export class ExecutiveContainer extends Component {
     render() {
         return (
@@ -39,7 +42,9 @@ export const mapDispatchToProps = dispatch => {
         update_executive: (id, name, profile, old_profile,  email, password, position, department, employee_id, token, oid) => {
             dispatch(update_executive(id, name, profile, old_profile, email, password, position, department, employee_id, token, oid));
         },
-
+        toggle_active_admin: (id, token, oid) => {
+            dispatch(toggle_active_admin(id, token, oid));
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ExecutiveContainer);

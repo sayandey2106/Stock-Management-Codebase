@@ -7,7 +7,8 @@ import {
 import {
     get_all_admin,
     delete_admin,
-    update_admin
+    update_admin,
+    toggle_active_admin
 } from "../../actions/admin/adminActions";
 export class AdminCont extends Component {
     render() {
@@ -39,7 +40,9 @@ export const mapDispatchToProps = dispatch => {
         update_admin: (id, name, profile, old, email, password, position, department, employee_id, token, oid) => {
             dispatch(update_admin(id, name, profile, old, email, password, position, department, employee_id, token, oid));
         },
-
+        toggle_active_admin: (id, token,oid) => {
+            dispatch(toggle_active_admin(id, token,oid));
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AdminCont);

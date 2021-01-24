@@ -8,7 +8,7 @@ import {
     SET_CLIENT_ADDRESS,
     SET_CLIENT_PAN_NUM,
     SET_CLIENT_AADHAR_NUM,
-    SET_CLIENT_CLIENT_SOURCE
+    SET_CLIENT_CLIENT_SOURCE, SET_CLIENT_COLOR
 } from "../../constants/client/clientConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
@@ -16,6 +16,7 @@ import { setLoader, unsetLoader }
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import firebase from "firebase";
 import {update_admin_api} from "../admin/adminActions";
+import {onLogout} from "../loginActions";
 
 
 export function get_all_client(token, oid) {
@@ -44,7 +45,11 @@ export function get_all_client(token, oid) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                     // dispatch(set_all_client([]));
                 }
                 dispatch(unsetLoader())
@@ -81,7 +86,11 @@ export function delete_client(id,token,oid) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -125,7 +134,11 @@ export function update_client_api(id, name, email, profile, contact_num, address
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -172,7 +185,100 @@ export function add_client_api(client, token, oid, URL) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+export function sort_client(type, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        console.log("Inside client sort action")
+        console.log(type)
+        return fetch(UNIVERSAL.BASEURL + "sort_client", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token:token,
+                organization_id:oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                type:type,
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    // dispatch(get_all_client(token, oid))
+
+                    dispatch(reset_client())
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+export function change_status(id, color, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        console.log("Inside client sort action")
+        // console.log(type)
+        return fetch(UNIVERSAL.BASEURL + "change_status", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token:token,
+                organization_id:oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                client_id:id,
+                client_color:color
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(get_all_client(token, oid))
+
+                    dispatch(reset_client())
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -228,6 +334,13 @@ export function set_client_address(payload){
 export function set_client_pan_num(payload){
     return{
         type:SET_CLIENT_PAN_NUM,
+        payload:payload
+    }
+}
+
+export function set_client_color(payload){
+    return{
+        type:SET_CLIENT_COLOR,
         payload:payload
     }
 }
@@ -293,3 +406,46 @@ export function update_client(id, name, email, profile, old_profile, contact_num
     }
 }
 
+export function search_client(name, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        // console.log("Inside client search action")
+        // console.log(name)
+        return fetch(UNIVERSAL.BASEURL + "search_client", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token:token,
+                organization_id:oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                client_name:name,
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    // dispatch(get_all_client(token, oid))
+
+                    dispatch(reset_client())
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}

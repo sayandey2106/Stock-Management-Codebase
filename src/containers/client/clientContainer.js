@@ -7,7 +7,9 @@ import {
 import {
     get_all_client,
     delete_client,
-    update_client
+    update_client,
+    search_client,
+    sort_client, change_status
 } from "../../actions/client/clientActions";
 export class ClientContainer extends Component {
     render() {
@@ -39,7 +41,15 @@ export const mapDispatchToProps = dispatch => {
         update_client: (id, name, profile, old, email, contact, address, pan, aadhar, source,  token, oid) => {
             dispatch(update_client(id, name, profile, old, email, contact, address, pan, aadhar, source, token, oid));
         },
-
+        search_client: (name, token,oid) => {
+            dispatch(search_client(name, token,oid));
+        },
+        sort_client: (name, token,oid) => {
+            dispatch(sort_client(name, token,oid));
+        },
+        change_status: (id, name, token,oid) => {
+            dispatch(change_status(id, name, token,oid));
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ClientContainer);

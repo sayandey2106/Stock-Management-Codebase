@@ -10,7 +10,8 @@ import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import firebase from "firebase";
-import {update_admin_api} from "../admin/adminActions";
+import {onLogout} from "../loginActions";
+import {get_all_admin} from "../admin/adminActions";
 
 
 export function get_all_manager(token, oid) {
@@ -38,7 +39,11 @@ export function get_all_manager(token, oid) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                     // dispatch(set_all_manager([]));
                 }
                 dispatch(unsetLoader())
@@ -75,7 +80,11 @@ export function delete_manager(id,token,oid) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -118,7 +127,11 @@ export function update_manager_api(id, name, profile, email, password, position,
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -148,7 +161,10 @@ export function add_manager_api(manager, token, oid, URL) {
                 password:manager.password,
                 manager_position:manager.position,
                 manager_department:manager.department,
-                manager_employee_id:manager.employee_id
+                manager_employee_id:manager.employee_id,
+                manager_type: 'M',
+                manager_active: true
+
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -162,7 +178,11 @@ export function add_manager_api(manager, token, oid, URL) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -274,5 +294,45 @@ export function update_manager(id, name, profile, old_profile, email, password, 
             dispatch(update_manager_api(id, name, profile, email, password, position, department, employee_id, token, oid, old_profile))
         }
     }
+}
+
+export function toggle_active_manager(id, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "toggle_active", {
+            method: "DELETE",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token: token,
+                organization_id: oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                manager_id: id
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(get_all_manager(token, oid))
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
 }
 

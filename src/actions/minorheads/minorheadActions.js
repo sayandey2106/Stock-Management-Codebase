@@ -1,10 +1,12 @@
 import {
-    SET_ALL_MINORHEAD
+    SET_ALL_MINORHEAD, SET_FIRM_MINORHEAD
 } from "../../constants/minorheads/minorheadConstants";
 import UNIVERSAL from "../../config/config";
 import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
+import {onLogout} from "../loginActions";
+// import {set_all_majorhead} from "../majorhead/majorheadActions";
 
 
 export function get_all_minorhead(token) {
@@ -107,7 +109,11 @@ export function update_minorhead(id, name, mid, token) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -144,7 +150,52 @@ export function add_minorhead(name, mid, token) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+export function view_majorheads_minorhead(id, token) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "view_majorheads_minorheads", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token:token,
+                // organization_id:oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                majorhead_id:id,
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(set_all_minorhead(responseJson.result));
+
+                    // dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                    // dispatch(set_all_majorhead([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -155,9 +206,17 @@ export function add_minorhead(name, mid, token) {
 }
 
 export function set_all_minorhead(payload){
-    console.log(payload)
+    // console.log(payload)
     return{
         type:SET_ALL_MINORHEAD,
+        payload:payload
+    }
+}
+
+export function set_firm_minorhead(payload){
+    // console.log(payload)
+    return{
+        type:SET_FIRM_MINORHEAD,
         payload:payload
     }
 }

@@ -8,7 +8,7 @@ import {
     SET_CLIENT_ADDRESS,
     SET_CLIENT_PAN_NUM,
     SET_CLIENT_AADHAR_NUM,
-    SET_CLIENT_CLIENT_SOURCE
+    SET_CLIENT_CLIENT_SOURCE, SET_CLIENT_COLOR
 } from "../../constants/client/clientConstants";
 const initial_state = {
     all_client:[],
@@ -19,7 +19,8 @@ const initial_state = {
     address:"",
     pan_num:"",
     aadhar_num: "",
-    client_source: ""
+    client_source: "",
+    client_color:""
 };
 export default function reducer(state = initial_state, action) {
     console.log(action)
@@ -41,6 +42,8 @@ export default function reducer(state = initial_state, action) {
         case SET_CLIENT_AADHAR_NUM:
             return state = { ...state, aadhar_num: action.payload };
         case SET_CLIENT_CLIENT_SOURCE:
+            return state = { ...state, client_source: action.payload };
+        case SET_CLIENT_COLOR:
             return state = { ...state, client_source: action.payload };
         case RESET_CLIENT:
             return state = { ...state, name:"", profile: "", email: "", contact_num: "", address: "", pan_num: "", aadhar_num: "", client_source: ""};

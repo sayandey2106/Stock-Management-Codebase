@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar,} from "@material-ui/core";
+import {Avatar, Badge, colors, MenuItem,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -30,6 +30,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import SearchBar from "material-ui-search-bar";
 
 
 const card = {
@@ -45,12 +46,67 @@ const properties = {
     arrows: true
 }
 
+const StyledBadgeRed = withStyles(theme => ({
+    badge: {
+        backgroundColor: "red",
+        color: "red",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
+
+const StyledBadgeBlue = withStyles(theme => ({
+    badge: {
+        backgroundColor: "blue",
+        color: "blue",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
+
+const StyledBadgeGreen = withStyles(theme => ({
+    badge: {
+        backgroundColor: "green",
+        color: "green",
+        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+        "&::after": {
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            borderRadius: "50%",
+            border: "1px solid currentColor",
+            content: '""'
+        }
+    }
+}))(Badge);
+
 class ClientComponents extends Component {
     constructor(props) {
         super(props);
         this.state = {
             delete: false,
             update: false,
+            color_dialog: false,
             id: "",
             name: "",
             profile: "",
@@ -59,38 +115,38 @@ class ClientComponents extends Component {
             address: "",
             pan_num: "",
             aadhar_num: "",
-            client_source:"",
-            old_profile: ""
+            client_source: "",
+            old_profile: "",
+            color: '',
+            value: '',
+            sort_dialog: false,
+            sort_type: ''
         }
     }
 
     componentDidMount() {
         this.props.get_all_client(this.props.login.token, this.props.login.organization_id)
+        // this.props.search_client('',this.props.login.token, this.props.login.organization_id)
     }
 
-    // ed = (s) => {
-    //     this.setState({
-    //         amenity_desc: s.amenity_desc,
-    //         amenity_name: s.amenity_name,
-    //         amenity_fullday_price: s.amenity_price_info.Hourly_price,
-    //         guest_fullday_price: s.guest_price_info.Hourly_price,
-    //         start_time: moment(s.available_timings[0], ["h:mm A"]).format("YYYY-MM-DD HH:mm:ss"),
-    //         end_time: moment(s.available_timings[1], ["h:mm A"]).format("YYYY-MM-DD HH:mm:ss"),
-    //         amenity_id: s._id,
-    //         isfree: s.is_free,
-    //         no_of_slots: s.no_of_slots,
-    //         imgs: s.amenity_imgs
-    //     })
-    // }
-    // del_single_row = (row) => {
-    //     this.setState({
-    //         confirm_delete: true,
-    //         id: row._id,
-    //     })
-    // }
     handleClose = () => {
         this.setState({delete: false})
         this.setState({update: false})
+        this.setState({color_dialog: false})
+        this.setState({id: ""})
+        this.setState({name: ""})
+        this.setState({profile: ""})
+        this.setState({email: ""})
+        this.setState({contact_num: ""})
+        this.setState({address: ""})
+        this.setState({pan_num: ""})
+        this.setState({aadhar_num: ""})
+        this.setState({client_source: ""})
+        this.setState({old_profile: ""})
+        this.setState({color: ''})
+        this.setState({value: ''})
+        this.setState({sort_dialog: false})
+        this.setState({sort_type: ''})
     }
 
     render() {
@@ -100,9 +156,14 @@ class ClientComponents extends Component {
             client,
             delete_client,
             update_client,
+            search_client,
+            sort_client,
+            change_status,
+            get_all_client,
             login
         } = this.props;
-        console.log(client.all_client)
+        // console.log(client.all_client)
+        // console.log(client.search_client)
         return (
             <Grid container justify="center">
                 <Grid item xs={12}>
@@ -110,18 +171,46 @@ class ClientComponents extends Component {
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="rose">
                                 <h3>
-                                    VIEW client
+                                    VIEW CLIENTS
                                 </h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
-                            <Grid item lg={12}>
-                                <Link to="add_client" style={{textDecoration: "none"}}>
-                                    <IconButton>
-                                        <Icon>add</Icon>
+                            <Grid container>
+                                <Grid item lg={1}>
+                                    <Link to="add_client" style={{textDecoration: "none"}}>
+                                        <IconButton>
+                                            <Icon>add</Icon>
+                                        </IconButton>
+                                    </Link>
+                                    <IconButton
+                                        style={{float: "right"}}
+                                        onClick={()=>{this.setState({sort_dialog: true})}}
+                                    >
+                                        <Icon>sort</Icon>
                                     </IconButton>
-                                </Link>
-
+                                </Grid>
+                                <Grid item lg={4}>
+                                    <SearchBar
+                                        value={this.state.value}
+                                        onChange={(newValue) => this.setState({value: newValue})}
+                                        onRequestSearch={() => {
+                                            this.state.value !== '' ?
+                                                search_client(this.state.value, this.props.login.token, this.props.login.organization_id)
+                                                :
+                                                get_all_client(this.props.login.token, this.props.login.organization_id);
+                                            this.handleClose()
+                                        }}
+                                    />
+                                </Grid>
+                                <Grid item lg={7}>
+                                    <IconButton style={{float: "right"}}>
+                                        <Icon>archive</Icon>
+                                    </IconButton>
+                                    <IconButton style={{float: "right"}}>
+                                        <Icon>unarchive</Icon>
+                                    </IconButton>
+                                </Grid>
                             </Grid>
                             <Table>
                                 <TableHead>
@@ -141,7 +230,41 @@ class ClientComponents extends Component {
                                     {client.all_client.map(row =>
                                         <TableRow>
                                             <TableCell>
-                                                <Avatar src={row.profile_pic} />
+                                                <Button onClick={() => {
+                                                    this.setState({color_dialog: true})
+                                                    this.setState({id:row._id})
+                                                }}>
+                                                    {row.flag === 'R' ? <StyledBadgeRed
+                                                        overlap="circle"
+                                                        anchorOrigin={{
+                                                            vertical: "bottom",
+                                                            horizontal: "right"
+                                                        }}
+                                                        // style = {{color:"blue"}}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src={row.profile_pic}/>
+                                                    </StyledBadgeRed> : row.flag === 'B' ? <StyledBadgeBlue
+                                                        overlap="circle"
+                                                        anchorOrigin={{
+                                                            vertical: "bottom",
+                                                            horizontal: "right"
+                                                        }}
+                                                        // style = {{color:"blue"}}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src={row.profile_pic}/>
+                                                    </StyledBadgeBlue> : <StyledBadgeGreen
+                                                        overlap="circle"
+                                                        anchorOrigin={{
+                                                            vertical: "bottom",
+                                                            horizontal: "right"
+                                                        }}
+                                                        // style = {{color:"blue"}}
+                                                        variant="dot"
+                                                    >
+                                                        <Avatar src={row.profile_pic}/>
+                                                    </StyledBadgeGreen>}</Button>
                                             </TableCell>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.email}</TableCell>
@@ -151,18 +274,24 @@ class ClientComponents extends Component {
                                             <TableCell align="left">{row.aadhar_number}</TableCell>
                                             <TableCell align="left">{row.source}</TableCell>
                                             <TableCell align={"right"}>
+                                                <IconButton>
+                                                    <Icon>account_circle</Icon>
+                                                </IconButton>
+                                                <IconButton>
+                                                    <Icon>supervised_user_circle</Icon>
+                                                </IconButton>
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
-                                                        id:row._id,
+                                                        id: row._id,
                                                         name: row.name,
                                                         email: row.email,
                                                         contact_num: row.contact_num,
                                                         address: row.address,
                                                         pan_num: row.pan_number,
-                                                        aadhar_num:row.aadhar_number,
-                                                        client_source:row.source,
-                                                        old_profile: row.profile_pic
+                                                        aadhar_num: row.aadhar_number,
+                                                        client_source: row.source,
+                                                        old_profile: row.profile_pic,
                                                     })
                                                 }}>
                                                     <Icon>edit</Icon>
@@ -205,10 +334,62 @@ class ClientComponents extends Component {
                                         </Button>
                                     </DialogActions>
                                 </Dialog>
+
+                                <Dialog open={this.state.sort_dialog}
+                                        onClose={()=>{this.handleClose()}}
+                                        aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Sort client:</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            <TextField
+                                                // autoFocus
+                                                margin="dense"
+                                                // id="name"
+                                                label="According to:"
+                                                // type="dropdown"
+                                                select
+                                                fullWidth
+                                                onChange={(event) => {
+                                                    this.setState({sort_type: event.target.value})
+                                                }}
+                                                value={this.state.sort_type}
+                                                InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                                InputProps={{classes:{input:this.props.classes.dropdown}}}
+                                            >
+                                                <MenuItem value='A' key='A'>
+                                                    Alphabet
+                                                </MenuItem>
+                                                <MenuItem value='L' key='L'>
+                                                    Last Inserted
+                                                </MenuItem>
+                                            </TextField>
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose()
+                                            }}
+                                            color="primary"
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose();
+                                                sort_client(this.state.sort_type, login.token, login.organization_id)
+                                            }}
+                                            color="primary"
+                                        >
+                                            Submit
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+
                                 <Dialog open={this.state.update} onClose={() => {
                                     this.handleClose()
                                 }} aria-labelledby="form-dialog-title">
-                                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                                    <DialogTitle id="form-dialog-title">Edit</DialogTitle>
                                     <DialogContent>
                                         <DialogContentText>
                                             Enter the required fields, those needs to be updated.
@@ -319,6 +500,55 @@ class ClientComponents extends Component {
                                             onClick={() => {
                                                 this.handleClose();
                                                 update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+                                            }}
+                                            color="primary"
+                                        >
+                                            Update
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                                <Dialog open={this.state.color_dialog} onClose={() => {
+                                    this.handleClose()
+                                }} aria-labelledby="form-dialog-title">
+                                    <DialogTitle id="form-dialog-title">Color Code</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                            This client should be :
+                                        </DialogContentText>
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Color Code"
+                                            // type="text"
+                                            select
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({color: event.target.value})
+                                            }}
+                                            value={this.state.color}
+                                        >
+                                            <MenuItem value={'G'}>
+                                                Marked as Green
+                                            </MenuItem>
+                                            <MenuItem value={'B'}>
+                                                Marked as Blue
+                                            </MenuItem>
+                                            <MenuItem value={'R'}>
+                                                Marked as Red
+                                            </MenuItem>
+                                        </TextField>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={() => this.handleClose()} color="primary">
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            onClick={() => {
+                                                change_status(this.state.id, this.state.color, this.props.login.token, this.props.login.organization_id);
+                                                this.handleClose();
+                                                // update_client(this.state.id, this.state.name, this.state.email, this.state.profile, this.state.old_profile, this.state.contact_num, this.state.address, this.state.pan_num, this.state.aadhar_num, this.state.client_source, login.token, login.organization_id)
+
                                             }}
                                             color="primary"
                                         >

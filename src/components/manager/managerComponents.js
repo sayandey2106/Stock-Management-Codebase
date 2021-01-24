@@ -14,7 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import {Link} from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import {Avatar,} from "@material-ui/core";
+import {Avatar, Switch,} from "@material-ui/core";
 import moment from "moment";
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -98,6 +98,7 @@ class ManagerComponents extends Component {
             manager,
             delete_manager,
             update_manager,
+            toggle_active_admin,
             login
         } = this.props;
         console.log(manager.all_manager)
@@ -145,6 +146,14 @@ class ManagerComponents extends Component {
                                             <TableCell align="left">{row.position}</TableCell>
                                             <TableCell align="left">{row.employee_id}</TableCell>
                                             <TableCell align={"right"}>
+                                                <Switch
+                                                    checked={row.active}
+                                                    // onChange={}
+                                                    color="secondary"
+                                                    name="checkedB"
+                                                    inputProps={{ 'aria-label': 'primary checkbox' }}
+                                                    onChange={()=>toggle_active_admin(row._id, this.props.login.token, this.props.login.organization_id)}
+                                                />
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,

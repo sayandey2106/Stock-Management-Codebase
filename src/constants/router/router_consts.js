@@ -4,11 +4,11 @@ export const all_admin_option = [
     {id: 2, name: "Manager", icon: "supervisor_account", link: "/view_manager"},
     {id: 3, name: "Executive", icon: "supervised_user_circle", link: "/view_executive"},
     {id: 4, name: "Client", icon: "branding_watermark", link: "/view_client"},
+    {id: 8, name: "Organization", icon: "business", link: "/view_firm"},
     {id: 5, name: "MajorHead", icon: "work", link: "/view_majorhead"},
     {id: 6, name: "MinorHead", icon: "work_outline", link: "/view_minorhead"},
     {id: 7, name: "Jobcard", icon: "speaker_notes", link: "/view_jobcard"},
-
-
+    {id: 8, name: "CheckList", icon: "speaker_notes", link: "/view_checkList"},
 ];
 export const all_manager_options = [
     {id: 0, name: "Home", icon: "home", link: "/"},

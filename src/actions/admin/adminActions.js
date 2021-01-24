@@ -10,6 +10,7 @@ import {setLoader, unsetLoader}
     from "../loader/loaderAction";
 import {set_snack_bar} from "../snackbar/snackbar_action";
 import firebase from 'firebase';
+import {onLogout} from '../loginActions'
 
 
 export function get_all_admin(token, oid) {
@@ -37,7 +38,11 @@ export function get_all_admin(token, oid) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message ==="User Does Not Exist"){
+                        dispatch(onLogout())
+                    }else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                     // dispatch(set_all_admin([]));
                 }
                 dispatch(unsetLoader())
@@ -74,7 +79,11 @@ export function delete_admin(id, token, oid) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -105,7 +114,8 @@ export function update_admin_api(id, name, profile, email, password, position, d
                 password: password,
                 admin_position: position,
                 admin_department: department,
-                admin_employee_id: employee_id
+                admin_employee_id: employee_id,
+
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -117,7 +127,11 @@ export function update_admin_api(id, name, profile, email, password, position, d
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -147,7 +161,10 @@ export function add_admin_api(admin, token, oid, URL) {
                 password: admin.password,
                 admin_position: admin.position,
                 admin_department: admin.department,
-                admin_employee_id: admin.employee_id
+                admin_employee_id: admin.employee_id,
+                admin_type: 'A',
+                admin_active: true
+
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -161,7 +178,11 @@ export function add_admin_api(admin, token, oid, URL) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -274,4 +295,45 @@ export function update_admin(id, name, profile, old_profile, email, password, po
         }
     }
 }
+
+export function toggle_active_admin(id, token, oid) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "toggle_active", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                user_token: token,
+                organization_id: oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                id: id
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(get_all_admin(token, oid))
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 

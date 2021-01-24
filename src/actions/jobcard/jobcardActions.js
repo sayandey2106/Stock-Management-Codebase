@@ -8,12 +8,13 @@ import { setLoader, unsetLoader }
     from "../loader/loaderAction";
 import { set_snack_bar } from "../snackbar/snackbar_action";
 import {RESET_EXECUTIVE} from "../../constants/executive/executiveConstants";
+import {onLogout} from "../loginActions";
 
 
 export function get_all_jobcard(token, oid) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_jobcard", {
+        return fetch(UNIVERSAL.BASEURL + "view_all_jobcards", {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -35,7 +36,11 @@ export function get_all_jobcard(token, oid) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                     // dispatch(set_all_jobcard([]));
                 }
                 dispatch(unsetLoader())
@@ -115,7 +120,11 @@ export function update_jobcard(id, client_id, firm_id, majorhead_id, minorhead_i
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -158,7 +167,11 @@ export function add_jobcard(jobcard, token, oid) {
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
                 }
                 dispatch(unsetLoader())
             })
@@ -214,5 +227,6 @@ export function set_jobcard_minorhead_id(payload){
 export function reset_jobcard(){
     return{
         type:RESET_JOBCARD
+
     }
 }

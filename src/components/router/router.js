@@ -7,21 +7,7 @@ import Controller_con from "../../containers/router/controller_cont";
 import Login from "../../containers/loginCont";
 import Drawer_option_con from "../../containers/router/drawer_cont"
 // Admin Imports
-import AdminCont from "../../containers/admin/adminCont"
-import AddAdminCont from "../../containers/admin/addAdminCont";
-import ManagerContainer from "../../containers/manager/managerContainer";
-import AddManagerContainer from "../../containers/manager/addManagerContainer";
-import AddExecutiveContainer from "../../containers/executive/addExecutiveContainer";
-import ExecutiveContainer from "../../containers/executive/executiveContainer";
-import MajorheadContainer from "../../containers/majorhead/majorheadContainer";
-import MinorheadContainer from "../../containers/minorheads/minorheadContainer";
-import ClientContainer from "../../containers/client/clientContainer";
-import AddClientContainer from "../../containers/client/addClientContainer";
-import JobcardContainer from "../../containers/jobcard/jobcardContainer";
-import AddJobCardContainer from "../../containers/jobcard/addJobCardContainer";
-import AddFirmCont from "../../containers/firm/addFirmContainer";
-import FirmContainer from "../../containers/firm/firmContainer";
-import CheckListContainer from "../../containers/checkList/checkListContainer";
+
 
 class Routes extends Component {
 
@@ -64,21 +50,6 @@ class Routes extends Component {
                         {/* <Route exact path="/login" component={Login} /> */}
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
-                        <Route exact path="/add_admin" component={AddAdminCont}/>
-                        <Route exact path="/view_admin" component={AdminCont}/>
-                        <Route exact path="/view_manager" component={ManagerContainer}/>
-                        <Route exact path="/add_manager" component={AddManagerContainer}/>
-                        <Route exact path="/add_executive" component={AddExecutiveContainer}/>
-                        <Route exact path="/view_executive" component={ExecutiveContainer}/>
-                        <Route exact path="/add_client" component={AddClientContainer}/>
-                        <Route exact path="/view_client" component={ClientContainer}/>
-                        <Route exact path="/view_majorhead" component={MajorheadContainer}/>
-                        <Route exact path="/view_minorhead" component={MinorheadContainer}/>
-                        <Route exact path="/view_jobcard" component={JobcardContainer}/>
-                        <Route exact path="/add_jobcard" component={AddJobCardContainer}/>
-                        <Route exact path="/view_firm" component={FirmContainer}/>
-                        <Route exact path="/add_firm" component={AddFirmCont}/>
-                        <Route exact path="/view_checkList" component={CheckListContainer}/>
                         {/* STUDENT ROUTES */}
 
                     </main>

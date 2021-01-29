@@ -70,12 +70,12 @@ export function set_home() {
     }
 }
 export function setLogin(payload) {
-    localStorage.setItem('taxopliance_type', payload.type);
-    localStorage.setItem('taxopliance_token', payload.user_token);
-    localStorage.setItem('taxopliance_name', payload.name);
-    localStorage.setItem('taxopliance_profile_pic', payload.profile_pic);
-    localStorage.setItem('taxopliance_user_id', payload._id);
-    localStorage.setItem('taxopliance_organization_id', payload.organization_id);
+    localStorage.setItem('qubi7_type', payload.type);
+    // localStorage.setItem('qubi7_token', payload.user_token);
+    localStorage.setItem('qubi7_name', payload.name);
+    localStorage.setItem('qubi7_profile_pic', payload.profile_pic);
+    localStorage.setItem('qubi7_user_id', payload._id);
+    // localStorage.setItem('taxopliance_organization_id', payload.organization_id);
     return {
         type: LOGIN,
         payload: payload,

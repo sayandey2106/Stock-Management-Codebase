@@ -27,8 +27,8 @@ import LG_Cont from "../../containers/router/Lg_Cont";
 import {
   all_admin_option,
   // all_super_admin_option,
-  all_executive_option,
-  all_manager_options,
+  all_corporate_options,
+  // all_manager_options,
 
 } from "../../constants/router/router_consts";
 
@@ -153,21 +153,21 @@ function MiniDrawer(props) {
         }
       </div>;
 
-    if (type === "M") {
-      return (
-        <div style={{ marginTop: 10 }}>
-          {side_top}
-          {all_manager_options.map((option) => (
-            <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "black" }}>
-              <ListItem button key={option.name}>
-                <ListItemIcon><Icon>{option.icon}</Icon></ListItemIcon>
-                <ListItemText primary={option.name} />
-              </ListItem>
-            </Link>
-          ))}
-        </div>
-      );
-    } else if (type === "A") {
+    // if (type === "M") {
+    //   return (
+    //     <div style={{ marginTop: 10 }}>
+    //       {side_top}
+    //       {all_manager_options.map((option) => (
+    //         <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "black" }}>
+    //           <ListItem button key={option.name}>
+    //             <ListItemIcon><Icon>{option.icon}</Icon></ListItemIcon>
+    //             <ListItemText primary={option.name} />
+    //           </ListItem>
+    //         </Link>
+    //       ))}
+    //     </div>
+    //   );
+    if (type === "A") {
       return (
         <div style={{ marginTop: 10 }}>
           {side_top}
@@ -197,11 +197,11 @@ function MiniDrawer(props) {
     //     </div>
     //   );
     // } 
-    else if (type === "E") {
+    else if (type === "CA") {
       return (
         <div style={{ marginTop: 10 }}>
           {side_top}
-          {all_executive_option.map((option) => (
+          {all_corporate_options.map((option) => (
             <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "black" }}>
               <ListItem button key={option.name}>
                 <ListItemIcon><Icon>{option.icon}</Icon></ListItemIcon>

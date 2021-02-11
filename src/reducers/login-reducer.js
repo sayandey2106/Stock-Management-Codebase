@@ -20,7 +20,7 @@ const initial_state = {
   // password: "",
   // confirmpassword: "",
   // newpassword: "",
-  type: "",
+  type: "CA",
   // isRegistered: false,
   // response_received: false,
   // isPasswordchange: false,
@@ -45,7 +45,7 @@ export default function reducer(state = initial_state, action) {
       return state = {
         ...state,
         isHome: false,
-        type: action.payload.type,
+        // type: action.payload.type,
         token: action.payload.user_token,
         name: action.payload.name,
         profile_img: action.payload.profile_pic,

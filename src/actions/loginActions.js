@@ -6,7 +6,7 @@ import {
     SET_EMAIL,
     SET_PASSWORD,
     CLEAR_LOGIN,
-    
+
 } from "../constants/ActionTypes";
 import UNIVERSAL from "../config/config.js";
 import { setLoader, unsetLoader }
@@ -29,7 +29,7 @@ export function setPwd(payload) {
 export function login_email(login) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "login", {
+        return fetch(UNIVERSAL.BASEURL + "login_email", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -143,7 +143,7 @@ export function onLogout() {
 //     return {
 //         type: OPEN_LOGIN_MODAL
 //     }
-// } 
+// }
 
 // export const closeLoginModal = () => ({
 //     type: CLOSE_LOGIN_MODAL

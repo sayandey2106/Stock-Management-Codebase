@@ -16,6 +16,7 @@ import Icon from "@material-ui/core/Icon";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
+import logo from '../../img/logo.png'
 import MenuItem from '@material-ui/core/MenuItem';
 // import View_user_profile_cont from "../../containers/user/user_view_profile_cont";
 // import NotificationsCont from "../../containers/notifications/notificationCont";
@@ -181,7 +182,7 @@ function MiniDrawer(props) {
           ))}
         </div>
       );
-    } 
+    }
     // else if (type === "SA") {
     //   return (
     //     <div style={{ marginTop: 10 }}>
@@ -196,7 +197,7 @@ function MiniDrawer(props) {
     //       ))}
     //     </div>
     //   );
-    // } 
+    // }
     else if (type === "CA") {
       return (
         <div style={{ marginTop: 10 }}>
@@ -238,7 +239,7 @@ function MiniDrawer(props) {
             </IconButton>
           }
           <Link to="/login">
-            <img src={"https://firebasestorage.googleapis.com/v0/b/taxopliance-5dd90.appspot.com/o/logo%2FSonic%20Broadband-01%20(1).png?alt=media&token=07f899cf-3f82-4aae-868d-9202edbfb9f9"} alt="no_img" height="45" />
+            <img src={logo} alt="no_img" height="45" />
           </Link>
           <span style={{ color: "#b30047", marginLeft: 4 }}>alpha</span>
           <div className={classes.grow} />

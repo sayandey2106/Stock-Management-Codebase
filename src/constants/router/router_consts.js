@@ -2,10 +2,11 @@ export const all_admin_option = [
     {id: 0, name: "Dashboard", icon: "home", link: "/"},
 ];
 export const all_corporate_options = [
-    {id: 0, name: "Home", icon: "home", link: "/"},
+    // {id: 0, name: "Home", icon: "home", link: "/"},
     {id: 3, name: "DashBoard", icon: "home", link: "/dashboard"},
     {id: 1, name: "Category", icon: "category", link: "/category"},
     {id: 2, name: "Request", icon: "request_page", link: "/request"},
+    { id: 2, name: "Users", icon: "group", link: "/request" },
 ];
 
 // export const all_executive_option = [

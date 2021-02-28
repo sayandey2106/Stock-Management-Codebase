@@ -11,8 +11,8 @@ import {onLogout} from '../loginActions'
 export function get_all_request() {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_categories", {
-            method: "GET",
+        return fetch(UNIVERSAL.BASEURL + "view_corporate_requests", {
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",

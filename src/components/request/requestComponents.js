@@ -83,26 +83,26 @@ class Request extends Component {
                         <CardContent>
                             <Grid item lg={12}>
                                 {/*<Link to="add_request" style={{textDecoration: "none"}}>*/}
-                                <IconButton>
+                                {/* <IconButton>
                                     <Icon>add</Icon>
-                                </IconButton>
+                                </IconButton> */}
                                 {/*</Link>*/}
 
                             </Grid>
                             <Table>
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
-                                        <TableCell align="left">E-Mail</TableCell>
-                                        <TableCell align="left">Phone Number</TableCell>
-                                        <TableCell align="left">Actions</TableCell>
+                                        <TableCell align="left">&nbsp;&nbsp;Employee ID</TableCell>
+                                        {/* <TableCell align="left">E-Mail</TableCell> */}
+                                        {/* <TableCell align="left">Phone Number</TableCell> */}
+                                        <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {request.all_request.map(row =>
                                         <TableRow>
-                                            <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
-                                            <TableCell align="left">{row.quantity}</TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row.employeeId}</TableCell>
+                                            {/* <TableCell align="left">{row.quantity}</TableCell> */}
                                             {login.user_id !== row._id &&
                                             <TableCell align={"right"}>
                                                 <IconButton onClick={() => {

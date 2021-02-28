@@ -21,7 +21,7 @@ export default class LG extends React.Component {
       return <Redirect to="/" />
     }
     return (
-      <IconButton color="inherit"
+      <IconButton
         onClick={() => {
           localStorage.removeItem("taxopliance_type");
           localStorage.removeItem("taxopliance_user_id");
@@ -32,7 +32,7 @@ export default class LG extends React.Component {
           this.setState({redirect:true})
           this.props.onLogout()
         }}>
-        <Icon style={{ color: "#3f51b5" }}>power_settings_new</Icon>
+        <Icon style={{ color: "white" }}>power_settings_new</Icon>
       </IconButton>
     )
   }

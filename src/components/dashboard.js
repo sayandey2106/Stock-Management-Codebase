@@ -23,8 +23,36 @@ export default class Dashboard extends Component {
                         <Grid item lg={3} >
                             <Card>
                                 <CardHeader>
-                                    <CardIcon>
-                                        local_bar
+                                    <CardIcon style={{ fontSize: 20 }}>
+                                         <center>Total Consumption </center>
+                                        
+                                    </CardIcon>
+                                </CardHeader>
+                                <CardContent>
+                                    <center style={{fontSize:20}}>100</center>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        <Grid item lg={3}>
+                            <Card>
+                                <CardHeader>
+                                    <CardIcon style={{ fontSize: 20 }}>
+                                        <center> Total Due </center>
+                                    </CardIcon>
+                                </CardHeader>
+                                <CardContent>
+
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                        
+                    </Grid>
+                    <Grid container justify="center" spacing={5}>
+                        <Grid item lg={3}>
+                            <Card>
+                                <CardHeader>
+                                    <CardIcon style={{ fontSize: 20 }}>
+                                        <center> Consumption Per day </center>
                                     </CardIcon>
                                 </CardHeader>
                                 <CardContent>
@@ -35,8 +63,8 @@ export default class Dashboard extends Component {
                         <Grid item lg={3}>
                             <Card>
                                 <CardHeader>
-                                    <CardIcon>
-                                        localbar
+                                    <CardIcon style={{ fontSize: 20 }}>
+                                       <center> Consumption Per month </center>
                                     </CardIcon>
                                 </CardHeader>
                                 <CardContent>
@@ -47,8 +75,8 @@ export default class Dashboard extends Component {
                         <Grid item lg={3}>
                             <Card>
                                 <CardHeader>
-                                    <CardIcon>
-                                        localbar
+                                    <CardIcon style={{ fontSize: 20 }}>
+                                       <center> Total Users </center>
                                     </CardIcon>
                                 </CardHeader>
                                 <CardContent>
@@ -61,8 +89,8 @@ export default class Dashboard extends Component {
                         <Grid item lg={3}>
                             <Card>
                                 <CardHeader>
-                                    <CardIcon>
-                                        localbar
+                                    <CardIcon style={{ fontSize: 20 }}>
+                                        <center>Pending Requests</center> 
                                     </CardIcon>
                                 </CardHeader>
                                 <CardContent>
@@ -73,46 +101,8 @@ export default class Dashboard extends Component {
                         <Grid item lg={3}>
                             <Card>
                                 <CardHeader>
-                                    <CardIcon>
-                                        localbar
-                                    </CardIcon>
-                                </CardHeader>
-                                <CardContent>
-
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item lg={3}>
-                            <Card>
-                                <CardHeader>
-                                    <CardIcon>
-                                        localbar
-                                    </CardIcon>
-                                </CardHeader>
-                                <CardContent>
-
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    </Grid>
-                    <Grid container justify="center" spacing={5}>
-                        <Grid item lg={3}>
-                            <Card>
-                                <CardHeader>
-                                    <CardIcon>
-                                        <Icon>local_bar</Icon>
-                                    </CardIcon>
-                                </CardHeader>
-                                <CardContent>
-
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item lg={3}>
-                            <Card>
-                                <CardHeader>
-                                    <CardIcon>
-                                        local_bar
+                                    <CardIcon style={{ fontSize: 20 }} >
+                                        <center> Coupon Validity </center>
                                     </CardIcon>
                                 </CardHeader>
                                 <CardContent>

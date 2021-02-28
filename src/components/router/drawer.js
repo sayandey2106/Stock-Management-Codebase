@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: "white"
+    backgroundColor: "#FF7000"
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -89,6 +89,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "flex-end",
     padding: "0 8px",
+    backgroundColor: '#FF7000',
     ...theme.mixins.toolbar,
   },
   content: {
@@ -139,12 +140,12 @@ function MiniDrawer(props) {
     var side_top =
       <div>
         {open ?
-          <div>
+          <div style={{ backgroundColor:'#FF7000',marginTop:-30}}>
             <Avatar alt={localStorage.getItem("name")} src={localStorage.getItem("profile_img")} className="drawer_img" >
               {localStorage.getItem("name") == null ? "" : localStorage.getItem("name").substring(0, 1).toUpperCase()}
             </Avatar>
             <Typography variant="subtitle1" className="profile-name">
-              Hi! {localStorage.getItem("name")}
+              Hi! {localStorage.getItem("qubi7_name")}
             </Typography>
           </div>
           :
@@ -219,6 +220,7 @@ function MiniDrawer(props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
@@ -227,7 +229,8 @@ function MiniDrawer(props) {
         <Toolbar>
           {props.type === "S" ? "" :
             <IconButton
-              color="inherit"
+              // color="inherit"
+              style={{backgroundColor:'white'}}
               aria-label="Open drawer"
               onClick={handleDrawerOpen}
               edge="start"
@@ -288,7 +291,7 @@ function MiniDrawer(props) {
               <Icon style={{ color: "#3f51b5" }} >keyboard_arrow_left</Icon>
             </IconButton>
           </div>
-          <Divider />
+          <Divider style={{ backgroundColor:'#FF7000'}} />
           <List>
             {sideBar(props.type, open)}
           </List>

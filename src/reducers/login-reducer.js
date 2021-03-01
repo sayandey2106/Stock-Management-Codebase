@@ -28,6 +28,7 @@ const initial_state = {
   profile_img: "",
   mobileOpen: false,
   user_id: "",
+  company_id:"",
   departments: [],
   loginModal: false
 };
@@ -46,11 +47,12 @@ export default function reducer(state = initial_state, action) {
         ...state,
         isHome: false,
         // type: action.payload.type,
-        token: action.payload.user_token,
+        // token: action.payload.user_token,
         name: action.payload.name,
         profile_img: action.payload.profile_pic,
         user_id: action.payload._id,
-        organization_id: action.payload.organization_id
+        company_id: action.payload.company_id,
+        // organization_id: action.payload.organization_id
       };
     case LOGOUT:
       return state = {

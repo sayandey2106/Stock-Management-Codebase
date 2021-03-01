@@ -63,7 +63,7 @@ class Category extends Component {
     }
 
     componentDidMount() {
-        this.props.get_all_category(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_category(this.props.login.company_id)
     }
 
     handleClose = () => {
@@ -98,7 +98,7 @@ class Category extends Component {
                         <CardContent>
                             <Grid item lg={12}>
                                 {/*<Link to="add_category" style={{textDecoration: "none"}}>*/}
-                                <IconButton>
+                                <IconButton onClick={()=>this.setState({add:true})}>
                                     <Icon>add</Icon>
                                 </IconButton>
                                 {/*</Link>*/}
@@ -226,7 +226,7 @@ class Category extends Component {
                                         </DialogContentText>
 
                                         <TextField
-                                            // autoFocus
+                                            autoFocus
                                             margin="dense"
                                             // id="name"
                                             label="Name"
@@ -242,7 +242,7 @@ class Category extends Component {
                                             margin="dense"
                                             // id="name"
                                             label="Beverage Number"
-                                            type="file"
+                                            type="text"
                                             fullWidth
                                             onChange={(event) => {
                                                 this.setState({beverage: event.target.value})
@@ -258,7 +258,8 @@ class Category extends Component {
                                         <Button
                                             onClick={() => {
                                                 this.handleClose();
-                                                add_category(this.state.name, this.state.beverage)
+                                                add_category(this.state.name, this.state.beverage,login.company_id);
+                                                this.setState({name:"",quantity:""});
                                             }}
                                             color="primary"
                                         >

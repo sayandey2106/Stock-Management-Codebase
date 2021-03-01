@@ -7,7 +7,7 @@ const initial_state = {
     quantity:""
 };
 export default function reducer(state = initial_state, action) {
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
         case SET_ALL_CATEGORY:
             return state = { ...state, all_category: action.payload };

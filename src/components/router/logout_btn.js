@@ -15,7 +15,7 @@ export default class LG extends React.Component {
   }
 
   render() {
-    const { login} = this.props; 
+    const { login} = this.props;
 
     if (this.state.redirect === true) {
       return <Redirect to="/" />
@@ -23,12 +23,12 @@ export default class LG extends React.Component {
     return (
       <IconButton
         onClick={() => {
-          localStorage.removeItem("taxopliance_type");
-          localStorage.removeItem("taxopliance_user_id");
-          localStorage.removeItem("taxopliance_token");
-          localStorage.removeItem("taxopliance_profile_pic");
-          localStorage.removeItem("taxopliance_name");
-          localStorage.removeItem("taxopliance_organization_id");
+          localStorage.removeItem("qubi7_type");
+          localStorage.removeItem("qubi7_name");
+          localStorage.removeItem("qubi7_profile_pic");
+          localStorage.removeItem("qubi7_user_id");
+          localStorage.removeItem("qubi7_company_id");
+          // localStorage.removeItem("taxopliance_organization_id");
           this.setState({redirect:true})
           this.props.onLogout()
         }}>

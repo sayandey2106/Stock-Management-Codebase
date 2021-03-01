@@ -24,12 +24,15 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import MenuItem from "@material-ui/core/MenuItem";
+import {approve_corporate_request} from "../../actions/request/requestActions";
 
 const card = {
     borderRadius: "20px",
     backgroundColor: "#ffffff",
     marginTop: 50
 };
+
 // eslint-disable-next-line no-unused-vars
 
 
@@ -40,6 +43,10 @@ class Request extends Component {
             delete: false,
             update: false,
             add: false,
+            thumbs_up_dialog: false,
+            thumbs_down_dialog: false,
+            users_dialog: false,
+            category: '',
             id: "",
             name: "",
             e_mail: "",
@@ -48,13 +55,19 @@ class Request extends Component {
     }
 
     componentDidMount() {
-        this.props.get_all_request(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_request(this.props.login.company_id)
+        this.props.get_all_category(this.props.login.company_id)
     }
 
     handleClose = () => {
-        this.setState({delete: false})
-        this.setState({update: false})
-        this.setState({add: false})
+        this.setState({
+            add: false,
+            delete: false,
+            update: false,
+            thumbs_up_dialog: false,
+            thumbs_down_dialog: false,
+            users_dialog: false,
+        })
     }
 
     render() {
@@ -62,6 +75,9 @@ class Request extends Component {
             snackbar,
             close_snack_bar,
             request,
+            category,
+            approve_corporate_request,
+            get_all_category,
             delete_request,
             update_request,
             add_request,
@@ -106,17 +122,26 @@ class Request extends Component {
                                             {login.user_id !== row._id &&
                                             <TableCell align={"right"}>
                                                 <IconButton onClick={() => {
+                                                    // view_all_users()
+                                                    this.setState({users_dialog:true})
+                                                }}>
+                                                    <Icon>U</Icon>
+                                                </IconButton>
+                                                <IconButton onClick={() => {
                                                     this.setState({
                                                         id: row._id,
-                                                        name: row.name,
-                                                        e_mail: row.e_mail,
-                                                        phone_num: row.phone_num
+                                                        user_id: row.user_id,
+                                                        thumbs_up_dialog: true,
                                                     })
+
                                                 }}>
                                                     <Icon>thumb_up_off_alt</Icon>
                                                 </IconButton>
                                                 <IconButton onClick={() => {
-                                                    this.setState({id: row._id})
+                                                    this.setState({
+                                                            id: row._id,
+                                                            thumbs_down_dialog: true
+                                                        })
                                                 }}>
                                                     <Icon>thumb_down_off_alt</Icon>
                                                 </IconButton>
@@ -125,6 +150,102 @@ class Request extends Component {
                                     )}
                                 </TableBody>
                             </Table>
+                            <Dialog open={this.state.thumbs_up_dialog} onClose={() => {
+                                this.handleClose()
+                            }} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Choose Category</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>
+                                        {/*Choose Category*/}
+                                    </DialogContentText>
+
+                                    <TextField
+                                        // autoFocus
+                                        margin="dense"
+                                        // id="name"
+                                        label="Categories"
+                                        type="dropdown"
+                                        select
+                                        fullWidth
+                                        onChange={(event) => {
+                                            this.setState({category: event.target.value})
+                                        }}
+                                        value={this.state.category}
+                                        InputLabelProps={{classes: {root: this.props.classes.textfieldLabel}}}
+                                        // InputProps={{classes:{input:this.props.classes.dropdown}}}
+                                    >
+                                        {category.all_category.map(row1 => (
+                                            <MenuItem value={row1._id} key={row1._id}>
+                                                {row1.name}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={() => this.handleClose()} color="primary">
+                                        Cancel
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            this.handleClose();
+                                            // update_minorhead(this.state.id, this.state.name, this.state.majorhead_id, login.token)
+                                            approve_corporate_request(this.state.user_id, login.company_id, this.state.category)
+                                        }}
+                                        color="primary"
+                                    >
+                                        Approve
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                            <Dialog open={this.state.thumbs_down_dialog} onClose={() => {
+                                this.handleClose()
+                            }} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Discard Request</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>
+                                        Are you sure?
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={() => this.handleClose()} color="primary">
+                                        Cancel
+                                    </Button>
+                                    <Button
+                                        onClick={() => {
+                                            this.handleClose();
+                                            // update_minorhead(this.state.id, this.state.name, this.state.majorhead_id, login.token)
+                                        }}
+                                        color="primary"
+                                    >
+                                        Discard
+                                    </Button>
+                                </DialogActions>
+                            </Dialog>
+                            <Dialog open={this.state.users_dialog} onClose={() => {
+                                this.handleClose()
+                            }} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Details of this User</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>
+                                        {/*{users.all_user.name}*/}
+                                    </DialogContentText>
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={() => this.handleClose()} color="primary">
+                                        OK
+                                    </Button>
+                                    {/*<Button*/}
+                                    {/*    onClick={() => {*/}
+                                    {/*        this.handleClose();*/}
+                                    {/*        // update_minorhead(this.state.id, this.state.name, this.state.majorhead_id, login.token)*/}
+                                    {/*    }}*/}
+                                    {/*    color="primary"*/}
+                                    {/*>*/}
+                                    {/*    Discard*/}
+                                    {/*</Button>*/}
+                                </DialogActions>
+                            </Dialog>
                         </CardContent>
                     </Card>
                     <LoaderCon/>

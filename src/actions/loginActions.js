@@ -75,6 +75,7 @@ export function setLogin(payload) {
     localStorage.setItem('qubi7_name', payload.name);
     localStorage.setItem('qubi7_profile_pic', payload.profile_pic);
     localStorage.setItem('qubi7_user_id', payload._id);
+    localStorage.setItem('qubi7_company_id', payload.company_id);
     // localStorage.setItem('taxopliance_organization_id', payload.organization_id);
     return {
         type: LOGIN,

@@ -20,6 +20,7 @@ export default class LoginController extends Component {
         // user_token: localStorage.getItem("taxopliance_token"),
         profile_pic: localStorage.getItem("qubi7_profile_pic"),
         name: localStorage.getItem("qubi7_name"),
+        company_id:localStorage.getItem("qubi7_company_id")
         // organization_id: localStorage.getItem("taxopliance_organization_id")
       });
       // if (!firebase.apps.length) {

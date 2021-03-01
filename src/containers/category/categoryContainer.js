@@ -31,8 +31,8 @@ export const mapDispatchToProps = dispatch => {
         close_snack_bar: () => {
             dispatch(close_snack_bar());
         },
-        get_all_category: () => {
-            dispatch(get_all_category());
+        get_all_category: (id) => {
+            dispatch(get_all_category(id));
         },
         delete_category: (id) => {
             dispatch(delete_category(id));
@@ -40,8 +40,8 @@ export const mapDispatchToProps = dispatch => {
         update_category: (id, name, quantity) => {
             dispatch(update_category(id, name, quantity));
         },
-        add_category: (name, quantity) => {
-            dispatch(add_category(name, quantity));
+        add_category: (name, quantity,company_id) => {
+            dispatch(add_category(name, quantity,company_id));
         },
     };
 };

@@ -8,16 +8,17 @@ import {set_snack_bar} from "../snackbar/snackbar_action";
 import {onLogout} from '../loginActions'
 
 
-export function get_all_category() {
+export function get_all_category(id) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_all_categories", {
+        return fetch(UNIVERSAL.BASEURL + "view_company_category", {
             method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
+                company_id:id
             },
             // body: JSON.stringify({
             //     // email: login.email,
@@ -130,9 +131,9 @@ export function update_category(id, name, quantity) {
     };
 }
 
-export function add_category(name, quantity) {
+export function add_category(name, quantity,company_id) {
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "add_category", {
             method: "POST",
             headers: {
@@ -146,13 +147,14 @@ export function add_category(name, quantity) {
                 // password: login.password
                 category_name: name,
                 category_quantity:quantity,
+                company_id:company_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_category())
+                    dispatch(get_all_category(company_id))
 
                     // dispatch(reset_category())
 

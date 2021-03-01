@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Request from "../../components/request/requestComponents";
+import Dashboard from "../components/dashboard";
 import {
     close_snack_bar
 } from "../../actions/snackbar/snackbar_action";
@@ -9,7 +9,6 @@ import {
     delete_request,
     update_request,
     add_request,
-    approve_corporate_request
 } from "../../actions/request/requestActions";
 import {
     get_all_category
@@ -17,7 +16,7 @@ import {
 export class RequestCont extends Component {
     render() {
         return (
-            <Request {...this.props} />
+            <Dashboard {...this.props} />
         );
     }
 }
@@ -36,11 +35,11 @@ export const mapDispatchToProps = dispatch => {
         close_snack_bar: () => {
             dispatch(close_snack_bar());
         },
-        get_all_request: (token) => {
-            dispatch(get_all_request(token));
+        get_all_request: () => {
+            dispatch(get_all_request());
         },
-        get_all_category: (token) => {
-            dispatch(get_all_category(token));
+        get_all_category: () => {
+            dispatch(get_all_category());
         },
         delete_request: (id) => {
             dispatch(delete_request(id));
@@ -51,9 +50,6 @@ export const mapDispatchToProps = dispatch => {
         add_request: (name, quantity) => {
             dispatch(add_request(name, quantity));
         },
-        approve_corporate_request:(user_id, company_id, category_id) => {
-            dispatch(approve_corporate_request(user_id, company_id, category_id))
-        }
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(RequestCont);

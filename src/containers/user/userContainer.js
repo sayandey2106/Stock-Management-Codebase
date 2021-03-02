@@ -6,7 +6,7 @@ import {
 } from "../../actions/snackbar/snackbar_action";
 import {
     get_all_users,
-    delete_user,
+    // delete_user,
 } from "../../actions/user/userActions";
 export class CategoryCont extends Component {
     render() {
@@ -29,12 +29,12 @@ export const mapDispatchToProps = dispatch => {
         close_snack_bar: () => {
             dispatch(close_snack_bar());
         },
-        get_all_user: () => {
-            dispatch(get_all_users());
+        get_all_user: (company_id) => {
+            dispatch(get_all_users(company_id));
         },
-        delete_user: (id) => {
-            dispatch(delete_user(id));
-        },
+        // delete_user: (id) => {
+        //     dispatch(delete_user(id));
+        // },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryCont);

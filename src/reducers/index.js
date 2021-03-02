@@ -4,11 +4,13 @@ import snackbar from "./snackbar/snackbar_reducer";
 import login from "./login-reducer";
 import category from "./category/categoryReducer";
 import request from "./request/requestReducer";
+import user from "./user/userReducer"
 
 export default combineReducers({
     loader,
     snackbar,
     login,
     category,
-    request
+    request,
+    user
 });

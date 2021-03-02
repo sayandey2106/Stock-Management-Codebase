@@ -12,19 +12,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import {Link} from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import {Badge} from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import {styles} from "../../styles/style";
 import LoaderCon from "../../containers/loader/loader_cont";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import TextField from "@material-ui/core/TextField";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import MenuItem from "@material-ui/core/MenuItem";
+import Avatar from "@material-ui/core/Avatar";
 
 const card = {
     borderRadius: "20px",
@@ -42,7 +33,7 @@ class User extends Component {
     }
 
     componentDidMount() {
-        this.props.get_all_user(this.props.login.token, this.props.login.organization_id)
+        this.props.get_all_user(this.props.login.company_id)
     }
 
     handleClose = () => {
@@ -93,17 +84,21 @@ class User extends Component {
                             <Table>
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell align="left">&nbsp;&nbsp;Employee ID</TableCell>
-                                        {/* <TableCell align="left">E-Mail</TableCell> */}
-                                        {/* <TableCell align="left">Phone Number</TableCell> */}
+                                        <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell>
+                                        <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                                         <TableCell align="left">E-Mail</TableCell>
+                                         <TableCell align="left">Phone Number</TableCell>
                                         <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
                                     {user.all_user.map(row =>
                                         <TableRow>
-                                            <TableCell align="left">&nbsp;&nbsp;{row.employeeId}</TableCell>
-                                            {/* <TableCell align="left">{row.quantity}</TableCell> */}
+                                            <TableCell align="left">&nbsp;&nbsp;<Avatar src={row.profile_pic} /></TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row.email}</TableCell>
+                                            <TableCell align="left">&nbsp;&nbsp;{row.phone}</TableCell>
+                                             {/*<TableCell align="right">{row.quantity}</TableCell>*/}
                                             {login.user_id !== row._id &&
                                             <TableCell align={"right"}>
                                                 <IconButton onClick={() => {

@@ -33,6 +33,7 @@
     "react-circular-progressbar": "^2.0.1",
     "react-collapsible": "^2.8.1",
     "react-dom": "^16.14.0",
+    "react-flipcard": "^0.2.1",
     "react-fontawesome": "^1.7.1",
     "react-graceful-image": "^1.2.12",
     "react-linkify": "^1.0.0-alpha",

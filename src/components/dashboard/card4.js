@@ -16,15 +16,15 @@ const App4 = () => {
     const [isFlipped, setFlipped] = useState(false);
  
     const front = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:335}}>
-             <Card style={{background:"#FF7000",borderRadius: 15,width:335}}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:"22vw"}}>
+             <Card style={{background:"#FF7000",borderRadius: 15,width:"22vw"}}>
       
       <CardActionArea>
         <CardMedia
           component="img"
           alt="Consumption/Month"
           height="350"
-          image="https://media.istockphoto.com/photos/desktop-calendar-2020-picture-id1152969647?b=1&k=6&m=1152969647&s=170667a&w=0&h=fXfHliZSIOQ0Q-a87W-B8iIa9DWjV_CrhtDA0w89NGY=" style={{height:350}}
+          image="https://media.istockphoto.com/photos/desktop-calendar-2020-picture-id1152969647?b=1&k=6&m=1152969647&s=170667a&w=0&h=fXfHliZSIOQ0Q-a87W-B8iIa9DWjV_CrhtDA0w89NGY=" style={{height:"46vh"}}
           title="Consumption/Month"
         />
         <CardContent>
@@ -41,7 +41,7 @@ const App4 = () => {
     );
  
     const back = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:454,width:335,cursor:"pointer" }}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"60vh",width:"22vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
        
        <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
@@ -51,7 +51,7 @@ const App4 = () => {
     );
  
     return (
-        <div style={{padding: 5, position: "absolute",marginTop:520,marginLeft:25}}>
+        <div style={{padding: 5, position: "absolute",marginTop:"67vh",marginLeft:"0.5vw"}}>
             <FlipCard isFlipped={isFlipped} front={front} back={back}/>
         </div>
     );

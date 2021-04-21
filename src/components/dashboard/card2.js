@@ -16,15 +16,15 @@ const App2 = () => {
     const [isFlipped, setFlipped] = useState(false);
  
     const front = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:455}}>
-             <Card style={{background:"#FF7000",borderRadius: 15,width:455}}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:"30vw"}}>
+             <Card style={{background:"#FF7000",borderRadius: 15,width:"30vw"}}>
       
       <CardActionArea>
         <CardMedia
           component="img"
           alt="Total Due"
           height="350"
-          image="https://cdn.pixabay.com/photo/2020/12/25/15/43/mens-hands-5859605__340.jpg " style={{height:350}}
+          image="https://cdn.pixabay.com/photo/2020/12/25/15/43/mens-hands-5859605__340.jpg " style={{height:"46vh"}}
           title="Total Due"
         />
         <CardContent>
@@ -41,7 +41,7 @@ const App2 = () => {
     );
  
     const back = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:423,width:455,cursor:"pointer" }}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"56vh",width:"30vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
        
        <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
@@ -51,7 +51,7 @@ const App2 = () => {
     );
  
     return (
-        <div style={{padding: 5, position: "absolute",marginTop:70,marginLeft:500}}>
+        <div style={{padding: 5, position: "absolute",marginTop:"8vh",marginLeft:"31.5vw"}}>
             <FlipCard isFlipped={isFlipped} front={front} back={back}/>
         </div>
     );

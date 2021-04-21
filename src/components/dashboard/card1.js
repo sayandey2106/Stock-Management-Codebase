@@ -15,16 +15,16 @@ const App1 = () => {
     const [isFlipped, setFlipped] = useState(false);
  
     const front = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:455,}}>
-             <Card style={{background:"#FF7000",borderRadius: 15,width:455,transition: "all 0.25s linear",
-    boxShadow: "0px 1px 2px 0px rgba(0,0,0,0.4)","&:hover":{boxShadow: "-1px 10px 29px 0px rgba(0,0,0,0.8)"}}}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" }}>
+             <Card style={{background:"#FF7000",borderRadius: 15,width:"30vw",
+   }}>
       
       <CardActionArea>
         <CardMedia
           component="img"
           alt="Total Consumption"
           height="350"
-          image="https://cdn.pixabay.com/photo/2017/04/25/08/02/coffee-beans-2258839__340.jpg" style={{height:350}}
+          image="https://cdn.pixabay.com/photo/2017/04/25/08/02/coffee-beans-2258839__340.jpg" style={{height:"46vh"}}
           title="Total Consumption"
         />
         <CardContent>
@@ -41,7 +41,7 @@ const App1 = () => {
     );
  
     const back = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:423,width:455,cursor:"pointer" }}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"56vh",width:"30vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
        
        <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
@@ -51,7 +51,7 @@ const App1 = () => {
     );
  
     return (
-        <div style={{padding: 5, position: "absolute",marginTop:70,marginLeft:25}}>
+        <div style={{padding: 5, position: "absolute",marginTop:"8vh",marginLeft:"0.5vw"}}>
             <FlipCard isFlipped={isFlipped} front={front} back={back}/>
         </div>
     );

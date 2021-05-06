@@ -31,9 +31,11 @@ class Login extends Component {
       snackbar,
       close_snack_bar,
     } = this.props;
-    if (login.token!=="") {
+
+    if (login.user_id !== "") {
       return <Redirect to="/dashboard" />
     }
+
     return (
       <div>
         <Grid className="login-background">

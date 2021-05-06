@@ -3,7 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="5ed4ceab-5414-486b-8fc0-c159679eeae5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/dashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/loginActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/loginActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/category/categoryComponents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categoryComponents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/card1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/card2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/router/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/dashboardConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/dashboard/dashboardConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/dashboard/dashboardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/dashboardReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/dashboard/dashboardReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +55,14 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/reducers/dashboard" />
+      <recent name="$PROJECT_DIR$/src/constants/dashboard" />
+      <recent name="$PROJECT_DIR$/src/containers/dashboard" />
+      <recent name="$PROJECT_DIR$/src/actions/dashboard" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -77,6 +99,18 @@
       <workItem from="1618908679764" duration="992000" />
       <workItem from="1618927694456" duration="6000" />
       <workItem from="1618998344498" duration="1777000" />
+      <workItem from="1619007086210" duration="747000" />
+      <workItem from="1619022878711" duration="3505000" />
+      <workItem from="1619069810987" duration="4015000" />
+      <workItem from="1619250186272" duration="38000" />
+      <workItem from="1619490229606" duration="50000" />
+      <workItem from="1619519649174" duration="233000" />
+      <workItem from="1620210349231" duration="6206000" />
+      <workItem from="1620225321547" duration="2680000" />
+      <workItem from="1620236260406" duration="11000" />
+      <workItem from="1620237273255" duration="3000" />
+      <workItem from="1620240827068" duration="6000" />
+      <workItem from="1620240863117" duration="43000" />
     </task>
     <servers />
   </component>

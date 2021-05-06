@@ -41,7 +41,7 @@ export function login_email(login) {
                 }),
             }).then((response) => response.json())
             .then((responseJson) => {
-                // console.log(responseJson)
+                console.log(responseJson)
                 if (responseJson.status) {
                     // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
                         dispatch(setLogin(responseJson.result))

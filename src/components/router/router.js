@@ -8,8 +8,9 @@ import Login from "../../containers/loginCont";
 import Drawer_option_con from "../../containers/router/drawer_cont"
 import Category from "../../containers/category/categoryContainer"
 import Request from "../../containers/request/requestContainer";
-import Dashboard from "../dashboard/dashboard";
+import Dashboard from "../../containers/dashboard/dashboardContainer";
 import Users from "../../containers/user/userContainer"
+
 // Admin Imports
 
 
@@ -57,7 +58,7 @@ class Routes extends Component {
                         {/* STUDENT ROUTES */}
                         <Route exact path="/category" component={Category}/>
                         <Route exact path="/request" component={Request}/>
-                        <Route exact path="/dashboard" component={Dashboard}/>
+                        <Route exact path="/" component={Dashboard}/>
                         <Route exact path="/users" component={Users}/>
                     </main>
                     {/* <Footer /> */}

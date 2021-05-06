@@ -6,19 +6,19 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
- 
+
 const cardStyle = {
     borderRadius: 15,
     background: "#FF7000",
 };
-const App1 = () => {
+const App1 = (props) => {
     const [isFlipped, setFlipped] = useState(false);
- 
+
     const front = (
         <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" }}>
              <Card style={{background:"#FF7000",borderRadius: 15,width:"30vw",
    }}>
-      
+
       <CardActionArea>
         <CardMedia
           component="img"
@@ -29,32 +29,32 @@ const App1 = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-       
+
             <center style={{ fontFamily: 'Orbitron',fontWeight:1000,color:"#131327"}}>Total Consumption</center>
-           
+
           </Typography>
         </CardContent>
       </CardActionArea>
-      
+
     </Card>
         </div>
     );
- 
+
     const back = (
         <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"56vh",width:"30vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
-       
-       <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
-      
+
+       <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>{props.message}</center>
+
      </Typography>
         </div>
     );
- 
+
     return (
         <div style={{padding: 5, position: "absolute",marginTop:"8vh",marginLeft:"0.5vw"}}>
             <FlipCard isFlipped={isFlipped} front={front} back={back}/>
         </div>
     );
 }
- 
+
 export default App1;

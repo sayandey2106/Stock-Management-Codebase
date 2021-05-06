@@ -4,7 +4,8 @@ import snackbar from "./snackbar/snackbar_reducer";
 import login from "./login-reducer";
 import category from "./category/categoryReducer";
 import request from "./request/requestReducer";
-import user from "./user/userReducer"
+import user from "./user/userReducer";
+import dashboard from "./dashboard/dashboardReducer"
 
 export default combineReducers({
     loader,
@@ -12,5 +13,6 @@ export default combineReducers({
     login,
     category,
     request,
+    dashboard,
     user
 });

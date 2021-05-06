@@ -11,7 +11,7 @@ const cardStyle = {
     borderRadius: 15,
     background: "#FF7000",
 };
-const App1 = () => {
+const App1 = (props) => {
     const [isFlipped, setFlipped] = useState(false);
  
     const front = (
@@ -44,7 +44,7 @@ const App1 = () => {
         <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"56vh",width:"30vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
        
-       <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
+       <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>{props.message}</center>
       
      </Typography>
         </div>

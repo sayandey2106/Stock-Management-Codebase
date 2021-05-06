@@ -11,7 +11,7 @@ function Dashboard() {
   return (
     
     <div className="Dashboard">
-   <Card1/>
+   <Card1 message="Hello"/>
    <Card2/>
    <Card3/>
    <Card4/>

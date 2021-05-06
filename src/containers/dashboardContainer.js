@@ -11,8 +11,8 @@ import {
     add_request,
 } from "../../actions/request/requestActions";
 import {
-    get_all_category
-} from "../../actions/category/categoryActions"
+    get_dashboard_data
+} from "../../actions/dashboardActions"
 export class RequestCont extends Component {
     render() {
         return (
@@ -25,8 +25,6 @@ export const mapStateToProps = store => {
         login: store.login,
         loader: store.loader,
         snackbar: store.snackbar,
-        request:store.request,
-        category:store.category,
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -38,8 +36,8 @@ export const mapDispatchToProps = dispatch => {
         get_all_request: () => {
             dispatch(get_all_request());
         },
-        get_all_category: () => {
-            dispatch(get_all_category());
+        get_dashboard_data: () => {
+            dispatch(get_dashboard_data());
         },
         delete_request: (id) => {
             dispatch(delete_request(id));

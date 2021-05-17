@@ -16,6 +16,7 @@ import CardIcon from "../cards/CardIcon";
 import CardContent from "@material-ui/core/CardContent";
 import LoaderCon from "../../containers/loader/loader_cont";
 import Snackbar from "../snackbar/snackbar";
+import {get_dashboard_data} from "../../actions/dashboard/dashboardActions"
 
 const card = {
     borderRadius: "20px",
@@ -49,7 +50,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         console.log(this.props.login)
-        this.props.qb_dashboard(this.props.login.company_id)
+        this.props.get_dashboard_data(this.props.login.company_id)
     }
 
     render() {

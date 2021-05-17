@@ -9,11 +9,11 @@ import {onLogout} from '../loginActions'
 
 
 
-export function qb_dashboard(id) {
+export function get_dashboard_data(id) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "qb_dashboard", {
-            method: "GET",
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -21,6 +21,10 @@ export function qb_dashboard(id) {
                 // organization_id: oid
                 company_id:id
             },
+            body:JSON.stringify({company_id:id
+            })
+            
+            
             // body: JSON.stringify({
             //     // email: login.email,
             //     // password: login.password

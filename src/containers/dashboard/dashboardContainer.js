@@ -6,7 +6,7 @@ import {
 } from "../../actions/snackbar/snackbar_action";
 
 import {
-    qb_dashboard
+    get_dashboard_data
 } from '../../actions/dashboard/dashboardActions'
 
 export class DashboardContainer extends Component {
@@ -31,8 +31,8 @@ export const mapDispatchToProps = dispatch => {
         close_snack_bar: () => {
             dispatch(close_snack_bar());
         },
-        qb_dashboard: (id) => {
-            dispatch(qb_dashboard(id));
+        get_dashboard_data: (id) => {
+            dispatch(get_dashboard_data(id));
         },
 
     };

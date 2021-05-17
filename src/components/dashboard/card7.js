@@ -24,7 +24,7 @@ const App7 = () => {
           component="img"
           alt="Coupon Validity"
           height="350"
-          image="https://cdn.pixabay.com/photo/2017/11/24/10/43/admission-2974645__340.jpg" style={{height:"46vh"}}
+          image="https://cdn.pixabay.com/photo/2017/11/24/10/43/ticket-2974645__340.jpg" style={{height:"46vh"}}
           title="Coupon Validity"
         />
         <CardContent>

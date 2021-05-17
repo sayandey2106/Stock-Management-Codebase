@@ -21,7 +21,8 @@ export function get_dashboard_data(id) {
                 // organization_id: oid
                 company_id:id
             },
-            body:JSON.stringify({company_id:id
+            body:JSON.stringify({
+                company_id:id
             })
             
             

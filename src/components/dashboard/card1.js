@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 const cardStyle = {
-    borderRadius: 15,
+    borderRadius: 25,
     background: "#FF7000",
 };
 const App1 = (props) => {
@@ -16,7 +16,7 @@ const App1 = (props) => {
 
     const front = (
         <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" }}>
-             <Card style={{background:"#FF7000",borderRadius: 15,width:"30vw",
+             <Card style={{background:"#FF7000",borderRadius: 25,width:"20vw",
    }}>
 
       <CardActionArea>
@@ -24,7 +24,7 @@ const App1 = (props) => {
           component="img"
           alt="Total Consumption"
           height="350"
-          image="https://cdn.pixabay.com/photo/2017/04/25/08/02/coffee-beans-2258839__340.jpg" style={{height:"46vh"}}
+          image="https://cdn.pixabay.com/photo/2017/04/25/08/02/coffee-beans-2258839__340.jpg" style={{height:"34vh"}}
           title="Total Consumption"
         />
         <CardContent>
@@ -41,17 +41,17 @@ const App1 = (props) => {
     );
 
     const back = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"56vh",width:"30vw",cursor:"pointer" }}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"43vh",width:"20vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
        
-       <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>{props.message}</center>
+           <br></br><br></br><br></br><br></br><center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>{props.message}</center>
       
      </Typography>
         </div>
     );
 
     return (
-        <div style={{padding: 5, position: "absolute",marginTop:"8vh",marginLeft:"0.5vw"}}>
+        <div style={{padding: 5, position: "absolute",marginTop:"6.5vh",marginLeft:"14vw"}}>
             <FlipCard isFlipped={isFlipped} front={front} back={back}/>
         </div>
     );

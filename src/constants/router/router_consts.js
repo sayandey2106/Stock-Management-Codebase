@@ -3,7 +3,7 @@ export const all_admin_option = [
 ];
 export const all_corporate_options = [
     // {id: 0, name: "Home", icon: "home", link: "/"},
-    {id: 3, name: "DashBoard", icon: "home", link: "/dashboard"},
+    {id: 3, name: "DashBoard", icon: "home", link: "/"},
     {id: 1, name: "Category", icon: "category", link: "/category"},
     {id: 2, name: "Request", icon: "request_page", link: "/request"},
     { id: 2, name: "Users", icon: "group", link: "/users" },

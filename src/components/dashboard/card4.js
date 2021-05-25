@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
  
 const cardStyle = {
-    borderRadius: 15,
+    borderRadius: 25,
     background: "#FF7000"
 };
  
@@ -16,21 +16,21 @@ const App4 = () => {
     const [isFlipped, setFlipped] = useState(false);
  
     const front = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:"22vw"}}>
-             <Card style={{background:"#FF7000",borderRadius: 15,width:"22vw"}}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#FF7000" ,width:"20vw"}}>
+             <Card style={{background:"#FF7000",borderRadius: 25,width:"20vw"}}>
       
       <CardActionArea>
         <CardMedia
           component="img"
           alt="Consumption/Month"
           height="350"
-          image="https://media.istockphoto.com/photos/desktop-calendar-2020-picture-id1152969647?b=1&k=6&m=1152969647&s=170667a&w=0&h=fXfHliZSIOQ0Q-a87W-B8iIa9DWjV_CrhtDA0w89NGY=" style={{height:"46vh"}}
+          image="https://media.istockphoto.com/photos/desktop-calendar-2020-picture-id1152969647?b=1&k=6&m=1152969647&s=170667a&w=0&h=fXfHliZSIOQ0Q-a87W-B8iIa9DWjV_CrhtDA0w89NGY=" style={{height:"34vh"}}
           title="Consumption/Month"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
        
-            <center style={{ fontFamily: 'Orbitron',fontWeight:1000,color:"#131327"}}>Consumption per Month</center>
+            <center style={{ fontFamily: 'Orbitron',fontWeight:1000,color:"#131327"}}>Consumption/Month</center>
            
           </Typography>
         </CardContent>
@@ -41,17 +41,17 @@ const App4 = () => {
     );
  
     const back = (
-        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"60vh",width:"22vw",cursor:"pointer" }}>
+        <div onClick={() => setFlipped(x => !x)} style={{ ...cardStyle, background: "#131327",height:"43vh",width:"20vw",cursor:"pointer" }}>
            <Typography gutterBottom variant="h5" component="h2">
        
-       <center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
+       <br></br><br></br><br></br><br></br><center style={{ fontFamily: 'Orbitron',color:"#FF7000"}}>100</center>
       
      </Typography>
         </div>
     );
  
     return (
-        <div style={{padding: 5, position: "absolute",marginTop:"67vh",marginLeft:"0.5vw"}}>
+        <div style={{padding: 5, position: "absolute",marginTop:"52vh",marginLeft:"3.5vw"}}>
             <FlipCard isFlipped={isFlipped} front={front} back={back}/>
         </div>
     );

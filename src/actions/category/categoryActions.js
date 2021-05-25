@@ -20,10 +20,11 @@ export function get_all_category(id) {
                 // organization_id: oid
                 company_id:id
             },
-            // body: JSON.stringify({
-            //     // email: login.email,
-            //     // password: login.password
-            // }),
+            //body: JSON.stringify({
+                // email: login.email,
+               // password: login.password
+        
+             //}),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)

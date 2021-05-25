@@ -62,7 +62,8 @@ class Dashboard extends Component {
             <Grid container justify="center">
                 <Grid item xs={12}>
                     <div className="Dashboard">
-                        <Card1 message="Hello World"/>
+
+                        <Card1 message="H"/>
                         <Card2/>
                         <Card3/>
                         <Card4/>

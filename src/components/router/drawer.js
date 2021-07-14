@@ -21,9 +21,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 // import View_user_profile_cont from "../../containers/user/user_view_profile_cont";
 // import NotificationsCont from "../../containers/notifications/notificationCont";
 
-import {
-  Link
-} from "react-router-dom";
+import { Link} from "react-router-dom";
 import LG_Cont from "../../containers/router/Lg_Cont";
 import {
   all_admin_option,
@@ -33,19 +31,23 @@ import {
 
 } from "../../constants/router/router_consts";
 
+
 const drawerWidth = 220;
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
+    
   },
+  
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: "#FF7000"
+    // backgroundColor: "#FF7000"
+    background:"#fadde1"
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -72,12 +74,18 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+
+    backgroundColor:"#11101d",
+
   },
   drawerClose: {
     transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor:"#11101d",
+    
+
     overflowX: "hidden",
     width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
@@ -89,7 +97,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     justifyContent: "flex-end",
     padding: "0 8px",
-    backgroundColor: '#FF7000',
+    // backgroundColor: '#FF7000',
+    backgroundColor:"#11101d",
     ...theme.mixins.toolbar,
   },
   content: {
@@ -101,7 +110,7 @@ const useStyles = makeStyles(theme => ({
     left: 8,
     top: 3,
     fontSize: 18,
-    marginRight: 5
+    marginRight: 5,
   },
   sectionDesktop: {
     display: "none",
@@ -112,6 +121,12 @@ const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
   },
+  Icon: {
+    color:"white",
+    position:"relative",
+    left:"10px"
+  },
+ 
 }));
 
 function MiniDrawer(props) {
@@ -140,20 +155,21 @@ function MiniDrawer(props) {
     var side_top =
       <div>
         {open ?
-          <div style={{ backgroundColor:'#FF7000',marginTop:-30}}>
+          <div style={{ backgroundColor:"#11101d", marginTop:-30 }}>
             <Avatar alt={localStorage.getItem("name")} src={localStorage.getItem("profile_img")} className="drawer_img" >
               {localStorage.getItem("name") == null ? "" : localStorage.getItem("name").substring(0, 1).toUpperCase()}
             </Avatar>
-            <Typography variant="subtitle1" className="profile-name">
+            <Typography variant="subtitle1" className="profile-name" color="secondary">
               Hi! {localStorage.getItem("qubi7_name")}
             </Typography>
           </div>
           :
-          <Avatar alt={localStorage.getItem("name")} src={localStorage.getItem("profile_img")} className="drawer_img_closed" >
+          <Avatar alt={localStorage.getItem("name")} src={localStorage.getItem("profile_img")} className="drawer_img_closed" style={{position:"relative",left:"15px"}} >
             {localStorage.getItem("name") == null ? "" : localStorage.getItem("name").substring(0, 1).toUpperCase()}
           </Avatar>
         }
       </div>;
+      // backgroundColor:'#FF7000'
 
     // if (type === "M") {
     //   return (
@@ -171,12 +187,12 @@ function MiniDrawer(props) {
     //   );
     if (type === "A") {
       return (
-        <div style={{ marginTop: 10 }}>
+        <div style={{ marginTop: 10  }}>
           {side_top}
           {all_admin_option.map((option) => (
-            <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "black" }}>
-              <ListItem button key={option.name} className="drawer_text">
-                <ListItemIcon><Icon className="drawer_icon">{option.icon}</Icon></ListItemIcon>
+            <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "#fff" }}>
+              <ListItem button key={option.name} className="drawer_text" >
+                <ListItemIcon ><Icon  className="drawer_icon">{option.icon}</Icon></ListItemIcon>
                 {option.name}
               </ListItem>
             </Link>
@@ -204,9 +220,9 @@ function MiniDrawer(props) {
         <div style={{ marginTop: 10 }}>
           {side_top}
           {all_corporate_options.map((option) => (
-            <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "black" }}>
+            <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "#fff" }}>
               <ListItem button key={option.name}>
-                <ListItemIcon><Icon>{option.icon}</Icon></ListItemIcon>
+                <ListItemIcon className={classes.Icon}><Icon>{option.icon}</Icon></ListItemIcon>
                 <ListItemText primary={option.name} />
               </ListItem>
             </Link>
@@ -238,13 +254,13 @@ function MiniDrawer(props) {
                 [classes.hide]: open,
               })}
             >
-              <Icon style={{ color: "#3f51b5" }} >dehaze</Icon>
+              <Icon style={{ color: "black" }} >dehaze</Icon>
             </IconButton>
           }
           <Link to="/login">
             <img src={logo} alt="no_img" height="45" />
           </Link>
-          <span style={{ color: "#b30047", marginLeft: 4 }}>alpha</span>
+          <span style={{ color: "red", marginLeft: 4 }}>alpha</span>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {props.type === "S" &&
@@ -288,11 +304,11 @@ function MiniDrawer(props) {
         >
           <div className={classes.toolbar}>
             <IconButton onClick={handleDrawerClose}>
-              <Icon style={{ color: "#3f51b5" }} >keyboard_arrow_left</Icon>
+              <Icon style={{ color: "#fff" }} >keyboard_arrow_left</Icon>
             </IconButton>
           </div>
           <Divider style={{ backgroundColor:'#FF7000'}} />
-          <List>
+          <List >
             {sideBar(props.type, open)}
           </List>
         </Drawer>

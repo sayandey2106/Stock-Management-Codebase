@@ -5,9 +5,7 @@ import Routes from "../../components/router/router";
 
 //import { setAffiliates,setEmail, setPhone, setdescription,resetAffiliates,AffiliatesFunc} from "../../actions/affiliates/affiliates_action";
 
-import { 
-  onLogout
-} from "../../actions/loginActions";
+import {  onLogout } from "../../actions/loginActions";
 
 export class Routes_con extends Component {
 

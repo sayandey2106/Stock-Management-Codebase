@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 
+import {NavLink} from "react-router-dom";
+
 export default class LG extends React.Component {
   constructor(props) {
     super(props);
@@ -21,19 +23,46 @@ export default class LG extends React.Component {
       return <Redirect to="/" />
     }
     return (
-      <IconButton
-        onClick={() => {
-          localStorage.removeItem("qubi7_type");
-          localStorage.removeItem("qubi7_name");
-          localStorage.removeItem("qubi7_profile_pic");
-          localStorage.removeItem("qubi7_user_id");
-          localStorage.removeItem("qubi7_company_id");
-          // localStorage.removeItem("taxopliance_organization_id");
-          this.setState({redirect:true})
-          this.props.onLogout()
-        }}>
-        <Icon style={{ color: "white" }}>power_settings_new</Icon>
-      </IconButton>
+      // <IconButton
+      //   onClick={() => {
+      //     localStorage.removeItem("qubi7_type");
+      //     localStorage.removeItem("qubi7_name");
+      //     localStorage.removeItem("qubi7_profile_pic");
+      //     localStorage.removeItem("qubi7_user_id");
+      //     localStorage.removeItem("qubi7_company_id");
+      //     // localStorage.removeItem("taxopliance_organization_id");
+      //     this.setState({redirect:true})
+      //     this.props.onLogout()
+      //   }}>
+      //   <Icon style={{ color: "white" }}>power_settings_new</Icon>
+      // </IconButton>
+
+      <button
+
+      onClick={() => {
+        localStorage.removeItem("qubi7_type");
+        localStorage.removeItem("qubi7_name");
+        localStorage.removeItem("qubi7_profile_pic");
+        localStorage.removeItem("qubi7_user_id");
+        localStorage.removeItem("qubi7_company_id");
+        // localStorage.removeItem("taxopliance_organization_id");
+        this.setState({redirect:true})
+        this.props.onLogout()
+      }}
+
+      style={{position:"relative",
+           height:"30px",
+           width:"80px",
+           border:"1px solid",
+           borderRadius:"5px",
+          background:"#fadde1",
+          fontSize:"15px",
+          left:"-100px"
+          }}
+
+      > Log Out</button>
+
+      
     )
   }
 }

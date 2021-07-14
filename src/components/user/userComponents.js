@@ -18,9 +18,11 @@ import LoaderCon from "../../containers/loader/loader_cont";
 import Avatar from "@material-ui/core/Avatar";
 
 const card = {
-    borderRadius: "20px",
+    borderRadius: "10px",
     backgroundColor: "#ffffff",
-    marginTop: 50
+    // marginTop: 50,
+    margin:"100px 10px 10px 60px",
+    width:"80vw",
 };
 
 // eslint-disable-next-line no-unused-vars

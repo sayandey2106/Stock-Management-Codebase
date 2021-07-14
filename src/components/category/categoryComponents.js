@@ -26,9 +26,12 @@ import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
 
 const card = {
-    borderRadius: "20px",
+    borderRadius: "10px",
     backgroundColor: "#ffffff",
-    marginTop: 50
+    // marginTop: 100,
+    margin:"100px 10px 10px 60px",
+    width:"80vw",
+   
 };
 // eslint-disable-next-line no-unused-vars
 withStyles(theme => ({

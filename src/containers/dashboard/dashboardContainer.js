@@ -1,13 +1,10 @@
 import React, {Component} from "react";
+
 import {connect} from "react-redux";
 import Dashboard from "../../components/dashboard/dashboard";
-import {
-    close_snack_bar
-} from "../../actions/snackbar/snackbar_action";
+import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
 
-import {
-    get_dashboard_data
-} from '../../actions/dashboard/dashboardActions'
+import { get_dashboard_data} from '../../actions/dashboard/dashboardActions'
 
 export class DashboardContainer extends Component {
     render() {

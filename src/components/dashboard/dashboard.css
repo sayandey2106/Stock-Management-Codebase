@@ -1,0 +1,85 @@
+/* color for the cards */
+#card-one-1 {
+  background-color: #00f5d4;
+}
+#card-one-2 {
+  background-color: #4cc9f0;
+}
+#card-one-3 {
+  background-color: #4895ef;
+}
+#card-one-4 {
+  background-color: #f0eadd;
+}
+#card-one-5 {
+  background-color: #e7e3e3;
+}
+
+/* dashboard styling */
+.dashboard {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 92vh;
+  /* border: 2px solid red; */
+  background: #ecf4fa;
+
+  top: 40px;
+}
+.dashboard-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.dashboard-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.container-1 {
+  position: relative;
+  width: 50vw;
+  /* border: 1px solid; */
+
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.cards {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+}
+.table {
+  position: relative;
+  height: 350px;
+  width: 750px;
+  top: 30px;
+  /* border: 1px solid; */
+}
+.container-2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+  /* border: 2px solid green; */
+}
+.row {
+  position: relative;
+  display: flex;
+}
+.row svg {
+  font-size: 70px;
+}
+.row-2 {
+  margin-top: 10px;
+}

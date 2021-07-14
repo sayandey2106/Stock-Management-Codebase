@@ -1,88 +1,58 @@
-import React, {Component} from "react/index.js";
-import Card1 from './card1'
-import Card2 from './card2'
-import Card3 from './card3'
-import Card4 from './card4'
-import Card5 from './card5'
-import Card6 from './card6'
-import Card7 from './card7'
-import withStyles from "@material-ui/core/styles/withStyles";
-import {Badge} from "@material-ui/core";
-import {styles} from "../../styles/style";
-import Grid from "@material-ui/core/Grid";
-import Card from "../cards/Card";
-import CardHeader from "../cards/CardHeader";
-import CardIcon from "../cards/CardIcon";
-import CardContent from "@material-ui/core/CardContent";
-import LoaderCon from "../../containers/loader/loader_cont";
-import Snackbar from "../snackbar/snackbar";
-import {get_dashboard_data} from "../../actions/dashboard/dashboardActions"
 
-const card = {
-    borderRadius: "20px",
-    backgroundColor: "#ffffff",
-    marginTop: 50
-};
-// eslint-disable-next-line no-unused-vars
-withStyles(theme => ({
-    badge: {
-        backgroundColor: "green",
-        color: "green",
-        boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-        "&::after": {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            borderRadius: "50%",
-            border: "1px solid currentColor",
-            content: '""'
-        }
-    }
-}))(Badge);
+import React from 'react';
+import './dashboard.css';
 
-class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
+import Card1 from './card1';
+import Card2 from './card2';
+import Table from './Table'
 
-    componentDidMount() {
-        console.log(this.props.login)
-        this.props.get_dashboard_data(this.props.login.company_id)
-    }
-
-    render() {
-        const {
-            snackbar,
-            close_snack_bar,
-        } = this.props;
-        return (
-            <Grid container justify="center">
-                <Grid item xs={12}>
-                    <div className="Dashboard">
-
-                        <Card1 message="H"/>
-                        <Card2/>
-                        <Card3/>
-                        <Card4/>
-                        <Card5/>
-                        <Card6/>
-                        <Card7/>
-                    </div>
-                    <LoaderCon/>
-                    <Snackbar
-                        open={snackbar.response_received}
-                        close_snack_bar={close_snack_bar}
-                        message={snackbar.message}
-                    />
-                </Grid>
-            </Grid>
-        );
-    }
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import TodayIcon from '@material-ui/icons/Today';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 
+function Dashboard() {
+    return (
+        <div className="dashboard">
+        
+        <div className="dashboard-heading">
+          <h2>QUBI7 ADMIN DASHBOARD</h2>
+        </div>
+
+        <div className="dashboard-container">
+
+          <div className="container-1">
+
+            <div className="cards">
+              <Card1 color={"card-one-1"} number={234} cardName={"Total Consumption"} />
+              <Card1 color={"card-one-2"} number={20} cardName={"Total Due"} />
+              <Card1 color={"card-one-3"} number={37} cardName={"Total Users"} />
+            </div>
+
+            
+
+            <div className="table"><Table/></div>
+            
+          </div>
+
+          <div className="container-2">
+
+              <div className='row'>
+              <Card2 color={"card-one-4"} symbol={<EqualizerIcon/>}  cardName={"Consumption/Month"} number={78}/>
+              <Card2 color={"card-one-5"}  symbol={<TodayIcon/>} cardName={"Consumption/Day"} number={8}/>
+              </div>
+
+              <div className='row row-2'>
+              <Card2 color={"card-one-5"}  symbol={<PersonAddIcon/>} cardName={"Pending Request"} number={17}/>
+              <Card2 color={"card-one-4"}  symbol={<QueryBuilderIcon/>} cardName={"Coupon Validity"} number={30}/>
+              </div>
+     
+          </div>
+
+        </div>
+      </div>
+    )
 }
 
-export default withStyles(styles)(Dashboard);
+export default Dashboard;

@@ -12,21 +12,21 @@ export function get_all_users(company_id) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_corporate_users", {
-            method: "GET",
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:company_id,
+                // company_id:company_id,
             },
-            // body: JSON.stringify({
+            body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                // company_id:company_id,
+                company_id:company_id,
                 // user_id: user_id,
                 // category_id:category_id
-            // }),
+            }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log("User Api")

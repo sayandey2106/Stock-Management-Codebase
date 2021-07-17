@@ -52,8 +52,8 @@ export function get_all_request(id) {
 export function delete_request(id) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "delete_request", {
-            method: "DELETE",
+        return fetch(UNIVERSAL.BASEURL + "remove_corporate_request", {
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -63,7 +63,7 @@ export function delete_request(id) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                request_id: id
+                user_id: id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -89,11 +89,11 @@ export function delete_request(id) {
     };
 }
 
-export function update_request(id, name, quantity) {
+export function update_request(user_id, name,corp_id ) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "update_request", {
-            method: "PUT",
+        return fetch(UNIVERSAL.BASEURL + "send_corporate_request", {
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -103,8 +103,11 @@ export function update_request(id, name, quantity) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                request_name: name,
-                request_quantity:quantity,
+                // request_name: name,
+                // request_quantity:quantity,
+                userId: user_id,
+                user_name: name,
+                corporate_id: corp_id,
 
             }),
         }).then((response) => response.json())

@@ -54,7 +54,7 @@ export function delete_category(id) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "delete_category", {
-            method: "DELETE",
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export function delete_category(id) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                category_id: id
+                id: id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -94,7 +94,7 @@ export function update_category(id, name, quantity) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_category", {
-            method: "PUT",
+            method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -104,8 +104,9 @@ export function update_category(id, name, quantity) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
+                company_id:id,
                 category_name: name,
-                category_quantity:quantity,
+                category_quantityid:quantity,
 
             }),
         }).then((response) => response.json())

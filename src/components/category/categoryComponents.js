@@ -24,6 +24,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
+import { Tooltip } from "@material-ui/core";
 
 const card = {
     borderRadius: "10px",
@@ -107,9 +108,11 @@ class Category extends Component {
                         <CardContent>
                             <Grid item lg={12}>
                                 {/*<Link to="add_category" style={{textDecoration: "none"}}>*/}
+                                <Tooltip title ='add catagory'>
                                 <IconButton onClick={() => this.setState({add: true})}>
                                     <Icon>add</Icon>
                                 </IconButton>
+                                </Tooltip>
                                 {/*</Link>*/}
 
                             </Grid>
@@ -127,25 +130,32 @@ class Category extends Component {
                                             <TableCell align="left">{row.quantity}</TableCell>
                                             {login.user_id !== row._id &&
                                             <TableCell align={"right"}>
-                                                <IconButton onClick={() => {
+
+                                                <Tooltip title ="Edit">
+                                                  <IconButton onClick={() => {
                                                     this.setState({
                                                         update: true,
                                                         id: row._id,
                                                         name: row.name,
                                                         quantity: row.quantity,
                                                     })
-                                                }}>
+                                                  }}>
                                                     <Icon>edit</Icon>
-                                                </IconButton>
+                                                  </IconButton>
+                                                </Tooltip>
+
+                                              <Tooltip title="Delete">
                                                 <IconButton onClick={() => {
                                                     this.setState({delete: true, id: row._id})
                                                 }}>
                                                     <Icon>delete</Icon>
                                                 </IconButton>
+                                                </Tooltip>  
                                             </TableCell>}
                                         </TableRow>
                                     )}
                                 </TableBody>
+
                                 <Dialog open={this.state.delete}
                                         onClose={this.handleClose}
                                         aria-labelledby="form-dialog-title">
@@ -175,6 +185,7 @@ class Category extends Component {
                                         </Button>
                                     </DialogActions>
                                 </Dialog>
+
                                 <Dialog open={this.state.update} onClose={() => {
                                     this.handleClose()
                                 }} aria-labelledby="form-dialog-title">
@@ -225,6 +236,7 @@ class Category extends Component {
                                         </Button>
                                     </DialogActions>
                                 </Dialog>
+                                
                                 <Dialog open={this.state.add} onClose={() => {
                                     this.handleClose()
                                 }} aria-labelledby="form-dialog-title">

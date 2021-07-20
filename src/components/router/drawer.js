@@ -18,6 +18,7 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import logo from '../../img/logo.png'
 import MenuItem from '@material-ui/core/MenuItem';
+
 // import View_user_profile_cont from "../../containers/user/user_view_profile_cont";
 // import NotificationsCont from "../../containers/notifications/notificationCont";
 
@@ -192,7 +193,9 @@ function MiniDrawer(props) {
           {all_admin_option.map((option) => (
             <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "#fff" }}>
               <ListItem button key={option.name} className="drawer_text" >
+              
                 <ListItemIcon ><Icon  className="drawer_icon">{option.icon}</Icon></ListItemIcon>
+                
                 {option.name}
               </ListItem>
             </Link>

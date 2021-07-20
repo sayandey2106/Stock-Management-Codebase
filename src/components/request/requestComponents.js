@@ -26,6 +26,7 @@ import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import MenuItem from "@material-ui/core/MenuItem";
 import {approve_corporate_request} from "../../actions/request/requestActions";
+import { Tooltip } from "@material-ui/core";
 
 const card = {
     borderRadius: "20px",
@@ -123,12 +124,17 @@ class Request extends Component {
                                             {/* <TableCell align="left">{row.quantity}</TableCell> */}
                                             {login.user_id !== row._id &&
                                             <TableCell align={"right"}>
+
+                                                <Tooltip title="User Profile">
                                                 <IconButton onClick={() => {
                                                     // view_all_users()
                                                     this.setState({users_dialog:true})
                                                 }}>
                                                     <Icon>U</Icon>
                                                 </IconButton>
+                                                </Tooltip>
+
+                                                <Tooltip title ="Approve">
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                         id: row._id,
@@ -139,6 +145,8 @@ class Request extends Component {
                                                 }}>
                                                     <Icon>thumb_up_off_alt</Icon>
                                                 </IconButton>
+                                                </Tooltip>
+                                                <Tooltip title="Disapprove">
                                                 <IconButton onClick={() => {
                                                     this.setState({
                                                             id: row._id,
@@ -147,11 +155,13 @@ class Request extends Component {
                                                 }}>
                                                     <Icon>thumb_down_off_alt</Icon>
                                                 </IconButton>
+                                                </Tooltip> 
                                             </TableCell>}
                                         </TableRow>
                                     )}
                                 </TableBody>
                             </Table>
+
                             <Dialog open={this.state.thumbs_up_dialog} onClose={() => {
                                 this.handleClose()
                             }} aria-labelledby="form-dialog-title">
@@ -200,6 +210,7 @@ class Request extends Component {
                                     </Button>
                                 </DialogActions>
                             </Dialog>
+
                             <Dialog open={this.state.thumbs_down_dialog} onClose={() => {
                                 this.handleClose()
                             }} aria-labelledby="form-dialog-title">
@@ -224,6 +235,7 @@ class Request extends Component {
                                     </Button>
                                 </DialogActions>
                             </Dialog>
+
                             <Dialog open={this.state.users_dialog} onClose={() => {
                                 this.handleClose()
                             }} aria-labelledby="form-dialog-title">

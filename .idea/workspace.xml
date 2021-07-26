@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ed4ceab-5414-486b-8fc0-c159679eeae5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/dashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/loginActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/loginActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/category/categoryComponents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categoryComponents.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/card1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/card2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/router/router.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/dashboardConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/dashboard/dashboardConstants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/dashboard/dashboardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/dashboardReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/dashboard/dashboardReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/dashboard/dashboardConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/dashboard/dashboardConstants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/dashboard/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/dashboard/dashboardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/dashboard/dashboardReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/dashboard/dashboardReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +37,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../taxopliance-web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -111,6 +103,7 @@
       <workItem from="1620237273255" duration="3000" />
       <workItem from="1620240827068" duration="6000" />
       <workItem from="1620240863117" duration="43000" />
+      <workItem from="1627283853489" duration="5903000" />
     </task>
     <servers />
   </component>

@@ -7,7 +7,7 @@ import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
 import {
     get_dashboard_data,
     get_total_users, get_total_consumption, get_consumption_per_day,
-    get_consumption_per_month, view_corporate_requests, view_company_balance
+    get_consumption_per_month, view_corporate_requests, view_company_balance, view_users_consumption
 } from '../../actions/dashboard/dashboardActions'
 
 export class DashboardContainer extends Component {
@@ -53,7 +53,9 @@ export const mapDispatchToProps = dispatch => {
         get_dashboard_data: (id) => {
             dispatch(get_dashboard_data(id));
         },
-
+        view_users_consumption: (id) => {
+            dispatch(view_users_consumption(id));
+        },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardContainer);

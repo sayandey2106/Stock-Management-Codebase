@@ -11,6 +11,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import {styles} from "../../styles/style";
 import withStyles from "@material-ui/core/styles/withStyles";
+import {view_users_consumption} from "../../actions/dashboard/dashboardActions";
 
 
 class Dashboard extends Component {
@@ -26,6 +27,7 @@ class Dashboard extends Component {
         this.props.get_consumption_per_month(this.props.login.company_id)
         this.props.view_corporate_requests(this.props.login.company_id)
         this.props.view_company_balance(this.props.login.company_id)
+        this.props.view_users_consumption(this.props.login.company_id)
     }
 
     render() {
@@ -48,11 +50,11 @@ class Dashboard extends Component {
                         <div className="cards">
                             <Card1 color={"card-one-1"} number={dashboard.total_consumption} cardName={"Total Consumption"}/>
                             <Card1 color={"card-one-2"} number={dashboard.company_balance} cardName={"Total Due"}/>
-                            <Card1 color={"card-one-3"} number={dashboard.total_users} cardName={"Total Users"}/>
+                            <Card1 color={"card-one-3"} number={dashboard.total_users.length} cardName={"Total Users"}/>
                         </div>
 
 
-                        <div className="table"><Table/></div>
+                        <div className="table"><Table data={dashboard.users_consumption}/></div>
 
                     </div>
 
@@ -67,7 +69,7 @@ class Dashboard extends Component {
 
                         <div className='row row-2'>
                             <Card2 color={"card-one-5"} symbol={<PersonAddIcon/>} cardName={"Pending Request"}
-                                   number={17}/>
+                                   number={dashboard.corporate_requests.length}/>
                             <Card2 color={"card-one-4"} symbol={<QueryBuilderIcon/>} cardName={"Coupon Validity"}
                                    number={30}/>
                         </div>

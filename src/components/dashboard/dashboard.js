@@ -3,7 +3,6 @@ import './dashboard.css';
 
 import Card1 from './card1';
 import Card2 from './card2';
-import Table from './Table'
 
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import TodayIcon from '@material-ui/icons/Today';
@@ -11,9 +10,9 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import {styles} from "../../styles/style";
 import withStyles from "@material-ui/core/styles/withStyles";
-import {view_users_consumption} from "../../actions/dashboard/dashboardActions";
 import LoaderCon from "../../containers/loader/loader_cont";
-
+import MaterialTable from "material-table";
+import {delete_request} from "../../actions/request/requestActions";
 
 
 class Dashboard extends Component {
@@ -23,6 +22,7 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
+        this.props.setLoader()
         this.props.get_total_users(this.props.login.company_id)
         this.props.get_total_consumption(this.props.login.company_id)
         this.props.get_consumption_per_day(this.props.login.company_id)
@@ -30,13 +30,22 @@ class Dashboard extends Component {
         this.props.view_corporate_requests(this.props.login.company_id)
         this.props.view_company_balance(this.props.login.company_id)
         this.props.view_users_consumption(this.props.login.company_id)
+        this.props.unsetLoader()
     }
 
     render() {
         const {
             dashboard,
-            
+            delete_request,
         } = this.props;
+        const data = [...dashboard.users_consumption]
+        console.log(dashboard.users_consumption)
+        const
+            columns = [
+                {title: 'Employee ID', field: 'employeeId'},
+                {title: 'Name', field: 'name'},
+                {title: 'Consumption', field: 'count'}
+            ]
         console.log("dashboard data aaaai", dashboard)
         return (
 
@@ -51,14 +60,56 @@ class Dashboard extends Component {
                     <div className="container-1">
 
                         <div className="cards">
-                            <Card1 color={"card-one-1"} number={dashboard.total_consumption} cardName={"Total Consumption"}/>
+                            <Card1 color={"card-one-1"} number={dashboard.total_consumption}
+                                   cardName={"Total Consumption"}/>
                             <Card1 color={"card-one-2"} number={dashboard.company_balance} cardName={"Total Due"}/>
                             <Card1 color={"card-one-3"} number={dashboard.total_users.length} cardName={"Total Users"}/>
                         </div>
-                       
 
-                        <div className="table"><Table data={dashboard.users_consumption}/></div>
-                       
+
+                        <div className="table">
+                            {/*<Table data={dashboard.users_consumption}/>*/}
+                            <div>
+                                <MaterialTable
+                                    title="Entries Today"
+                                    data={data}
+                                    columns={columns}
+
+                                    options={{
+                                        paging: false,
+                                        headerStyle: {
+                                            backgroundColor: '#01579b',
+                                            color: '#FFF'
+                                        },
+                                        rowStyle: {
+                                            backgroundColor: '#EEE',
+                                        },
+                                        actionsColumnIndex: -1,
+                                    }}
+
+                                    editable={{
+                                        /*onRowDelete: () => {
+                                            console.log("row deleted", )
+                                        }*/
+                                        onRowDelete: oldData =>
+                                            new Promise((resolve, reject) => {
+                                                setTimeout(() => {
+                                                    delete_request(oldData.user_id, this.props.login.company_id)
+                                                    // const dataDelete = [...data];
+                                                    // const index = oldData.tableData.id;
+                                                    // dataDelete.splice(index, 1);
+                                                    // setData([...dataDelete]);
+
+                                                    resolve();
+                                                }, 1000)
+                                            }),
+                                    }}
+
+                                />
+
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className="container-2">
@@ -77,14 +128,14 @@ class Dashboard extends Component {
                                    number={30}/>
                         </div>
 
-                    <LoaderCon/>
-                   
+                        <LoaderCon/>
+
                     </div>
-                   
+
                 </div>
-                
+
             </div>
-            
+
         )
     }
 }

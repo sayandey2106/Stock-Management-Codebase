@@ -3,9 +3,6 @@ import MaterialTable from 'material-table';
 
 
 class Table extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         /*const
@@ -22,9 +19,6 @@ class Table extends Component {
                 /*{title: 'Name', field: 'name'},
                 {title: 'Beverage Number', field: 'number'}*/
             ]
-        /*this.props.data.map(row =>(
-            data.push({name: row.userId, number: 1, id: 1})
-        ))*/
         console.log("table ai enma", this.props.data)
         return (
             <div>

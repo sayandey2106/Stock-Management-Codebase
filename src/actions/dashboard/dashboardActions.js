@@ -89,7 +89,7 @@ export function get_total_users(id) {
                     }
                     // dispatch(set_all_category([]));
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -100,7 +100,7 @@ export function get_total_users(id) {
 
 export function view_company_balance(id) {
     return (dispatch) => {
-        dispatch(setLoader());
+        // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_company_balance", {
             method: "POST",
             headers: {
@@ -131,7 +131,7 @@ export function view_company_balance(id) {
                     }
                     // dispatch(set_all_category([]));
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -141,7 +141,7 @@ export function view_company_balance(id) {
 
 export function get_total_consumption (id) {
     return (dispatch) => {
-        dispatch(setLoader());
+        // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "total_consumption ", {
             method: "POST",
             headers: {
@@ -171,7 +171,7 @@ export function get_total_consumption (id) {
                     }
                     // dispatch(set_all_category([]));
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -181,7 +181,7 @@ export function get_total_consumption (id) {
 
 export function get_consumption_per_month(id) {
     return (dispatch) => {
-        dispatch(setLoader());
+        // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "consumption_per_month", {
             method: "POST",
             headers: {
@@ -212,7 +212,7 @@ export function get_consumption_per_month(id) {
                     }
                     // dispatch(set_all_category([]));
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -222,7 +222,7 @@ export function get_consumption_per_month(id) {
 
 export function get_consumption_per_day(id) {
     return (dispatch) => {
-        dispatch(setLoader());
+        // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "consumption_per_day ", {
             method: "POST",
             headers: {
@@ -253,7 +253,7 @@ export function get_consumption_per_day(id) {
                     }
                     // dispatch(set_all_category([]));
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -263,7 +263,7 @@ export function get_consumption_per_day(id) {
 
 export function view_corporate_requests(id) {
     return (dispatch) => {
-        dispatch(setLoader());
+        // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_corporate_requests", {
             method: "POST",
             headers: {
@@ -294,7 +294,7 @@ export function view_corporate_requests(id) {
                     }
                     // dispatch(set_all_category([]));
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -304,7 +304,7 @@ export function view_corporate_requests(id) {
 
 export function view_users_consumption(id) {
     return (dispatch) => {
-        dispatch(setLoader());
+        // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_users_consumption", {
             method: "POST",
             headers: {

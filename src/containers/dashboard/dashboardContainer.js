@@ -10,6 +10,14 @@ import {
     get_consumption_per_month, view_corporate_requests, view_company_balance, view_users_consumption
 } from '../../actions/dashboard/dashboardActions'
 
+import {
+    delete_request
+} from "../../actions/request/requestActions"
+
+import {
+    setLoader, unsetLoader
+} from "../../actions/loader/loaderAction"
+
 export class DashboardContainer extends Component {
     render() {
         return (
@@ -32,8 +40,17 @@ export const mapDispatchToProps = dispatch => {
         close_snack_bar: () => {
             dispatch(close_snack_bar());
         },
+        setLoader: () => {
+            dispatch(setLoader());
+        },
+        unsetLoader: () => {
+            dispatch(unsetLoader());
+        },
         get_total_users: (id) => {
             dispatch(get_total_users(id));
+        },
+        delete_request: (id, cid) => {
+            dispatch(delete_request(id, cid));
         },
         get_total_consumption: (id) => {
             dispatch(get_total_consumption(id));

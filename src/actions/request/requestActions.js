@@ -6,6 +6,7 @@ import {setLoader, unsetLoader}
     from "../loader/loaderAction";
 import {set_snack_bar} from "../snackbar/snackbar_action";
 import {onLogout} from '../loginActions'
+import {set_users_consumption} from "../dashboard/dashboardActions"
 
 
 export function get_all_request(id) {
@@ -49,7 +50,8 @@ export function get_all_request(id) {
     };
 }
 
-export function delete_request(id) {
+export function delete_request(id, cid) {
+    console.log("testing user id", id)
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "remove_corporate_request", {
@@ -71,6 +73,8 @@ export function delete_request(id) {
                 if (responseJson.status) {
 
                     dispatch(get_all_request())
+
+                    dispatch(set_users_consumption(cid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 

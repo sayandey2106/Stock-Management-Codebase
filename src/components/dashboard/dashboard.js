@@ -12,6 +12,8 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import {styles} from "../../styles/style";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {view_users_consumption} from "../../actions/dashboard/dashboardActions";
+import LoaderCon from "../../containers/loader/loader_cont";
+
 
 
 class Dashboard extends Component {
@@ -33,6 +35,7 @@ class Dashboard extends Component {
     render() {
         const {
             dashboard,
+            
         } = this.props;
         console.log("dashboard data aaaai", dashboard)
         return (
@@ -52,10 +55,10 @@ class Dashboard extends Component {
                             <Card1 color={"card-one-2"} number={dashboard.company_balance} cardName={"Total Due"}/>
                             <Card1 color={"card-one-3"} number={dashboard.total_users.length} cardName={"Total Users"}/>
                         </div>
-
+                       
 
                         <div className="table"><Table data={dashboard.users_consumption}/></div>
-
+                       
                     </div>
 
                     <div className="container-2">
@@ -74,10 +77,14 @@ class Dashboard extends Component {
                                    number={30}/>
                         </div>
 
+                    <LoaderCon/>
+                   
                     </div>
-
+                   
                 </div>
+                
             </div>
+            
         )
     }
 }

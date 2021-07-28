@@ -93,6 +93,7 @@ export function get_total_users(id) {
             })
             .catch((error) => {
                 console.error(error);
+                
             });
     };
 }

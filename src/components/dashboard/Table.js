@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MaterialTable from 'material-table';
 
+
 class Table extends Component {
     constructor(props) {
         super(props);
@@ -40,9 +41,29 @@ class Table extends Component {
                         },
                         rowStyle: {
                             backgroundColor: '#EEE',
-                        }
+                        },
+                        actionsColumnIndex: -1,
+                    
                     }}
+
+                    editable={{
+
+                        onRowDelete: () => { console.log("row deleted")}
+                        //  oldData =>
+                        //   new Promise((resolve, reject) => {
+                            // setTimeout(() => {
+                            //   const dataDelete = [...data];
+                            //   const index = oldData.tableData.id;
+                            //   dataDelete.splice(index, 1);
+                            //   setData([...dataDelete]);
+                              
+                            //   resolve()
+                            // }, 1000)
+                        //   }),
+                      }}
+
                 />
+                
             </div>
         )
     }

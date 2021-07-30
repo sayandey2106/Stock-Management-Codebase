@@ -13,18 +13,18 @@ export function get_all_request(id) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_corporate_requests", {
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
+                company_id:id
                 // user_token: token,
                 // organization_id: oid
             },
-            body: JSON.stringify({
+            /*body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                company_id:id
-            }),
+            }),*/
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)

@@ -50,6 +50,48 @@ export function get_all_category(id) {
     };
 }
 
+export function get_all_category_fix(id) {
+    return (dispatch) => {
+        // dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "view_company_category", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                // user_token: token,
+                // organization_id: oid
+                company_id:id
+            },
+            //body: JSON.stringify({
+            // email: login.email,
+            // password: login.password
+
+            //}),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(set_all_category(responseJson.result));
+
+                    // dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message ==="User Does Not Exist"){
+                        dispatch(onLogout())
+                    }else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                    // dispatch(set_all_category([]));
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 export function delete_category(id) {
     return (dispatch) => {
         dispatch(setLoader());
@@ -71,18 +113,18 @@ export function delete_category(id) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_category())
+                    dispatch(get_all_category_fix(id))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
                     if(responseJson.message === "User doesn't Exist") {
-                        onLogout()
+                        dispatch(onLogout())
                     } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);

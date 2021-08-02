@@ -75,9 +75,9 @@ class Category extends Component {
             delete: false,
             update: false,
             add: false,
-            id: "",
+            /*id: "",
             name: "",
-            quantity: ""
+            quantity: ""*/
 
         })
     }

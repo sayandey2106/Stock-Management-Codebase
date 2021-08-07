@@ -15,7 +15,7 @@ class Table extends Component {
         const data = [...this.props.data]
         const
             columns = [
-                {title: 'Id', field: 'user_id'},
+                {title: 'Id', field: 'user_id' },
                 /*{title: 'Name', field: 'name'},
                 {title: 'Beverage Number', field: 'number'}*/
             ]
@@ -28,7 +28,7 @@ class Table extends Component {
                     columns={columns}
 
                     options={{
-                        paging: false,
+                        paging: true,
                         headerStyle: {
                             backgroundColor: '#01579b',
                             color: '#FFF'

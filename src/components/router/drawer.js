@@ -127,6 +127,16 @@ const useStyles = makeStyles(theme => ({
     position:"relative",
     left:"10px"
   },
+
+  ListItem:{
+    // border:"1px solid red",
+    
+    "&:hover" : {
+      borderRadius:"3px",
+      backgroundColor:"#ed5066"
+    }
+  }
+  
  
 }));
 
@@ -224,7 +234,7 @@ function MiniDrawer(props) {
           {side_top}
           {all_corporate_options.map((option) => (
             <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "#fff" }}>
-              <ListItem button key={option.name}>
+              <ListItem button key={option.name} className = {classes.ListItem}>
                 <ListItemIcon className={classes.Icon}><Icon>{option.icon}</Icon></ListItemIcon>
                 <ListItemText primary={option.name} />
               </ListItem>
@@ -260,12 +270,15 @@ function MiniDrawer(props) {
               <Icon style={{ color: "black" }} >dehaze</Icon>
             </IconButton>
           }
+
           <Link to="/login">
             <img src={logo} alt="no_img" height="45" />
           </Link>
           <span style={{ color: "red", marginLeft: 4 }}>alpha</span>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+
+
             {props.type === "S" &&
               <span>
                 <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >
@@ -290,6 +303,7 @@ function MiniDrawer(props) {
           </div>
         </Toolbar>
       </AppBar>
+
       {props.type === "S" ? "" :
         <Drawer
           variant="permanent"

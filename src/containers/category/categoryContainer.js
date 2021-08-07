@@ -30,11 +30,11 @@ export const mapDispatchToProps = (dispatch) => {
     get_all_category: (id) => {
       dispatch(get_all_category(id));
     },
-    delete_category: (id) => {
-      dispatch(delete_category(id));
+    delete_category: (id,company_id) => {
+      dispatch(delete_category(id,company_id));
     },
-    update_category: (id, name, quantity) => {
-      dispatch(update_category(id, name, quantity));
+    update_category: (id, cid, name, quantity) => {
+      dispatch(update_category(id, cid, name, quantity));
     },
     add_category: (name, quantity, company_id) => {
       dispatch(add_category(name, quantity, company_id));

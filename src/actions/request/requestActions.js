@@ -50,11 +50,52 @@ export function get_all_request(id) {
     };
 }
 
+export function get_all_request_fix(id) {
+    return (dispatch) => {
+        // dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "view_corporate_requests", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                company_id:id
+                // user_token: token,
+                // organization_id: oid
+            },
+            /*body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+            }),*/
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(set_all_request(responseJson.result));
+
+                    // dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message ==="User Does Not Exist"){
+                        dispatch(onLogout())
+                    }else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                    // dispatch(set_all_request([]));
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 export function delete_request(id, cid) {
     console.log("testing user id", id)
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "remove_corporate_request", {
+        return fetch(UNIVERSAL.BASEURL + "remove_corporate_user", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -72,9 +113,9 @@ export function delete_request(id, cid) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_request())
+                    dispatch(get_all_request(cid))
 
-                    dispatch(set_users_consumption(cid))
+                    // dispatch(set_users_consumption(cid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -181,9 +222,9 @@ export function add_request(name, quantity) {
     };
 }
 
-export function approve_corporate_request(user_id, company_id, category_id) {
+export function approve_corporate_request(user_id, company_id, category_id, e_id) {
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "approve_corporate_request", {
             method: "POST",
             headers: {
@@ -197,14 +238,15 @@ export function approve_corporate_request(user_id, company_id, category_id) {
                 // password: login.password
                 user_id: user_id,
                 company_id: company_id,
-                category_id: category_id
+                category_id: category_id,
+                employeeId: e_id
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_request())
+                    dispatch(get_all_request_fix(company_id))
 
                     // dispatch(reset_request())
 
@@ -217,7 +259,52 @@ export function approve_corporate_request(user_id, company_id, category_id) {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+export function disapprove_corporate_request(user_id, company_id) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "disapprove_corporate_request", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                // user_token: token,
+                // organization_id: oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                user_id: user_id,
+                /*company_id: company_id,
+                category_id: category_id,
+                employeeId: e_id*/
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(get_all_request_fix(company_id))
+
+                    // dispatch(reset_request())
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);

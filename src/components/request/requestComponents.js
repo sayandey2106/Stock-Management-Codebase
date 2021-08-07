@@ -26,14 +26,14 @@ import TextField from "@material-ui/core/TextField";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import MenuItem from "@material-ui/core/MenuItem";
 import {approve_corporate_request} from "../../actions/request/requestActions";
-import { Tooltip } from "@material-ui/core";
+import {Tooltip} from "@material-ui/core";
 
 const card = {
     borderRadius: "20px",
     backgroundColor: "#ffffff",
     // marginTop: 50,
-    margin:"100px 10px 10px 60px",
-    width:"80vw",
+    margin: "100px 10px 10px 60px",
+    width: "80vw",
 };
 
 // eslint-disable-next-line no-unused-vars
@@ -53,7 +53,8 @@ class Request extends Component {
             id: "",
             name: "",
             e_mail: "",
-            phone_num: ""
+            phone_num: "",
+            employee_id: ""
         }
     }
 
@@ -80,10 +81,7 @@ class Request extends Component {
             request,
             category,
             approve_corporate_request,
-            get_all_category,
-            delete_request,
-            update_request,
-            add_request,
+            disapprove_corporate_request,
             // toggle_active_request,
             login
         } = this.props;
@@ -112,7 +110,7 @@ class Request extends Component {
                                 <TableHead>
                                     <TableRow>
                                         <TableCell align="left">&nbsp;&nbsp;Employee ID</TableCell>
-                                        {/* <TableCell align="left">E-Mail</TableCell> */}
+                                        <TableCell align="left">Name</TableCell>
                                         {/* <TableCell align="left">Phone Number</TableCell> */}
                                         <TableCell align="right">Actions</TableCell>
                                     </TableRow>
@@ -121,41 +119,41 @@ class Request extends Component {
                                     {request.all_request.map(row =>
                                         <TableRow>
                                             <TableCell align="left">&nbsp;&nbsp;{row.employeeId}</TableCell>
-                                            {/* <TableCell align="left">{row.quantity}</TableCell> */}
+                                            <TableCell align="left">{row.user_name}</TableCell>
                                             {login.user_id !== row._id &&
                                             <TableCell align={"right"}>
 
                                                 <Tooltip title="User Profile">
-                                                <IconButton onClick={() => {
-                                                    // view_all_users()
-                                                    this.setState({users_dialog:true})
-                                                }}>
-                                                    <Icon>U</Icon>
-                                                </IconButton>
+                                                    <IconButton onClick={() => {
+                                                        // view_all_users()
+                                                        this.setState({users_dialog: true})
+                                                    }}>
+                                                        <Icon>U</Icon>
+                                                    </IconButton>
                                                 </Tooltip>
 
-                                                <Tooltip title ="Approve">
-                                                <IconButton onClick={() => {
-                                                    this.setState({
-                                                        id: row._id,
-                                                        user_id: row.user_id,
-                                                        thumbs_up_dialog: true,
-                                                    })
+                                                <Tooltip title="Approve">
+                                                    <IconButton onClick={() => {
+                                                        this.setState({
+                                                            user_id: row.user_id,
+                                                            employee_id: row.employeeId,
+                                                            thumbs_up_dialog: true,
+                                                        })
 
-                                                }}>
-                                                    <Icon>thumb_up_off_alt</Icon>
-                                                </IconButton>
+                                                    }}>
+                                                        <Icon>thumb_up_off_alt</Icon>
+                                                    </IconButton>
                                                 </Tooltip>
                                                 <Tooltip title="Disapprove">
-                                                <IconButton onClick={() => {
-                                                    this.setState({
-                                                            id: row._id,
+                                                    <IconButton onClick={() => {
+                                                        this.setState({
+                                                            user_id: row.user_id,
                                                             thumbs_down_dialog: true
                                                         })
-                                                }}>
-                                                    <Icon>thumb_down_off_alt</Icon>
-                                                </IconButton>
-                                                </Tooltip> 
+                                                    }}>
+                                                        <Icon>thumb_down_off_alt</Icon>
+                                                    </IconButton>
+                                                </Tooltip>
                                             </TableCell>}
                                         </TableRow>
                                     )}
@@ -202,7 +200,7 @@ class Request extends Component {
                                         onClick={() => {
                                             this.handleClose();
                                             // update_minorhead(this.state.id, this.state.name, this.state.majorhead_id, login.token)
-                                            approve_corporate_request(this.state.user_id, login.company_id, this.state.category)
+                                            approve_corporate_request(this.state.user_id, login.company_id, this.state.category, this.state.employee_id)
                                         }}
                                         color="primary"
                                     >
@@ -227,7 +225,7 @@ class Request extends Component {
                                     <Button
                                         onClick={() => {
                                             this.handleClose();
-                                            // update_minorhead(this.state.id, this.state.name, this.state.majorhead_id, login.token)
+                                            disapprove_corporate_request(this.state.user_id, login.company_id)
                                         }}
                                         color="primary"
                                     >

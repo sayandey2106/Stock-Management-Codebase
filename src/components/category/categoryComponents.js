@@ -121,6 +121,7 @@ class Category extends Component {
                                     <TableRow>
                                         <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
                                         <TableCell align="left">Beverage Number</TableCell>
+                                        <TableCell align="right">Actions</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -176,7 +177,7 @@ class Category extends Component {
                                         </Button>
                                         <Button
                                             onClick={() => {
-                                                delete_category(this.state.id)
+                                                delete_category(this.state.id,login.company_id);
                                                 this.handleClose();
                                             }}
                                             color="primary"
@@ -227,7 +228,7 @@ class Category extends Component {
                                         </Button>
                                         <Button
                                             onClick={() => {
-                                                update_category(this.state.id, this.state.name, this.state.beverage)
+                                                update_category(this.state.id, this.props.login.company_id, this.state.name, this.state.quantity)
                                                 this.handleClose();
                                             }}
                                             color="primary"

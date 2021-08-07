@@ -18,7 +18,9 @@ import {delete_request} from "../../actions/request/requestActions";
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            data: []
+        }
     }
 
     componentDidMount() {
@@ -31,6 +33,7 @@ class Dashboard extends Component {
         this.props.view_company_balance(this.props.login.company_id)
         this.props.view_users_consumption(this.props.login.company_id)
         this.props.unsetLoader()
+        // this.setState({data: this.props.dashboard.users_consumption})
     }
 
     render() {
@@ -38,8 +41,8 @@ class Dashboard extends Component {
             dashboard,
             delete_request,
         } = this.props;
-        const data = [...dashboard.users_consumption]
         console.log(dashboard.users_consumption)
+        const data = [...dashboard.users_consumption]
         const
             columns = [
                 {title: 'Employee ID', field: 'employeeId'},
@@ -52,7 +55,7 @@ class Dashboard extends Component {
             <div className="dashboard">
 
                 <div className="dashboard-heading">
-                    <h2>QUBI7 ADMIN DASHBOARD</h2>
+                    <h2>ADMIN DASHBOARD</h2>
                 </div>
 
                 <div className="dashboard-container">
@@ -71,7 +74,7 @@ class Dashboard extends Component {
                             {/*<Table data={dashboard.users_consumption}/>*/}
                             <div>
                                 <MaterialTable
-                                    title="Entries Today"
+                                    title="Users"
                                     data={data}
                                     columns={columns}
 
@@ -85,6 +88,8 @@ class Dashboard extends Component {
                                             backgroundColor: '#EEE',
                                         },
                                         actionsColumnIndex: -1,
+                                        search: true,
+
                                     }}
 
                                     editable={{
@@ -99,7 +104,6 @@ class Dashboard extends Component {
                                                     // const index = oldData.tableData.id;
                                                     // dataDelete.splice(index, 1);
                                                     // setData([...dataDelete]);
-
                                                     resolve();
                                                 }, 1000)
                                             }),
@@ -115,9 +119,9 @@ class Dashboard extends Component {
                     <div className="container-2">
 
                         <div className='row'>
-                            <Card2 color={"card-one-4"} symbol={<EqualizerIcon/>} cardName={"Consumption/Month"}
+                            <Card2 color={"card-one-4"} symbol={<EqualizerIcon/>} cardName={"Consumption (Per     Month)"}
                                    number={dashboard.consumption_per_month}/>
-                            <Card2 color={"card-one-5"} symbol={<TodayIcon/>} cardName={"Consumption/Day"}
+                            <Card2 color={"card-one-5"} symbol={<TodayIcon/>} cardName={"Consumption (Per      Day)"}
                                    number={dashboard.consumption_per_day}/>
                         </div>
 

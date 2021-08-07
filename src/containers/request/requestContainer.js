@@ -9,7 +9,7 @@ import {
     delete_request,
     update_request,
     add_request,
-    approve_corporate_request
+    approve_corporate_request, disapprove_corporate_request
 } from "../../actions/request/requestActions";
 import {
     get_all_category
@@ -52,8 +52,11 @@ export const mapDispatchToProps = dispatch => {
         add_request: (name, quantity) => {
             dispatch(add_request(name, quantity));
         },
-        approve_corporate_request:(user_id, company_id, category_id) => {
-            dispatch(approve_corporate_request(user_id, company_id, category_id))
+        approve_corporate_request:(user_id, company_id, category_id, e_id) => {
+            dispatch(approve_corporate_request(user_id, company_id, category_id, e_id))
+        },
+        disapprove_corporate_request:(user_id , company_id) => {
+            dispatch(disapprove_corporate_request(user_id, company_id))
         }
     };
 };

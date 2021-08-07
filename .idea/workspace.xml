@@ -6,9 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="5ed4ceab-5414-486b-8fc0-c159679eeae5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_07_21,_3_25_PM_[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_28_07_21__3_25_PM__Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/category/categoryActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/category/categoryActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/request/requestActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/request/requestActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/category/categoryComponents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/category/categoryComponents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/request/requestComponents.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/request/requestComponents.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/router/router_consts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/router/router_consts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/category/categoryContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/category/categoryContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/request/requestContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/request/requestContainer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +56,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../SkyyRider/skyyriderev-web" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -144,7 +153,18 @@
       <workItem from="1627466070395" duration="4998000" />
       <workItem from="1627647401503" duration="821000" />
       <workItem from="1627653886355" duration="99000" />
-      <workItem from="1627874033764" duration="564000" />
+      <workItem from="1627874033764" duration="1596000" />
+      <workItem from="1628155860313" duration="6288000" />
+      <workItem from="1628249329048" duration="43000" />
+      <workItem from="1628249898308" duration="38000" />
+      <workItem from="1628250891171" duration="46000" />
+      <workItem from="1628251230033" duration="45000" />
+      <workItem from="1628252818396" duration="36000" />
+      <workItem from="1628321921286" duration="294000" />
+      <workItem from="1628322277966" duration="606000" />
+      <workItem from="1628324591939" duration="10720000" />
+      <workItem from="1628340496429" duration="5335000" />
+      <workItem from="1628356631770" duration="32000" />
     </task>
     <servers />
   </component>

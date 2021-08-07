@@ -80,6 +80,7 @@ export function get_all_category_fix(id) {
                     if(responseJson.message ==="User Does Not Exist"){
                         dispatch(onLogout())
                     }else {
+                        dispatch(set_all_category([]));
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                     // dispatch(set_all_category([]));
@@ -92,11 +93,11 @@ export function get_all_category_fix(id) {
     };
 }
 
-export function delete_category(id) {
+export function delete_category(id,company_id) {
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "delete_category", {
-            method: "POST",
+            method: "DELETE",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -113,7 +114,7 @@ export function delete_category(id) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_category_fix(id))
+                    dispatch(get_all_category_fix(company_id))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -132,7 +133,8 @@ export function delete_category(id) {
     };
 }
 
-export function update_category(id, name, quantity) {
+export function update_category(id, cid, name, quantity) {
+    console.log("kyun nahin ho raha", quantity)
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "update_category", {
@@ -146,9 +148,10 @@ export function update_category(id, name, quantity) {
             body: JSON.stringify({
                 // email: login.email,
                 // password: login.password
-                company_id:id,
+                company_id:cid,
                 category_name: name,
-                category_quantityid:quantity,
+                category_quantity:quantity,
+                id: id
 
             }),
         }).then((response) => response.json())
@@ -156,7 +159,7 @@ export function update_category(id, name, quantity) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_all_category())
+                    dispatch(get_all_category_fix(cid))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -167,7 +170,7 @@ export function update_category(id, name, quantity) {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);

@@ -14,6 +14,8 @@ import LoaderCon from "../../containers/loader/loader_cont";
 import MaterialTable from "material-table";
 import {delete_request} from "../../actions/request/requestActions";
 
+import TableThree from './TableThree';
+
 
 class Dashboard extends Component {
     constructor(props) {
@@ -71,8 +73,9 @@ class Dashboard extends Component {
 
 
                         <div className="table">
+                            <TableThree/>
                             {/*<Table data={dashboard.users_consumption}/>*/}
-                            <div>
+                            {/* <div>
                                 <MaterialTable
                                     title="Users"
                                     data={data}
@@ -93,9 +96,7 @@ class Dashboard extends Component {
                                     }}
 
                                     editable={{
-                                        /*onRowDelete: () => {
-                                            console.log("row deleted", )
-                                        }*/
+                                        
                                         onRowDelete: oldData =>
                                             new Promise((resolve, reject) => {
                                                 setTimeout(() => {
@@ -111,10 +112,10 @@ class Dashboard extends Component {
 
                                 />
 
-                            </div>
-                        </div>
+                                </div> */}
+                                </div> 
 
-                    </div>
+                    </div> 
 
                     <div className="container-2">
 

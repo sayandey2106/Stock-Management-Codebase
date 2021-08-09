@@ -226,7 +226,7 @@ class Dashboard extends Component {
                                     columns={columns}
 
                                     options={{
-                                        paging: true,
+                                        paging: false,
                                         headerStyle: {
                                             backgroundColor: '#01579b',
                                             color: '#FFF'
@@ -236,7 +236,8 @@ class Dashboard extends Component {
                                         },
                                         actionsColumnIndex: -1,
                                         search: true,
-
+                                        maxBodyHeight: 300,
+                                        minBodyHeight: 300
                                     }}
 
                                     editable={{

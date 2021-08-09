@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed4ceab-5414-486b-8fc0-c159679eeae5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/request/requestActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/request/requestActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

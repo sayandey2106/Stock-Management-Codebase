@@ -40,7 +40,7 @@ export function get_all_request(id) {
                     }else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_request([]));
+                    dispatch(set_all_request([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -81,7 +81,7 @@ export function get_all_request_fix(id) {
                     }else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_request([]));
+                    dispatch(set_all_request([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -113,7 +113,7 @@ export function delete_request(id, cid) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(view_users_consumption(cid))
+                    // dispatch(view_users_consumption(cid))
                     dispatch(get_total_users(cid))
 
                     // dispatch(set_users_consumption(cid))

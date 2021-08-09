@@ -43,12 +43,12 @@ class Dashboard extends Component {
 
     welcome() {
         this.props.get_total_users(this.props.login.company_id)
-        this.props.get_total_consumption(this.props.login.company_id)
+        /*this.props.get_total_consumption(this.props.login.company_id)
         this.props.get_consumption_per_day(this.props.login.company_id)
         this.props.get_consumption_per_month(this.props.login.company_id)
         this.props.view_corporate_requests(this.props.login.company_id)
         this.props.view_company_balance(this.props.login.company_id)
-        this.props.view_users_consumption(this.props.login.company_id)
+        this.props.view_users_consumption(this.props.login.company_id)*/
     }
 
     componentDidMount() {

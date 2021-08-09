@@ -9,7 +9,6 @@ import {set_snack_bar} from "../snackbar/snackbar_action";
 import {onLogout} from '../loginActions'
 
 
-
 export function get_dashboard_data(id) {
     return (dispatch) => {
         dispatch(setLoader());
@@ -20,17 +19,12 @@ export function get_dashboard_data(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
-
-            // body: JSON.stringify({
-            //     // email: login.email,
-            //     // password: login.password
-            // }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
@@ -41,9 +35,9 @@ export function get_dashboard_data(id) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                     // dispatch(set_all_category([]));
@@ -66,10 +60,10 @@ export function get_total_users(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
         }).then((response) => response.json())
@@ -80,20 +74,22 @@ export function get_total_users(id) {
                     dispatch(set_total_users(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
+                    dispatch(get_total_consumption(id))
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_total_users(0));
+                    dispatch(get_total_consumption(id))
                 }
                 // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
-                
+
             });
     };
 }
@@ -108,10 +104,10 @@ export function view_company_balance(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
         }).then((response) => response.json())
@@ -122,14 +118,16 @@ export function view_company_balance(id) {
                     dispatch(set_company_balance(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
+                    dispatch(view_users_consumption(id))
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_company_balance(0));
+                    dispatch(view_users_consumption(id))
                 }
                 // dispatch(unsetLoader())
             })
@@ -139,7 +137,7 @@ export function view_company_balance(id) {
     };
 }
 
-export function get_total_consumption (id) {
+export function get_total_consumption(id) {
     return (dispatch) => {
         // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "total_consumption ", {
@@ -149,10 +147,10 @@ export function get_total_consumption (id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -162,14 +160,16 @@ export function get_total_consumption (id) {
                     dispatch(set_total_consumption(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
+                    dispatch(get_consumption_per_day(id))
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_total_consumption(0));
+                    dispatch(get_consumption_per_day(id))
                 }
                 // dispatch(unsetLoader())
             })
@@ -189,10 +189,10 @@ export function get_consumption_per_month(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
         }).then((response) => response.json())
@@ -203,14 +203,16 @@ export function get_consumption_per_month(id) {
                     dispatch(set_consumption_per_month(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
+                    dispatch(view_company_balance(id))
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_consumption_per_month(0));
+                    dispatch(view_company_balance(id))
                 }
                 // dispatch(unsetLoader())
             })
@@ -230,10 +232,10 @@ export function get_consumption_per_day(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
         }).then((response) => response.json())
@@ -244,14 +246,16 @@ export function get_consumption_per_day(id) {
                     dispatch(set_consumption_per_day(responseJson.result));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
+                    dispatch(get_consumption_per_month(id))
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_consumption_per_day(0));
+                    dispatch(get_consumption_per_month(id))
                 }
                 // dispatch(unsetLoader())
             })
@@ -271,10 +275,10 @@ export function view_corporate_requests(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
         }).then((response) => response.json())
@@ -287,9 +291,9 @@ export function view_corporate_requests(id) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                     // dispatch(set_all_category([]));
@@ -312,10 +316,10 @@ export function view_users_consumption(id) {
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
-                company_id:id
+                company_id: id
             },
-            body:JSON.stringify({
-                company_id:id
+            body: JSON.stringify({
+                company_id: id
             })
 
         }).then((response) => response.json())
@@ -328,12 +332,12 @@ export function view_users_consumption(id) {
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
-                    if(responseJson.message ==="User Does Not Exist"){
+                    if (responseJson.message === "User Does Not Exist") {
                         dispatch(onLogout())
-                    }else {
+                    } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_users_consumption([]));
                 }
                 dispatch(unsetLoader())
             })
@@ -350,6 +354,7 @@ export function set_dashboard_data(payload) {
         payload: payload
     }
 }
+
 export function set_total_users(payload) {
     return {
         type: SET_TOTAL_USERS,

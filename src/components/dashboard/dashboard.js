@@ -226,7 +226,7 @@ class Dashboard extends Component {
                                     columns={columns}
 
                                     options={{
-                                        paging: false,
+                                        paging: true,
                                         headerStyle: {
                                             backgroundColor: '#01579b',
                                             color: '#FFF'

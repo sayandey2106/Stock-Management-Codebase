@@ -121,7 +121,7 @@ class Category extends Component {
                                     <TableRow>
                                         <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
                                         <TableCell align="left">Beverage Number</TableCell>
-                                        <TableCell align="right">Actions</TableCell>
+                                        {/*<TableCell align="right">Actions</TableCell>*/}
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -129,7 +129,7 @@ class Category extends Component {
                                         <TableRow>
                                             <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                                             <TableCell align="left">{row.quantity}</TableCell>
-                                            {login.user_id !== row._id &&
+                                            {/*{login.user_id !== row._id &&
                                             <TableCell align={"right"}>
 
                                                 <Tooltip title ="Edit">
@@ -152,7 +152,7 @@ class Category extends Component {
                                                     <Icon>delete</Icon>
                                                 </IconButton>
                                                 </Tooltip>  
-                                            </TableCell>}
+                                            </TableCell>}*/}
                                         </TableRow>
                                     )}
                                 </TableBody>

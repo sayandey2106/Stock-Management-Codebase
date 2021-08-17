@@ -23,8 +23,8 @@
   flex-direction: column;
 
   width: 100%;
-  height: 92vh;
-  /* border: 2px solid red; */
+  height: 93vh;
+  /* border: 5px solid red; */
   background: #ecf4fa;
 
   top: 40px;
@@ -40,15 +40,19 @@
   position: relative;
   display: flex;
   justify-content: center;
+
+  height: 77vh;
 }
 .container-1 {
   position: relative;
   width: 50vw;
-  /* border: 1px solid; */
+  height: 75vh;
+  /* border: 2px solid; */
 
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .cards {
@@ -56,11 +60,12 @@
 
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 .table {
   position: relative;
-  height: 350px;
-  width: 750px;
+  /* height: 350px; */
+  width: 48vw;
   top: 30px;
   /* border: 1px solid; */
 }
@@ -68,8 +73,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 22vw;
 
   justify-content: flex-start;
+  align-items: center;
 
   /* border: 2px solid green; */
 }
@@ -78,7 +85,7 @@
   display: flex;
 }
 .row svg {
-  font-size: 70px;
+  font-size: 5vh;
 }
 .row-2 {
   margin-top: 10px;

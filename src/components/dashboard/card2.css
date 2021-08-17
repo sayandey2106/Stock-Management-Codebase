@@ -1,24 +1,26 @@
-.card-two{
-    position: relative;
-    height: 250px;
-    width: 170px;
+.card-two {
+  position: relative;
+  /* height: 250px; */
+  /* width: 170px; */
+  height: 34vh;
+  width: 10vw;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-    /* border: 1px solid red; */
+  /* border: 1px solid red; */
 
-    margin-left: 10px;
-    font-family: 'Montserrat', sans-serif;
-   /* background-color: beige; */
+  margin-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  /* background-color: beige; */
 }
-.card-name{
-    padding: 10px;
-    font-size: 17px;
+.card-name {
+  padding: 10px;
+  font-size: 1.7vh;
 }
-.card-number{
-    padding: 20px;
-    font-size: 25px;
+.card-number {
+  padding: 20px;
+  font-size: 4vh;
 }

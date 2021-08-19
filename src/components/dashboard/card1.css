@@ -3,7 +3,7 @@
   position: relative;
   /* height:150px; */
   /* width: 200px; */
-  height: 13vh;
+  height: 16vh;
   width: 12vw;
 
   /* border: 1px solid black; */
@@ -22,12 +22,12 @@ p {
   font-family: "Montserrat", sans-serif;
 }
 #p-1 {
-  font-size: 3vh;
+  font-size: 4vh;
   /* font-family: ; */
   font-weight: 500;
 }
 #p-2 {
-  font-size: 2vh;
+  font-size: 2.5vh;
   /* font-family: ; */
   margin-top: 15px;
   font-weight: 500;

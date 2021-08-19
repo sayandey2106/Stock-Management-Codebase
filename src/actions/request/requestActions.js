@@ -11,6 +11,7 @@ import {get_total_users, set_users_consumption, view_users_consumption} from "..
 
 export function get_all_request(id) {
     return (dispatch) => {
+        console.log(id, "request nahin aa raha")
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_corporate_requests", {
             method: "GET",

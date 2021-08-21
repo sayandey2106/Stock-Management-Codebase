@@ -108,11 +108,11 @@ class Category extends Component {
                         <CardContent>
                             <Grid item lg={12}>
                                 {/*<Link to="add_category" style={{textDecoration: "none"}}>*/}
-                                <Tooltip title ='add catagory'>
+                                {/*<Tooltip title ='add catagory'>
                                 <IconButton onClick={() => this.setState({add: true})}>
                                     <Icon>add</Icon>
                                 </IconButton>
-                                </Tooltip>
+                                </Tooltip>*/}
                                 {/*</Link>*/}
 
                             </Grid>

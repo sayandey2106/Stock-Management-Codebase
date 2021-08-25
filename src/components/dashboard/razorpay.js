@@ -35,8 +35,8 @@ async function pay(description, product_id, machineName) {
 
     const options = {
         "key": key,
-        "amount": 11*100, // 100p = 1rs / 100cents = 1$
-        "currency": data.currency,
+        "amount": description*100, // 100p = 1rs / 100cents = 1$
+        "currency": description.currency,
         "name": "QUBI 7",
         "description": "SCAN QR " + description,
         // "image": details.image,

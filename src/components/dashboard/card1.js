@@ -49,10 +49,13 @@ function Card1(props) {
               // defaultValue="Hello World"
               helperText={helper}
               variant="filled"
-              onchange={(event) => {
+              onChange={(event) => {
                   if(event.target.value >= 2500){
                       setHelper("");
                       setPrice(event.target.value);
+                  } else {
+                      setHelper("Atleast ₹2,500/- to be paid");
+                      setPrice(0);
                   }
               }}
           />

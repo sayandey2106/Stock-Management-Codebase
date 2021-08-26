@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ed4ceab-5414-486b-8fc0-c159679eeae5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/card1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/razorpay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/razorpay.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +180,11 @@
       <workItem from="1629820020382" duration="26000" />
       <workItem from="1629860424084" duration="821000" />
       <workItem from="1629861447321" duration="1386000" />
-      <workItem from="1629864068108" duration="1543000" />
+      <workItem from="1629864068108" duration="1719000" />
+      <workItem from="1629913579817" duration="355000" />
+      <workItem from="1629955980173" duration="6000" />
+      <workItem from="1629966366369" duration="2790000" />
+      <workItem from="1629980932708" duration="1069000" />
     </task>
     <servers />
   </component>

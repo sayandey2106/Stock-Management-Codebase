@@ -269,7 +269,7 @@ export function view_corporate_requests(id) {
     return (dispatch) => {
         // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "view_corporate_requests", {
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -277,9 +277,9 @@ export function view_corporate_requests(id) {
                 // organization_id: oid
                 company_id: id
             },
-            body: JSON.stringify({
+            /*body: JSON.stringify({
                 company_id: id
-            })
+            })*/
 
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -296,9 +296,9 @@ export function view_corporate_requests(id) {
                     } else {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
-                    // dispatch(set_all_category([]));
+                    dispatch(set_corporate_requests([]));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);
@@ -329,7 +329,7 @@ export function view_users_consumption(id) {
 
                     dispatch(set_users_consumption(responseJson.result));
 
-                    // dispatch(set_snack_bar(true, responseJson.message));
+                    dispatch(view_corporate_requests(id))
 
                 } else {
                     if (responseJson.message === "User Does Not Exist") {
@@ -338,8 +338,9 @@ export function view_users_consumption(id) {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                     dispatch(set_users_consumption([]));
+                    dispatch(view_corporate_requests(id))
                 }
-                dispatch(unsetLoader())
+                // dispatch(unsetLoader())
             })
             .catch((error) => {
                 console.error(error);

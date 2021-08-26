@@ -102,8 +102,11 @@ class Dashboard extends Component {
               <Card1
                 color={"card-one-2"}
                 number={"₹" + dashboard.company_balance.toLocaleString() + "/-"}
+                //   number={490}
                 cardName={"Remaining Balance"}
                 Button={true}
+                isRemaining={true}
+                id={login.company_id}
                 
               />
 

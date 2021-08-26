@@ -16,13 +16,13 @@ function Card1(props) {
     let icon;
     if (props.Button === true) {
     
-    icon = <button onClick={() => setOpen(true)}>PAY</button>
+    icon = <Button variant={"outlined"} color={"secondary"} onClick={() => setOpen(true)}>PAY</Button>
   }
   return (
     <div className="card-one" id={props.color}>
       <p id="p-1">{props.number}</p>
       <p id="p-2">{props.cardName}</p>
-      <p id="p-3"> {icon}</p>
+        {props.isRemaining && props.number <=500 && <p id="p-3"> {icon}</p>}
 
       <Dialog open={open}>
         <DialogTitle> payment</DialogTitle>
@@ -65,7 +65,7 @@ function Card1(props) {
           <Button variant="contained" color="primary" onClick={() => {
               setOpen(false);
               if(price >= 2500) {
-                  pay((price * 105) / 100);
+                  pay(((price * 105) / 100),props.id);
               }
           }}
           >proceed</Button>

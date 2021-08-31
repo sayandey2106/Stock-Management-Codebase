@@ -1,5 +1,5 @@
 .card-one {
-  background-color: #000;
+  color: #000;
   position: relative;
   /* height:150px; */
   /* width: 200px; */
@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
 
-  color: #fff;
+  background-color: #ecf3fb;
 }
 p {
   /* border: 1px solid; */
@@ -31,6 +31,10 @@ p {
   /* font-family: ; */
   margin-top: 15px;
   font-weight: 500;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  alignment: center;
 }
 #p-3{
   position: relative;

@@ -21,31 +21,35 @@ function Card1(props) {
         icon = <Button variant={"outlined"} color={"secondary"} onClick={() => setOpen(true)}>PAY</Button>
     }
     return (
-        <div className="card-one" id={props.color}>
-            {/*{props.isRemaining && }*/}
-            {props.isRemaining ? <p id="p-1">{"₹" + props.number.toLocaleString() + "/-"}</p> : <p id="p-1">{props.number}</p>}
-            <p id="p-2">{props.cardName}</p>
-            {props.isRemaining && props.number <= 500 && <p id="p-3"> {icon}</p>}
+        <div>
+            <div className="card-one" /*id={props.color}*/>
+                {/*{props.isRemaining && }*/}
+                <center>
+                    <p id="p-2">{props.cardName}</p>
+                    <hr />
+                    {props.isRemaining ? <p id="p-1">{"₹" + props.number.toLocaleString() + "/-"}</p> :
+                        <p id="p-1">{props.number}</p>}
+                </center>
 
-            <Dialog open={open}>
-                <DialogTitle>
-                    <Grid container xs={12} justify={"flex-end"}>
-                        <Grid item xs={2}>
-                            <IconButton onClick={() => setOpen(false)}>
-                                <Icon>
-                                    close
-                                </Icon>
-                            </IconButton>
+                <Dialog open={open}>
+                    <DialogTitle>
+                        <Grid container xs={12} justify={"flex-end"}>
+                            <Grid item xs={2}>
+                                <IconButton onClick={() => setOpen(false)}>
+                                    <Icon>
+                                        close
+                                    </Icon>
+                                </IconButton>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Grid container xs-={12} justify={"center"}>
-                        <Grid item xs={6} alignContent={"center"}>
-                            Recharge
+                        <Grid container xs-={12} justify={"center"}>
+                            <Grid item xs={6} alignContent={"center"}>
+                                Recharge
+                            </Grid>
                         </Grid>
-                    </Grid>
-                </DialogTitle>
-                <DialogContent>
-                    {/* <TextField
+                    </DialogTitle>
+                    <DialogContent>
+                        {/* <TextField
             margin="dense"
             label="Name"
             type="text"
@@ -54,42 +58,44 @@ function Card1(props) {
             // value={}
           />*/}
 
-                    <TextField
-                        /*margin="dense"
-                        label="Amount"
-                        type="text"
-                        fullWidth*/
-                        // onChange={}
-                        // value={}
-                        error
-                        id="filled-error-helper-text"
-                        label="Amount"
-                        // defaultValue="Hello World"
-                        helperText={helper}
-                        variant="filled"
-                        onChange={(event) => {
-                            if (event.target.value >= 2500) {
-                                setHelper("");
-                                setPrice(event.target.value);
-                                setIsAmount(false)
-                            } else {
-                                setHelper("Atleast ₹2,500/- to be paid");
-                                setPrice(0);
+                        <TextField
+                            /*margin="dense"
+                            label="Amount"
+                            type="text"
+                            fullWidth*/
+                            // onChange={}
+                            // value={}
+                            error
+                            id="filled-error-helper-text"
+                            label="Amount"
+                            // defaultValue="Hello World"
+                            helperText={helper}
+                            variant="filled"
+                            onChange={(event) => {
+                                if (event.target.value >= 2500) {
+                                    setHelper("");
+                                    setPrice(event.target.value);
+                                    setIsAmount(false)
+                                } else {
+                                    setHelper("Atleast ₹2,500/- to be paid");
+                                    setPrice(0);
+                                }
+                            }}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        {/*<Button variant="contained" color="secondary" onClick={() => setOpen(false)}>close</Button>*/}
+                        <Button variant="contained" disabled={isAmount} color="primary" onClick={() => {
+                            setOpen(false);
+                            if (price >= 2500) {
+                                pay(price, props.id);
                             }
                         }}
-                    />
-                </DialogContent>
-                <DialogActions>
-                    {/*<Button variant="contained" color="secondary" onClick={() => setOpen(false)}>close</Button>*/}
-                    <Button variant="contained" disabled={isAmount} color="primary" onClick={() => {
-                        setOpen(false);
-                        if (price >= 2500) {
-                            pay(((price * 105) / 100), props.id);
-                        }
-                    }}
-                    >proceed</Button>
-                </DialogActions>
-            </Dialog>
+                        >proceed</Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
+            {props.isRemaining && props.number <= 500 && <p id="p-3" style={{marginLeft: "32%"}}> {icon}</p>}
         </div>
     );
 }

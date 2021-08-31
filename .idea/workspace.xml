@@ -7,8 +7,10 @@
     <list default="true" id="5ed4ceab-5414-486b-8fc0-c159679eeae5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/card1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card1.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/card1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dashboard/razorpay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/razorpay.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +188,10 @@
       <workItem from="1629999107979" duration="135000" />
       <workItem from="1630251451297" duration="54000" />
       <workItem from="1630322995090" duration="3007000" />
-      <workItem from="1630377531968" duration="1920000" />
+      <workItem from="1630377531968" duration="2195000" />
+      <workItem from="1630399813759" duration="7135000" />
+      <workItem from="1630410043243" duration="3725000" />
+      <workItem from="1630425687454" duration="613000" />
     </task>
     <servers />
   </component>

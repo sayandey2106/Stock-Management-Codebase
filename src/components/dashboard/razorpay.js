@@ -51,6 +51,9 @@ async function pay(amount, company_id) {
         //     alert("order_id: " + response.razorpay_order_id);
         //     alert("signature: " + response.razorpay_signature);
         // }
+        "handler": function (response){
+          window.location.href = "https://corporate.qubi7.com/"
+       },
         "theme": {
             // color: "green"
         },

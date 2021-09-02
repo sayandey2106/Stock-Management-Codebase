@@ -52,7 +52,7 @@ async function pay(amount, company_id) {
         //     alert("signature: " + response.razorpay_signature);
         // }
         "handler": function (response){
-          window.location.href = "https://corporate.qubi7.com/"
+          window.location.href = "https://corporate.qubi7.com/" // Redirect after payment
        },
         "theme": {
             // color: "green"
@@ -68,7 +68,7 @@ async function pay(amount, company_id) {
 
     };
     const paymentObject = new window.Razorpay(options)
-    paymentObject.open();
+    paymentObject.open()
 }
 
 export default pay;

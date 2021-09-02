@@ -11,6 +11,10 @@ import {
 } from '../../actions/dashboard/dashboardActions'
 
 import {
+    get_all_category, change_category
+} from "../../actions/category/categoryActions"
+
+import {
     delete_request
 } from "../../actions/request/requestActions"
 
@@ -32,6 +36,7 @@ export const mapStateToProps = store => {
         loader: store.loader,
         snackbar: store.snackbar,
         dashboard: store.dashboard,
+        category: store.category,
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -45,6 +50,12 @@ export const mapDispatchToProps = dispatch => {
         },
         unsetLoader: () => {
             dispatch(unsetLoader());
+        },
+        get_all_category: (id) => {
+            dispatch(get_all_category(id));
+        },
+        change_category: (cid, user, category) => {
+            dispatch(change_category(cid, user, category));
         },
         get_total_users: (id) => {
             dispatch(get_total_users(id));

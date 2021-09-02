@@ -72,7 +72,7 @@ function Card1(props) {
                             helperText={helper}
                             variant="filled"
                             onChange={(event) => {
-                                if (event.target.value >= 2500) {
+                                if (event.target.value >= 0) {
                                     setHelper("");
                                     setPrice(event.target.value);
                                     setIsAmount(false)
@@ -87,7 +87,7 @@ function Card1(props) {
                         {/*<Button variant="contained" color="secondary" onClick={() => setOpen(false)}>close</Button>*/}
                         <Button variant="contained" disabled={isAmount} color="primary" onClick={() => {
                             setOpen(false);
-                            if (price >= 2500) {
+                            if (price >= 0) {
                                 pay(price, props.id);
                             }
                         }}

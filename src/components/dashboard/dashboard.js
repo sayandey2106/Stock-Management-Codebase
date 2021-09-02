@@ -22,7 +22,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import TableBody from "@material-ui/core/TableBody";
-import {Icon, IconButton, Tooltip} from "@material-ui/core";
+import {Icon, IconButton, MenuItem, TextField, Tooltip} from "@material-ui/core";
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -35,19 +35,16 @@ class Dashboard extends Component {
         super(props);
         this.state = {
             data: [],
-            id: "",
+            user_id: "",
             delete: false,
+            category_id: "",
+            category: "",
         };
     }
 
     welcome() {
         this.props.get_total_users(this.props.login.company_id);
-        /*this.props.get_total_consumption(this.props.login.company_id)
-            this.props.get_consumption_per_day(this.props.login.company_id)
-            this.props.get_consumption_per_month(this.props.login.company_id)
-            this.props.view_corporate_requests(this.props.login.company_id)
-            this.props.view_company_balance(this.props.login.company_id)
-            this.props.view_users_consumption(this.props.login.company_id)*/
+        // this.props.get_all_category(this.props.login.company_id)
     }
 
     componentDidMount() {
@@ -69,13 +66,23 @@ class Dashboard extends Component {
     };
 
     render() {
-        const {dashboard, delete_request, login} = this.props;
+        const {
+            snackbar,
+            close_snack_bar,
+            category,
+            login,
+            get_all_category,
+            dashboard,
+            delete_request,
+            change_category,
+        } = this.props;
         console.log(dashboard.users_consumption);
         /*const data = [...dashboard.users_consumption]*/
         const columns = [
             {title: "Employee ID", field: "employeeId"},
             {title: "Name", field: "name"},
             {title: "Consumption", field: "count", align: "center"},
+            {title: "Category", field: "category"},
         ];
         /*const data = [
                 { name: "client1", number: 4, id: 3 },
@@ -214,6 +221,20 @@ class Dashboard extends Component {
                                         maxBodyHeight: 300,
                                         minBodyHeight: 300,
                                     }}
+                                    actions={[
+                                        {
+                                            icon: 'edit',
+                                            tooltip: 'Edit Category',
+                                            onClick: (event, row) => {
+                                                this.setState({
+                                                    update: true,
+                                                    user_id: row.user_id,
+                                                    category_id: row.category_id,
+                                                    category: row.category,
+                                                });
+                                                get_all_category(login.company_id);
+                                            }}
+                                    ]}
                                     editable={{
                                         onRowDelete: (oldData) =>
                                             new Promise((resolve, reject) => {
@@ -229,8 +250,77 @@ class Dashboard extends Component {
                                                     resolve();
                                                 }, 1000);
                                             }),
+                                        /*onRowUpdate: (row) =>
+                                            new Promise((resolve, reject) => {
+                                                setTimeout(() => {
+                                                    this.setState({
+                                                        update: true,
+                                                        user_id: row.user_id,
+                                                        category_id: row.category_id,
+                                                        category: row.category,
+                                                    });
+                                                    get_all_category(login.company_id);
+                                                    // const dataDelete = [...data];
+                                                    // const index = oldData.tableData.id;
+                                                    // dataDelete.splice(index, 1);
+                                                    // setData([...dataDelete]);
+                                                    resolve();
+                                                }, 1000);
+                                            }),*/
+
                                     }}
                                 />
+                                <Dialog
+                                    open={this.state.update}
+                                    onClose={() => {
+                                        this.handleClose();
+                                    }}
+                                    aria-labelledby="form-dialog-title"
+                                >
+                                    <DialogTitle id="form-dialog-title">Edit Category</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>Choose Category</DialogContentText>
+                                        <TextField
+                                            // autoFocus
+                                            margin="dense"
+                                            // id="name"
+                                            label="Category"
+                                            type="dropdown"
+                                            select
+                                            fullWidth
+                                            onChange={(event) => {
+                                                this.setState({category_id: event.target.value});
+                                            }}
+                                            InputProps={{
+                                                classes: {input: this.props.classes.dropdown},
+                                            }}
+                                        >
+                                            {category.all_category.map((row1) => (
+                                                <MenuItem value={row1._id} key={row1._id}>
+                                                    {row1.name}
+                                                </MenuItem>
+                                            ))}
+                                        </TextField>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={() => this.handleClose()} color="primary">
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            onClick={() => {
+                                                this.handleClose();
+                                                change_category(
+                                                    login.company_id,
+                                                    this.state.user_id,
+                                                    this.state.category_id,
+                                                );
+                                            }}
+                                            color="primary"
+                                        >
+                                            Update
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
                             </div>
                         </div>
                     </div>

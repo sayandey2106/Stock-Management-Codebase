@@ -6,6 +6,7 @@ import {setLoader, unsetLoader}
     from "../loader/loaderAction";
 import {set_snack_bar} from "../snackbar/snackbar_action";
 import {onLogout} from '../loginActions'
+import {get_total_users} from '../dashboard/dashboardActions'
 
 
 export function get_all_category(id) {
@@ -177,6 +178,50 @@ export function update_category(id, cid, name, quantity) {
             });
     };
 }
+
+export function change_category(cid, user_id, category) {
+    // console.log("kyun nahin ho raha", quantity)
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "change_category", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                // user_token: token,
+                // organization_id: oid
+            },
+            body: JSON.stringify({
+                // email: login.email,
+                // password: login.password
+                user_id: user_id,
+                new_category: category,
+
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson)
+                if (responseJson.status) {
+
+                    dispatch(get_total_users(cid))
+
+                    dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    if(responseJson.message === "User doesn't Exist") {
+                        onLogout()
+                    } else {
+                        dispatch(set_snack_bar(responseJson.status, responseJson.message));
+                    }
+                }
+                // dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 
 export function add_category(name, quantity,company_id) {
     return (dispatch) => {

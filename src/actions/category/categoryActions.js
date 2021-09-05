@@ -1,5 +1,5 @@
 import {
-    SET_ALL_CATEGORY
+    SET_ALL_CATEGORY, SET_CATEGORY_LIST
 } from "../../constants/category/categoryConstants";
 import UNIVERSAL from "../../config/config";
 import {setLoader, unsetLoader}
@@ -32,6 +32,8 @@ export function get_all_category(id) {
                 if (responseJson.status) {
 
                     dispatch(set_all_category(responseJson.result));
+                    const object = responseJson.result.reduce((obj, item) => (obj[item._id] = item.name, obj), {});
+                    dispatch(set_category_list(object));
 
                     // dispatch(set_snack_bar(true, responseJson.message));
 
@@ -42,6 +44,7 @@ export function get_all_category(id) {
                         dispatch(set_snack_bar(responseJson.status, responseJson.message));
                     }
                     // dispatch(set_all_category([]));
+                    // dispatch(set_category_list({}));
                 }
                 dispatch(unsetLoader())
             })
@@ -179,11 +182,11 @@ export function update_category(id, cid, name, quantity) {
     };
 }
 
-export function change_category(cid, user_id, category) {
+export function change_category(company_id, user_id, employeeId, user_name, new_category) {
     // console.log("kyun nahin ho raha", quantity)
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "change_category", {
+        return fetch(UNIVERSAL.BASEURL + "update_corporate_user", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -195,7 +198,9 @@ export function change_category(cid, user_id, category) {
                 // email: login.email,
                 // password: login.password
                 user_id: user_id,
-                new_category: category,
+                new_category: new_category,
+                employeeId: employeeId,
+                user_name: user_name,
 
             }),
         }).then((response) => response.json())
@@ -203,7 +208,7 @@ export function change_category(cid, user_id, category) {
                 console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch(get_total_users(cid))
+                    dispatch(get_total_users(company_id))
 
                     dispatch(set_snack_bar(true, responseJson.message));
 
@@ -271,6 +276,13 @@ export function set_all_category(payload) {
     console.log(payload)
     return {
         type: SET_ALL_CATEGORY,
+        payload: payload
+    }
+}
+
+export function set_category_list(payload) {
+    return {
+        type: SET_CATEGORY_LIST,
         payload: payload
     }
 }

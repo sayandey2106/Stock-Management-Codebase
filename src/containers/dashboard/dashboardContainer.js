@@ -54,8 +54,8 @@ export const mapDispatchToProps = dispatch => {
         get_all_category: (id) => {
             dispatch(get_all_category(id));
         },
-        change_category: (cid, user, category) => {
-            dispatch(change_category(cid, user, category));
+        change_category: (company_id, user_id, employeeId, user_name, new_category) => {
+            dispatch(change_category(company_id, user_id, employeeId, user_name, new_category));
         },
         get_total_users: (id) => {
             dispatch(get_total_users(id));

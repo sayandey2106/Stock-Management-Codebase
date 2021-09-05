@@ -8,11 +8,13 @@
       <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/category/categoryActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/category/categoryActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/card1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/card1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/dashboard/dashboardActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/razorpay.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/razorpay.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/category/categoryConstants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/category/categoryConstants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/dashboard/dashboardContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/dashboard/dashboardContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/category/categoryReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/category/categoryReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/dashboard/dashboardReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/dashboard/dashboardReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +203,11 @@
       <workItem from="1630480355877" duration="2071000" />
       <workItem from="1630491443454" duration="1138000" />
       <workItem from="1630493714443" duration="2034000" />
-      <workItem from="1630566458591" duration="5649000" />
+      <workItem from="1630566458591" duration="6389000" />
+      <workItem from="1630579255054" duration="7000" />
+      <workItem from="1630657241600" duration="736000" />
+      <workItem from="1630667051698" duration="4419000" />
+      <workItem from="1630729438927" duration="584000" />
     </task>
     <servers />
   </component>

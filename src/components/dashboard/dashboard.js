@@ -44,7 +44,7 @@ class Dashboard extends Component {
 
     welcome() {
         this.props.get_total_users(this.props.login.company_id);
-        // this.props.get_all_category(this.props.login.company_id)
+        this.props.get_all_category(this.props.login.company_id)
     }
 
     componentDidMount() {
@@ -66,6 +66,7 @@ class Dashboard extends Component {
     };
 
     render() {
+        // console.log("after you", this.props.category.category_list)
         const {
             snackbar,
             close_snack_bar,
@@ -81,8 +82,8 @@ class Dashboard extends Component {
         const columns = [
             {title: "Employee ID", field: "employeeId"},
             {title: "Name", field: "name"},
-            {title: "Consumption", field: "count", align: "center"},
-            {title: "Category", field: "category"},
+            {title: "Consumption", field: "count", align: "center", editable: 'never'},
+            {title: "Category", field: "category_id",lookup: this.props.category.category_list},
         ];
         /*const data = [
                 { name: "client1", number: 4, id: 3 },
@@ -221,7 +222,7 @@ class Dashboard extends Component {
                                         maxBodyHeight: 300,
                                         minBodyHeight: 300,
                                     }}
-                                    actions={[
+                                    /*actions={[
                                         {
                                             icon: 'edit',
                                             tooltip: 'Edit Category',
@@ -234,7 +235,7 @@ class Dashboard extends Component {
                                                 });
                                                 get_all_category(login.company_id);
                                             }}
-                                    ]}
+                                    ]}*/
                                     editable={{
                                         onRowDelete: (oldData) =>
                                             new Promise((resolve, reject) => {
@@ -250,23 +251,18 @@ class Dashboard extends Component {
                                                     resolve();
                                                 }, 1000);
                                             }),
-                                        /*onRowUpdate: (row) =>
+                                        onRowUpdate: (newData, oldData) =>
                                             new Promise((resolve, reject) => {
                                                 setTimeout(() => {
-                                                    this.setState({
-                                                        update: true,
-                                                        user_id: row.user_id,
-                                                        category_id: row.category_id,
-                                                        category: row.category,
-                                                    });
-                                                    get_all_category(login.company_id);
-                                                    // const dataDelete = [...data];
-                                                    // const index = oldData.tableData.id;
-                                                    // dataDelete.splice(index, 1);
-                                                    // setData([...dataDelete]);
+                                                   /* const dataUpdate = [...data];
+                                                    const index = oldData.tableData.id;
+                                                    dataUpdate[index] = newData;
+                                                    setData([...dataUpdate]);*/
+                                                    change_category(login.company_id, oldData.user_id, newData.employeeId, newData.name, newData.category_id)
+
                                                     resolve();
-                                                }, 1000);
-                                            }),*/
+                                                }, 1000)
+                                            }),
 
                                     }}
                                 />
@@ -352,7 +348,7 @@ class Dashboard extends Component {
                                 color={"card-one-4"}
                                 symbol={<QueryBuilderIcon/>}
                                 cardName={"Coupon Validity"}
-                                number={30}
+                                number={0}
                             />
                         </div>
 

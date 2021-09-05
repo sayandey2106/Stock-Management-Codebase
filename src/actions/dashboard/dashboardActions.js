@@ -1,6 +1,6 @@
 import {
     SET_DASHBOARD_DATA, SET_TOTAL_USERS, SET_TOTAL_CONSUMPTION, SET_CONSUMPTION_PER_DAY, SET_CONSUMPTION_PER_MONTH,
-    SET_COMPANY_BALANCE, SET_CORPORATE_REQUESTS, SET_USERS_CONSUMPTION
+    SET_COMPANY_BALANCE, SET_CORPORATE_REQUESTS, SET_USERS_CONSUMPTION, SET_CATEGORY_LIST
 } from "../../constants/dashboard/dashboardConstants";
 import UNIVERSAL from "../../config/config";
 import {setLoader, unsetLoader}
@@ -328,6 +328,8 @@ export function view_users_consumption(id) {
                 if (responseJson.status) {
 
                     dispatch(set_users_consumption(responseJson.result));
+                    /*const object = responseJson.result.reduce((obj, item) => (obj[item.category_id] = item.category, obj), {});
+                    dispatch(set_category_list(object));*/
 
                     dispatch(view_corporate_requests(id))
 
@@ -404,4 +406,5 @@ export function set_users_consumption(payload) {
         payload: payload
     }
 }
+
 

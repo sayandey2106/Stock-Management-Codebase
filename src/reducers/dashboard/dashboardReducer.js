@@ -1,6 +1,6 @@
 import {
     SET_DASHBOARD_DATA, SET_TOTAL_USERS, SET_TOTAL_CONSUMPTION, SET_CONSUMPTION_PER_DAY, SET_CONSUMPTION_PER_MONTH,
-    SET_COMPANY_BALANCE, SET_CORPORATE_REQUESTS, SET_USERS_CONSUMPTION
+    SET_COMPANY_BALANCE, SET_CORPORATE_REQUESTS, SET_USERS_CONSUMPTION, SET_CATEGORY_LIST
 } from "../../constants/dashboard/dashboardConstants";
 
 const initial_state = {
@@ -32,6 +32,7 @@ export default function reducer(state = initial_state, action) {
             return state = { ...state, corporate_requests: action.payload };
         case SET_USERS_CONSUMPTION:
             return state = { ...state, users_consumption: action.payload };
+
         default:
             return state;
     }

@@ -31,7 +31,8 @@ import {
   // all_manager_options,
 
 } from "../../constants/router/router_consts";
-
+import { NavLink } from "react-router-dom";
+import "./drawer.css";
 
 const drawerWidth = 220;
 
@@ -136,6 +137,7 @@ const useStyles = makeStyles(theme => ({
       backgroundColor:"#ed5066"
     }
   }
+
   
  
 }));
@@ -233,12 +235,14 @@ function MiniDrawer(props) {
         <div style={{ marginTop: 10 }}>
           {side_top}
           {all_corporate_options.map((option) => (
-            <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "#fff" }}>
+            // <Link key={option.link} to={option.link} style={{ textDecoration: "none", color: "#fff" }}>
+            <NavLink exact activeClassName="active" key={option.link} to={option.link} style={{textDecoration:"none", color:"#fff"}}>
               <ListItem button key={option.name} className = {classes.ListItem}>
                 <ListItemIcon className={classes.Icon}><Icon>{option.icon}</Icon></ListItemIcon>
-                <ListItemText primary={option.name} />
+                <ListItemText className="listItemText" primary={option.name} />
               </ListItem>
-            </Link>
+              </NavLink>
+            // </Link>
           ))}
         </div>
       );

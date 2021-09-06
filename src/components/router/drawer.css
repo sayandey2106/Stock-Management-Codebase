@@ -1,0 +1,7 @@
+.active div{
+    background-color: #ed5066;
+}
+.listItemText{
+    position: relative;
+    right: -10px;
+}

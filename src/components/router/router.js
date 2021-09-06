@@ -57,7 +57,7 @@ class Routes extends Component {
                         {/* STUDENT ROUTES */}
                         <Route exact path="/category" component={Category}/>
                         <Route exact path="/request" component={Request}/>
-                        <Route exact path="/" component={Dashboard}/>
+                        <Route exact activeClassName="active" path="/" component={Dashboard}/>
                         <Route exact path="/users" component={Users}/>
                     </main>
                     {/* <Footer /> */}

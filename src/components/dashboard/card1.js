@@ -95,7 +95,7 @@ function Card1(props) {
                     </DialogActions>
                 </Dialog>
             </div>
-            {props.isRemaining && props.number <= 500 && <p id="p-3" style={{marginLeft: "32%"}}> {icon}</p>}
+            {props.isRemaining && props.number <= 500 && <p id="p-3" > {icon}</p>}
         </div>
     );
 }

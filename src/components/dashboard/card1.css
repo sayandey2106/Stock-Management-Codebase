@@ -38,6 +38,7 @@ p {
 }
 #p-3{
   position: relative;
+  margin-left: 32%;
 
 }
 #p-3 button{
@@ -49,4 +50,26 @@ p {
   color: #fff;
   font-size: 17px;
   font-family: -webkit-pictograph;
+}
+@media (max-width: 769px) {
+  
+#p-3{
+  margin-left: -65px;
+}
+#p-2{
+  font-size: 2.2vh;
+  /* font-family: ; */
+  margin-top: 15px;
+  font-weight: 400;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+}
+@media (max-width: 450px) {
+  
+#p-3{
+    margin-left: 0px;
+  }
+
 }

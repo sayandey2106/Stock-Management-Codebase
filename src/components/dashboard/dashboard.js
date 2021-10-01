@@ -209,6 +209,7 @@ class Dashboard extends Component {
                                     data={dashboard.users_consumption}
                                     columns={columns}
                                     options={{
+
                                         paging: false,
                                         headerStyle: {
                                             backgroundColor: "#01579b",
@@ -217,6 +218,10 @@ class Dashboard extends Component {
                                         rowStyle: {
                                             backgroundColor: "#EEE",
                                         },
+                                        fixedColumns: {
+                                            left: 1, 
+                                            right: 1
+                                          },
                                         actionsColumnIndex: -1,
                                         search: true,
                                         maxBodyHeight: 300,

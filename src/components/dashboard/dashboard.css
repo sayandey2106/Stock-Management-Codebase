@@ -90,3 +90,154 @@
 .row-2 {
   margin-top: 10px;
 }
+
+@media (max-width: 769px) {
+  .dashboard {
+  
+    width: 100%;
+    height: 190vh;
+    /* border: 5px solid red; */
+  
+    top: 40px;
+  }
+  .dashboard-heading {
+    font-size: 12px;
+  }
+  .cards {
+  
+    margin-left: 40px;
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    width: 60%;
+  }
+  .dashboard-container {
+    display: inline-block;
+    text-align: center;
+    height: 180vh;
+  }
+  .container-1 {
+    
+    position: relative;
+    width: 40vw;
+    height: 75vh;
+    /* border: 2px solid; */
+  
+    display: inline-block;
+    text-align: center;
+  }
+  .container-2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 22vw;
+    top: 40%;
+    left: 20%;
+    justify-content: flex-start;
+    align-items: center;
+  
+    /* border: 2px solid green; */
+  }
+  .table{
+    position: absolute;
+  /* height: 350px; */
+  width: 400px;
+  top: 80%;
+  left: -55px;
+  
+  
+  /* border: 1px solid; */
+  }
+  .row {
+    margin-top: -80px;
+  }
+  .row-2 {
+    margin-top: -80px;
+    margin-left: 0px;
+    margin-right: 10px;
+
+  }
+  .row svg{
+    
+    font-size: 9vh;
+  }
+}
+@media (max-width: 450px) {
+  .dashboard-heading{
+    font-size: 10px;
+  }
+  .dashboard {
+  
+    width: 100%;
+    height: 190vh;
+    /* border: 5px solid red; */
+  
+    top: 40px;
+  }
+  .cards {
+  
+    margin-left: 150px;
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    width: 60%;
+  }
+  .dashboard-container {
+    display: flex;
+    width: 50vw;
+    text-align: center;
+    height: 130vh;
+  }
+  .container-1 {
+    
+    position: relative;
+    width: 0vw;
+    height: 75vh;
+    /* border: 2px solid; */
+  
+    display: inline-block;
+    text-align: center;
+  }
+  .container-2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 53vw;
+    top: 40%;
+    left: 35%;
+    justify-content: flex-start;
+    align-items: center;
+  
+    /* border: 2px solid green; */
+  }
+  .table{
+    position: absolute;
+  /* height: 350px; */
+  width: 300px;
+  top: 80%;
+  left: 55px;
+  
+  
+  /* border: 1px solid; */
+  }
+  .row {
+    margin-top: 300px;
+  }
+  .row-2 {
+    margin-top: 300px;
+    margin-left: 0px;
+    margin-right: 10px;
+
+  }
+  .row svg{
+    
+    font-size: 5vh;
+  }
+  
+
+}
+@media (max-width:600px){
+  /* .table{
+    width: ;
+  } */
+}

@@ -105,7 +105,7 @@
   }
   .cards {
   
-    margin-left: 40px;
+    margin-left: -260px;
     position: relative;
     display: inline-block;
     justify-content: center;
@@ -119,7 +119,7 @@
   .container-1 {
     
     position: relative;
-    width: 40vw;
+    width: 44vw;
     height: 75vh;
     /* border: 2px solid; */
   
@@ -149,10 +149,11 @@
   /* border: 1px solid; */
   }
   .row {
-    margin-top: -80px;
+    margin-top: -1560px;
+    margin-left: 70px;
   }
   .row-2 {
-    margin-top: -80px;
+    margin-top: -1560px;
     margin-left: 0px;
     margin-right: 10px;
 
@@ -164,19 +165,19 @@
 }
 @media (max-width: 450px) {
   .dashboard-heading{
-    font-size: 10px;
+    font-size: 7px;
   }
   .dashboard {
   
-    width: 100%;
-    height: 190vh;
+    width: 103%;
+    height: 135vh;
     /* border: 5px solid red; */
   
     top: 40px;
   }
   .cards {
   
-    margin-left: 150px;
+    margin-left: 40px;
     position: relative;
     display: inline-block;
     justify-content: center;
@@ -203,7 +204,7 @@
     display: flex;
     flex-direction: row;
     width: 53vw;
-    top: 40%;
+    top: 0%;
     left: 35%;
     justify-content: flex-start;
     align-items: center;
@@ -221,11 +222,12 @@
   /* border: 1px solid; */
   }
   .row {
-    margin-top: 300px;
+    margin-top: -660px;
+    margin-left: 130px;
   }
   .row-2 {
-    margin-top: 300px;
-    margin-left: 0px;
+    margin-top: -310px;
+    margin-left: -150px;
     margin-right: 10px;
 
   }
@@ -236,8 +238,77 @@
   
 
 }
-@media (max-width:600px){
-  /* .table{
-    width: ;
-  } */
+@media (max-width:320px){
+  .dashboard-heading{
+    font-size: 7px;
+  }
+  .dashboard {
+  
+    width: 133%;
+    height: 135vh;
+    /* border: 5px solid red; */
+  
+    top: 40px;
+  }
+  .cards {
+  
+    margin-left: 40px;
+    position: relative;
+    display: inline-block;
+    justify-content: center;
+    width: 60%;
+  }
+  .dashboard-container {
+    display: flex;
+    width: 50vw;
+    text-align: center;
+    height: 130vh;
+  }
+  .container-1 {
+    
+    position: relative;
+    width: 0vw;
+    height: 75vh;
+    /* border: 2px solid; */
+  
+    display: inline-block;
+    text-align: center;
+  }
+  .container-2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 53vw;
+    top: 0%;
+    left: 35%;
+    justify-content: flex-start;
+    align-items: center;
+  
+    /* border: 2px solid green; */
+  }
+  .table{
+    position: absolute;
+  /* height: 350px; */
+  width: 300px;
+  top: 80%;
+  left: 20px;
+  
+  
+  /* border: 1px solid; */
+  }
+  .row {
+    margin-top: -590px;
+    margin-left: 130px;
+  }
+  .row-2 {
+    margin-top: -290px;
+    margin-left: -123px;
+    margin-right: 10px;
+
+  }
+  .row svg{
+    
+    font-size: 5vh;
+  }
+  
 }

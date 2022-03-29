@@ -43,7 +43,7 @@ class Login extends Component {
             <Grid item md={4} xs={12} >
               <Card className="login_card">
                 <img
-                  src={"https://firebasestorage.googleapis.com/v0/b/qubi7-portal.appspot.com/o/web%2FLOGO-2.png?alt=media&token=b0ad0afa-f1d1-4256-bfbd-3f817b201475"}
+                  src={"https://www.skyyriderelectric.com/public/image/logo1.png"}
                   alt="no_img" style={{ height: 100 }}
                 />
                 <Typography className="login_heading">

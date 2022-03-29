@@ -40,11 +40,11 @@ export default class LG extends React.Component {
       <button
 
       onClick={() => {
-        localStorage.removeItem("qubi7_type");
-        localStorage.removeItem("qubi7_name");
-        localStorage.removeItem("qubi7_profile_pic");
-        localStorage.removeItem("qubi7_user_id");
-        localStorage.removeItem("qubi7_company_id");
+        localStorage.removeItem("sre_type");
+        localStorage.removeItem("sre_name");
+        // localStorage.removeItem("qubi7_profile_pic");
+        localStorage.removeItem("sre_user_id");
+        // localStorage.removeItem("qubi7_company_id");
         // localStorage.removeItem("taxopliance_organization_id");
         this.setState({redirect:true})
         this.props.onLogout()

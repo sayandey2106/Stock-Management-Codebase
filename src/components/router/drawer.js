@@ -260,7 +260,7 @@ function MiniDrawer(props) {
         })}
       >
         <Toolbar>
-          {props.type === "S" ? "" :
+          {/* {props.type === "S" ? "" :
             <IconButton
               // color="inherit"
               style={{backgroundColor:'white'}}
@@ -273,12 +273,12 @@ function MiniDrawer(props) {
             >
               <Icon style={{ color: "black" }} >dehaze</Icon>
             </IconButton>
-          }
+          } */}
 
           <Link to="/login">
             <img src={logo} alt="no_img" height="45" />
           </Link>
-          <span style={{ color: "red", marginLeft: 4 }}>alpha</span>
+          {/* <span style={{ color: "red", marginLeft: 4 }}>alpha</span> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
 
@@ -308,7 +308,7 @@ function MiniDrawer(props) {
         </Toolbar>
       </AppBar>
 
-      {props.type === "S" ? "" :
+      {/* {props.type === "S" ? "" :
         <Drawer
           variant="permanent"
           className={clsx(classes.drawer, {
@@ -333,7 +333,7 @@ function MiniDrawer(props) {
             {sideBar(props.type, open)}
           </List>
         </Drawer>
-      }
+      } */}
     </div>
   );
 }

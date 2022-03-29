@@ -61,7 +61,7 @@ class User extends Component {
   }
 
   componentDidMount() {
-    this.props.get_all_user(this.props.login.company_id);
+    this.props.get_user_lead(this.props.location.state.user_id);
   }
 
   handleClose = () => {
@@ -86,23 +86,23 @@ class User extends Component {
       // toggle_active_user,
       login,
     } = this.props;
-    console.log(user.all_user);
+    // console.log(user.all_user);
     return (
       <Grid container justify="center">
         <Grid item xs={12}>
           <Card style={card}>
             <CardHeader color="warning" stats icon>
               <CardIcon color="rose">
-                <h3>VIEW USER</h3>
+                <h3>VIEW USER LEAD</h3>
               </CardIcon>
             </CardHeader>
             <CardContent>
               <Grid item lg={12}>
-                {/* <Link to="add_user" style={{textDecoration: "none"}}> */}
+                <Link to="addlead" style={{textDecoration: "none"}}>
                 <IconButton onClick={() => { this.setState({ users_dialog: true }) }}>
                   <Icon>add</Icon>
                 </IconButton>
-                {/* </Link> */}
+                </Link>
               </Grid>
               <Table>
                 <TableHead>
@@ -111,30 +111,31 @@ class User extends Component {
                     <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
                     <TableCell align="left">E-Mail</TableCell>
                     <TableCell align="left">Phone Number</TableCell>
+                    <TableCell align="left">Remarks</TableCell>
+                    <TableCell align="left">Date & Time</TableCell>
                     {/* <TableCell align="right">Actions</TableCell> */}
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {user.all_user.map((row) => (
-                    <Link style={{textDecoration:'none'}} to={{
-                      pathname: "/lead",
-                      // search: "?sort=name",
-                      // hash: "#the-hash",
-                      state: { user_id: row._id }
-                    }}>
-                    <TableRow >
+                  {user.all_lead.map((row) => (
+                    <TableRow>
 
-                      <TableCell align="left">&nbsp;&nbsp;{row.user_name}</TableCell>
+                      <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
                       <TableCell align="left">
                         &nbsp;&nbsp;{row.email}
                       </TableCell>
                       <TableCell align="left">
-                        &nbsp;&nbsp;{row.contact_no}
+                        &nbsp;&nbsp;{row.phone}
                       </TableCell>
+                    <TableCell align="left">
+                    &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+                    <TableCell align="left">  &nbsp;&nbsp;{row.date}</TableCell>
+
                       {/*<TableCell align="right">{row.quantity}</TableCell>*/}
 
                     </TableRow>
-                    </Link>
                   ))}
                 </TableBody>
 

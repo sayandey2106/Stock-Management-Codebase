@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import User from "../../components/user/userComponents";
+import Lead from "../../components/lead/addLead";
 import {
     close_snack_bar
 } from "../../actions/snackbar/snackbar_action";
 import {
-    get_all_users,
-    add_users
+    // get_user_lead,
+    add_lead
     // delete_user,
 } from "../../actions/user/userActions";
 export class CategoryCont extends Component {
     render() {
         return (
-            <User {...this.props} />
+            <Lead {...this.props} />
         );
     }
 }
@@ -30,12 +30,12 @@ export const mapDispatchToProps = dispatch => {
         close_snack_bar: () => {
             dispatch(close_snack_bar());
         },
-        get_all_user: (company_id) => {
-            dispatch(get_all_users(company_id));
+        add_lead: (name, email, phone, remark, user_id) => {
+            dispatch(add_lead(name, email, phone, remark, user_id));
         },
-        add_users: (name,email,phone,password) => {
-            dispatch(add_users(name,email,phone,password));
-        },
+        // add_users: (name,email,phone,password) => {
+        //     dispatch(add_users(name,email,phone,password));
+        // },
         
         // delete_user: (id) => {
         //     dispatch(delete_user(id));

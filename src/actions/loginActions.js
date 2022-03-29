@@ -29,7 +29,7 @@ export function setPwd(payload) {
 export function login_email(login) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "login_email", {
+        return fetch(UNIVERSAL.BASEURL + "login", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -41,7 +41,7 @@ export function login_email(login) {
                 }),
             }).then((response) => response.json())
             .then((responseJson) => {
-                console.log(responseJson)
+                // console.log(responseJson)
                 if (responseJson.status) {
                     // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
                         dispatch(setLogin(responseJson.result))
@@ -70,12 +70,12 @@ export function set_home() {
     }
 }
 export function setLogin(payload) {
-    localStorage.setItem('qubi7_type', payload.type);
+    localStorage.setItem('sre_type', payload.type);
     // localStorage.setItem('qubi7_token', payload.user_token);
-    localStorage.setItem('qubi7_name', payload.name);
-    localStorage.setItem('qubi7_profile_pic', payload.profile_pic);
-    localStorage.setItem('qubi7_user_id', payload._id);
-    localStorage.setItem('qubi7_company_id', payload.company_id);
+    localStorage.setItem('sre_name', payload.name);
+    // localStorage.setItem('sre_profile_pic', payload.profile_pic);
+    localStorage.setItem('sre_user_id', payload._id);
+    // localStorage.setItem('qubi7_company_id', payload.company_id);
     // localStorage.setItem('taxopliance_organization_id', payload.organization_id);
     return {
         type: LOGIN,

@@ -9,6 +9,8 @@ import Request from "../../containers/request/requestContainer";
 import Dashboard from "../../containers/dashboard/dashboardContainer";
 
 import Users from "../../containers/user/userContainer"
+import Lead from "../../containers/lead/viewLeadCont";
+import AddLead from "../../containers/lead/addLeadCont";
 
 // Admin Imports
 
@@ -36,7 +38,33 @@ class Routes extends Component {
                     </main>
                 </div>
         } else {
-            body =
+            if(login.type==='A'){
+                body =
+                <div
+                    style={{
+                        display: "flex",
+                    }}>
+                    <Drawer_option_con
+                        type={login.type}
+                        onLogout={onLogout}/>
+                    <main
+                        style={{
+                            flexGrow: 1,
+                            marginTop: 20
+                        }}
+                    >
+                        {/* <Route exact path="/login" component={Login} /> */}
+                        {/* <Route exact path="/login" component={Login} /> */}
+                        <Route path="/" component={Controller_con}/>
+                        {/* ADMIN ROUTES */}
+                        <Route exact path="/" component={Users}/>
+                        <Route exact path="/lead" component={Lead}/>
+                        {/* <Route exact path="/addlead" component={AddLead}/> */}
+                    </main>
+                    {/* <Footer /> */}
+                </div>
+            } else{
+                body =
                 <div
                     style={{
                         display: "flex",
@@ -55,13 +83,17 @@ class Routes extends Component {
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         {/* STUDENT ROUTES */}
-                        <Route exact path="/category" component={Category}/>
-                        <Route exact path="/request" component={Request}/>
-                        <Route exact activeClassName="active" path="/" component={Dashboard}/>
-                        <Route exact path="/users" component={Users}/>
+                        {/* <Route exact path="/category" component={Category}/> */}
+                        {/* <Route exact path="/request" component={Request}/> */}
+                        {/* <Route exact activeClassName="active" path="/" component={Dashboard}/> */}
+                        {/* <Route exact path="/" component={Users}/>
+                        <Route exact path="/lead" component={Lead}/> */}
+                        <Route exact path="/" component={AddLead}/>
                     </main>
                     {/* <Footer /> */}
                 </div>
+            }
+            
         }
 
         return (

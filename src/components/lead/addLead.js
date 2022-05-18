@@ -1,4 +1,4 @@
-import React, {Component} from "react/index.js";
+import React, { Component } from "react/index.js";
 import Grid from "@material-ui/core/Grid";
 import CardHeader from "../cards/CardHeader.js";
 import CardIcon from "../cards/CardIcon.js";
@@ -7,14 +7,20 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Snackbar from "../snackbar/snackbar";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import {styles} from "../../styles/style";
+import { styles } from "../../styles/style";
 import LoaderCon from "../../containers/loader/loader_cont";
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
 import Icon from "@material-ui/core/Icon";
-import {Link} from "react-router-dom";
-import {InputLabel} from "@material-ui/core";
+import { Link } from "react-router-dom";
+import { InputLabel, MenuItem } from "@material-ui/core";
 // import { add_lead } from "../../actions/user/userActions.js";
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 
 const card = {
     borderRadius: "20px",
@@ -33,15 +39,58 @@ class AddAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: "",
-            profile: "",
-            email: "",
-            password: "",
-            position: "",
-            department: "",
-            employee_id: "",
-            pan: "",
-            aadhar: "",
+            time: "",
+            A: "",
+            B: "",
+            C: "",
+            day:new Date(),
+            date: [
+                { date: '9.00 AM' },
+                { date: '9.15 AM' },
+                { date: '9.30 AM' },
+                { date: '9.45 AM' },
+                { date: '10.00 AM' },
+                { date: '10.15 AM' },
+                { date: '10.30 AM' },
+                { date: '10.45 AM' },
+                { date: '11.00 AM' },
+                { date: '11.15 AM' },
+                { date: '11.30 AM' },
+                { date: '11.45 AM' },
+                { date: '12.00 PM', },
+                { date: '12.15 PM', },
+                { date: '12.30 PM', },
+                { date: '12.45 PM', },
+                { date: '1.00 PM', },
+                { date: '1.15 PM', },
+                { date: '1.30 PM', },
+                { date: '1.45 PM', },
+                { date: '2.00 PM', },
+                { date: '2.15 PM', },
+                { date: '2.30 PM', },
+                { date: '2.45 PM', },
+                { date: '3.00 PM', },
+                { date: '3.15 PM', },
+                { date: '3.30 PM', },
+                { date: '3.45 PM', },
+                { date: '4.00 PM', },
+                { date: '4.15 PM', },
+                { date: '4.30 PM', },
+                { date: '4.45 PM', },
+                { date: '5.00 PM', },
+                { date: '5.15 PM', },
+                { date: '5.30 PM', },
+                { date: '5.45 PM', },
+                { date: '6.00 PM', },
+                { date: '6.15 PM', },
+                { date: '6.30 PM', },
+                { date: '6.45 PM', },
+                { date: '7.00 PM', },
+                { date: '7.15 PM', },
+                { date: '7.30 PM', },
+                { date: '7.45 PM', },
+                { date: '8.00 PM', },
+            ]
         };
     }
 
@@ -90,114 +139,136 @@ class AddAdmin extends Component {
         } = this.props;
         return (
             <Grid container justify="center">
-                
+
                 <Grid item xs={12}>
-                <br/>
-                <br/>
-                {/* <br/> */}
+                    <br />
+                    <br />
+                    {/* <br/> */}
                     <Card style={card}>
                         <CardHeader color="warning" stats icon>
                             <CardIcon color="success">
-                                <h3>ADD LEAD</h3>
+                                <h3>ADD Lottery</h3>
                             </CardIcon>
                         </CardHeader>
                         <CardContent>
-                            <Grid container>
-                                <Grid item xs={4}>
+                            <Grid container justifyContent="center">
+                                <Grid item xs={11} lg={4}>
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <KeyboardDatePicker
+                                            margin="normal"
+                                            id="date-picker-dialog"
+                                            label="Date picker dialog"
+                                            inputFormat="dd MMM,yyyy"
+                                            value={this.state.day}
+                                            onChange={(date)=>{this.setState({day:date})}}
+                                            KeyboardButtonProps={{
+                                                'aria-label': 'change date',
+                                            }}
+                                        />
+                                    </MuiPickersUtilsProvider>
                                     <TextField
                                         // autoFocus
+                                        select
                                         margin="dense"
                                         // id="name"
-                                        label="Name"
+                                        label="Time"
                                         type="text"
                                         fullWidth
                                         required="true"
                                         onChange={(event) => {
                                             this.setState({
-                                                name:event.target.value
+                                                time: event.target.value
                                             })
                                         }}
-                                        // value={executive.name}
-                                    />
+                                        value={this.state.time}
+                                    >
+                                        {this.state.date.map((option) => (
+                                            <MenuItem key={option.date} value={option.date}>
+                                                {option.date}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
 
                                     <TextField
                                         // autoFocus
                                         margin="dense"
                                         // id="name"
-                                        label="Email"
-                                        type="email"
-                                        fullWidth
-                                        required="true"
-                                        onChange={(event) => {
-                                            this.setState({
-                                                email:event.target.value
-                                            })
-                                        }}
-                                        // value={executive.position}
-                                    />
-                                    <TextField
-                                        // autoFocus
-                                        margin="dense"
-                                        // id="name"
-                                        label="Phone Number"
+                                        label="A"
                                         type="text"
                                         fullWidth
+                                        required="true"
                                         onChange={(event) => {
                                             this.setState({
-                                                phone:event.target.value
+                                                A: event.target.value
                                             })
                                         }}
-                                        // value={executive.employee_id}
+                                        value={this.state.A}
                                     />
                                     <TextField
                                         // autoFocus
                                         margin="dense"
                                         // id="name"
-                                        label="Remark"
+                                        label="B"
+                                        type="text"
                                         required="true"
-                                        type="email"
+                                        fullWidth
+                                        onChange={(event) => {
+                                            this.setState({
+                                                B: event.target.value
+                                            })
+                                        }}
+                                        value={this.state.B}
+                                    />
+                                    <TextField
+                                        // autoFocus
+                                        margin="dense"
+                                        // id="name"
+                                        label="C"
+                                        required="true"
+                                        type="text"
                                         fullWidth
                                         // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                         onChange={(event) => {
                                             this.setState({
-                                                remark:event.target.value
+                                                C: event.target.value
                                             })
                                         }}
-                                        // value={executive.email}
+                                        value={this.state.C}
                                     />
                                     <Grid container spacing={2} justify={"flex-end"}>
                                         <Grid item>
                                             <Button
                                                 variant={"outlined"}
-                                                style={{color: "#7ac44f"}}
+                                                style={{ color: "#7ac44f" }}
                                                 onClick={() => {
                                                     add_lead(
-                                                        this.state.name,
-                                                        this.state.email,
-                                                         this.state.phone,
-                                                         this.state.remark,
-                                                        login.user_id
+                                                        this.state.day,
+                                                        this.state.time,
+                                                        this.state.A,
+                                                        this.state.B,
+                                                        this.state.C
                                                     );
                                                     this.setState({
-                                                        name:'',
-                                                        email:'',
-                                                        phone:'',
-                                                        remark:''
-                                                    })
+                                                        day: '',
+                                                        time: '',
+                                                        A: '',
+                                                        B: '',
+                                                        C: ''
+                                                    });
                                                 }}
                                             >
                                                 SUBMIT
                                             </Button>
                                         </Grid>
-                                      
+
                                     </Grid>
-                                    
+
                                 </Grid>
-                                
+
                             </Grid>
                         </CardContent>
                     </Card>
-                    <LoaderCon/>
+                    <LoaderCon />
                     <Snackbar
                         open={snackbar.response_received}
                         close_snack_bar={close_snack_bar}

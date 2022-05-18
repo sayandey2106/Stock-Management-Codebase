@@ -6,9 +6,11 @@ import {
 } from "../../actions/snackbar/snackbar_action";
 import {
     get_all_users,
-    add_users
+    add_users,
+    get_today_user_lead
     // delete_user,
 } from "../../actions/user/userActions";
+
 export class CategoryCont extends Component {
     render() {
         return (
@@ -22,6 +24,7 @@ export const mapStateToProps = store => {
         loader: store.loader,
         snackbar: store.snackbar,
         user: store.user,
+        lead:store.lead
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -32,6 +35,9 @@ export const mapDispatchToProps = dispatch => {
         },
         get_all_user: (company_id) => {
             dispatch(get_all_users(company_id));
+        },
+        get_today_user_lead: (user_id) => {
+            dispatch(get_today_user_lead(user_id));
         },
         add_users: (name,email,phone,password) => {
             dispatch(add_users(name,email,phone,password));

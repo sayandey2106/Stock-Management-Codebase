@@ -57,6 +57,8 @@ class User extends Component {
     super(props);
     this.state = {
       users_dialog: false,
+      today: false,
+      user_name: ""
     };
   }
 
@@ -66,7 +68,7 @@ class User extends Component {
 
   handleClose = () => {
     this.setState({
-      add: false,
+      today: false,
       delete: false,
       update: false,
       //   thumbs_up_dialog: false,
@@ -81,12 +83,14 @@ class User extends Component {
       snackbar,
       close_snack_bar,
       user,
+      lead,
       add_users,
+      get_today_user_lead,
 
       // toggle_active_user,
       login,
     } = this.props;
-    console.log(user.all_user);
+    console.log(user.all_lead);
     return (
       <Grid container justify="center">
         <Grid item xs={12}>
@@ -111,17 +115,12 @@ class User extends Component {
                     <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
                     <TableCell align="left">E-Mail</TableCell>
                     <TableCell align="left">Phone Number</TableCell>
-                    {/* <TableCell align="right">Actions</TableCell> */}
+                    <TableCell align="right">Actions</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {user.all_user.map((row) => (
-                    <Link style={{textDecoration:'none'}} to={{
-                      pathname: "/lead",
-                      // search: "?sort=name",
-                      // hash: "#the-hash",
-                      state: { user_id: row._id }
-                    }}>
+
                     <TableRow >
 
                       <TableCell align="left">&nbsp;&nbsp;{row.user_name}</TableCell>
@@ -131,10 +130,32 @@ class User extends Component {
                       <TableCell align="left">
                         &nbsp;&nbsp;{row.contact_no}
                       </TableCell>
-                      {/*<TableCell align="right">{row.quantity}</TableCell>*/}
+                      <TableCell align="right">
+                        <Tooltip title="Today's Work">
+                          <IconButton onClick={() => {
+                            get_today_user_lead(row._id);
+                            this.setState({ today: true, name: row.user_name })
+                          }}>
+                            <Icon>task_alt</Icon>
+                          </IconButton>
+                        </Tooltip>
+                        <Tooltip title="All Work">
+                          <Link style={{ textDecoration: 'none' }} to={{
+                            pathname: "/lead",
+                            // search: "?sort=name",
+                            // hash: "#the-hash",
+                            state: { user_id: row._id, }
+                          }}>
+                            <IconButton>
+                              <Icon>task</Icon>
+                            </IconButton>
+                          </Link>
+                        </Tooltip>
+                      </TableCell>
+
 
                     </TableRow>
-                    </Link>
+                    // </Link>
                   ))}
                 </TableBody>
 
@@ -181,6 +202,463 @@ class User extends Component {
 
             </CardContent>
           </Card>
+
+          <Dialog
+            open={this.state.today}
+            fullScreen={true}
+            onClose={() => this.handleClose()}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <Card style={card}>
+              <CardHeader color="warning" stats icon>
+                <CardIcon color="rose">
+                  <h3>{this.state.name}'s Task</h3>
+                </CardIcon>
+              </CardHeader>
+              <CardContent>
+                <h3>10 AM- 10.59 AM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "10" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+                        {}
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+
+                <h3>11 AM- 11.59 AM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "11" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+                <h3>12 PM- 12.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      
+                      row.time.split(":", 1).toString() === "12" &&
+                      
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                          
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+                <h3>1 PM- 1.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "1" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+                <h3>2 PM- 2.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "2" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+                <h3>3 PM- 3.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "3" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+
+                <h3>4 PM- 4.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "4" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+                <h3>5 PM- 5.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "5" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+                <h3>6 PM- 6.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString()  === "6" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+
+
+
+                <h3>7 PM- 7.59 PM</h3>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      {/* <TableCell align="left">&nbsp;&nbsp;Profile Pic</TableCell> */}
+                      <TableCell align="left">&nbsp;&nbsp;Name</TableCell>
+                      <TableCell align="left">E-Mail</TableCell>
+                      <TableCell align="left">Phone Number</TableCell>
+                      <TableCell align="left">Remark</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {user.all_lead.map((row) => (
+                      row.time.split(":", 1).toString() === "7" &&
+                      // <Link style={{textDecoration:'none',width:'100%'}} to={{
+                      //   pathname: "/lead",
+                      //   // search: "?sort=name",
+                      //   // hash: "#the-hash",
+                      //   state: { user_id: row._id }
+                      // }}>
+                      <TableRow >
+
+                        <TableCell align="left">&nbsp;&nbsp;{row.name}</TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.email}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.phone}
+                        </TableCell>
+                        <TableCell align="left">
+                          &nbsp;&nbsp;{row.remark}
+                        </TableCell>
+
+
+
+                      </TableRow>
+                      // </Link>
+                    ))}
+                  </TableBody>
+                </Table>
+                <DialogActions>
+                  {/* <Button onClick={() => { add_users(this.state.name, this.state.email, this.state.phone, this.state.password) }}>ADD</Button> */}
+                  <Button variant="outlined" color="secondary" onClick={() => { this.handleClose() }} autoFocus>
+                    Close
+                  </Button>
+                </DialogActions>
+
+
+
+              </CardContent>
+            </Card>
+
+          </Dialog>
 
           <LoaderCon />
           <Snackbar

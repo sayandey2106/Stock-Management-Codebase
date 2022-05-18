@@ -14,7 +14,7 @@ export default function reducer(state = initial_state, action) {
         case SET_ALL_USER:
             return state = { ...state, all_user: action.payload };
         case SET_ALL_LEAD:
-            return state = { ...state, all_lead: action.payload };
+            return state = { ...state, all_lead: action.payload.reverse() };
         default:
             return state;
     }

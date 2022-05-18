@@ -20,7 +20,7 @@ const initial_state = {
   // password: "",
   // confirmpassword: "",
   // newpassword: "",
-  type: "CA",
+  type: "",
   // isRegistered: false,
   // response_received: false,
   // isPasswordchange: false,
@@ -46,12 +46,12 @@ export default function reducer(state = initial_state, action) {
       return state = {
         ...state,
         isHome: false,
-        // type: action.payload.type,
+        type: action.payload.type,
         // token: action.payload.user_token,
         name: action.payload.name,
-        profile_img: action.payload.profile_pic,
+        // profile_img: action.payload.profile_pic,
         user_id: action.payload._id,
-        company_id: action.payload.company_id,
+        // company_id: action.payload.company_id,
         // organization_id: action.payload.organization_id
       };
     case LOGOUT:

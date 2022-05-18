@@ -98,11 +98,11 @@ class User extends Component {
             </CardHeader>
             <CardContent>
               <Grid item lg={12}>
-                <Link to="addlead" style={{textDecoration: "none"}}>
+                {/* <Link to="addlead" style={{textDecoration: "none"}}>
                 <IconButton onClick={() => { this.setState({ users_dialog: true }) }}>
                   <Icon>add</Icon>
                 </IconButton>
-                </Link>
+                </Link> */}
               </Grid>
               <Table>
                 <TableHead>

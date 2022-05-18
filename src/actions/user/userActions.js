@@ -133,10 +133,12 @@ export function add_users(name, email, phone, password) {
     };
 }
 
-export function add_lead(name, email, phone, remark, user_id) {
+export function add_lead(date, time, A, B, C) {
     return (dispatch) => {
+        
+
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "add_lead", {
+        return fetch(UNIVERSAL.BASEURL + "add_lottery", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -146,12 +148,13 @@ export function add_lead(name, email, phone, remark, user_id) {
                 // company_id:company_id,
             },
             body: JSON.stringify({
-                name: name,
-                email: email,
-                remark: remark,
-                phone: phone,
-                user_id: user_id,
-                date: new Date()
+                date: date.toLocaleDateString('en-US'),
+                time: time,
+                A: A,
+                B: B,
+                C: C,
+                // date: new Date().toLocaleDateString(),
+                // time: new Date().toLocaleTimeString('en-US'),
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
@@ -165,6 +168,43 @@ export function add_lead(name, email, phone, remark, user_id) {
                 } else {
                     // dispatch(set_all_user([]));
                     dispatch(set_snack_bar(true, responseJson.message));
+
+                    // dispatch(set_all_request([]));
+                }
+                dispatch(unsetLoader())
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+
+export function get_today_user_lead(user_id) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "view_today_user_lead", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                
+            },
+            body: JSON.stringify({
+                user_id: user_id,
+                date: new Date().toLocaleDateString(),
+            }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                
+                if (responseJson.status) {
+
+                    dispatch(set_all_lead(responseJson.result));
+
+                    // dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    dispatch(set_all_lead([]));
 
                     // dispatch(set_all_request([]));
                 }

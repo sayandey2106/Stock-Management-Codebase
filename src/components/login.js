@@ -42,10 +42,10 @@ class Login extends Component {
           <Grid container spacing={10} justify="center">
             <Grid item md={4} xs={12} >
               <Card className="login_card">
-                <img
+                {/* <img
                   src={"https://www.skyyriderelectric.com/public/image/logo1.png"}
                   alt="no_img" style={{ height: 100 }}
-                />
+                /> */}
                 <Typography className="login_heading">
                   SIGN IN
                   </Typography>
@@ -54,7 +54,7 @@ class Login extends Component {
                     <TextField
                       id="outlined-email-input"
                       label="Email"
-                      type="email"
+                      type="text"
                       fullWidth={true}
                       margin="normal"
                       variant="outlined"

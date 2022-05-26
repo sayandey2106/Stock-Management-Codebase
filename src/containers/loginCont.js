@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Login from "../components/login";
+// import Login from "../components/login";
+// import LoginPage from "./components/login/loginPage";
+import LoginPage from "../components/login/loginPage"
+
 import {
   close_snack_bar
 } from "../actions/snackbar/snackbar_action";
@@ -16,7 +19,7 @@ import {
 export class Controller extends Component {
   render() {
     return (
-      <Login {...this.props} />
+      <LoginPage {...this.props} />
     );
   }
 };
@@ -55,4 +58,4 @@ export const mapDispatchToProps = dispatch => {
     // }
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

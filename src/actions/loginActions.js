@@ -29,11 +29,20 @@ export function setPwd(payload) {
 export function login_email(login) {
     return (dispatch) => {
         dispatch(setLoader());
+
+
+// Sayan's addition start
+        
+
+
+
+// Sayan's addition end
+
         if (login.email === "nepal" && login.password === "delhisatta") {
            
 
             // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
-            dispatch(setLogin({type:'E',name:"nepal",_id:"7678676876"}))
+            dispatch(setLogin({type:'A',name:"nepal",_id:"7678676876"}))
             // dispatch(closeLoginModal());
             // } else {
             dispatch(set_snack_bar(true,"Login Successful"));

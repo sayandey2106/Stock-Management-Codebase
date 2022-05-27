@@ -11,7 +11,7 @@ import Dashboard from "../../containers/dashboard/dashboardContainer";
 import Users from "../../containers/user/userContainer"
 import Lead from "../../containers/lead/viewLeadCont";
 import AddLead from "../../containers/lead/addLeadCont";
-
+import ProfileCont from "../../containers/profile/profileCont";
 // Admin Imports
 
 
@@ -33,7 +33,8 @@ class Routes extends Component {
                         }}>
                         {/* <Route exact path="/" component={Home} /> */}
                         <Route exact path="/" component={Login}/>
-                        <Route path="/" component={Controller_con}/>
+                        <Route path="/" component={ProfileCont}/>
+                      
                         {/* <Route path="/survey" component={Survey} /> */}
                     </main>
                 </div>
@@ -58,6 +59,9 @@ class Routes extends Component {
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         <Route exact path="/" component={Users}/>
+                        <Route path="/profile" component={ProfileCont}/>
+                        {/* <Route path="/" component={Controller_con}/> */}
+
                         <Route exact path="/lead" component={Lead}/>
                         {/* <Route exact path="/addlead" component={AddLead}/> */}
                     </main>

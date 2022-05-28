@@ -32,7 +32,7 @@ export default function DesktopProfile() {
                             
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 text-center">
                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export default function DesktopProfile() {
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="profile-tab" id="myTabContent">
+                        <div class="profile-tab text-center" id="myTabContent">
                             <Details/>
                          
                                  

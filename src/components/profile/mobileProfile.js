@@ -5,11 +5,15 @@ import './mobileProfile.css'
 
 export default function MobileProfile() {
   return (
-    <div className='mobile'><div class="container d-flex justify-content-center align-items-center">
+    <div className=''>
+      <div class="container d-flex justify-content-center align-items-center">
              
     <div class="card card-mob">
+      
 
-     <div class="upper">
+  
+
+     <div class="upper mobile">
 
        <img src="https://i.imgur.com/Qtrsrk5.jpg" class="img-fluid"/>
        
@@ -62,8 +66,9 @@ export default function MobileProfile() {
      <div className="text-center">
 
 
-     <div class="" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
+     <div class="text-center " id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row text-center
+                                        justify-content-center">
                                             <div class="col-md-6">
                                                 <label>User Id</label>
                                             </div>

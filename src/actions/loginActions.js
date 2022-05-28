@@ -29,31 +29,42 @@ export function setPwd(payload) {
 export function login_email(login) {
     return (dispatch) => {
         dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "login_page", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                // user_token: token,
+                // organization_id: oid
+                // company_id:id
+            },
+            body: JSON.stringify({
+             login:login,
 
-
-// Sayan's addition start
         
+             }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                // console.log(responseJson)
+                if (responseJson.status) {
 
+                    dispatch(setLogin(responseJson))
 
+                    // dispatch(set_snack_bar(true, responseJson.message));
 
-// Sayan's addition end
+                } else {
+                    
+                    dispatch(set_snack_bar(true, responseJson.message));
+                }
+                dispatch(unsetLoader())
+            })
 
-        if (login.email === "nepal" && login.password === "delhisatta") {
-           
-
-            // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
-            dispatch(setLogin({type:'A',name:"nepal",_id:"7678676876"}))
-            // dispatch(closeLoginModal());
-            // } else {
-            dispatch(set_snack_bar(true,"Login Successful"));
-        }
-
-        // }
-
-        dispatch(unsetLoader())
-
+            .catch((error) => {
+                console.error(error);
+            });
     };
 }
+
 export function clear_login() {
     return {
         type: CLEAR_LOGIN
@@ -62,7 +73,7 @@ export function clear_login() {
 export function set_home() {
     return {
         type: SET_HOME
-    }
+    };
 }
 export function setLogin(payload) {
     localStorage.setItem('sre_type', payload.type);
@@ -182,3 +193,22 @@ export function onLogout() {
 //             dispatch(unsetLoader())
 //         })
 // }
+
+
+
+// if (login.email === "nepal" && login.password === "delhisatta") {
+    
+    
+//     // if (responseJson.result.type === "A" || responseJson.result.type === "SA") {
+//             dispatch(setLogin({type:'A',name:"nepal",_id:"7678676876"}))
+//             // dispatch(closeLoginModal());
+//             // } else {
+//             dispatch(set_snack_bar(true,"Login Successful"));
+//         }
+
+//         // }
+
+//         dispatch(unsetLoader())
+
+//     };
+

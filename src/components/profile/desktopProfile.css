@@ -93,10 +93,3 @@
     
     color: #0062cc;
   }
-  
-  
-  @media (max-width:780px) {
-    .desktop{
-      display: none!important;
-    }
-  }

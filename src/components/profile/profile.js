@@ -5,8 +5,12 @@ import MobileProfile from './mobileProfile'
 export default function Profile() {
   return (
     <div>
+
+      <div className='desktop-profile'>
+
         <DesktopProfile/>
-        <MobileProfile/>
+      </div>
+    
     </div>
   )
 }

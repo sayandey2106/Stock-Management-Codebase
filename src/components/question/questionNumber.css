@@ -1,0 +1,13 @@
+.q-no{
+    width: 95% !important;
+    
+}
+.btn-line{
+    padding:0 !important;
+}
+.exam-info span{
+    border : 2px solid black;
+    /* margin: 15px; */
+    /* margin-top: 15px !important; */
+    padding: 5px;
+}

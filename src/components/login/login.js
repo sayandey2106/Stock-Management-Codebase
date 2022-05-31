@@ -39,7 +39,7 @@ clear_login();
     <div>
       <section>
         <div className="container d-flex text-center justify-content-center ">
-          <div className="card text-center ">
+          <div className="card login-card text-center ">
             <div class=" content">
               {/* for email */}
               <input

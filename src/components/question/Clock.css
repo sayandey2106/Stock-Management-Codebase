@@ -1,0 +1,6 @@
+.CircularProgressbar .CircularProgressbar-path{
+    stroke: #68EB4E !important;
+}
+.CircularProgressbar .CircularProgressbar-text{
+    fill:#68EB4E !important;
+}

@@ -12,6 +12,9 @@ import Users from "../../containers/user/userContainer"
 import Lead from "../../containers/lead/viewLeadCont";
 import AddLead from "../../containers/lead/addLeadCont";
 import ProfileCont from "../../containers/profile/profileCont";
+import questionCont, { QuestionCont } from "../../containers/question/questionCont";
+import Question from "../question/Question";
+// import QuestionCont from "../../containers/question/questionCont";
 // Admin Imports
 
 
@@ -33,6 +36,7 @@ class Routes extends Component {
                         }}>
                         {/* <Route exact path="/" component={Home} /> */}
                         <Route exact path="/" component={Login}/>
+                        {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
                       
                         {/* <Route path="/survey" component={Survey} /> */}

@@ -1,27 +1,27 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import "./login.css";
 export default function Login(props) {
+  useEffect(() => {
+    clear_login();
+  }, []);
 
-
-useEffect(() => {
-  
-clear_login();
- 
-}, [])
-
-
-
-  
   const [Type, setType] = useState("password");
   // const [Eye, setEye] = useState("fa-eye");
 
   const [emailId, setemailId] = useState("");
   const [password, setpassword] = useState("");
 
-  const { login, setEmail, setPwd, login_email, clear_login, snackbar, close_snack_bar } =
-    props;
+  const {
+    login,
+    setEmail,
+    setPwd,
+    login_email,
+    clear_login,
+    snackbar,
+    close_snack_bar,
+  } = props;
 
   if (login.user_id !== "") {
     return <Redirect to="/dashboard" />;
@@ -33,8 +33,6 @@ clear_login();
     } else setType("password");
   };
 
- 
-  
   return (
     <div>
       <section>
@@ -76,9 +74,13 @@ clear_login();
                   onChange={(event) => {
                     setPwd(event.target.value);
                   }}
-                  onKeyPress={event => {
-                    if (event.key === 'Enter' && login.email !== "" && login.password !== "") {
-                      login_email(login)
+                  onKeyPress={(event) => {
+                    if (
+                      event.key === "Enter" &&
+                      login.email !== "" &&
+                      login.password !== ""
+                    ) {
+                      login_email(login);
                     }
                   }}
                 />
@@ -101,7 +103,9 @@ clear_login();
                     class="btn btn-primary"
                     id="sign-in-btn"
                     type="button"
-                    onClick={() => { login_email(login) }}
+                    onClick={() => {
+                      login_email(login);
+                    }}
                   >
                     Sign In
                   </button>

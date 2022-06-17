@@ -35,7 +35,7 @@ export default function Login(props) {
 
   return (
     <div>
-      <section>
+      <section className="login-section">
         <div className="container d-flex text-center justify-content-center ">
           <div className="card login-card text-center ">
             <div class=" content">

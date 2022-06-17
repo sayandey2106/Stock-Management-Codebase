@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@200;300;400&display=swap');
 
-section{
+.login-section{
     text-align: center;
 background: url("./unsplash_T0XLKgpyT_c.png") no-repeat ;
 background-size: cover;

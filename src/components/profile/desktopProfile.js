@@ -3,7 +3,7 @@ import './desktopProfile.css'
 import Details from './details'
 
 
-export default function DesktopProfile() {
+export default function DesktopProfile(props) {
     return (
          
          <div className="desktop">

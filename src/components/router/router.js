@@ -14,6 +14,8 @@ import AddLead from "../../containers/lead/addLeadCont";
 import ProfileCont from "../../containers/profile/profileCont";
 import questionCont, { QuestionCont } from "../../containers/question/questionCont";
 import Question from "../question/Question";
+// import studentDashCont from "../../containers/studentDashboard/studentDashCont";
+import  StudentDashboardContainer  from "../../containers/studentDashboard/studentDashCont";
 // import QuestionCont from "../../containers/question/questionCont";
 // Admin Imports
 
@@ -35,7 +37,8 @@ class Routes extends Component {
                             flexGrow: 1
                         }}>
                         {/* <Route exact path="/" component={Home} /> */}
-                        <Route exact path="/" component={Login}/>
+                        {/* <Route exact path="/" component={Login}/> */}
+                        <Route path="/" component={StudentDashboardContainer}/>
                         {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
                       
@@ -64,6 +67,7 @@ class Routes extends Component {
                         {/* ADMIN ROUTES */}
                         <Route exact path="/" component={Users}/>
                         <Route path="/profile" component={ProfileCont}/>
+                        {/* <Route path="/profile" component={studentDashCont}/> */}
                         {/* <Route path="/" component={Controller_con}/> */}
 
                         <Route exact path="/lead" component={Lead}/>

@@ -1,368 +1,80 @@
-/* logout btn */
 
-.btn-wraper{
-  height: 70px;
-  width: 100%;
-  margin-bottom:1rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  transition: 00.3s;
+.grey-bg{
+  background-color: #efebeb;
+  height: 100vh;
+/* background-color: white; */
 }
-
-.btn-wraper:hover{
-  background-color: #324bb9;
-}
-
-
-.log-out{
-  margin-left: 90%;
-  padding: 10px;
-}
-
-/* Style The Dropdown Button */
-.dropbtn {
-  background-color: rgb(109, 141, 141);
-  color: white;
-  padding: 15px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: 00.5s;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  /* position: relative; */
-  display: inline-block;
-  /* transition: 0.4s; */
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  /* transition: 0.4s; */
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  /* transition: 0.4s; */
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: rgb(80, 90, 90);
-}
-
-/* CARD PART  */
-.card1{
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  margin-top: 2rem;
-  padding: 0rem 2rem;
-
-}
-
-/* Profile Card */
-
-.profile_card{
-    width: 25%;
-    height: 514px;
-    left: 2rem;
-    top: 45px;
-    background-color: rgba(255, 255, 255, 1);
-
-}
-
-.profile_card .stuName{
-  display: flex;
-  flex-direction: row;
-
-}
-
-.profile_card .stuName img{
-  width: 200px;
-  height: 200px;
-  border-radius: 100%;
-  margin-left: 15px;
-  margin-top: 15px;
-}
-
-.profile_card .stuName .name{
-  margin-top: 20px;
-}
-
-.profile_card .stuName h4{
-  font-weight: 600;
-  font-size: 17px;
-  margin-left: 20px;
-  /* margin-top: 10px; */
-  color: rgba(52, 53, 52, 1);
-  justify-items: center;
-}
-
-.profile_card .stuName h6{
-  font-weight: 100;
-}
-
-.card1 .details{
-  margin-left: 1rem;
-  margin-top: 4rem;
-  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
-  padding: 8px 15px;
-  /* justify-content: left; */
-  /* text-align: center; */
-  text-align: left;
-}
-
-.card1 .details h3{
-  font-weight: 600;
-  font-size :18px; 
-  color: rgba(133, 138, 149, 1);
-}
-
-/* Exam Sumary */
-
-.exam-head{
-  font-size: 24px;
-  text-align: center;
-  font-weight: 600;
-  color: rgba(52, 53, 52, 1);
-
-}
-
-.progress{
-  /* position: absolute; */
-  width: 850px;
-    height: 514px;
-    left: 35rem;
-    top: 45px;
-    background-color: rgba(255, 255, 255, 1);
-}
-
-.progress .analys{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-  margin: 4rem;
-}
-
-.cardsize{
-  padding: 25px 35px;
-}
-
-.shadow{
-  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.2);
-  cursor: pointer;
-  transition: 0.3s;
-  /* gap: 1rem; */
-  /* justify-content: center; */
-}
-
-.shadow:hover{
-  box-shadow: 0 10px 18px 0 rgba(0,0,0,0.2);
-}
-
-.attended{
-  display:flex;
-  flex-direction: row;
-  /* padding: 3px 3px; */
-  gap: 15px;
-}
-
-.attended img{
-  border: 2px solid;
-  border-radius: 100%;
-  padding: 2px;
-  border-color: aqua ;
-  height: 35px;
-  width: 35px;
-  margin-top: 10px;
-}
-
-.attended h6{
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 600;
-  margin-bottom: 3px;
-  color: rgba(133, 138, 149, 1);
-}
-.attend h4{
-  margin-left: 50%;
-  font-size: 20px;
-  line-height: 16px;
-  font-weight: 600;
-  color: rgba(52, 53, 52, 1);
-
-}
-
-.special{
-  display:flex;
-  flex-direction: row;
-  /* padding: 3px 3px; */
-  gap: 15px;
-}
-
-.special-img {
-  border: 2px solid;
-  border-radius: 100%;
-  padding: 2px;
-  border-color: aqua ;
-  height: 35px;
-  width: 35px;
-  margin-top: 10px;
-}
-
-.special-head{
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: 600;
-  margin-bottom: 3px;
-  color: rgba(133, 138, 149, 1);
-}
-
-.speacial-head2{
-  margin-left: 50%;
-  font-size: 20px;
-  line-height: 16px;
-  font-weight: 600;
-  color: rgba(52, 53, 52, 1);
-}
-
-/* SideBar */
-
-.sidebar{
-  width: 450px;
-    height: 514px;
-    left: 75%;
-    top: 45px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 1);
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    /* backdrop-filter: blur(150px); */
-}
-
 .notice-cont{
-  border: 2px solid ;
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
+.card-1{
+  box-shadow:3px 3px 6px rgba(0, 0, 0, 0.222) !important;
+}
+/* sayan's style  */
+
+.exam-info-box {
+  background-color: #fff;
   border-radius: 10px;
-  padding: 10rem;
-  height: 5rem;
-  margin-left: 25px;
-  margin-right: 25px;
+  border: none;
+  position: relative;
+  margin-bottom: 30px;
+  width: 200px;
+  height: 100px;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
+}
+.l-bg-cherry {
+  background: linear-gradient(to right, #493240, #f09) !important;
+  color: #fff;
 }
 
-/* Exam History */
-
-.exam-history{
-  margin-top: 2rem;
-  padding: 0rem 2rem;
-
+.l-bg-blue-dark {
+  background: linear-gradient(to right, #373b44, #4286f4) !important;
+  color: #fff;
 }
 
+.l-bg-green-dark {
+  background: linear-gradient(to right, #0a504a, #38ef7d) !important;
+  color: #fff;
+}
 
-.exam-history-head{
-  font-size: 25px;
+.l-bg-orange-dark {
+  background: linear-gradient(to right, #a86008, #ffba56) !important;
+  color: #fff;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+  font-size: 60px;
+}
+
+.card .card-statistic-3 .card-icon {
   text-align: center;
-  font-weight: 600;
-  color: rgba(52, 53, 52, 1);
+  line-height: 50px;
+  margin-left: 15px;
+  color: #000;
+  position: absolute;
+  right: -5px;
+  top: 20px;
+  opacity: 0;
 }
 
-.history-heads{
-  /* display: flex;
-  flex-direction: row; */
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5rem;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 16px;
-  text-align: center;
-  color: rgba(133, 138, 149, 1);
+.l-bg-cyan {
+  background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+  color: #fff;
 }
 
-.summary{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 7rem;
-  
-  /*for  box */
-  box-sizing: border-box;
-  border: 1px solid #C2C4CA;
-  background-color: #FFFFFF;
-  margin-bottom: 5px;
-  text-align: center;
+.l-bg-green {
+  background: linear-gradient(135deg, #23bdb8 0%, #43e794 100%) !important;
+  color: #fff;
 }
 
-.subject{
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 16px;
-  margin-left: 10px;
-  color: rgba(0, 0, 0, 1);
+.l-bg-orange {
+  background: linear-gradient(to right, #f9900e, #ffba56) !important;
+  color: #fff;
 }
 
-.result{
-  border: 1px  rgb(146, 230, 146);
-  border-radius: 10px;
-  color: rgba(167, 210, 119, 1);
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 16px;
-  padding: 5px;
-}
-
-.percentage{
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 16px;
-  color: rgba(167, 210, 119, 1);
-  margin-left: 10px;
-}
-
-.grade{
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 16px;
-  color: rgba(167, 210, 119, 1);
-  margin-left: -8px;
-}
-
-.time{
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 16px;
-color: rgba(39, 39, 39, 1);
-}
-
-.date{
-  color: rgba(39, 39, 39, 1);
-  font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 16px;
-}
-
-.paper-details{
-  margin-top: 20px;
-  margin-right: 15px;
-  font-weight: 600;
-  color: rgba(113, 166, 254, 1);
-  text-decoration: none;
+.l-bg-cyan {
+  background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
+  color: #fff;
 }

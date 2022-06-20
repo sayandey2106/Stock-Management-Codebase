@@ -29,7 +29,7 @@ export function setPwd(payload) {
 export function login_email(login) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "login_page", {
+        return fetch(UNIVERSAL.BASEURL + "api/Sauth/login_email", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -39,17 +39,18 @@ export function login_email(login) {
                 // company_id:id
             },
             body: JSON.stringify({
-             login:login,
-
+             email :login.email,
+            password : login.password
         
              }),
         }).then((response) => response.json())
             .then((responseJson) => {
-                // console.log(responseJson)
+                console.log(responseJson)
                 if (responseJson.status) {
 
                     dispatch(setLogin(responseJson))
-
+               
+                        
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
@@ -79,10 +80,13 @@ export function setLogin(payload) {
     localStorage.setItem('sre_type', payload.type);
     // localStorage.setItem('qubi7_token', payload.user_token);
     localStorage.setItem('sre_name', payload.name);
+    localStorage.setItem('sre_email', payload.email);
+   
     // localStorage.setItem('sre_profile_pic', payload.profile_pic);
     localStorage.setItem('sre_user_id', payload._id);
     // localStorage.setItem('qubi7_company_id', payload.company_id);
     // localStorage.setItem('taxopliance_organization_id', payload.organization_id);
+  
     return {
         type: LOGIN,
         payload: payload,

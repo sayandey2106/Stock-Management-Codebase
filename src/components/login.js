@@ -17,7 +17,7 @@ class Login extends Component {
     };
   }
   componentDidMount() {
-    this.props.clear_login()
+    // this.props.clear_login()
     // if (localStorage.getItem('socus_token') !== null) {
     //   return <Redirect to="/" />
     // }
@@ -33,7 +33,7 @@ class Login extends Component {
     } = this.props;
 
     if (login.user_id !== "") {
-      return <Redirect to="/dashboard" />
+      // return <Redirect to="/dashboard" />
     }
 
     return (

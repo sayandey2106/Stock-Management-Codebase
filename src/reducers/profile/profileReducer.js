@@ -3,7 +3,9 @@
 // } from "../../constants/profile/profileConst";
 import { SET_PROFILE } from "../../constants/profile/profileConst";
 const initial_state = {
-   user_profile:{}
+   user_profile:{
+    
+   }
 };
 export default function reducer(state = initial_state, action) {
     //console.log(action)

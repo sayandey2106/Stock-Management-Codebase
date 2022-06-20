@@ -7,30 +7,32 @@ import {setLoader, unsetLoader}
 import {set_snack_bar} from "../snackbar/snackbar_action";
 
 
-export function view_profile(user_id) {
+export function view_profile(authToken) {
     return (dispatch) => {
         dispatch(setLoader());
-        return fetch(UNIVERSAL.BASEURL + "view_profile", {
-            method: "POST",
+        return fetch(UNIVERSAL.BASEURL + "api/Sauth/view_profile", {
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
+                "Auth-token" : authToken
             },
-            body: JSON.stringify({
-                user_id:user_id
+            // body: JSON.stringify({
+            //     user_id:user_id
         
-             }),
+            //  }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 // console.log(responseJson)
                 if (responseJson.status) {
 
-                    dispatch({type:SET_PROFILE,payload:responseJson.result})
+                    dispatch({type:SET_PROFILE,payload:responseJson.profile});
 
                     // dispatch(set_snack_bar(true, responseJson.message));
+                    console.log(responseJson.profile,"hi");
 
                 } else {
                     

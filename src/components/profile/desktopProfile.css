@@ -1,17 +1,35 @@
 
 .emp-profile{
     padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
+    /* margin-top: 3%;
+    margin-bottom: 3%; */
     border-radius: 0.5rem;
-    background: #fff;
+    background: #efebeb;
+
+  }
+  .desktop{
+    background: #efebeb;
+
   }
   .profile-img{
     text-align: center;
+    /* background-color: rgb(234, 29, 29); */
+  }
+  .img-box{
+    background-color: white;
+    width: 250px;
+    height: 250px;
+    border-radius: 50% ;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.222) !important;
+    
   }
   .profile-img img{
-    width: 70%;
+    width: auto;
     height: 100%;
+    border-radius: 50%;
+    box-shadow:-3px 3px 6px rgba(0, 0, 0, 0.222) !important;
   }
   .profile-img .file {
     position: relative;
@@ -66,8 +84,9 @@
     border-bottom:2px solid #0062cc;
   }
   .profile-work{
-    padding: 14%;
-    margin-top: -15%;
+    /* padding: 14%;
+    margin-top: -15%; */
+    width: 300px;
   }
   .profile-work p{
     font-size: 12px;
@@ -92,4 +111,9 @@
 
     
     color: #0062cc;
+  }
+
+  .profile-img-card{
+    width : 400px;
+    height: 100%;
   }

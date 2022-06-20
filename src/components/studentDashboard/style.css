@@ -13,6 +13,10 @@
   box-shadow:3px 3px 6px rgba(0, 0, 0, 0.222) !important;
 }
 /* sayan's style  */
+.fab{
+  color:darkblue;
+  font-size: 45px;
+}
 
 .exam-info-box {
   background-color: #fff;

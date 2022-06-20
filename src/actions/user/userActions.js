@@ -23,7 +23,7 @@ export function get_all_users(company_id) {
             },
             body: JSON.stringify({
                 // email: login.email,
-                // password: login.password
+                // password: login.password,
                 company_id: company_id,
                 // user_id: user_id,
                 // category_id:category_id

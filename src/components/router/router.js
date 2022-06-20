@@ -37,16 +37,16 @@ class Routes extends Component {
                             flexGrow: 1
                         }}>
                         {/* <Route exact path="/" component={Home} /> */}
-                        {/* <Route exact path="/" component={Login}/> */}
-                        <Route path="/" component={StudentDashboardContainer}/>
+                        <Route exact path="/" component={Login}/>
+                        {/* <Route path="/" component={StudentDashboardContainer}/> */}
                         {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
                       
                         {/* <Route path="/survey" component={Survey} /> */}
                     </main>
                 </div>
-        } else {
-            if(login.type==='A'){
+        } else if
+            (login.type==='S'){
                 body =
                 <div
                     style={{
@@ -63,19 +63,21 @@ class Routes extends Component {
                     >
                         {/* <Route exact path="/login" component={Login} /> */}
                         {/* <Route exact path="/login" component={Login} /> */}
-                        <Route path="/" component={Controller_con}/>
+                        {/* <Route path="/" component={Controller_con}/> */}
                         {/* ADMIN ROUTES */}
-                        <Route exact path="/" component={Users}/>
+                        {/* <Route exact path="/" component={Users}/> */}
                         <Route path="/profile" component={ProfileCont}/>
-                        {/* <Route path="/profile" component={studentDashCont}/> */}
+                        <Route path="/" component={StudentDashboardContainer}/> 
                         {/* <Route path="/" component={Controller_con}/> */}
 
-                        <Route exact path="/lead" component={Lead}/>
+                        {/* <Route exact path="/lead" component={Lead}/> */}
                         {/* <Route exact path="/addlead" component={AddLead}/> */}
                     </main>
                     {/* <Footer /> */}
                 </div>
-            } else{
+            } 
+            else{
+                console.log(login.type,"type");
                 body =
                 <div
                     style={{
@@ -92,21 +94,22 @@ class Routes extends Component {
                     >
                         {/* <Route exact path="/login" component={Login} /> */}
                         {/* <Route exact path="/login" component={Login} /> */}
-                        <Route path="/" component={Controller_con}/>
+                        {/* <Route path="/" component={Controller_con}/> */}
                         {/* ADMIN ROUTES */}
                         {/* STUDENT ROUTES */}
+                        <Route path="/" component={ProfileCont}/>
                         {/* <Route exact path="/category" component={Category}/> */}
                         {/* <Route exact path="/request" component={Request}/> */}
                         {/* <Route exact activeClassName="active" path="/" component={Dashboard}/> */}
                         {/* <Route exact path="/" component={Users}/>
                         <Route exact path="/lead" component={Lead}/> */}
-                        <Route exact path="/" component={AddLead}/>
+                        {/* <Route exact path="/" component={AddLead}/> */}
                     </main>
                     {/* <Footer /> */}
                 </div>
             }
             
-        }
+        
 
         return (
             <Router>

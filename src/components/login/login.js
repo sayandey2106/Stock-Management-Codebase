@@ -23,9 +23,9 @@ export default function Login(props) {
     close_snack_bar,
   } = props;
 
-  if (login.user_id !== "") {
-    return <Redirect to="/dashboard" />;
-  }
+  // if (login.user_id !== "") {
+  //   return <Redirect to="/dashboard" />;
+  // }
 
   const handleToogle = () => {
     if (Type === "password") {

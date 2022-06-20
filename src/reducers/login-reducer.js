@@ -50,7 +50,7 @@ export default function reducer(state = initial_state, action) {
         // token: action.payload.user_token,
         name: action.payload.name,
         // profile_img: action.payload.profile_pic,
-        user_id: action.payload._id,
+        user_id: action.payload.authToken,
         // company_id: action.payload.company_id,
         // organization_id: action.payload.organization_id
       };

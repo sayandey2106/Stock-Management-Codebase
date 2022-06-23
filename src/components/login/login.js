@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
+import LoaderEm from "../loader/loader_embed";
 import "./login.css";
+// import { LoaderCon } from "../../containers/loader/loader_cont";
+// import loader_cont from "../../containers/loader/loader_cont";
+// import { LoaderCon } from "../../containers/loader/loader_cont";
+import Loader from "../loader/loader";
+// import LoaderCont from "../containers/loader/loader_cont";
+import Loader_cont from "../../containers/loader/loader_cont";
 export default function Login(props) {
   useEffect(() => {
     clear_login();
@@ -23,9 +30,9 @@ export default function Login(props) {
     close_snack_bar,
   } = props;
 
-  // if (login.user_id !== "") {
-  //   return <Redirect to="/dashboard" />;
-  // }
+  if (login.user_id !== "") {
+    return <Redirect to="/dashboard" />;
+  }
 
   const handleToogle = () => {
     if (Type === "password") {
@@ -35,6 +42,7 @@ export default function Login(props) {
 
   return (
     <div>
+     <Loader_cont/>
       <section className="login-section">
         <div className="container d-flex text-center justify-content-center ">
           <div className="card login-card text-center ">

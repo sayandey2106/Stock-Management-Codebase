@@ -51,13 +51,15 @@ export default class LG extends React.Component {
       }}
 
       style={{position:"relative",
-           height:"30px",
+           height:"50px",
            width:"80px",
            border:"1px solid",
            borderRadius:"5px",
-          background:"#fadde1",
+          // background:"#fadde1",
           fontSize:"15px",
-          left:"-100px"
+          // left:"-100px"
+          marginLeft:"15px"
+          
           }}
 
       > Log Out</button>

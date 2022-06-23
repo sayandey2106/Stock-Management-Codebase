@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loader from "../../components/loader/loader";
+import LoaderEm from "../../components/loader/loader_embed";
 import {
   setLoader,
   unsetLoader
@@ -9,6 +10,7 @@ export class LoaderCon extends Component {
   render() {
     return (
       <Loader {...this.props} />
+      // <LoaderEm {...this.props}/>
     );
   }
 };

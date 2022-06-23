@@ -12,7 +12,9 @@ import UNIVERSAL from "../config/config.js";
 import { setLoader, unsetLoader }
     from "./loader/loaderAction";
 import { set_snack_bar } from "../actions/snackbar/snackbar_action";
-import firebase from "firebase"
+import firebase from "firebase";
+import { view_profile } from "./profile/profileAction";
+
 
 export function setEmail(payload) {
     return {
@@ -50,7 +52,7 @@ export function login_email(login) {
 
                     dispatch(setLogin(responseJson))
                
-                        
+                        dispatch(view_profile(responseJson.authToken));
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {
@@ -83,7 +85,7 @@ export function setLogin(payload) {
     localStorage.setItem('sre_email', payload.email);
    
     // localStorage.setItem('sre_profile_pic', payload.profile_pic);
-    localStorage.setItem('sre_user_id', payload._id);
+    localStorage.setItem('sre_user_id', payload.authToken);
     // localStorage.setItem('qubi7_company_id', payload.company_id);
     // localStorage.setItem('taxopliance_organization_id', payload.organization_id);
   

@@ -7,8 +7,13 @@
     background: #efebeb;
 
   }
+  .details-card{
+    box-shadow:3px 3px 6px rgba(0, 0, 0, 0.222) !important;
+    height: 100%;
+  }
   .desktop{
     background: #efebeb;
+    height: 100vh;
 
   }
   .profile-img{
@@ -116,4 +121,16 @@
   .profile-img-card{
     width : 400px;
     height: 100%;
+  }
+  .media-body span{
+    font-weight: bold;
+  }
+
+  @media (min-width:8800px){
+    .desktop{
+      height: 100%;
+    }
+    .fab{
+      font-size: 30px;
+    }
   }

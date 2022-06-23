@@ -1,13 +1,15 @@
 import {
   LOADER,
 } from "../../constants/loader/loaderConst";
+
 const initial_state = {
-  open: false,
+  openLoader: false,
 };
+
 export default function reducer(state = initial_state, action) {
   switch (action.type) {
     case LOADER:
-      return state = { ...state, open: action.payload, };
+      return state = { ...state, openLoader: action.payload, };
     default:
       return state;
   }

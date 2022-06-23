@@ -38,6 +38,7 @@ class Routes extends Component {
                         }}>
                         {/* <Route exact path="/" component={Home} /> */}
                         <Route exact path="/" component={Login}/>
+                        <Route path="/" component={Controller_con}/>
                         {/* <Route path="/" component={StudentDashboardContainer}/> */}
                         {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
@@ -50,7 +51,7 @@ class Routes extends Component {
                 body =
                 <div
                     style={{
-                        display: "flex",
+                        display: "",
                     }}>
                     <Drawer_option_con
                         type={login.type}
@@ -58,16 +59,16 @@ class Routes extends Component {
                     <main
                         style={{
                             flexGrow: 1,
-                            marginTop: 20
-                        }}
-                    >
+                            marginTop: 40
+                        }}>
+
                         {/* <Route exact path="/login" component={Login} /> */}
                         {/* <Route exact path="/login" component={Login} /> */}
-                        {/* <Route path="/" component={Controller_con}/> */}
+                        <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         {/* <Route exact path="/" component={Users}/> */}
-                        <Route path="/profile" component={ProfileCont}/>
-                        <Route path="/" component={StudentDashboardContainer}/> 
+                        <Route exact path="/profile" component={ProfileCont}/>
+                        <Route exact path="/" component={StudentDashboardContainer}/> 
                         {/* <Route path="/" component={Controller_con}/> */}
 
                         {/* <Route exact path="/lead" component={Lead}/> */}
@@ -94,7 +95,7 @@ class Routes extends Component {
                     >
                         {/* <Route exact path="/login" component={Login} /> */}
                         {/* <Route exact path="/login" component={Login} /> */}
-                        {/* <Route path="/" component={Controller_con}/> */}
+                        <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         {/* STUDENT ROUTES */}
                         <Route path="/" component={ProfileCont}/>

@@ -58,10 +58,13 @@ const{
                             <div className='card-body'>    
                             <i class="fa-solid fab fa-graduation-cap"></i>
                             <h3>SKILLS</h3>
+                           { profile.user_profile.education==="" ?<h5> Enter Your Skills</h5> : <h5> {profile.user_profile.education}</h5>
+                           }
+
+                            {/* <p>Abcd 12354</p>
                             <p>Abcd 12354</p>
                             <p>Abcd 12354</p>
-                            <p>Abcd 12354</p>
-                            <p>Abcd 12354</p>
+                            <p>Abcd 12354</p> */}
                             </div>
                         </div>
                     </div>

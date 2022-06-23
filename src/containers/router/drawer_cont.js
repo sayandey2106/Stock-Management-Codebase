@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import DrawerOptions from "../../components/router/drawer";
 
 import { handleDrawerToggle} from "../../actions/loginActions";
-
+import Drawer from "../../components/router/drawer";
 export class Drawer_option_con extends Component {
 
   render() {
     return (
-      <DrawerOptions {...this.props} />
+      <Drawer {...this.props} />
     );
   }
 };
@@ -17,7 +17,8 @@ export class Drawer_option_con extends Component {
 export const mapStateToProps = store => {
   return {
    
-   login: store.login
+   login: store.login,
+   profile: store.profile
   };
 };
 

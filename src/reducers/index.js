@@ -7,7 +7,7 @@ import request from "./request/requestReducer";
 import user from "./user/userReducer";
 import dashboard from "../reducers/dashboard/dashboardReducer"
 import profile from "../reducers/profile/profileReducer"
-
+import signup from  "../reducers/signup/signupReducer"
 
 export default combineReducers({
     loader,
@@ -18,4 +18,5 @@ export default combineReducers({
     dashboard,
     user,
     profile,
+    signup,
 });

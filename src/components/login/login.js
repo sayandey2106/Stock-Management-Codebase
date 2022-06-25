@@ -50,7 +50,7 @@ export default function Login(props) {
               {/* for email */}
               <input
                 type="email"
-                class="form-control mt-3"
+                class="form-control login-form mt-3"
                 placeholder="Username"
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
@@ -74,7 +74,7 @@ export default function Login(props) {
                 {/* for password */}
                 <input
                   type={Type}
-                  class="form-control"
+                  class="form-control login-form"
                   placeholder="Password"
                   aria-label="Password"
                   aria-describedby="addon-wrapping"

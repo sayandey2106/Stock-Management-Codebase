@@ -19,12 +19,13 @@ font-weight: 400;
     padding: 30px;
     margin-top: 10%;
 }
-.form-control{
+.login-form{
     background-color: rgba(221, 221, 221, 0)!important;
 font-size: 24px !important;
     /* width:auto; */
     color: #fff !important;
     margin-bottom: 15px;
+    margin-top: 30px
     
 }
 #sign-in-btn{
@@ -40,14 +41,14 @@ font-size: 24px !important;
     color: black !important;
     font-size: 20px !important;
 }
-::placeholder{
+.login-form::placeholder{
     color: #fff !important;
     /* text-decoration: solid; */
     opacity: 0.85 !important;
     
 }
 input{
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 

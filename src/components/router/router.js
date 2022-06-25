@@ -16,6 +16,7 @@ import questionCont, { QuestionCont } from "../../containers/question/questionCo
 import Question from "../question/Question";
 // import studentDashCont from "../../containers/studentDashboard/studentDashCont";
 import  StudentDashboardContainer  from "../../containers/studentDashboard/studentDashCont";
+import  SignupCont  from "../../containers/signup/signupCont";
 // import QuestionCont from "../../containers/question/questionCont";
 // Admin Imports
 
@@ -39,6 +40,7 @@ class Routes extends Component {
                         {/* <Route exact path="/" component={Home} /> */}
                         <Route exact path="/" component={Login}/>
                         <Route path="/" component={Controller_con}/>
+                        <Route exact path="/signup" component={SignupCont}/>
                         {/* <Route path="/" component={StudentDashboardContainer}/> */}
                         {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
@@ -68,6 +70,7 @@ class Routes extends Component {
                         {/* ADMIN ROUTES */}
                         {/* <Route exact path="/" component={Users}/> */}
                         <Route exact path="/profile" component={ProfileCont}/>
+                        {/* <Route exact path="/signup" component={SignupCont}/> */}
                         <Route exact path="/" component={StudentDashboardContainer}/> 
                         {/* <Route path="/" component={Controller_con}/> */}
 

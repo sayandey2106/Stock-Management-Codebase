@@ -1,3 +1,11 @@
+export const SIGNUP = "SIGNUP";
 export const CREATE_EMAIL = "CREATE_EMAIL";
 export const CREATE_PASSWORD = "CREATE_PASSWORD";
-export const SIGNUP = "SIGNUP";
+export const CREATE_NAME = "CREATE_NAME";
+export const CREATE_COLLEGE = "CREATE_COLLEGE";
+export const CREATE_PHONE = "CREATE_PHONE";
+export const CREATE_GENDER = "CREATE_GENDER";
+export const CREATE_PROFILE_PIC = "CREATE_PROFILE_PIC";
+export const CREATE_CASTE = "CREATE_CASTE ";
+export const CREATE_SKILLS ="CREATE_SKILLS";
+export const CREATE_TYPE ="CREATE_TYPE"

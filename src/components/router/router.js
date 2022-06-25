@@ -12,7 +12,7 @@ import Users from "../../containers/user/userContainer"
 import Lead from "../../containers/lead/viewLeadCont";
 import AddLead from "../../containers/lead/addLeadCont";
 import ProfileCont from "../../containers/profile/profileCont";
-import questionCont, { QuestionCont } from "../../containers/question/questionCont";
+import QuestionCont  from "../../containers/question/questionCont";
 import Question from "../question/Question";
 // import studentDashCont from "../../containers/studentDashboard/studentDashCont";
 import  StudentDashboardContainer  from "../../containers/studentDashboard/studentDashCont";
@@ -72,6 +72,7 @@ class Routes extends Component {
                         <Route exact path="/profile" component={ProfileCont}/>
                         {/* <Route exact path="/signup" component={SignupCont}/> */}
                         <Route exact path="/" component={StudentDashboardContainer}/> 
+                        <Route exact path="/quiz" component={QuestionCont}/> 
                         {/* <Route path="/" component={Controller_con}/> */}
 
                         {/* <Route exact path="/lead" component={Lead}/> */}

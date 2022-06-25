@@ -80,7 +80,7 @@ export default function Signup(props) {
                     createCollege(event.target.value);
                   }}
                 />
-                <h6>SKILLS</h6>
+                <h6>TYPE</h6>
                 <input
                 //   type="email"
                   class="form-control signup-form"
@@ -91,6 +91,19 @@ export default function Signup(props) {
                   value={signup.type}
                   onChange={(event) => {
                     createType(event.target.value);
+                  }}
+                />
+                   <h6>SKILLS</h6>
+                 <input
+                //   type="email"
+                  class="form-control signup-form"
+                  placeholder="Username"
+                  aria-label="Username"
+                  aria-describedby="addon-wrapping"
+                  required
+                  value={signup.skills}
+                  onChange={(event) => {
+                    createSkills(event.target.value);
                   }}
                 />
                 <h6>CASTE</h6>

@@ -53,6 +53,7 @@ export function login_email(login) {
                     dispatch(setLogin(responseJson))
                
                         dispatch(view_profile(responseJson.authToken));
+                        console.log(responseJson);
                     // dispatch(set_snack_bar(true, responseJson.message));
 
                 } else {

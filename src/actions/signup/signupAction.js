@@ -120,7 +120,7 @@ export function sign_up(signup) {
                 // signup: signup
 
         
-             ,
+             
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson.error)

@@ -96,10 +96,15 @@ export function sign_up(signup) {
                 name : signup.name,
                 password : signup.password,
                 college_name:signup.college,
-              
-                 gender:signup.gender,
-                caste:signup.caste
-            })
+                gender:signup.gender,
+                caste:signup.caste,
+                phone_no: signup.phone,
+                profile_pic: signup.profile_pic ,
+                type:  signup.type,
+
+
+
+            }),
            
                 // email :signup.email,
                 // password : signup.password,

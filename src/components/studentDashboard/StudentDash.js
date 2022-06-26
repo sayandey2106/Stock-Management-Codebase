@@ -2,8 +2,10 @@ import React from "react";
 import "./style.css";
 // import { Link } from 'react-router-dom'
 
-function StudentDash() {
+function StudentDash(props) {
+  const {startExam,login,start_exam} = props;
   return (
+
     
     <section className="grey-bg">
     <div className="container">
@@ -133,7 +135,7 @@ function StudentDash() {
 
       <h3 className="exam-history-head text-center my-3" >Exam History</h3>
       <table class="table-light table table-striped">
-  <thead>
+   <thead>
     <tr>
       <th scope="col">Subject</th>
       <th scope="col">Rank</th>
@@ -173,6 +175,55 @@ function StudentDash() {
       <td>Mark</td>
       <td>Otto</td>
       <td>@mdo</td>
+     
+    </tr>
+  </tbody>
+</table>
+      </section>
+      <section className="" style={{marginTop:"70px"}}>
+
+      <h3 className="exam-history-head text-center my-3" >Upcoming Exams</h3>
+      <table class="table-light table table-striped">
+   <thead>
+    <tr>
+      <th scope="col">Subject</th>
+
+      <th scope="col">Full Marks</th>
+      <th scope="col">Time</th>
+     
+      <th scope="col">
+       
+        Exam Link
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td><button className="btn btn-success" onClick={() => {
+                      start_exam();
+                    }}> Start Exam</button></td>
+   
+   
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td> <button className="btn btn-success"> Start Exam</button></td>
+  
+
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+
+      <td> <button className="btn btn-success"> Start Exam</button></td>
+
+
      
     </tr>
   </tbody>

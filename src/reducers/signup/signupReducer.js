@@ -12,9 +12,8 @@ import {
    CREATE_TYPE
   } from "../../constants/signup/signupConstants";
   const initial_state = {
+      
     email: "",
-
-    token: "",
     name: "",
     password:"",
     phone:"",
@@ -22,17 +21,18 @@ import {
     college:"",
     caste:"",
     skills:"",
-
+    profile_pic: "",
+    type: "",
+    
    
     // password: "",
+    // token: "",
     // confirmpassword: "",
     // newpassword: "",
-    type: "",
     // isRegistered: false,
     // response_received: false,
     // isPasswordchange: false,
     // message: "",
-    profile_pic: "",
     // mobileOpen: false,
     // user_id: "",
     // company_id:"",

@@ -1,0 +1,1 @@
+export const SET_ALL_QUIZ = "SET_ALL_QUIZ"

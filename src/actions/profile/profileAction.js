@@ -18,7 +18,7 @@ export function view_profile(authToken) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : authToken
+                "Auth-token" : (localStorage.getItem('sre_user_id'))
             },
             // body: JSON.stringify({
             //     user_id:user_id

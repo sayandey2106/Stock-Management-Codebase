@@ -5,7 +5,8 @@ import {connect} from "react-redux";
 import StudentDash from "../../components/studentDashboard/StudentDash";
 import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
 import { start_exam } from "../../actions/startExam/startExamAction";
-
+import { set_all_quiz } from "../../actions/allQuiz/allQuizAction";
+import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
 
 
 export class StudentDashboardContainer extends Component {
@@ -23,7 +24,11 @@ export const mapStateToProps = store => {
         // snackbar: store.snackbar,
         // dashboard: store.dashboard,
         // category: store.category,
-        startExam:store.startExam
+        // dashboardSummary : store.dashboard.summary,
+        // dashboardHistory: store.dashboard.history,
+        dashboard : store.dashboard,
+        startExam:store.startExam,
+        allQuiz : store.allQuiz.quiz_set
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -31,8 +36,15 @@ export const mapDispatchToProps = dispatch => {
 
             start_exam : ()=>{
                     dispatch(start_exam());
-            }
+            },
+            
+            set_all_quiz:()=>{
+                    dispatch(set_all_quiz());
+            },
 
+            get_dashboard_data:() =>{
+                dispatch(get_dashboard_data());
+            }
 //        
         };
 };

@@ -9,6 +9,8 @@ import dashboard from "../reducers/dashboard/dashboardReducer"
 import profile from "../reducers/profile/profileReducer"
 import signup from  "../reducers/signup/signupReducer";
 import startExam from "../reducers/startexam/startExamReducer"
+import allQuiz from "../reducers/allQuiz/allQuizReducer";
+ 
 
 export default combineReducers({
     loader,
@@ -20,5 +22,6 @@ export default combineReducers({
     user,
     profile,
     signup,
-    startExam
+    startExam,
+    allQuiz
 });

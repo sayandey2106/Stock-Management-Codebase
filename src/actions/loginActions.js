@@ -14,7 +14,8 @@ import { setLoader, unsetLoader }
 import { set_snack_bar } from "../actions/snackbar/snackbar_action";
 import firebase from "firebase";
 import { view_profile } from "./profile/profileAction";
-
+import { get_dashboard_data } from "./dashboard/dashboardActions";
+import { set_all_quiz } from "./allQuiz/allQuizAction";
 
 export function setEmail(payload) {
     return {
@@ -53,6 +54,9 @@ export function login_email(login) {
                     dispatch(setLogin(responseJson))
                
                         dispatch(view_profile(responseJson.authToken));
+                        dispatch( set_all_quiz());
+                       dispatch( get_dashboard_data());
+                    
                         console.log(responseJson);
                     // dispatch(set_snack_bar(true, responseJson.message));
 

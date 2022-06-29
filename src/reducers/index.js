@@ -10,7 +10,7 @@ import profile from "../reducers/profile/profileReducer"
 import signup from  "../reducers/signup/signupReducer";
 import startExam from "../reducers/startexam/startExamReducer"
 import allQuiz from "../reducers/allQuiz/allQuizReducer";
- 
+
 
 export default combineReducers({
     loader,
@@ -23,5 +23,6 @@ export default combineReducers({
     profile,
     signup,
     startExam,
-    allQuiz
+    allQuiz,
+  
 });

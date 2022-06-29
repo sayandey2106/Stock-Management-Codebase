@@ -1,3 +1,4 @@
+import { Redirect } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 // import { Link } from 'react-router-dom'
@@ -11,34 +12,45 @@ function StudentDash(props) {
     allQuiz,
     get_dashboard_data,
     dashboard,
+    curr_quiz
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
   } = props;
 
-
   useEffect(() => {
-
     set_all_quiz();
     get_dashboard_data();
-
   }, []);
 
+const [redirect, setRedirect] = useState(false);
+
+const [id, setId] = useState();
+
+if(redirect===true && startExam.question_set !=""){
+  return(
+
+    <Redirect to={{
+
+      pathname: '/quiz',
+    
+    }} />
+    // props.history.push("/quiz" , startExam)
+  );
+}
+
+  const handleClick = (quiz) => {
+    console.log(quiz)
+  };
 
 
   return (
-
-
     <section className="grey-bg">
       <div className="container">
         {/* Button LOGOUT */}
 
-
-
         {/* DETAILED CARDS */}
         <div className="card1 row">
-
-
           <section className="col-lg-8 col-md-7 " style={{ marginTop: "60px" }}>
             <h3 className="exam-head text-center my-3">Exam Summary</h3>
             <div class="row ">
@@ -146,21 +158,23 @@ function StudentDash(props) {
               </div>
             </div>
           </section>
-          <section className="sidebar col-lg-4 col-md-4 " style={{ marginTop: "60px" }}>
+          <section
+            className="sidebar col-lg-4 col-md-4 "
+            style={{ marginTop: "60px" }}
+          >
             <h3 className="exam-head text-center my-3">Notice Board</h3>
-            <div className="notice-cont card mt-2 p-4"><h4>
-              
-              Sit accusam ea dolores voluptua clita magna est duo justo dolor. Accusam tempor est magna sed ut et, et est.
+            <div className="notice-cont card mt-2 p-4">
+              <h4>
+                Sit accusam ea dolores voluptua clita magna est duo justo dolor.
+                Accusam tempor est magna sed ut et, et est.
               </h4>
-              </div>
+            </div>
           </section>
         </div>
 
-      
-      {/* Upcoming exam */}
+        {/* Upcoming exam */}
         <section className="" style={{ marginTop: "70px" }}>
-
-          <h3 className="exam-history-head text-center my-3" >Upcoming Exam</h3>
+          <h3 className="exam-history-head text-center my-3">Upcoming Exam</h3>
           <table class="table-light table table-striped table-responsive">
             <thead>
               <tr className="text-center">
@@ -170,41 +184,59 @@ function StudentDash(props) {
                 <th scope="col">Subject</th>
                 <th scope="col">Full Marks</th>
                 <th scope="col">Duration</th>
-                <th scope="col">Exam Link
-                </th>
+                <th scope="col">Exam Link</th>
               </tr>
             </thead>
             <tbody>
-              {
-                allQuiz.map(quiz => {
-                  
-                  return (
+              {allQuiz.map((quiz) => {
+
+                // const {_id}=quiz;
+                // const x = quiz._id
+                return (
+                  <tr className="text-center">
+                    <td>
+                      <h5>{quiz.name}</h5>
+                    </td>
+                    <td>
+                      <h5>{quiz.date}</h5>
+                    </td>
+                    <td>
+                      <h5>{quiz.time}</h5>
+                    </td>
+                    <td>
+                      <h5>{quiz.subject}</h5>
+                    </td>
+                    <td>
+                      <h5>{quiz.marks}</h5>
+                    </td>
+                    <td>
+                      <h5>{quiz.duration}</h5>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-success"
+                        onClick={() => {
+                          start_exam(quiz._id);
+                          console.log(quiz._id)
+                          setRedirect(true)
+                          setId (quiz._id);
+                        }}
+                      >
                     
-                    <tr className="text-center">
-                      <td><h5>{quiz.name}</h5></td>
-                      <td><h5>{quiz.date}</h5></td>
-                      <td><h5>{quiz.time}</h5></td>
-                      <td><h5>{quiz.subject}</h5></td>
-                      <td><h5>{quiz.marks}</h5></td>
-                      <td><h5>{quiz.duration}</h5></td>
-                      <td>
-                      <button className="btn btn-success"> Start Exam</button>
-                      </td>
-                    </tr>
-                  )
-                })
-              }
-
-
+                        Start Exam
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            
             </tbody>
           </table>
         </section>
 
-
         {/* exam history */}
         <section className="" style={{ marginTop: "70px" }}>
-
-          <h3 className="exam-history-head text-center my-3" >Exam History</h3>
+          <h3 className="exam-history-head text-center my-3">Exam History</h3>
           <table class="table-light table table-striped table-responsive">
             <thead>
               <tr>
@@ -217,27 +249,22 @@ function StudentDash(props) {
               </tr>
             </thead>
             <tbody>
-              {
-                dashboard.history.map(info =>{
-
-                  return(
-                    <tr>
-                      <td scope ="col">{info.subject} </td>
-                      <td scope ="col">{info.score_in_percentage} </td>
-                      <td scope ="col">{info.grade} </td>
-                      <td scope ="col">{info.details.quiz_date} </td>
-                      <td scope ="col">{info.details.quiz_marks} </td>
-                    </tr>
-                  );
-                })
-
-              }
-              
+              {dashboard.history.map((info) => {
+                return (
+                  <tr>
+                    <td scope="col">{info.subject} </td>
+                    <td scope="col">{info.score_in_percentage} </td>
+                    <td scope="col">{info.grade} </td>
+                    <td scope="col">{info.details.quiz_date} </td>
+                    <td scope="col">{info.details.quiz_marks} </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </section>
 
-{/* 
+        {/* 
 <section>
   <div className="row">
 
@@ -284,7 +311,7 @@ function StudentDash(props) {
 
       </div>
     </section>
-  );
-}
+  );}
+
 
 export default StudentDash;

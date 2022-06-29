@@ -9,6 +9,7 @@ import { set_all_quiz } from "../../actions/allQuiz/allQuizAction";
 import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
 
 
+
 export class StudentDashboardContainer extends Component {
     render() {
         return (
@@ -34,8 +35,8 @@ export const mapStateToProps = store => {
 export const mapDispatchToProps = dispatch => {
     return {
 
-            start_exam : ()=>{
-                    dispatch(start_exam());
+            start_exam : (payload)=>{
+                    dispatch(start_exam(payload));
             },
             
             set_all_quiz:()=>{
@@ -44,7 +45,11 @@ export const mapDispatchToProps = dispatch => {
 
             get_dashboard_data:() =>{
                 dispatch(get_dashboard_data());
-            }
+            },
+
+            // curr_quiz : (payload) =>{
+            //     dispatch(curr_quiz(payload));
+            // }
 //        
         };
 };

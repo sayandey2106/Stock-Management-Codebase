@@ -49,6 +49,9 @@
     padding: 10px;
     color: white;
 }
+.selected {
+    background-color: #68EB4E !important;
+}
 @media (max-width : 500px){
 
     .option-card{

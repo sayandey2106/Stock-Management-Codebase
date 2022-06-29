@@ -8,118 +8,220 @@ import Clock from "./Clock";
 import QuestionNumbers from "./questionNumbers";
 import './Question.css'
 
-export default function Question() {
+export default function Question(props) {
+
+  const { startExam, start_exam } = props;
+
+
+
+const totalQuestions = startExam.question_set.length;
+console.log("total questions ",totalQuestions);
+
+
+  // const handleNext =() =>{
+  //   console.log("next");
+  //   setCurrQuestion(currQuestion+1)
+  //   console.log(currQuestion);
+  // }
+  // const handlePrev =() =>{
+  //   console.log("prev");
+  //   setCurrQuestion(currQuestion-1)
+  //   console.log(currQuestion);
+  // }
+
+  const [currQuestion, setCurrQuestion] = useState(0);
+  const [selected, setSelected] = useState("");
+
   return (
-    
-      <div className="question-page">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-8 col-lg-8 col-sm-12">
-              <div className="">
-                <Clock />
-              </div>
 
-              <div className="m-3">
-                <h2>QUESTIONS:</h2>
-              </div>
-              <div className="m-3 q-label">
-                <span className="q-label">Q20</span>
-              </div>
-              <div className="m-3">
-                <h4>Dinyd egorock. Yoloa astrosk. Kolig tetraning</h4>
-              </div>
+    <div className="question-page">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 col-lg-8 col-sm-12">
+            <div className="">
+              <Clock />
+            </div>
 
+            {
+              startExam.question_set.filter((item, index) => index === currQuestion).map((questions) => {
 
-
-
-              <div className="justify-content-center text-center mb-5">
-
-                <div class="card option-card ">
-                  <div class="card-body d-flex">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                    <div className="option-number">
-                      <h5>
-                        A
-                      </h5>
+                return (
+                  <>
+                    <div className="m-3">
+                      <h2>QUESTIONS:</h2>
                     </div>
-                    <h5 className="option-text">
-                      This is some text within a card body.
-                    </h5>
-                  </div>
-                </div>
-                <div class="card option-card">
-                  <div class="card-body d-flex">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                    <div className="m-3 q-label">
+                      <span className="q-label">Q{currQuestion + 1}</span>
+                    </div>
+                    <div className="m-3">
+                      <h4>{questions.question}</h4>
+                    </div>
 
-                    <h5 className="option-number">
-                      A
-                    </h5>
-                    <h5 className="option-text">
-                      This is some text within a card body.
-                    </h5>
-                  </div>
-                </div>
-                <div class="card option-card">
-                  <div class="card-body d-flex">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                    <div class={selected === questions.A? 'card option-card selected' :
+                      'card option-card'}
+                      onClick={() => {
+                        setSelected(questions.A)
+                      }}>
+                      <div class="card-body d-flex">
+                        <div className="option-number">
+                          <h5>
+                            A
+                          </h5>
+                        </div>
+                        <h5 className="option-text">
+                          {questions.A}
+                        </h5>
+                      </div>
+                    </div>
+                    <div class={selected === questions.B ? 'card option-card selected' :
+                      'card option-card'} onClick={() => {
+                        setSelected(questions.B)
+                      }}>
+                      <div class="card-body d-flex">
 
-                    <h5 className="option-number">
-                      A
-                    </h5>
-                    <h5 className="option-text">
-                      This is some text within a card body.
-                    </h5>
-                  </div>
-                </div>
-                <div class="card option-card">
-                  <div class="card-body d-flex">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                        <h5 className="option-number">
+                          B
+                        </h5>
+                        <h5 className="option-text">
+                          {questions.B}
+                        </h5>
+                      </div>
+                    </div>
+                    <div class={selected === questions.C ? 'card option-card selected' :
+                      'card option-card'} onClick={() => {
+                        setSelected(questions.C)
+                      }}>
+                      <div class="card-body d-flex">
 
-                    <h5 className="option-number">
-                      A
-                    </h5>
-                    <h5 className="option-text">
-                      This is some text within a card body.
-                    </h5>
-                  </div>
-                </div>
-                <div className="m-1 p-1">
 
-                  <button className="btn green-btn float-start">
-                  <i class="fa-solid fa-angle-left mx-1"></i>
+                        <h5 className="option-number">
+                          C
+                        </h5>
+                        <h5 className="option-text">
+                          {questions.C}
+                        </h5>
+                      </div>
+                    </div>
+                    <div class={selected === questions.D ? 'card option-card selected' :
+                      'card option-card'} onClick={() => {
+                        setSelected(questions.D)
+                      }}>
+                      <div class="card-body d-flex">
 
-                    previous
-                  </button>
-                  <button className="btn green-btn float-end">
-                    Next
-                    <i class="fa-solid fa-angle-right mx-1"></i>
-                  </button>
-                </div>
+
+                        <h5 className="option-number">
+                          D
+                        </h5>
+                        <h5 className="option-text">
+                          {questions.D}
+                        </h5>
+                      </div>
+                    </div>
+                  </>
+
+                );
+
+              })
+            }
+
+            <div className="justify-content-center text-center mb-5">
+
+              <div className="m-1 p-1">
+
+
+                {
+                  currQuestion > 0 ?
+                    <button className="btn green-btn float-start"
+                      onClick={() => {
+                        setCurrQuestion(currQuestion - 1);
+                        console.log("prev", currQuestion)
+                      }}
+                    >
+                      <i class="fa-solid fa-angle-left mx-1"></i>
+
+                      previous
+                    </button> : <></>
+                }
+
+
+{
+  currQuestion < totalQuestions-1 ?
+                <button className="btn green-btn float-end"
+                  onClick={() => {
+                    setCurrQuestion(currQuestion + 1);
+                    console.log("next", currQuestion)
+                  }}
+
+                >
+                  Next
+                  <i class="fa-solid fa-angle-right mx-1"></i>
+                </button>:<></>
+}
+
+
 
               </div>
-
-              <div className=" blue-bar ">
-
-<button className="btn btn-danger float-start">
-  skip
-  <i class="fa-solid fa-angles-right mx-1"></i>
-</button>
-<button className="btn green-btn float-end" id="submit-btn">
-  Submit
-</button>
-</div>
 
             </div>
 
-            <div className="col-md-4 col-lg- col-sm-12">
-              <div className=" float-end">
-                <QuestionNumbers />
+            <div className=" blue-bar ">
+
+              <button className="btn btn-danger float-start">
+                skip
+                <i class="fa-solid fa-angles-right mx-1"></i>
+              </button>
+              <button className="btn green-btn float-end" id="submit-btn">
+                Submit
+              </button>
+            </div>
+
+          </div>
+
+          <div className="col-md-4 col-lg- col-sm-12">
+            <div className=" float-end">
+              {/* <QuestionNumbers data={props}/> */}
+              <div>
+                <div className="m-4">
+                  <div className="exam-info my-3">
+                    <span>30 minutes</span>
+                  </div>
+                  <div className="exam-info my-3">
+                    <span>50 Marks (Pass marks: 40)</span>
+                  </div>
+
+                  <div className="row" style={{ width: 250, height: 250 }}>
+                    {/* {startExam.question_set.map((number,i) => {
+            return (
+              <div className="col-md-3 col-lg-3 col-sm-3 col-3 btn-line">
+                <div className="btn btn-secondary q-no">{i+1}</div>
+              </div>
+            );
+          })} */}
+
+
+                    {
+                      startExam.question_set.map((filteredItem, i) => {
+                        return (
+                          <div className="col-md-3 col-lg-3 col-sm-3 col-3 btn-line">
+                            <div className="btn btn-secondary q-no"
+                              onClick={() => {
+                                setCurrQuestion(i)
+                              }}
+                            >{i + 1}</div>
+                          </div>
+                        );
+
+                      })
+                    }
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
+    </div>
 
   );
 }

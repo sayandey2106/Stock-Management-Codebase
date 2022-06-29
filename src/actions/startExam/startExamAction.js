@@ -1,14 +1,16 @@
 import UNIVERSAL from "../../config/config";
-import { SET_QUESTIONS } from "../../constants/startExam/startExamConst";
+import { CURR_QUIZ, SET_QUESTIONS } from "../../constants/startExam/startExamConst";
+import { Redirect } from "react-router-dom";
 
 
-
-export function start_exam() {
+export function start_exam(quiz_id) {
     console.log("start exam here")
+    console.log(quiz_id)
     return (dispatch) => {
         // dispatch(setLoader());
-            return fetch(UNIVERSAL.BASEURL + "api/quiz/appear/start_exam", {
-            method: "PUT",
+        dispatch({type:CURR_QUIZ,payload:quiz_id})
+            return fetch(UNIVERSAL.BASEURL +"api/quiz/fetch_all_question_with_quizId/" + quiz_id  , {
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -16,13 +18,13 @@ export function start_exam() {
                 // organization_id: oid
                 // company_id:id
             },
-            body: JSON.stringify({
-                // student_id: (localStorage.getItem('sre_user_id')),
-                student_id : "628c6d9a2e585ddadc99b936",
-                quiz_id: "62acd49c646c0918f3fd0a81",
-                // quiz_id: quiz_id
+            // body: JSON.stringify({
+            //     // student_id: (localStorage.getItem('sre_user_id')),
+            //     // student_id : "628c6d9a2e585ddadc99b936",
+            //     // quiz_id: "62acd49c646c0918f3fd0a81",
+            //     // // quiz_id: quiz_id
         
-             }),
+            //  }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
@@ -33,6 +35,7 @@ export function start_exam() {
                         // dispatch(view_profile(responseJson.authToken));
                         console.log(responseJson);
                     // dispatch(set_snack_bar(true, responseJson.message));
+                 
 
                 } else {
                     
@@ -44,5 +47,7 @@ export function start_exam() {
             .catch((error) => {
                 console.error(error);
             });
+
     };
 }
+

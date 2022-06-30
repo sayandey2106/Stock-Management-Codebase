@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import LoaderEm from "../loader/loader_embed";
 import "./login.css";
 // import { LoaderCon } from "../../containers/loader/loader_cont";
@@ -108,8 +108,8 @@ export default function Login(props) {
               <div className="btn-grp">
                 <div class="d-grid ">
                   <button
-                    class="btn btn-primary"
-                    id="sign-in-btn"
+                    class="btn btn-primary sign-in-btn"
+                    
                     type="button"
                     onClick={() => {
                       login_email(login);
@@ -123,14 +123,17 @@ export default function Login(props) {
                   or <hr />
                 </div>
                 <div class="d-grid ">
-                  <button class="btn btn-primary google" type="button">
+                    <Link to="/signup">
+                  <button class="btn btn-primary sign-in-btn" type="button">
+
                     <img
                       class="google-icon mx-3"
-                      src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                    />
-                    Sign in with Google
+                      // src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                      />
+                   Creat A New Account
                   </button>
-                  <button
+                      </Link>
+                  {/* <button
                     class="btn btn-primary google justify-content-center text-center"
                     id="fb-in-btn"
                     type="button"
@@ -140,7 +143,7 @@ export default function Login(props) {
                       src="https://www.freeiconspng.com/uploads/facebook-transparent-pics-18.png"
                     />
                     Sign in with Facebook
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

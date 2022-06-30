@@ -10,12 +10,21 @@ import './Question.css'
 
 export default function Question(props) {
 
-  const { startExam, start_exam } = props;
+  const { startExam, start_exam, currQuiz } = props;
 
 
 
 const totalQuestions = startExam.question_set.length;
 console.log("total questions ",totalQuestions);
+
+
+
+useEffect(() => {
+  
+  console.log(currQuiz.current_quiz)
+start_exam(currQuiz.current_quiz);
+
+}, [])
 
 
   // const handleNext =() =>{
@@ -31,6 +40,7 @@ console.log("total questions ",totalQuestions);
 
   const [currQuestion, setCurrQuestion] = useState(0);
   const [selected, setSelected] = useState("");
+
 
   return (
 
@@ -67,6 +77,7 @@ console.log("total questions ",totalQuestions);
                           <h5>
                             A
                           </h5>
+                          
                         </div>
                         <h5 className="option-text">
                           {questions.A}
@@ -124,6 +135,8 @@ console.log("total questions ",totalQuestions);
               })
             }
 
+
+
             <div className="justify-content-center text-center mb-5">
 
               <div className="m-1 p-1">
@@ -134,7 +147,8 @@ console.log("total questions ",totalQuestions);
                     <button className="btn green-btn float-start"
                       onClick={() => {
                         setCurrQuestion(currQuestion - 1);
-                        console.log("prev", currQuestion)
+                        console.log("prev", currQuestion);
+                        setSelected("")
                       }}
                     >
                       <i class="fa-solid fa-angle-left mx-1"></i>
@@ -150,6 +164,8 @@ console.log("total questions ",totalQuestions);
                   onClick={() => {
                     setCurrQuestion(currQuestion + 1);
                     console.log("next", currQuestion)
+                    setSelected("")
+                    
                   }}
 
                 >

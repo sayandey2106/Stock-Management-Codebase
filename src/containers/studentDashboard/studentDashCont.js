@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 // import Dashboard from "../../components/dashboard/dashboard";
 import StudentDash from "../../components/studentDashboard/StudentDash";
 import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
-import { start_exam } from "../../actions/startExam/startExamAction";
+import { setCurrQuiz, start_exam } from "../../actions/startExam/startExamAction";
 import { set_all_quiz } from "../../actions/allQuiz/allQuizAction";
 import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
 
@@ -29,7 +29,8 @@ export const mapStateToProps = store => {
         // dashboardHistory: store.dashboard.history,
         dashboard : store.dashboard,
         startExam:store.startExam,
-        allQuiz : store.allQuiz.quiz_set
+        allQuiz : store.allQuiz.quiz_set,
+        currQuiz : store.currQuiz
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -46,7 +47,9 @@ export const mapDispatchToProps = dispatch => {
             get_dashboard_data:() =>{
                 dispatch(get_dashboard_data());
             },
-
+            setCurrQuiz:(payload) =>{
+                dispatch(setCurrQuiz(payload));
+            }
             // curr_quiz : (payload) =>{
             //     dispatch(curr_quiz(payload));
             // }

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Profile from "../../components/profile/profile";
+// import EditProfile from "../components/profile/editProfile";
+import EditProfile from "../../components/profile/editProfile";
 import {
-  view_profile, edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo
+  view_profile
 } from "../../actions/profile/profileAction"
-export class ProfileCont extends Component {
+export class EditProfileCont extends Component {
   render() {
     return (
-      <Profile {...this.props} />
+      <EditProfile {...this.props} />
       
     );
   }
@@ -24,33 +26,9 @@ export const mapDispatchToProps = dispatch => {
     view_profile: (user_id) => {
       dispatch(view_profile(user_id))
     },
-    edit_name: (value) => {
-      dispatch(edit_name( value))
-    },
-    edit_caste: (value) => {
-      dispatch(edit_caste( value))
-    },
-    edit_gender: (value) => {
-      dispatch(edit_gender( value))
-    },
-    edit_skills: (value) => {
-      dispatch(edit_skills( value))
-    },
-    edit_college_name: (value) => {
-      dispatch(edit_college_name( value))
-    },
-    edit_dob: (value) => {
-      dispatch(edit_dob( value))
-    },
-    edit_branch: (value) => {
-      dispatch(edit_branch( value))
-    },
-    edit_mobile: (value) => {
-      dispatch(edit_mobile( value))
-    },
-    edit_photo: (value) => {
-      dispatch(edit_photo( value))
-    },
+    // edit_profile :(profile)=>{
+    //   dispatch(edit_profile(profile))
+    // }
     // close_snack_bar: () => {
     //   dispatch(close_snack_bar());
     // },
@@ -74,4 +52,4 @@ export const mapDispatchToProps = dispatch => {
     // }
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileCont);
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfileCont);

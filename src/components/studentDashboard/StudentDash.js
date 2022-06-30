@@ -1,4 +1,4 @@
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 // import { Link } from 'react-router-dom'
@@ -12,7 +12,8 @@ function StudentDash(props) {
     allQuiz,
     get_dashboard_data,
     dashboard,
-    curr_quiz
+    setCurrQuiz,
+    currQuiz
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
@@ -26,6 +27,7 @@ function StudentDash(props) {
 const [redirect, setRedirect] = useState(false);
 
 const [id, setId] = useState();
+const history =useHistory()
 
 if(redirect===true && startExam.question_set !=""){
   return(
@@ -215,11 +217,14 @@ if(redirect===true && startExam.question_set !=""){
                     <td>
                       <button
                         className="btn btn-success"
+                        type="button"
                         onClick={() => {
                           start_exam(quiz._id);
                           console.log(quiz._id)
-                          setRedirect(true)
+                          // setRedirect(true)
+                          history.push("/quiz")
                           setId (quiz._id);
+                          setCurrQuiz(quiz._id);
                         }}
                       >
                     

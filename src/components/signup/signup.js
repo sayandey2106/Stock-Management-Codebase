@@ -1,6 +1,7 @@
 import React from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import "./signup.css";
-
+import { Navigate } from "react-router-dom";
 export default function Signup(props) {
     const{
         createCaste,
@@ -19,6 +20,33 @@ export default function Signup(props) {
     }=props;
     
     console.log("props", props);
+    const history = useHistory();
+
+const handleSignUp = () =>{
+
+console.log("hendle sign up");
+
+if(signup.name==="" || signup.email==="" || signup.college_name==="" || signup.caste==="" || signup.gender==="" || signup.password===""){
+  alert("something wrong");
+
+}
+else{
+  sign_up(signup);
+
+ 
+  history.push('/');
+  
+
+
+}
+
+
+
+
+
+}
+
+
     return (
 
 
@@ -27,10 +55,13 @@ export default function Signup(props) {
         <div className="signup-box ">
           <div className="row ">
             <div className="col-md-7">
-              <div className="content">
+
+             
+              <div className="content ">
+              
                 <h6>NAME</h6>
                 <input
-                //   type="email"
+                  type="text"
                   class="form-control signup-form"
                   placeholder="Username"
                   aria-label="Username"
@@ -43,7 +74,7 @@ export default function Signup(props) {
                 />
                 <h6>EMAIL ID</h6>
                 <input
-                //   type="email"
+                  type="email"
                   class="form-control signup-form"
                   placeholder="Username"
                   aria-label="Username"
@@ -56,7 +87,7 @@ export default function Signup(props) {
                 />
                 <h6>MOBILE NO</h6>
                 <input
-                //   type="email"
+                  type="number"
                   class="form-control signup-form"
                   placeholder="Username"
                   aria-label="Username"
@@ -69,7 +100,7 @@ export default function Signup(props) {
                 />
                 <h6>COLLEGE NAME</h6>
                 <input
-                //   type="email"
+                  type="text"
                   class="form-control signup-form"
                   placeholder="Username"
                   aria-label="Username"
@@ -82,7 +113,7 @@ export default function Signup(props) {
                 />
                 <h6>TYPE</h6>
                 <input
-                //   type="email"
+                  type="text"
                   class="form-control signup-form"
                   placeholder="Username"
                   aria-label="Username"
@@ -93,19 +124,7 @@ export default function Signup(props) {
                     createType(event.target.value);
                   }}
                 />
-                   <h6>SKILLS</h6>
-                 <input
-                //   type="email"
-                  class="form-control signup-form"
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="addon-wrapping"
-                  required
-                  value={signup.skills}
-                  onChange={(event) => {
-                    createSkills(event.target.value);
-                  }}
-                />
+                  
                 <h6>CASTE</h6>
                 <input
                 //   type="email"
@@ -134,7 +153,7 @@ export default function Signup(props) {
                 />
                 <h6>GENDER</h6>
                 <input
-                //   type="email"
+                  type="text"
                   class="form-control signup-form"
                   placeholder="Username"
                   aria-label="Username"
@@ -146,11 +165,18 @@ export default function Signup(props) {
                   }}
                 />
                 <button className="btn btn-primary"
-                  onClick= {() => {
-                        sign_up(signup);
-                      }}
+                type="button"
+                  onClick= {handleSignUp}
                 >Sign Up
                     </button>
+                    <Link to="/">
+                    <button className="btn btn-primary mx-1"
+                type="button"
+                
+                >Already An User
+                    </button>
+                </Link>
+           
               </div>
             </div>
             <div className="col-md-5">

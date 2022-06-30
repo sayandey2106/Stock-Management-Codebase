@@ -18,6 +18,7 @@ import Question from "../question/Question";
 import  StudentDashboardContainer  from "../../containers/studentDashboard/studentDashCont";
 import  SignupCont  from "../../containers/signup/signupCont";
 // import QuestionCont from "../../containers/question/questionCont";
+import EditProfileCont from "../../containers/profile/editProfileCont";
 // Admin Imports
 
 
@@ -73,6 +74,8 @@ class Routes extends Component {
                         {/* <Route exact path="/signup" component={SignupCont}/> */}
                         <Route exact path="/" component={StudentDashboardContainer}/> 
                         <Route exact path="/quiz" component={QuestionCont}/> 
+                        <Route exact path="/edit-profile" component={EditProfileCont}/> 
+
                         {/* <Route path="/" component={Controller_con}/> */}
 
                         {/* <Route exact path="/lead" component={Lead}/> */}
@@ -102,6 +105,7 @@ class Routes extends Component {
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         {/* STUDENT ROUTES */}
+                        <Route exact path="/edit-profile" component={EditProfileCont}/> 
                         <Route path="/" component={ProfileCont}/>
                         {/* <Route exact path="/category" component={Category}/> */}
                         {/* <Route exact path="/request" component={Request}/> */}

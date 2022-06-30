@@ -8,7 +8,7 @@ export function start_exam(quiz_id) {
     console.log(quiz_id)
     return (dispatch) => {
         // dispatch(setLoader());
-        dispatch({type:CURR_QUIZ,payload:quiz_id})
+  
             return fetch(UNIVERSAL.BASEURL +"api/quiz/fetch_all_question_with_quizId/" + quiz_id  , {
             method: "GET",
             headers: {
@@ -51,3 +51,10 @@ export function start_exam(quiz_id) {
     };
 }
 
+
+export function setCurrQuiz(payload) {
+    return {
+        type: CURR_QUIZ,
+        payload: payload
+    }
+}

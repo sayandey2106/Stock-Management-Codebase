@@ -79,32 +79,21 @@ export function createType(payload) {
 }
 
 export function sign_up(signup) {
+
+    // const signUpObj = {signup }
     console.warn(signup);
     return (dispatch) => {
         // dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "api/Sauth/signup", {
             method: "POST",
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
                 "Content-Type": "application/json",
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
             },
-            body: JSON.stringify({
-                email :signup.email,
-                name : signup.name,
-                password : signup.password,
-                college_name:signup.college,
-                gender:signup.gender,
-                caste:signup.caste,
-                phone_no: signup.phone,
-                profile_pic: signup.profile_pic ,
-                type:  signup.type,
-
-
-
-            }),
+            body: JSON.stringify(signup),
            
                 // email :signup.email,
                 // password : signup.password,
@@ -132,6 +121,7 @@ export function sign_up(signup) {
                 if (responseJson.status) {
 
                     console.log("successfully signed up");
+                    alert("Sign Up Successful")
                     // dispatch(setLogin(responseJson))
                
                     //     dispatch(view_profile(responseJson.authToken));
@@ -140,7 +130,7 @@ export function sign_up(signup) {
                 } else {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
-                    console.log(responseJson.error,"error");
+                    console.log(responseJson.error,"error is");
                 }
                 // dispatch(unsetLoader())
             })

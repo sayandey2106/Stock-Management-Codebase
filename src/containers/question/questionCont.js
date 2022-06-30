@@ -20,7 +20,7 @@ export const mapStateToProps = store => {
         loader: store.loader,
   startExam:store.startExam,
        allQuiz : store.allQuiz.quiz_set,
-       
+       currQuiz: store.currQuiz
     };
 };
 export const mapDispatchToProps = dispatch => {

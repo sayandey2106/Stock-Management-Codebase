@@ -13,7 +13,7 @@ import { setLoader, unsetLoader }
     from "./loader/loaderAction";
 import { set_snack_bar } from "../actions/snackbar/snackbar_action";
 import firebase from "firebase";
-import { view_profile } from "./profile/profileAction";
+import { view_profile , view_profile_admin} from "./profile/profileAction";
 import { get_dashboard_data } from "./dashboard/dashboardActions";
 import { set_all_quiz } from "./allQuiz/allQuizAction";
 
@@ -30,6 +30,7 @@ export function setPwd(payload) {
     };
 }
 export function login_email(login) {
+    console.log("login student")
     return (dispatch) => {
         dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "api/Sauth/login_email", {
@@ -73,6 +74,51 @@ export function login_email(login) {
     };
 }
 
+
+export function admin_login_email(login) {
+    return (dispatch) => {
+        dispatch(setLoader());
+        return fetch(UNIVERSAL.BASEURL + "api/Aauth/login_email", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                // user_token: token,
+                // organization_id: oid
+                // company_id:id
+            },
+            body: JSON.stringify({
+             email :login.email,
+            password : login.password
+        
+             }),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+              
+                if (responseJson.success===true) {
+
+                    dispatch(setLogin(responseJson))
+               
+                        dispatch(view_profile_admin(responseJson.authToken));
+                        dispatch( set_all_quiz());
+                       dispatch( get_dashboard_data());
+                    
+                        console.log(responseJson);
+                    // dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    console.log(responseJson.error)
+                    dispatch(set_snack_bar(true, responseJson.error));
+                }
+                dispatch(unsetLoader())
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
 export function clear_login() {
     return {
         type: CLEAR_LOGIN
@@ -90,7 +136,8 @@ export function setLogin(payload) {
     localStorage.setItem('sre_email', payload.email);
    
     // localStorage.setItem('sre_profile_pic', payload.profile_pic);
-    localStorage.setItem('sre_user_id', payload.authToken);
+    localStorage.setItem('sre_auth_token', payload.authToken);
+    localStorage.setItem('sre_user_id', payload.id);
     // localStorage.setItem('qubi7_company_id', payload.company_id);
     // localStorage.setItem('taxopliance_organization_id', payload.organization_id);
   

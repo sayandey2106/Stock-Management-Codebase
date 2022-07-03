@@ -12,6 +12,7 @@ import startExam from "../reducers/startexam/startExamReducer"
 import allQuiz from "../reducers/allQuiz/allQuizReducer";
 import editProfile from "../reducers/profile/editProfileReducer"
 import currQuiz from "../reducers/startexam/currQuizReducer"
+import adminSignup from "../reducers/signup/adminSignupReducer"
 
 export default combineReducers({
     loader,
@@ -26,5 +27,6 @@ export default combineReducers({
     startExam,
     allQuiz,
     editProfile,
-    currQuiz
+    currQuiz,
+    adminSignup
 });

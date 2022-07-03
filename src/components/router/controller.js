@@ -16,7 +16,8 @@ export default class LoginController extends Component {
     if (localStorage.getItem("sre_user_id") !== null) {
       this.props.setLogin({
         type: localStorage.getItem("sre_type"),
-        authToken: localStorage.getItem("sre_user_id"),
+        id: localStorage.getItem("sre_user_id"),
+        authToken : localStorage.getItem("sre_auth_token"),
         // user_token: localStorage.getItem("taxopliance_token"),
         // profile_pic: localStorage.getItem("qubi7_profile_pic"),
         name: localStorage.getItem("sre_name"),

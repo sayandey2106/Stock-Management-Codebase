@@ -7,6 +7,7 @@ import "react-circular-progressbar/dist/styles.css";
 import Clock from "./Clock";
 import QuestionNumbers from "./questionNumbers";
 import './Question.css'
+import { start_attempt } from "../../actions/startExam/startExamAction";
 
 export default function Question(props) {
 
@@ -22,7 +23,8 @@ console.log("total questions ",totalQuestions);
 useEffect(() => {
   
   console.log(currQuiz.current_quiz)
-start_exam(currQuiz.current_quiz);
+start_exam( localStorage.getItem('curr_quiz'));
+start_attempt(localStorage.getItem('curr_quiz'));
 
 }, [])
 
@@ -168,7 +170,7 @@ start_exam(currQuiz.current_quiz);
                     
                   }}
 
-                >
+                >Save &
                   Next
                   <i class="fa-solid fa-angle-right mx-1"></i>
                 </button>:<></>
@@ -182,11 +184,19 @@ start_exam(currQuiz.current_quiz);
 
             <div className=" blue-bar ">
 
-              <button className="btn btn-danger float-start">
+              <button className="btn btn-danger float-start" onClick={()=>{
+                  setCurrQuestion(currQuestion + 1);
+                  console.log("skip", currQuestion)
+                  setSelected("")
+              }}>
                 skip
                 <i class="fa-solid fa-angles-right mx-1"></i>
               </button>
-              <button className="btn green-btn float-end" id="submit-btn">
+              <button className="btn green-btn float-end" id="submit-btn"
+              onClick={()=>{
+                localStorage.removeItem("curr_quiz");
+              }}
+              >
                 Submit
               </button>
             </div>

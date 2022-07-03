@@ -13,7 +13,8 @@ function StudentDash(props) {
     get_dashboard_data,
     dashboard,
     setCurrQuiz,
-    currQuiz
+    currQuiz,
+    start_attempt
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
@@ -225,6 +226,8 @@ if(redirect===true && startExam.question_set !=""){
                           history.push("/quiz")
                           setId (quiz._id);
                           setCurrQuiz(quiz._id);
+                          localStorage.setItem('curr_quiz', quiz._id);
+                       
                         }}
                       >
                     

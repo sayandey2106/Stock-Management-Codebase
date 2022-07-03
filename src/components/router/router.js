@@ -20,7 +20,8 @@ import  SignupCont  from "../../containers/signup/signupCont";
 // import QuestionCont from "../../containers/question/questionCont";
 import EditProfileCont from "../../containers/profile/editProfileCont";
 // Admin Imports
-
+import AdminSignupCont from "../../containers/signup/adminSignupCont";
+import AdminDashboardCont from "../../containers/adminDashboard/adminDashboard";
 
 class Routes extends Component {
 
@@ -41,7 +42,9 @@ class Routes extends Component {
                         {/* <Route exact path="/" component={Home} /> */}
                         <Route exact path="/" component={Login}/>
                         <Route path="/" component={Controller_con}/>
-                        <Route exact path="/signup" component={SignupCont}/>
+                        <Route exact path="/signup/student" component={SignupCont}/>
+                        <Route exact path="/signup/admin" component={AdminSignupCont}/>
+                        
                         {/* <Route path="/" component={StudentDashboardContainer}/> */}
                         {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
@@ -69,6 +72,7 @@ class Routes extends Component {
                         {/* <Route exact path="/login" component={Login} /> */}
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
+                        <Route exact path="/dashboard" component={AdminDashboardCont}/>
                         {/* <Route exact path="/" component={Users}/> */}
                         <Route exact path="/profile" component={ProfileCont}/>
                         {/* <Route exact path="/signup" component={SignupCont}/> */}
@@ -105,8 +109,9 @@ class Routes extends Component {
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         {/* STUDENT ROUTES */}
-                        <Route exact path="/edit-profile" component={EditProfileCont}/> 
-                        <Route path="/" component={ProfileCont}/>
+                      
+                        <Route exact path="/" component={ProfileCont}/>
+                        <Route exact path="/dashboard" component={AdminDashboardCont}/>
                         {/* <Route exact path="/category" component={Category}/> */}
                         {/* <Route exact path="/request" component={Request}/> */}
                         {/* <Route exact activeClassName="active" path="/" component={Dashboard}/> */}

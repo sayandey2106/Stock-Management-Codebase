@@ -19,7 +19,7 @@ export function get_dashboard_data() {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             // body: JSON.stringify({
             //     user_id:user_id

@@ -13,6 +13,7 @@ import {
   setPwd,
   login_email,
   clear_login,
+  admin_login_email
   // googleLogin
 } from "../actions/loginActions";
 export class Controller extends Component {
@@ -45,6 +46,9 @@ export const mapDispatchToProps = dispatch => {
     },
     login_email: (login) => {
       dispatch(login_email(login));
+    },
+    admin_login_email: (login) => {
+      dispatch(admin_login_email(login));
     },
     setLogin: (type, email, user_token, profile_img) => {
       dispatch(setLogin(type, email, user_token, profile_img));

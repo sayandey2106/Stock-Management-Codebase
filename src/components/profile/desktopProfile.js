@@ -17,6 +17,7 @@ export default function DesktopProfile(props) {
   const [button, setButton] = useState("d-block")
   const [name, setName] = useState("")
   const [value, setValue] = useState("");
+  const [disable,setDisable]= useState("false")
 
 
   return (
@@ -46,7 +47,7 @@ export default function DesktopProfile(props) {
                   <img src="https://m.cricbuzz.com/a/img/v1/192x192/i1/c171004/sachin-tendulkar.jpg" alt="" />
                 </div>
 
-                <div class="input-group">
+                <div class={ display==="d-block" ? "input-group d-flex my-3" : "input-group d-none"  }>
                   <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
                   <button className="btn btn-success" onClick={() => {
                                     // edit_profile(name,value)
@@ -62,9 +63,9 @@ export default function DesktopProfile(props) {
 
                 {/* <p class="proile-rating">RANKINGS : <span>8/10</span></p> */}
 
-                <button className={"btn btn-secondary"} type="button"
+                <button className={"btn btn-secondary my-2"} type="button"
                   onClick={(e) => {
-                    setDisplay("d-block")
+                    display==="d-none"? setDisplay("d-block"): setDisplay("d-none")
 
 
                   }}
@@ -197,7 +198,7 @@ export default function DesktopProfile(props) {
                                 </div>
 
                                 <button
-                                  className={value === "" ? "disabled" : "btn btn-primary"} onClick={() => {
+                                  className= "btn btn-success" disabled={value===""?"true":"false"} onClick={() => {
                                     // edit_profile(name,value)
                                     edit_mobile(value)
                                     alert("Are you sure ?")
@@ -243,7 +244,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">College Name</label>
                                   </div>
-                                  <button className="btn btn-success" onClick={() => {
+                                  <button className="btn btn-success"  disabled={value===""?"true":"false"} onClick={() => {
                                     // edit_profile(name,value)
                                     edit_college_name(value)
                                     alert("Are you sure ?")
@@ -290,7 +291,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Branch</label>
                                   </div>
-                                  <button className="btn btn-success" onClick={() => {
+                                  <button className="btn btn-success"  disabled={value===""?"true":"false"} onClick={() => {
                                     // edit_profile(name,value)
                                     edit_branch(value);
                                     alert("Are you sure ?")
@@ -336,7 +337,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Caste</label>
                                   </div>
-                                  <button className="btn btn-success" onClick={() => {
+                                  <button className="btn btn-success" disabled={value===""?"true":"false"} onClick={() => {
                                     edit_caste(value);
                                     alert("Are you sure ?");
                                     window.location.reload()
@@ -381,7 +382,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Date Of Birth</label>
                                   </div>
-                                  <button className="btn btn-success" onClick={() => {
+                                  <button className="btn btn-success"  disabled={value===""?"true":"false"} onClick={() => {
                                     edit_dob(value)
                                     alert("Are you sure ?")
                                     window.location.reload()

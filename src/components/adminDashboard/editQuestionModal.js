@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-export default function AddQuestionModal(props) {
-  const { add_quiz , add_question , currQuiz} = props.data;
+export default function EditQuestionModal(props) {
+  const { add_quiz , add_question , currQuiz , edit_question} = props.data;
 
-  const [question, setQuestion] = useState("");
-  const [A, setA] = useState("");
-  const [B, setB] = useState("");
-  const [C, setC] = useState("");
-  const [D, setD] = useState("");
-  const [correct, setCorrect] = useState("");
-  const [marks, setMarks] = useState("");
-  const [id, setquiz_id] = useState(currQuiz.current_quiz)
+  const [question, setQuestion] = useState(currQuiz.current_question_details.question);
+  const [A, setA] = useState(currQuiz.current_question_details.A);
+  const [B, setB] = useState(currQuiz.current_question_details.B);
+  const [C, setC] = useState(currQuiz.current_question_details.C);
+  const [D, setD] = useState(currQuiz.current_question_details.D);
+  const [correct, setCorrect] = useState(currQuiz.current_question_details.correct);
+  const [marks, setMarks] = useState(currQuiz.current_question_details.marks);
+  const [id, setquiz_id] = useState(currQuiz.current_question)
 
   let newQuestion ={question,A,B,C,D,correct,marks}
 
@@ -157,7 +157,7 @@ export default function AddQuestionModal(props) {
           className="btn btn-success my-2"
           type="button"
           onClick={() => {
-            add_question(id, newQuestion)
+            edit_question(id, newQuestion)
             setA("");
             setB("");
             setC("");

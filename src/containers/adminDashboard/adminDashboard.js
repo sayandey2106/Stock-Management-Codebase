@@ -6,9 +6,10 @@ import StudentDash from "../../components/studentDashboard/StudentDash";
 import AdminDash from "../../components/adminDashboard/adminDash"
 import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
 import { setCurrQuiz, start_attempt, start_exam } from "../../actions/startExam/startExamAction";
-import { set_all_quiz , view_quiz_by_id} from "../../actions/allQuiz/allQuizAction";
+import { set_all_quiz , view_quiz_by_id , set_curr_question, view_question_by_id} from "../../actions/allQuiz/allQuizAction";
 import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
-import { add_quiz , edit_quiz} from "../../actions/quizCrud/quizCrudAction";
+import { add_quiz , edit_quiz, delete_quiz} from "../../actions/quizCrud/quizCrudAction";
+import { add_question  , edit_question} from "../../actions/questionCrud/questionCrudAction";
 
 
 
@@ -59,15 +60,30 @@ export const mapDispatchToProps = dispatch => {
             add_quiz:(payload)=>{
                 dispatch(add_quiz(payload));
             },
-            edit_quiz: (payload)=>{
-                dispatch(edit_quiz(payload));
+            edit_quiz: (quiz_id, newQuiz)=>{
+                dispatch(edit_quiz(quiz_id, newQuiz));
             },
             view_quiz_by_id:(payload)=>{
                 dispatch(view_quiz_by_id(payload));
         },
+        delete_quiz: ( newQuiz)=>{
+            dispatch(delete_quiz( newQuiz));
+        },
+        add_question: ( quiz_id,newQuiz)=>{
+            dispatch(add_question( quiz_id,newQuiz));
+        },
+        edit_question: ( quiz_id,newQuiz)=>{
+            dispatch(edit_question( quiz_id,newQuiz));
+        },
+        set_curr_question: ( question_id)=>{
+            dispatch(set_curr_question( question_id));
+        },
+        view_question_by_id:(quiz_id, question_id)=>{
+            dispatch(view_question_by_id(quiz_id, question_id));
+    },
             // curr_quiz : (payload) =>{
             //     dispatch(curr_quiz(payload));
-            // }
+            // }edit_question
 //        
         };
 };

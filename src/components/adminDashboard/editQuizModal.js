@@ -5,14 +5,14 @@ export default function EditQuizModal(props) {
     const{edit_quiz ,currQuiz, view_quiz_by_id}=props.data
     const {currentId}= props.currId
 
-    const [name, setquiz_name] = useState("")
-const [date, setquiz_date] = useState("") 
-const [time, setquiz_time] = useState("")
-const [subject, setquiz_subject] = useState("")
-const [marks, setquiz_marks] = useState("")
-const [duration, setquiz_duration] = useState("")
+    const [name, setquiz_name] = useState(currQuiz.current_quiz_details.name)
+const [date, setquiz_date] = useState(currQuiz.current_quiz_details.date) 
+const [time, setquiz_time] = useState(currQuiz.current_quiz_details.time)
+const [subject, setquiz_subject] = useState(currQuiz.current_quiz_details.subject)
+const [marks, setquiz_marks] = useState(currQuiz.current_quiz_details.marks)
+const [duration, setquiz_duration] = useState(currQuiz.current_quiz_details.duration)
 const [id, setquiz_id] = useState(currQuiz.current_quiz)
-let  newQuiz ={name,date,time,subject,marks,duration,id}
+let  newQuiz ={name,date,time,subject,marks,duration}
 
 useEffect(() => {
   
@@ -53,7 +53,7 @@ useEffect(() => {
         <input type="text" class="form-control"  value={duration} 
               onChange={(e)=>setquiz_duration(e.target.value)}/>
       </div>
-      <button className='btn btn-success my-2' type="button" onClick={()=>{edit_quiz(newQuiz)}}>Submit</button>
+      <button className='btn btn-success my-2' type="button" onClick={()=>{edit_quiz(id,newQuiz)}}>Submit</button>
     </form>
 </div>
 

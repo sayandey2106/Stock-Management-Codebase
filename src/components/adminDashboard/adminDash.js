@@ -5,6 +5,8 @@ import Modal from 'react-modal';
 
 import AddQuizModal from "./addQuizModal";
 import EditQuizModal from "./editQuizModal";
+import AddQuestionModal from "./addQuestionModal";
+import ViewQuestionModal from "./viewQuestionModal";
 // import { Link } from 'react-router-dom'
 
 function AdminDash(props) {
@@ -21,7 +23,12 @@ function AdminDash(props) {
     edit_quiz,
     start_attempt,
     add_quiz,
-    view_quiz_by_id
+    view_quiz_by_id,
+    delete_quiz,
+    add_question,
+    edit_question,
+    set_curr_question,
+    view_question_by_id,
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
@@ -41,10 +48,10 @@ const [currentId, setCurrentId]= useState("")
 
 const customStyles = {
     content: {
-      top: '50%',
+      top: '60%',
       left: '50%',
       right: 'auto',
-      width:"600px",
+      width:"800px",
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
@@ -77,7 +84,8 @@ const customStyles = {
                 <th scope="col">Subject</th>
                 <th scope="col">Full Marks</th>
                 <th scope="col">Duration</th>
-                <th scope="col">Exam Link</th>
+                <th scope="col">QUIZ OPERATION</th>
+                <th scope="col">QUESTION OPERATION</th>
               </tr>
             </thead>
             <tbody>
@@ -122,7 +130,7 @@ const customStyles = {
                         }}
                       >
                     
-                       ADD QUESTIONS
+                       Add Quiz
                       </button>
                       <button
                         className="btn btn-warning"
@@ -134,13 +142,58 @@ const customStyles = {
                         setCurrentId(quiz._id)
                         setCurrQuiz(quiz._id)
                        console.log(currentId)
+                       view_quiz_by_id(currQuiz.current_quiz)
                         }}
                       >
                     
                         Edit Quiz
                       </button>
+                      <button
+                        className="btn btn-danger"
+                      
+                        onClick={() => {
+                        //   start_exam(quiz._id);
+                        delete_quiz(quiz._id)
+                        }}
+                      >
+                    
+                        DELETE
+                      </button>
                     </td>
-            
+            <td>
+            <button
+                        className="btn btn-warning"
+                      
+                        onClick={(e) => {
+                        //   start_exam(quiz._id);
+                        setModalOpen(true)
+                        setModaltype("add_question")
+                        setCurrentId(quiz._id)
+                        setCurrQuiz(quiz._id)
+                       console.log(currentId)
+                       view_quiz_by_id(currQuiz.current_quiz)
+                        }}
+                      >
+                    
+                        Add Question
+                      </button>
+                      <button
+                        className="btn btn-warning"
+                      
+                        onClick={(e) => {
+                        //   start_exam(quiz._id);
+                        setModalOpen(true)
+                        setModaltype("view_question")
+                        setCurrentId(quiz._id)
+                        setCurrQuiz(quiz._id)
+                       console.log(currentId)
+                       start_exam( quiz._id);
+                        }}
+                      >
+                    
+                        view & edit
+                      </button>
+            </td>
                   </tr>
                 );
               })}
@@ -170,7 +223,7 @@ const customStyles = {
 
       <Modal
         isOpen={modalType==="edit"?true :false}
-        // onAfterOpen={}
+        onAfterOpen={()=>{  view_quiz_by_id(currQuiz.current_quiz)}}
         // onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
@@ -185,7 +238,40 @@ const customStyles = {
    </div>
       </Modal>
 
-       
+      <Modal
+        isOpen={modalType==="add_question" ? true : false}
+        // onAfterOpen={()=>}
+        // onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div>
+
+<button class="btn btn-danger" onClick={()=>{
+    setModalOpen(false)
+    setModaltype("")
+}}>Close</button>
+   <AddQuestionModal data={props} />
+   </div>
+      </Modal>
+
+
+      <Modal
+        isOpen={modalType==="view_question" ? true : false}
+        // onAfterOpen={()=>}
+        // onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div>
+
+<button class="btn btn-danger" onClick={()=>{
+    setModalOpen(false)
+    setModaltype("")
+}}>Close</button>
+   <ViewQuestionModal data={props} />
+   </div>
+      </Modal>
 
       </div>
     </section>

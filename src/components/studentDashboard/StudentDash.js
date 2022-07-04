@@ -1,24 +1,40 @@
 import { Redirect, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import Modal from 'react-modal'
 // import { Link } from 'react-router-dom'
 
 function StudentDash(props) {
   const {
     startExam,
     login,
-    start_exam,
+    view_all_questions,
     set_all_quiz,
     allQuiz,
     get_dashboard_data,
     dashboard,
     setCurrQuiz,
     currQuiz,
-    start_attempt
+    start_exam,
+    end_exam
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
   } = props;
+
+  
+const customStyles = {
+  content: {
+    top: '60%',
+    left: '50%',
+    right: 'auto',
+    width:"800px",
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
 
   useEffect(() => {
     set_all_quiz();
@@ -26,7 +42,7 @@ function StudentDash(props) {
   }, []);
 
 const [redirect, setRedirect] = useState(false);
-
+const [modalOpen,setModalOpen]= useState(false)
 const [id, setId] = useState();
 const history =useHistory()
 
@@ -53,7 +69,7 @@ if(redirect===true && startExam.question_set !=""){
         {/* Button LOGOUT */}
 
         {/* DETAILED CARDS */}
-        <div className="card1 row">
+        <div className="card1 row text-center justify-content-center align-item-center">
           <section className="col-lg-8 col-md-7 " style={{ marginTop: "60px" }}>
             <h3 className="exam-head text-center my-3">Exam Summary</h3>
             <div class="row ">
@@ -83,7 +99,7 @@ if(redirect===true && startExam.question_set !=""){
                           <i class="icon-pencil primary font-large-2 float-left"></i>
                         </div>
                         <div class="media-body text-right">
-                          <h3>{dashboard.summary.Pending_test}</h3>
+                          <h3>{dashboard.summary.pending_test}</h3>
                           <span>Pending Test</span>
                         </div>
                       </div>
@@ -91,7 +107,7 @@ if(redirect===true && startExam.question_set !=""){
                   </div>
                 </div>
               </div>
-              <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+              {/* <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
                 <div class="card card-1">
                   <div class="card-content">
                     <div class="card-body text-center">
@@ -107,7 +123,7 @@ if(redirect===true && startExam.question_set !=""){
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
                 <div class="card card-1 text-center">
                   <div class="card-content text-center">
@@ -220,13 +236,15 @@ if(redirect===true && startExam.question_set !=""){
                         className="btn btn-success"
                         type="button"
                         onClick={() => {
-                          start_exam(quiz._id);
+                          view_all_questions(quiz._id);
                           console.log(quiz._id)
                           // setRedirect(true)
-                          history.push("/quiz")
+                          // history.push("/quiz")
                           setId (quiz._id);
                           setCurrQuiz(quiz._id);
                           localStorage.setItem('curr_quiz', quiz._id);
+                          // start_exam(quiz._id)
+                          setModalOpen(true)
                        
                         }}
                       >
@@ -318,7 +336,31 @@ if(redirect===true && startExam.question_set !=""){
 </section> */}
 
       </div>
+      <Modal
+        isOpen={modalOpen}
+        // onAfterOpen={}
+        // onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div>
+
+<button class="btn btn-danger" onClick={()=>{
+    setModalOpen(false)
+
+}}>Close</button>
+<h3>Are you ready to start exam</h3>
+<button className="btn btn-success" onClick={()=>{
+  start_exam(localStorage.getItem("curr_quiz"))
+
+  currQuiz.start_exam_status ===true ?
+  history.push('/quiz'): alert("already done")
+}}> Start exam</button>
+   </div>
+      </Modal>
     </section>
+
+    
   );}
 
 

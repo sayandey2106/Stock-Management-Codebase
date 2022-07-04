@@ -4,7 +4,7 @@ import Question from "../../components/question/Question";
 import {
     close_snack_bar
 } from "../../actions/snackbar/snackbar_action";
-import { start_exam } from "../../actions/startExam/startExamAction";
+import { end_exam, start_exam, view_all_questions,attempt_question } from "../../actions/startExam/startExamAction";
 
 export class QuestionCont extends Component {
     render() {
@@ -26,10 +26,18 @@ export const mapStateToProps = store => {
 export const mapDispatchToProps = dispatch => {
     return {
 
+    view_all_questions : (payload)=>{
+        dispatch(view_all_questions(payload))
+    },
     start_exam : (payload)=>{
         dispatch(start_exam(payload))
+    },
+    end_exam : (payload)=>{
+        dispatch(end_exam(payload))
+    },
+    attempt_question :(quiz_id, questtion_id, option_selcted) =>{
+        dispatch(attempt_question(quiz_id, questtion_id, option_selcted))
     }
-        
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(QuestionCont);

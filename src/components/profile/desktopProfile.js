@@ -17,7 +17,7 @@ export default function DesktopProfile(props) {
   const [button, setButton] = useState("d-block")
   const [name, setName] = useState("")
   const [value, setValue] = useState("");
-  const [disable,setDisable]= useState("false")
+  // const [disable,setDisable]= useState("false")
 
 
   return (
@@ -47,15 +47,15 @@ export default function DesktopProfile(props) {
                   <img src="https://m.cricbuzz.com/a/img/v1/192x192/i1/c171004/sachin-tendulkar.jpg" alt="" />
                 </div>
 
-                <div class={ display==="d-block" ? "input-group d-flex my-3" : "input-group d-none"  }>
+                <div class={display === "d-block" ? "input-group d-flex my-3" : "input-group d-none"}>
                   <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
                   <button className="btn btn-success" onClick={() => {
-                                    // edit_profile(name,value)
-                                    edit_photo(value)
-                                    alert("Are you sure ?")
-                                    window.location.reload()
-                                  }
-                                  }>Upload</button>
+                    // edit_profile(name,value)
+                    edit_photo(value)
+                    alert("Are you sure ?")
+                    window.location.reload()
+                  }
+                  }>Upload</button>
                 </div>
               </div>
 
@@ -65,7 +65,7 @@ export default function DesktopProfile(props) {
 
                 <button className={"btn btn-secondary my-2"} type="button"
                   onClick={(e) => {
-                    display==="d-none"? setDisplay("d-block"): setDisplay("d-none")
+                    display === "d-none" ? setDisplay("d-block") : setDisplay("d-none")
 
 
                   }}
@@ -198,7 +198,7 @@ export default function DesktopProfile(props) {
                                 </div>
 
                                 <button
-                                  className= "btn btn-success" disabled={value===""?"true":"false"} onClick={() => {
+                                  className="btn btn-success" onClick={() => {
                                     // edit_profile(name,value)
                                     edit_mobile(value)
                                     alert("Are you sure ?")
@@ -215,6 +215,8 @@ export default function DesktopProfile(props) {
                         </div>
                       </div>
                       <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+
+
                         <div class="card details-card">
                           <div class="card-content">
                             <div class="card-body">
@@ -244,7 +246,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">College Name</label>
                                   </div>
-                                  <button className="btn btn-success"  disabled={value===""?"true":"false"} onClick={() => {
+                                  <button className="btn btn-success" onClick={() => {
                                     // edit_profile(name,value)
                                     edit_college_name(value)
                                     alert("Are you sure ?")
@@ -291,7 +293,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Branch</label>
                                   </div>
-                                  <button className="btn btn-success"  disabled={value===""?"true":"false"} onClick={() => {
+                                  <button className="btn btn-success" onClick={() => {
                                     // edit_profile(name,value)
                                     edit_branch(value);
                                     alert("Are you sure ?")
@@ -337,7 +339,7 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Caste</label>
                                   </div>
-                                  <button className="btn btn-success" disabled={value===""?"true":"false"} onClick={() => {
+                                  <button className="btn btn-success"  onClick={() => {
                                     edit_caste(value);
                                     alert("Are you sure ?");
                                     window.location.reload()
@@ -382,10 +384,10 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Date Of Birth</label>
                                   </div>
-                                  <button className="btn btn-success"  disabled={value===""?"true":"false"} onClick={() => {
+                                  <button className="btn btn-success"  onClick={() => {
                                     edit_dob(value)
                                     alert("Are you sure ?")
-                                    window.location.reload()
+                                   
                                   }
 
                                   }>

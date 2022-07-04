@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import StudentDash from "../../components/studentDashboard/StudentDash";
 import AdminDash from "../../components/adminDashboard/adminDash"
 import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
-import { setCurrQuiz, start_attempt, start_exam } from "../../actions/startExam/startExamAction";
+import { setCurrQuiz, start_exam, view_all_questions } from "../../actions/startExam/startExamAction";
 import { set_all_quiz , view_quiz_by_id , set_curr_question, view_question_by_id} from "../../actions/allQuiz/allQuizAction";
 import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
 import { add_quiz , edit_quiz, delete_quiz} from "../../actions/quizCrud/quizCrudAction";
@@ -39,16 +39,16 @@ export const mapStateToProps = store => {
 export const mapDispatchToProps = dispatch => {
     return {
 
-            start_exam : (payload)=>{
-                    dispatch(start_exam(payload));
+            view_all_questions : (payload)=>{
+                    dispatch(view_all_questions(payload));
             },
             
             set_all_quiz:()=>{
                     dispatch(set_all_quiz());
             },
 
-            start_attempt :(payload) =>{
-                dispatch(start_attempt(payload))
+            start_exam :(payload) =>{
+                dispatch(start_exam(payload))
             },
 
             get_dashboard_data:() =>{

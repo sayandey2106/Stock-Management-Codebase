@@ -4,7 +4,7 @@ import EditQuestionModal from './editQuestionModal';
 
 export default function ViewQuestionModal(props) {
     
-    const{edit_quiz ,currQuiz, view_quiz_by_id, start_exam, startExam , view_question_by_id, set_curr_question , edit_question}=props.data
+    const{edit_quiz ,currQuiz, view_quiz_by_id, view_all_questions, startExam , view_question_by_id, set_curr_question , edit_question}=props.data
 //     const {currentId}= props.currId
 
 //     const [name, setquiz_name] = useState(currQuiz.current_quiz_details.name)
@@ -22,7 +22,7 @@ const [currQuestion, setCurrQuestion] = useState(3);
 
 useEffect(() => {
   
-    start_exam( currQuiz.current_quiz);
+    view_all_questions( currQuiz.current_quiz);
   
 }, [])
 const customStyles = {

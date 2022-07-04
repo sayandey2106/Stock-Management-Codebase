@@ -18,7 +18,7 @@ export function view_profile(authToken) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             // body: JSON.stringify({
             //     user_id:user_id
@@ -57,7 +57,7 @@ export function view_profile_admin(authToken) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             // body: JSON.stringify({
             //     user_id:user_id
@@ -98,7 +98,7 @@ export function edit_name(value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             name : value
@@ -137,7 +137,7 @@ export function edit_college_name( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             college_name : value
@@ -177,7 +177,7 @@ export function edit_caste( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             caste : value
@@ -216,7 +216,7 @@ export function edit_gender( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             gender : value
@@ -256,7 +256,7 @@ export function edit_skills( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             education : value
@@ -295,7 +295,7 @@ export function edit_mobile( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
                 phone_no : value
@@ -334,7 +334,7 @@ export function edit_dob( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             dob : value
@@ -373,7 +373,7 @@ export function edit_branch( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             branch_name : value
@@ -412,7 +412,7 @@ export function edit_photo( value) {
                 // user_token: token,
                 // organization_id: oid
                 // company_id:id
-                "Auth-token" : (localStorage.getItem('sre_user_id'))
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
             profile_pic : value

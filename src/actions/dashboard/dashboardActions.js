@@ -11,6 +11,7 @@ import {onLogout} from '../loginActions'
 export function get_dashboard_data() {
     return (dispatch) => {
         dispatch(setLoader());
+        console.log("get dashboard data")
         return fetch(UNIVERSAL.BASEURL + "api/Sauth/dashboard", {
             method: "GET",
             headers: {

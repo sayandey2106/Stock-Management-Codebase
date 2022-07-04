@@ -2,23 +2,28 @@ import React, {useState, useEffect} from 'react'
 
 export default function EditQuizModal(props) {
     
+  
+  useEffect(() => {
+    
+      view_quiz_by_id(currQuiz.current_quiz)
+    setquiz_date(currQuiz.current_quiz_details.date);
+    setquiz_duration(currQuiz.current_quiz_details.duration);
+    setquiz_marks(currQuiz.current_quiz_details.marks);
+    setquiz_name(currQuiz.current_quiz_details.name);
+    setquiz_subject(currQuiz.current_quiz_details.subject);
+    setquiz_time(currQuiz.current_quiz_details.time);
+  }, [])
     const{edit_quiz ,currQuiz, view_quiz_by_id}=props.data
     const {currentId}= props.currId
 
-    const [name, setquiz_name] = useState(currQuiz.current_quiz_details.name)
-const [date, setquiz_date] = useState(currQuiz.current_quiz_details.date) 
-const [time, setquiz_time] = useState(currQuiz.current_quiz_details.time)
-const [subject, setquiz_subject] = useState(currQuiz.current_quiz_details.subject)
-const [marks, setquiz_marks] = useState(currQuiz.current_quiz_details.marks)
-const [duration, setquiz_duration] = useState(currQuiz.current_quiz_details.duration)
+    const [name, setquiz_name] = useState()
+const [date, setquiz_date] = useState() 
+const [time, setquiz_time] = useState()
+const [subject, setquiz_subject] = useState()
+const [marks, setquiz_marks] = useState()
+const [duration, setquiz_duration] = useState()
 const [id, setquiz_id] = useState(currQuiz.current_quiz)
 let  newQuiz ={name,date,time,subject,marks,duration}
-
-useEffect(() => {
-  
-    view_quiz_by_id(currQuiz.current_quiz)
-  
-}, [])
 
   return (
     <div class="modal-body">

@@ -13,7 +13,7 @@ function AdminDash(props) {
   const {
     startExam,
     login,
-    start_exam,
+    view_all_questions,
     set_all_quiz,
     allQuiz,
     get_dashboard_data,
@@ -21,7 +21,7 @@ function AdminDash(props) {
     setCurrQuiz,
     currQuiz,
     edit_quiz,
-    start_attempt,
+    start_exam,
     add_quiz,
     view_quiz_by_id,
     delete_quiz,
@@ -39,7 +39,7 @@ function AdminDash(props) {
     get_dashboard_data();
     localStorage.removeItem("curr_quiz");
     
-  
+
   }, []);
 
 const [modalOpen, setModalOpen] = useState(false);
@@ -112,31 +112,15 @@ const customStyles = {
                     </td>
                     <td>
                       <h5>{quiz.duration}</h5>
-                      <h5>{quiz._id}</h5>
+        
                     </td>
                     <td>
+                   
                       <button
-                        className="btn btn-success"
-                        type="button"
-                        onClick={() => {
-                        //   start_exam(quiz._id);
-                          console.log(quiz._id)
-                          // setRedirect(true)
-                        //   history.push("/quiz")
-                        //   setId (quiz._id);
-                        //   setCurrQuiz(quiz._id);
-                        //   localStorage.setItem('curr_quiz', quiz._id);
-                       
-                        }}
-                      >
-                    
-                       Add Quiz
-                      </button>
-                      <button
-                        className="btn btn-warning"
+                        className="btn btn-warning m-1"
                       
                         onClick={(e) => {
-                        //   start_exam(quiz._id);
+                        //   view_all_questions(quiz._id);
                         setModalOpen(true)
                         setModaltype("edit")
                         setCurrentId(quiz._id)
@@ -149,10 +133,10 @@ const customStyles = {
                         Edit Quiz
                       </button>
                       <button
-                        className="btn btn-danger"
+                        className="btn btn-danger m-1"
                       
                         onClick={() => {
-                        //   start_exam(quiz._id);
+                        //   view_all_questions(quiz._id);
                         delete_quiz(quiz._id)
                         }}
                       >
@@ -162,10 +146,10 @@ const customStyles = {
                     </td>
             <td>
             <button
-                        className="btn btn-warning"
+                        className="btn btn-warning m-1"
                       
                         onClick={(e) => {
-                        //   start_exam(quiz._id);
+                        //   view_all_questions(quiz._id);
                         setModalOpen(true)
                         setModaltype("add_question")
                         setCurrentId(quiz._id)
@@ -178,16 +162,16 @@ const customStyles = {
                         Add Question
                       </button>
                       <button
-                        className="btn btn-warning"
+                        className="btn btn-warning m-1"
                       
                         onClick={(e) => {
-                        //   start_exam(quiz._id);
+                        //   view_all_questions(quiz._id);
                         setModalOpen(true)
                         setModaltype("view_question")
                         setCurrentId(quiz._id)
                         setCurrQuiz(quiz._id)
                        console.log(currentId)
-                       start_exam( quiz._id);
+                       view_all_questions( quiz._id);
                         }}
                       >
                     

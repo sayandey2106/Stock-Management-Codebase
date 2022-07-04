@@ -110,8 +110,8 @@ class Routes extends Component {
                         {/* ADMIN ROUTES */}
                         {/* STUDENT ROUTES */}
                       
-                        <Route exact path="/" component={ProfileCont}/>
-                        <Route exact path="/dashboard" component={AdminDashboardCont}/>
+                        {/* <Route exact path="/" component={ProfileCont}/> */}
+                        <Route exact path="/" component={AdminDashboardCont}/>
                         {/* <Route exact path="/category" component={Category}/> */}
                         {/* <Route exact path="/request" component={Request}/> */}
                         {/* <Route exact activeClassName="active" path="/" component={Dashboard}/> */}

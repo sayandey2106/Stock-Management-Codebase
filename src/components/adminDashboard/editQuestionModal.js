@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
 export default function EditQuestionModal(props) {
+
+
+
+  
   const { add_quiz , add_question , currQuiz , edit_question} = props.data;
 
   const [question, setQuestion] = useState(currQuiz.current_question_details.question);

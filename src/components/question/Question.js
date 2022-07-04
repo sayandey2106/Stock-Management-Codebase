@@ -7,11 +7,11 @@ import "react-circular-progressbar/dist/styles.css";
 import Clock from "./Clock";
 import QuestionNumbers from "./questionNumbers";
 import './Question.css'
-import { start_attempt } from "../../actions/startExam/startExamAction";
+import { start_exam } from "../../actions/startExam/startExamAction";
 
 export default function Question(props) {
 
-  const { startExam, start_exam, currQuiz } = props;
+  const { startExam, view_all_questions, currQuiz , start_exam, end_exam , attempt_question} = props;
 
 
 
@@ -23,8 +23,8 @@ console.log("total questions ",totalQuestions);
 useEffect(() => {
   
   console.log(currQuiz.current_quiz)
-start_exam( localStorage.getItem('curr_quiz'));
-start_attempt(localStorage.getItem('curr_quiz'));
+view_all_questions( localStorage.getItem('curr_quiz'));
+start_exam(localStorage.getItem('curr_quiz'));
 
 }, [])
 
@@ -42,6 +42,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
 
   const [currQuestion, setCurrQuestion] = useState(0);
   const [selected, setSelected] = useState("");
+  const[question,setQuestion]= useState("");
+  const[option,setOption]=useState("")
 
 
   return (
@@ -73,6 +75,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
                       'card option-card'}
                       onClick={() => {
                         setSelected(questions.A)
+                        setOption("A")
+                setQuestion(questions._id)
                       }}>
                       <div class="card-body d-flex">
                         <div className="option-number">
@@ -89,6 +93,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
                     <div class={selected === questions.B ? 'card option-card selected' :
                       'card option-card'} onClick={() => {
                         setSelected(questions.B)
+                        setOption("B")
+                setQuestion(questions._id)
                       }}>
                       <div class="card-body d-flex">
 
@@ -103,6 +109,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
                     <div class={selected === questions.C ? 'card option-card selected' :
                       'card option-card'} onClick={() => {
                         setSelected(questions.C)
+                        setOption("C")
+                setQuestion(questions._id)
                       }}>
                       <div class="card-body d-flex">
 
@@ -118,6 +126,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
                     <div class={selected === questions.D ? 'card option-card selected' :
                       'card option-card'} onClick={() => {
                         setSelected(questions.D)
+                        setOption("D")
+                setQuestion(questions._id)
                       }}>
                       <div class="card-body d-flex">
 
@@ -132,7 +142,7 @@ start_attempt(localStorage.getItem('curr_quiz'));
                     </div>
                   </>
 
-                );
+);
 
               })
             }
@@ -150,7 +160,7 @@ start_attempt(localStorage.getItem('curr_quiz'));
                       onClick={() => {
                         setCurrQuestion(currQuestion - 1);
                         console.log("prev", currQuestion);
-                        setSelected("")
+                      
                       }}
                     >
                       <i class="fa-solid fa-angle-left mx-1"></i>
@@ -166,7 +176,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
                   onClick={() => {
                     setCurrQuestion(currQuestion + 1);
                     console.log("next", currQuestion)
-                    setSelected("")
+                  
+                    attempt_question(localStorage.getItem('curr_quiz'),question,option)
                     
                   }}
 
@@ -194,7 +205,8 @@ start_attempt(localStorage.getItem('curr_quiz'));
               </button>
               <button className="btn green-btn float-end" id="submit-btn"
               onClick={()=>{
-                localStorage.removeItem("curr_quiz");
+                end_exam(localStorage.getItem("curr_quiz"))
+                // localStorage.removeItem("curr_quiz");
               }}
               >
                 Submit

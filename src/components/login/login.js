@@ -178,10 +178,10 @@ const[admin, setAdmin]=useState();
                       class="google-icon mx-3"
                       // src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                       />
-                   Creat A New Student Account
+                   Create A New Student Account
                   </button>
                       </Link>
-                      <Link to="/signup/admin">
+                      {/* <Link to="/signup/admin">
                   <button class="btn btn-primary google my-3" type="button">
 
                     <img
@@ -190,7 +190,7 @@ const[admin, setAdmin]=useState();
                       />
                    Creat A New Admin Account
                   </button>
-                      </Link>
+                      </Link> */}
                   {/* <button
                     class="btn btn-primary google justify-content-center text-center"
                     id="fb-in-btn"

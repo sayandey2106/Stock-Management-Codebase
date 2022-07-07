@@ -7,10 +7,11 @@ import './Clock.css'
 
 
 
-export default function Clock() {
+export default function Clock(props) {
 
 
-   const [minutes, setminutes] = useState(30);
+    const {currQuiz, end_exam}= props.data
+   const [minutes, setminutes] = useState(currQuiz.current_quiz_details.duration);
    const [seconds, setseconds] = useState(0);
 
   
@@ -30,8 +31,8 @@ timer = setInterval(() => {
 
     }
     if(minutes===0) {
-        setminutes(30);
-        setseconds(0);
+      end_exam(localStorage.getItem("curr_quiz"))
+      localStorage.removeItem("curr_quiz")
     }
 
 }, 1000);

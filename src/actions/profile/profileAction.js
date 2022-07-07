@@ -4,6 +4,8 @@ import {
 import UNIVERSAL from "../../config/config";
 import {setLoader, unsetLoader}
     from "../loader/loaderAction";
+    import firebase from "firebase";
+    import { storage } from "../../constants/ActionTypes";
 import {set_snack_bar} from "../snackbar/snackbar_action";
 
 
@@ -415,7 +417,7 @@ export function edit_photo( value) {
                 "Auth-token" : (localStorage.getItem('sre_auth_token'))
             },
             body: JSON.stringify({
-            profile_pic : value
+            profile : value
         
              }),
         }).then((response) => response.json())
@@ -437,5 +439,35 @@ export function edit_photo( value) {
             .catch((error) => {
                 console.error(error);
             });
+    };
+}
+
+export function get_edit_profile_pic_link(file,name) {
+    console.log(file)
+    return (dispatch) => {
+        dispatch(setLoader());
+      {
+            var storageRef = firebase.storage().ref();
+            var uploadTask = storageRef
+                .child("/Quiz/profilepic/student/" + name + ".png")
+                .put(file);
+            uploadTask.on(
+                "state_changed",
+                function (snapshot) {
+                },
+                function (error) {
+                    // dispatch(set_snack_bar(true, "Image Could Not Be sUploaded"));
+                    alert("Image Could Not Be sUploaded")
+                },
+                function () {
+                    uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+                        alert("Image sUploaded")
+
+                        dispatch(edit_photo( downloadURL));
+                        dispatch(unsetLoader());
+                    });
+                }
+            );
+        }
     };
 }

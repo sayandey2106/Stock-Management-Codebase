@@ -16,7 +16,9 @@ function StudentDash(props) {
     setCurrQuiz,
     currQuiz,
     start_exam,
-    end_exam
+    end_exam,view_quiz_by_id,
+    view_profile
+    
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
@@ -37,8 +39,11 @@ const customStyles = {
 
 
   useEffect(() => {
+    // window.location.reload(true)
     set_all_quiz();
     get_dashboard_data();
+    view_profile();
+  
   }, []);
 
 const [redirect, setRedirect] = useState(false);
@@ -82,7 +87,7 @@ if(redirect===true && startExam.question_set !=""){
                           <i class="icon-pencil primary font-large-2 float-left"></i>
                         </div>
                         <div class="media-body text-right">
-                          <h3>{dashboard.summary.Attended_test}</h3>
+                          <h3>{dashboard.summary.attended_test}</h3>
                           <span>Attended Test</span>
                         </div>
                       </div>
@@ -207,7 +212,7 @@ if(redirect===true && startExam.question_set !=""){
               </tr>
             </thead>
             <tbody>
-              {allQuiz.map((quiz) => {
+              {dashboard.upcoming.map((quiz) => {
 
                 // const {_id}=quiz;
                 // const x = quiz._id
@@ -350,12 +355,16 @@ if(redirect===true && startExam.question_set !=""){
 
 }}>Close</button>
 <h3>Are you ready to start exam</h3>
+<h2 style={{ textDecoration:"bold", color:"red"}}>NOTE : IF YOU RELOAD OR CHANGE PATH OF THE SITE YOUR EXAM WILL BE CANCELLED</h2>
 <button className="btn btn-success" onClick={()=>{
   start_exam(localStorage.getItem("curr_quiz"))
+  view_quiz_by_id(localStorage.getItem("curr_quiz"))
+  // currQuiz.start_exam_status ===true ?
+  history.push('/quiz')
+  // : alert("already done")
+}}
 
-  currQuiz.start_exam_status ===true ?
-  history.push('/quiz'): alert("already done")
-}}> Start exam</button>
+> Start exam</button>
    </div>
       </Modal>
     </section>

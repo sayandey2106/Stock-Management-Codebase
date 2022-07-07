@@ -4,7 +4,8 @@ import Question from "../../components/question/Question";
 import {
     close_snack_bar
 } from "../../actions/snackbar/snackbar_action";
-import { end_exam, start_exam, view_all_questions,attempt_question } from "../../actions/startExam/startExamAction";
+import { end_exam, start_exam, view_all_questions,attempt_question ,setCurrQuestionStudent} from "../../actions/startExam/startExamAction";
+import { view_quiz_by_id } from "../../actions/allQuiz/allQuizAction";
 
 export class QuestionCont extends Component {
     render() {
@@ -37,6 +38,12 @@ export const mapDispatchToProps = dispatch => {
     },
     attempt_question :(quiz_id, questtion_id, option_selcted) =>{
         dispatch(attempt_question(quiz_id, questtion_id, option_selcted))
+    },
+    setCurrQuestionStudent :(payload)=>{
+        dispatch(setCurrQuestionStudent(payload))
+    },
+    view_quiz_by_id:(payload)=>{
+        dispatch(view_quiz_by_id(payload));
     }
     };
 };

@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import "./signup.css";
 import { Navigate } from "react-router-dom";
-import { admin_sign_up } from "../../actions/signup/signupAction";
+
 export default function AdminSignup(props) {
     const{
 
@@ -15,7 +15,9 @@ export default function AdminSignup(props) {
         createNameAdmin,
         sign_up,
         createType,
-        adminSignup
+        get_profile_pic_link,
+        adminSignup,
+        sign_up_admin
         
     }=props;
     
@@ -35,10 +37,10 @@ if(adminSignup.name==="" || adminSignup.email===""  || adminSignup.password===""
 else{
 
  
-  admin_sign_up(adminSignup)
+  sign_up_admin(adminSignup)
 
  
-  // history.push('/');
+  history.push('/');
   
 
 
@@ -118,31 +120,46 @@ else{
                   }}
                 />    
                   <h6>PROFILE</h6>
-                <input
+                {/* <input
                 required
                 type="file"
                 value={adminSignup.profile_pic}
                 onChange={(e)=>{
                 
-                  createProfilePicAdmin(URL.createObjectURL(e.target.files[0]));
+                  // createProfilePicAdmin(URL.createObjectURL(e.target.files[0]));
+
                 }}
-                >
+                > */}
                 
-                </input>
+                {/* </input> */}
+                {/* <div class="input-group mb-3">
+
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01"  onChange={(e)=>{
+                
+                setimg((e.target.files[0]));
+console.log(img)
+              }}/>
+    {/* <label class="custom-file-label" for="inputGroupFile01">Choose file</label> */}
+    {/* <button class="input-group-text btn btn-warning" onClick={()=>{
+      get_profile_pic_link(img)
+    }}>Upload</button>
+  </div>
+</div> */} 
                 
                
                 <button className="btn btn-primary"
                 type="button"
-                  onClick= {handleSignUp}
+                  onClick= { handleSignUp}
                 >Sign Up
                     </button>
-                    <Link to="/">
+                    {/* <Link to="/"> */}
                     <button className="btn btn-primary mx-1"
                 type="button"
                 
                 >Already An User
                     </button>
-                </Link>
+                {/* </Link> */}
            
               </div>
             </div>

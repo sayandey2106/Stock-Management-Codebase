@@ -2,7 +2,8 @@ import  {SET_QUESTIONS, CURR_QUIZ}  from "../../constants/startExam/startExamCon
 
 const initial_state = {
     question_set:[],
-    current_quiz:""
+    current_quiz:"",
+
   
  };
  export default function reducer(state = initial_state, action) {

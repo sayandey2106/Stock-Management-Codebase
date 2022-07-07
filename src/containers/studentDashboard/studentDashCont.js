@@ -5,9 +5,9 @@ import {connect} from "react-redux";
 import StudentDash from "../../components/studentDashboard/StudentDash";
 import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
 import { setCurrQuiz, start_exam, view_all_questions, end_exam } from "../../actions/startExam/startExamAction";
-import { set_all_quiz } from "../../actions/allQuiz/allQuizAction";
+import { set_all_quiz, view_quiz_by_id } from "../../actions/allQuiz/allQuizAction";
 import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
-
+import { view_profile } from "../../actions/profile/profileAction";
 
 
 export class StudentDashboardContainer extends Component {
@@ -30,7 +30,8 @@ export const mapStateToProps = store => {
         dashboard : store.dashboard,
         startExam:store.startExam,
         allQuiz : store.allQuiz.quiz_set,
-        currQuiz : store.currQuiz
+        currQuiz : store.currQuiz,
+        profile : store.profile
     };
 };
 export const mapDispatchToProps = dispatch => {
@@ -57,6 +58,12 @@ export const mapDispatchToProps = dispatch => {
             },
             setCurrQuiz:(payload) =>{
                 dispatch(setCurrQuiz(payload));
+            },
+            view_quiz_by_id:(payload)=>{
+                dispatch(view_quiz_by_id(payload))
+            },
+            view_profile:()=>{
+                dispatch(view_profile());
             }
             // curr_quiz : (payload) =>{
             //     dispatch(curr_quiz(payload));

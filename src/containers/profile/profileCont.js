@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Profile from "../../components/profile/profile";
 import {
-  view_profile, edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo
+  view_profile, edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo, get_edit_profile_pic_link 
 } from "../../actions/profile/profileAction"
 export class ProfileCont extends Component {
   render() {
@@ -51,6 +51,10 @@ export const mapDispatchToProps = dispatch => {
     edit_photo: (value) => {
       dispatch(edit_photo( value))
     },
+ get_edit_profile_pic_link :(file , name) =>{
+   dispatch( get_edit_profile_pic_link (file,name))
+ }
+
     // close_snack_bar: () => {
     //   dispatch(close_snack_bar());
     // },

@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import "./signup.css";
 import { Navigate } from "react-router-dom";
@@ -15,20 +15,25 @@ export default function Signup(props) {
         createName,
         sign_up,
         createType,
-        signup
+        signup,
+        get_profile_pic_link
         
     }=props;
     
     console.log("props", props);
     const history = useHistory();
+    const [img, setimg] = useState()
 
 const handleSignUp = () =>{
 
 console.log("hendle sign up");
 
 if(signup.name==="" || signup.email==="" || signup.college_name==="" || signup.caste==="" || signup.gender==="" || signup.password===""){
-  alert("something wrong");
+  alert("input all data");
 
+}
+else if(signup.profile_img===""){
+    alert("please upload profile photo")
 }
 else{
   sign_up(signup);
@@ -152,6 +157,21 @@ else{
                     createGender(event.target.value);
                   }}
                 />
+                  <h6>PROFILE PIC</h6>
+                     <div class="input-group mb-3">
+
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01"  onChange={(e)=>{
+                
+                setimg((e.target.files[0]));
+console.log(img)
+              }}/>
+   {/* <label class="custom-file-label" for="inputGroupFile01">Choose file</label>  */}
+     <button class=" btn btn-warning" onClick={()=>{
+      get_profile_pic_link(img,signup.name)
+    }}>Upload</button>
+  </div>
+</div>
                 <button className="btn btn-primary"
                 type="button"
                   onClick= {handleSignUp}

@@ -12,14 +12,14 @@
    const initial_state = {
        
      email: "",
-     name: "",
      password:"",
+     name: "",
      phone_no:"",
  
  
  
    
-     profile_pic: "",
+    //  profile_pic: "",
      type: "A",
      
     

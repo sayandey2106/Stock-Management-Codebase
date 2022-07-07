@@ -1,5 +1,5 @@
 import {
-   SET_EXAM_HISTORY, SET_SUMMARY
+   SET_EXAM_HISTORY, SET_SUMMARY, SET_UPCOMING
 } from "../../constants/dashboard/dashboardConstants";
 import UNIVERSAL from "../../config/config";
 import {setLoader, unsetLoader}
@@ -33,8 +33,9 @@ export function get_dashboard_data() {
 
                     dispatch({type:SET_SUMMARY,payload:responseJson.summary});
                     dispatch({type:SET_EXAM_HISTORY,payload:responseJson.history});
+                    dispatch({type:SET_UPCOMING,payload:responseJson.upcoming});
                     // dispatch(set_snack_bar(true, responseJson.message));
-                    console.log(responseJson.summary,"hi");
+                    console.log(responseJson,"hi");
 
                 } else {
                     

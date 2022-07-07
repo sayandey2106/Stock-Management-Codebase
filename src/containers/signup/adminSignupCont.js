@@ -18,7 +18,7 @@ import {
   sign_up,
   createEmailAdmin,
   createPasswordAdmin,createPhoneAdmin,
-  createProfilePicAdmin,createNameAdmin, admin_sign_up
+  createProfilePicAdmin,createNameAdmin, sign_up_admin,get_profile_pic_link
  } from "../../actions/signup/signupAction";
 
 
@@ -42,8 +42,8 @@ export const mapStateToProps = store => {
 export const mapDispatchToProps = dispatch => {
   return {
     
-admin_sign_up:(signup) =>{
-  dispatch(admin_sign_up(signup))
+sign_up_admin:(signup) =>{
+  dispatch(sign_up_admin(signup))
 },
 
 
@@ -64,7 +64,9 @@ admin_sign_up:(signup) =>{
   createProfilePicAdmin: (payload) =>{
     dispatch(createProfilePicAdmin(payload))
   },
-
+  get_profile_pic_link:(payload) =>{
+    dispatch(get_profile_pic_link(payload))
+  },
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AdminSignupCont);

@@ -361,6 +361,7 @@ export default function Drawer(props) {
       <div className='brand-bg'>
 
     <Image src={logo} height="45"></Image>
+   
       </div>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
@@ -369,17 +370,28 @@ export default function Drawer(props) {
 
       </Nav>
       <Nav>
-        {/* {
-        profile.user_profile.name ? <h2 style={{color:"white", marginRight:"15px"}}>{profile.user_profile.name}</h2>: <h2 style={{color:"white" , marginRight:"15px"}}>Username</h2>
-        } */}
-        <h2 style={{color:"white", marginRight:"15px"}}>{(localStorage.getItem('sre_name'))}</h2>
+    
+      <h2 style={{color:"white", marginRight:"15px"}}>{profile.user_profile.name}</h2>
+
+      {
+        profile.user_profile.type==="S" ?
+<Link to="/profile">
 
 
-
-      </Nav>{
-        profile.user_profile.profile_pic?  <Image src={profile.user_profile.profile_pic} height="45" style={{marginRight:"15px"}}></Image> :   <Image src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" height="45" style={{marginRight:"15px"}}></Image>
+      {
+        profile.user_profile.profile?  <Image src={profile.user_profile.profile} height="45" style={{marginRight:"15px" , borderRadius:"50%",width:"45px"}}></Image> :   <Image src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" height="45" style={{marginRight:"15px" , borderRadius:"50%",width:"45px"}}></Image>
       }
+      </Link>
 
+: <div>
+{
+  profile.user_profile.profile?  <Image src={profile.user_profile.profile} height="45" style={{marginRight:"15px" , borderRadius:"50%",width:"45px"}}></Image> :   <Image src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" height="45" style={{marginRight:"15px" , borderRadius:"50%",width:"45px"}}></Image>
+}
+  </div>
+}
+    
+
+      </Nav>
      <div style={{marginRight:"15px"}}>
       <Lg_Cont/>
      </div>

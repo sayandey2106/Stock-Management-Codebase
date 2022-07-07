@@ -1,4 +1,7 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/storage"
+import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
 
 export const RESET = "RESET";
 export const CLEAR_LOGIN = "CLEAR_LOGIN";
@@ -13,14 +16,19 @@ export const HANDLEDRAWER1 = "HANDLEDRAWER1";
 export const OPEN_LOGIN_MODAL = "OPEN_LOGIN_MODAL";
 export const CLOSE_LOGIN_MODAL = "CLOSE_LOGIN_MODAL";
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDAYepm9F5Z4M7WtirzHDFfwLh166CJqng",
-  authDomain: "taxopliance-5dd90.firebaseapp.com",
-  databaseURL: "https://taxopliance-5dd90.firebaseio.com",
-  projectId: "taxopliance-5dd90",
-  storageBucket: "taxopliance-5dd90.appspot.com",
-  messagingSenderId: "18175422347",
-  appId: "1:18175422347:web:7bb8bf3c43bbcc4206498e",
-  measurementId: "G-TEDTTC6JYV"
+const firebaseConfig = {
+  apiKey: "AIzaSyC_xE_UhX9Kt2swPj7E9NzUkpo3Zy-3fQ8",
+  authDomain: "skyyriderev.firebaseapp.com",
+  projectId: "skyyriderev",
+  storageBucket: "skyyriderev.appspot.com",
+  messagingSenderId: "99935744531",
+  appId: "1:99935744531:web:b23f6a555b96423283c5e6",
+  measurementId: "G-9K26KZVH6L"
 };
-export const fb = firebase.initializeApp(firebaseConfig);
+
+// export const app = initializeApp(firebaseConfig);
+//  export const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const storage =firebase.storage();
+
+export {storage,firebase as default};

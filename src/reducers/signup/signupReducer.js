@@ -14,14 +14,17 @@ import {
  const initial_state = {
      
    email: "",
-   name: "",
    password:"",
+   name: "",
    phone_no:"",
-   gender:"",
    college_name:"",
-   caste:"",
+  //  branch_name:"",
+  // education :""
+  gender:"",
+  // dob:"",
+  caste:"",
+   profile: "",
  
-   // profile_pic: "",
    type: "S",
    
   
@@ -55,8 +58,8 @@ import {
                return state = { ...state, phone_no: action.payload };
    case CREATE_GENDER:
                return state = { ...state, gender: action.payload };
-   // case CREATE_PROFILE_PIC:
-   //             return state = { ...state, profile_img: action.payload };    
+   case CREATE_PROFILE_PIC:
+               return state = { ...state, profile: action.payload };    
 
    case CREATE_TYPE:
                return state = { ...state, type: action.payload };

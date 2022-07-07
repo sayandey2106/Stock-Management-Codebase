@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './desktopProfile.css'
+import { Prompt } from "react-router";
 import Details from './details'
+import { Link } from 'react-router-dom';
 
 
 export default function DesktopProfile(props) {
@@ -10,21 +12,28 @@ export default function DesktopProfile(props) {
     profile,
     login,
     view_profile,
-    edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo } = props.data;
+    edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo,get_edit_profile_pic_link } = props.data;
 
 
   const [display, setDisplay] = useState("d-none")
   const [button, setButton] = useState("d-block")
   const [name, setName] = useState("")
   const [value, setValue] = useState("");
+  const [img, setimg] = useState();
   // const [disable,setDisable]= useState("false")
+  useEffect(() => {
 
+  });
 
   return (
-
     <div className="desktop">
 
       <div class="container emp-profile ">
+      <Link to='/'>
+      <button className='btn btn-warning'>
+        Dashboard
+      </button>
+      </Link>
         <form>
           <div class="row">
             <div class="text-center">
@@ -32,28 +41,31 @@ export default function DesktopProfile(props) {
                 {/* <img src={profile.user_profile.profile_pic} alt=""/> */}
 
                 <h1 className='text-center'>
-                  {localStorage.getItem("sre_name")}
+                 {profile.user_profile.name }
                 </h1>
                 <div className='img-box text-center'>
 
 
 
+{
+  profile.user_profile.profile ?
+<img src={profile.user_profile.profile} alt="" /> :
+<img src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png"></img>
+}
 
-                  {/* <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                              </div> */}
-
-                  <img src="https://m.cricbuzz.com/a/img/v1/192x192/i1/c171004/sachin-tendulkar.jpg" alt="" />
                 </div>
 
                 <div class={display === "d-block" ? "input-group d-flex my-3" : "input-group d-none"}>
-                  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
-                  <button className="btn btn-success" onClick={() => {
+                  <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" onChange={(e)=>{
+                
+                setimg((e.target.files[0]));
+
+              }} />
+                  <button className="btn btn-success" type="button" onClick={() => {
                     // edit_profile(name,value)
-                    edit_photo(value)
                     alert("Are you sure ?")
-                    window.location.reload()
+                    console.log(img)
+                    get_edit_profile_pic_link (img,profile.user_profile.name )
                   }
                   }>Upload</button>
                 </div>

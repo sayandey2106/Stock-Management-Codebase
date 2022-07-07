@@ -1,5 +1,5 @@
 import UNIVERSAL from "../../config/config";
-import { CURR_QUIZ, SET_QUESTIONS, START_EXAM_STATUS } from "../../constants/startExam/startExamConst";
+import { ATTEMPT_QUESTION_RESPONSE, CURR_QUESTION_DETAILS_STUDENT, CURR_QUIZ, SET_QUESTIONS, START_EXAM_STATUS } from "../../constants/startExam/startExamConst";
 import { Redirect } from "react-router-dom";
 
 
@@ -58,6 +58,12 @@ export function setCurrQuiz(payload) {
         payload: payload
     }
 }
+export function setCurrQuestionStudent(payload) {
+    return {
+        type: CURR_QUESTION_DETAILS_STUDENT,
+        payload: payload
+    }
+}
 
 export function start_exam(quiz_id) {
     
@@ -71,17 +77,17 @@ export function start_exam(quiz_id) {
                 headers: {
                     "Accept": "application/json",
                     "Content-Type": "application/json",
-                    "auth-token": (localStorage.getItem('sre_auth_token')),
+                    "auth-token": localStorage.getItem('sre_auth_token'),
                 }
                 // body: JSON.stringify({
                 //     student_id: (localStorage.getItem('sre_auth_to')),
                 //     quiz_id: (localStorage.getItem('curr_quiz')),
-                //     // quiz_id: quiz_id
+                //     quiz_id: quiz_id
                 //  }),
             });
             const responseJson = await response.json();
-            console.log(responseJson);
-            if (responseJson.status) {
+            console.log(responseJson.status);
+            if (responseJson) {
                 dispatch({type:START_EXAM_STATUS,payload:responseJson.status})
                 // dispatch({type:SET_QUESTIONS,payload:responseJson.result})
                 // dispatch(view_profile(responseJson.authToken));
@@ -149,14 +155,14 @@ export function end_exam(quiz_id) {
     };
 }
 
-export function attempt_question(quiz_id, question_id, option_selcted) {       
+export function attempt_question(quiz_id, question_id, option_selected) {       
 
 
 
     console.log("attempt option")
     console.log(quiz_id)
     console.log(question_id)
-    console.log(option_selcted)
+    console.log(option_selected)
     return (dispatch) => {
         // dispatch(setLoader());
 
@@ -171,16 +177,17 @@ export function attempt_question(quiz_id, question_id, option_selcted) {
                 // company_id:id
             },
             body: JSON.stringify({
-                option_selcted: option_selcted
+                option_selected: option_selected
                 // quiz_id: quiz_id
 
             }),
         }).then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson)
-                if (responseJson.status) {
+                dispatch({type:ATTEMPT_QUESTION_RESPONSE,payload:responseJson})
+                if (responseJson) {
 
-                    // dispatch({type:SET_QUESTIONS,payload:responseJson.result})
+                    // dispatch({type:ATTEMPT_QUESTION_RESPONSE,payload:responseJson})
 
                     // dispatch(view_profile(responseJson.authToken));
                     console.log(responseJson);

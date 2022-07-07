@@ -15,7 +15,7 @@ import {
   createProfilePic,
   createSkills,
   createType,
-  sign_up
+  sign_up,get_profile_pic_link
  } from "../../actions/signup/signupAction";
 
 
@@ -72,6 +72,9 @@ sign_up:(signup) =>{
   },
   createSkills: (payload) =>{
     dispatch(createSkills(payload))
+  },
+  get_profile_pic_link:(file, name) =>{
+    dispatch(get_profile_pic_link(file, name))
   },
   };
 };

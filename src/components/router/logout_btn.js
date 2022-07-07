@@ -1,7 +1,7 @@
 import React from "react";
 import Icon from "@material-ui/core/Icon";
 import {
-  // Link,
+  Link,
   Redirect
 } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
@@ -18,6 +18,8 @@ export default class LG extends React.Component {
 
   render() {
     const { login} = this.props;
+ 
+
 
     if (this.state.redirect === true) {
       return <Redirect to="/" />
@@ -36,11 +38,11 @@ export default class LG extends React.Component {
       //   }}>
       //   <Icon style={{ color: "white" }}>power_settings_new</Icon>
       // </IconButton>
-
+<Link to="/">
       <button
 
-      onClick={() => {
-        localStorage.removeItem("sre_type");
+onClick={() => {
+  localStorage.removeItem("sre_type");
         localStorage.removeItem("sre_name");
         // localStorage.removeItem("qubi7_profile_pic");
         localStorage.removeItem("sre_user_id");
@@ -48,22 +50,24 @@ export default class LG extends React.Component {
         // localStorage.removeItem("taxopliance_organization_id");
         this.setState({redirect:true})
         this.props.onLogout()
+        
       }}
-
+      
       style={{position:"relative",
-           height:"50px",
-           width:"80px",
-           border:"1px solid",
+      height:"50px",
+      width:"80px",
+      border:"1px solid",
            borderRadius:"5px",
-          // background:"#fadde1",
-          fontSize:"15px",
+           // background:"#fadde1",
+           fontSize:"15px",
           // left:"-100px"
           marginLeft:"15px"
           
           }}
+          
+          > Log Out</button>
 
-      > Log Out</button>
-
+          </Link>
       
     )
   }

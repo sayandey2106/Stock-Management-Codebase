@@ -1,12 +1,12 @@
 import UNIVERSAL from "../../config/config";
 import { SET_ALL_QUIZ } from "../../constants/allQuiz/allQuizConst";
 import { CURR_QUESTION, CURR_QUESTION_DETAILS, CURR_QUIZ_DETAILS } from "../../constants/startExam/startExamConst";
-
+import { setLoader,unsetLoader } from "../loader/loaderAction";
 
 export function set_all_quiz() {
     console.log("get all quiz")
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
             return fetch(UNIVERSAL.BASEURL + "api/quiz/view_all_quiz", {
             method: "GET",
             headers: {
@@ -39,7 +39,7 @@ export function set_all_quiz() {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((error) => {
@@ -51,7 +51,7 @@ export function set_all_quiz() {
 export function view_quiz_by_id(quiz_id) {
     console.log("view quiz by id")
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
             return fetch(UNIVERSAL.BASEURL + "api/quiz/view_quiz/"+quiz_id, {
             method: "GET",
             headers: {
@@ -84,7 +84,7 @@ export function view_quiz_by_id(quiz_id) {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((error) => {
@@ -95,7 +95,7 @@ export function view_quiz_by_id(quiz_id) {
 export function view_question_by_id(quiz_id,question_id) {
     console.log("view question by id")
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
             return fetch(UNIVERSAL.BASEURL + "api/question/"+quiz_id+"/view_question/"+question_id, {
             method: "GET",
             headers: {
@@ -128,7 +128,7 @@ export function view_question_by_id(quiz_id,question_id) {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((error) => {

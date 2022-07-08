@@ -8,7 +8,7 @@ import EditQuizModal from "./editQuizModal";
 import AddQuestionModal from "./addQuestionModal";
 import ViewQuestionModal from "./viewQuestionModal";
 // import { Link } from 'react-router-dom'
-
+import Loader_cont from "../../containers/loader/loader_cont";
 function AdminDash(props) {
   const {
     startExam,
@@ -29,6 +29,7 @@ function AdminDash(props) {
     edit_question,
     set_curr_question,
     view_question_by_id,
+    loader
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
@@ -62,6 +63,8 @@ const customStyles = {
 
   return (
     <section className="grey-bg">
+      {
+      loader.openLoader===true? <Loader_cont/>:<></>}
       <div className="container">
         {/* Button LOGOUT */}
 

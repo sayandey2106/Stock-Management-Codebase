@@ -3,7 +3,7 @@ import './desktopProfile.css'
 import { Prompt } from "react-router";
 import Details from './details'
 import { Link } from 'react-router-dom';
-
+import Loader_cont from "../../containers/loader/loader_cont";
 
 export default function DesktopProfile(props) {
 
@@ -12,7 +12,7 @@ export default function DesktopProfile(props) {
     profile,
     login,
     view_profile,
-    edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo,get_edit_profile_pic_link } = props.data;
+    edit_name, edit_college_name, edit_caste, edit_dob, edit_gender, edit_skills, edit_branch, edit_mobile, edit_photo,get_edit_profile_pic_link , loader} = props.data;
 
 
   const [display, setDisplay] = useState("d-none")
@@ -27,7 +27,8 @@ export default function DesktopProfile(props) {
 
   return (
     <div className="desktop">
-
+{
+      loader.openLoader===true? <Loader_cont/>:<></>}
       <div class="container emp-profile ">
       <Link to='/'>
       <button className='btn btn-warning'>

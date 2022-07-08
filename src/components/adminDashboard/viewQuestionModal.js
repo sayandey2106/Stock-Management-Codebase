@@ -1,20 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import Modal from 'react-modal';
 import EditQuestionModal from './editQuestionModal';
-
+import Loader_cont from "../../containers/loader/loader_cont";
 export default function ViewQuestionModal(props) {
     
-    const{edit_quiz ,currQuiz, view_quiz_by_id, view_all_questions, startExam , view_question_by_id, set_curr_question , edit_question}=props.data
-//     const {currentId}= props.currId
+    const{edit_quiz ,currQuiz, view_quiz_by_id, view_all_questions, startExam , view_question_by_id, set_curr_question , edit_question, loader}=props.data
 
-//     const [name, setquiz_name] = useState(currQuiz.current_quiz_details.name)
-// const [date, setquiz_date] = useState(currQuiz.current_quiz_details.date) 
-// const [time, setquiz_time] = useState(currQuiz.current_quiz_details.time)
-// const [subject, setquiz_subject] = useState(currQuiz.current_quiz_details.subject)
-// const [marks, setquiz_marks] = useState(currQuiz.current_quiz_details.marks)
-// const [duration, setquiz_duration] = useState(currQuiz.current_quiz_details.duration)
-// const [id, setquiz_id] = useState(currQuiz.current_quiz)
-// let  newQuiz ={name,date,time,subject,marks,duration}
 
 const [currQuestion, setCurrQuestion] = useState(3);
   const [selected, setSelected] = useState("");
@@ -39,6 +30,8 @@ const customStyles = {
 
   return (
     <div class="modal-body overflow-auto">
+      {/* {
+      loader.openLoader===true? <Loader_cont/>:<></>} */}
                     <div className="m-3">
                       <h2>QUESTIONS:</h2>
                     </div>

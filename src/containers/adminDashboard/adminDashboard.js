@@ -33,7 +33,8 @@ export const mapStateToProps = store => {
         dashboard : store.dashboard,
         startExam:store.startExam,
         allQuiz : store.allQuiz.quiz_set,
-        currQuiz : store.currQuiz
+        currQuiz : store.currQuiz,
+        loader: store.loader,
     };
 };
 export const mapDispatchToProps = dispatch => {

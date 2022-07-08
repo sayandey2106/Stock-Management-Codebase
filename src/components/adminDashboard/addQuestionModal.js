@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-
+import Loader_cont from "../../containers/loader/loader_cont";
 export default function AddQuestionModal(props) {
-  const { add_quiz , add_question , currQuiz} = props.data;
+  const { add_quiz , add_question , currQuiz, loader} = props.data;
 
   const [question, setQuestion] = useState("");
   const [A, setA] = useState("");
@@ -19,6 +19,8 @@ export default function AddQuestionModal(props) {
   console.log();
   return (
     <div class="modal-body">
+      {/* {
+      loader.openLoader===true? <Loader_cont/>:<></>} */}
       <form>
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">
@@ -146,7 +148,7 @@ export default function AddQuestionModal(props) {
             Marks
           </label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             value={marks}
             onChange={(e) => setMarks(e.target.value)}

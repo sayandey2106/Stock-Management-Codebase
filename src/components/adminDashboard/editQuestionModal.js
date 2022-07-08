@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-
+import Loader_cont from "../../containers/loader/loader_cont";
 export default function EditQuestionModal(props) {
 
 
 
   
-  const { add_quiz , add_question , currQuiz , edit_question} = props.data;
+  const { add_quiz , add_question , currQuiz , edit_question , loader} = props.data;
 
   const [question, setQuestion] = useState(currQuiz.current_question_details.question);
   const [A, setA] = useState(currQuiz.current_question_details.A);
@@ -23,6 +23,8 @@ export default function EditQuestionModal(props) {
   console.log();
   return (
     <div class="modal-body">
+      {
+      loader.openLoader===true? <Loader_cont/>:<></>}
       <form>
         <div class="form-group">
           <label for="recipient-name" class="col-form-label">
@@ -150,7 +152,7 @@ export default function EditQuestionModal(props) {
             Marks
           </label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             value={marks}
             onChange={(e) => setMarks(e.target.value)}

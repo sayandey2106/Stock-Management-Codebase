@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import Loader_cont from "../../containers/loader/loader_cont";
 export default function EditQuizModal(props) {
     
   
@@ -13,7 +13,7 @@ export default function EditQuizModal(props) {
     setquiz_subject(currQuiz.current_quiz_details.subject);
     setquiz_time(currQuiz.current_quiz_details.time);
   }, [])
-    const{edit_quiz ,currQuiz, view_quiz_by_id}=props.data
+    const{edit_quiz ,currQuiz, view_quiz_by_id, loader}=props.data
     const {currentId}= props.currId
 
     const [name, setquiz_name] = useState()
@@ -27,6 +27,8 @@ let  newQuiz ={name,date,time,subject,marks,duration}
 
   return (
     <div class="modal-body">
+      {
+      loader.openLoader===true? <Loader_cont/>:<></>}
     <form>
       <div class="form-group">
         <label for="recipient-name" class="col-form-label">Name</label>
@@ -55,7 +57,7 @@ let  newQuiz ={name,date,time,subject,marks,duration}
       </div>
       <div class="form-group">
         <label for="recipient-name" class="col-form-label">Duration</label>
-        <input type="text" class="form-control"  value={duration} 
+        <input type="number" class="form-control"  value={duration} 
               onChange={(e)=>setquiz_duration(e.target.value)}/>
       </div>
       <button className='btn btn-success my-2' type="button" onClick={()=>{edit_quiz(id,newQuiz)}}>Submit</button>

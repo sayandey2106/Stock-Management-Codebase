@@ -12,10 +12,10 @@ import 'react-circular-progressbar/dist/styles.css';
 
 import './Clock.css'
 import { set } from "date-fns";
-
+import Loader_cont from "../../containers/loader/loader_cont";
 export default function Question(props) {
 
-  const { startExam, view_all_questions, currQuiz , start_exam, end_exam , attempt_question, setCurrQuestionStudent, view_quiz_by_id} = props;
+  const { startExam, view_all_questions, currQuiz , start_exam, end_exam , attempt_question, setCurrQuestionStudent, view_quiz_by_id, loader} = props;
 
 
 
@@ -95,7 +95,11 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
 // console.log(arrOpt)
   return (
 
+    
+
     <div className="question-page">
+      {
+      loader.openLoader===true? <Loader_cont/>:<></>}
       <div className="container">
         <div className="row">
           <div className="col-md-8 col-lg-8 col-sm-12">
@@ -118,7 +122,7 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
 </div>
 <div className='mt-5 mx-3'>
    
-    <p>Subject: {currQuiz.current_quiz_details.subject} </p>
+    <h2>Subject: {currQuiz.current_quiz_details.subject} </h2>
     
 </div>
     </div>
@@ -126,7 +130,7 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
             </div>
 
   <div className="m-3">
-                      <h2>QUESTIONS:</h2>
+                      <h2>QUESTIONS:{startExam.question_set[index].marks} </h2>
                     </div>
                     <div className="m-3 q-label">
                       <span className="q-label">Q{index + 1}</span>
@@ -321,12 +325,13 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
                   <div className="row" style={{ width: "250px", height: "100%" }}>
                     
                     {
-                      startExam.question_set.map((filteredItem, i) => {
+                      startExam.question_set.map((filtereditems, i) => {
                         return (
                           <div className="col-md-3 col-lg-3 col-sm-3 col-3 btn-line">
                             <div className="btn btn-secondary q-no"
                               onClick={() => {
-                                setCurrQuestionStudent( startExam.question_set[i]);
+                                // setCurrQuestionStudent( startExam.question_set[i]);
+                                setIndex(i)
                               }}
                             >{i + 1}</div>
                           </div>
@@ -355,7 +360,7 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
     setModalOpen(false)
 
 }}>Close</button>
-<h3>Are you sure to end exam</h3>
+<h3>Are you sure to finish exam ?</h3>
 <button className="btn btn-danger" onClick={()=>{
   
   end_exam(localStorage.getItem("curr_quiz"))
@@ -366,10 +371,10 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
 
 }}
 
-> Start exam</button>
+> Finish exam</button>
    </div>
       </Modal>
-    </div>
-
+    </div> 
+ 
   );
 }

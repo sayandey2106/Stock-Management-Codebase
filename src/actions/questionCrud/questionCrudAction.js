@@ -1,6 +1,7 @@
 import UNIVERSAL from "../../config/config";
 // import { SET_ALL_QUIZ } from "../../constants/allQuiz/allQuizConst";
 import { set_all_quiz } from "../allQuiz/allQuizAction";
+import { setLoader, unsetLoader } from "../loader/loaderAction";
 
 export function add_question(quiz_id,newQuestion) {
     console.log(newQuestion)
@@ -22,7 +23,7 @@ export function add_question(quiz_id,newQuestion) {
             .then((responseJson) => {
                 if (responseJson.status) {
                     
-                    dispatch(set_all_quiz())
+                    // dispatch(set_all_quiz())
                     alert(responseJson.message)
                
                         // dispatch(view_profile(responseJson.authToken));

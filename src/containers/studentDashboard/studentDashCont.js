@@ -31,7 +31,8 @@ export const mapStateToProps = store => {
         startExam:store.startExam,
         allQuiz : store.allQuiz.quiz_set,
         currQuiz : store.currQuiz,
-        profile : store.profile
+        profile : store.profile,
+        loader: store.loader,
     };
 };
 export const mapDispatchToProps = dispatch => {

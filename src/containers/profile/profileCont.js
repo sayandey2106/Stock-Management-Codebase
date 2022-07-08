@@ -15,7 +15,8 @@ export class ProfileCont extends Component {
 export const mapStateToProps = store => {
   return {
     profile: store.profile,
-    login: store.login
+    login: store.login,
+    loader: store.loader,
     // snackbar: store.snackbar,
   };
 };

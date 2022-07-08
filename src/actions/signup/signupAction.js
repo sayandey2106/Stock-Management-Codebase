@@ -92,7 +92,7 @@ export function sign_up(signup) {
     // const signUpObj = {signup }
     console.warn(signup);
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
         return fetch(UNIVERSAL.BASEURL + "api/Sauth/signup", {
             method: "POST",
             headers: {
@@ -141,7 +141,7 @@ export function sign_up(signup) {
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.error,"error is");
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((responseJson) => {
@@ -193,7 +193,7 @@ export function createProfilePicAdmin(payload) {
 export function get_profile_pic_link(file,name) {
     console.log(file,name)
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
       {
             var storageRef = firebase.storage().ref();
             var uploadTask = storageRef
@@ -206,11 +206,14 @@ export function get_profile_pic_link(file,name) {
                 function (error) {
                     // dispatch(set_snack_bar(true, "Image Could Not Be sUploaded"));
                     alert("Image Could Not Be sUploaded")
+                    dispatch(unsetLoader());
                 },
                 function () {
                     uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
                         alert("Image sUploaded")
                         dispatch(createProfilePic( downloadURL));
+                        dispatch(unsetLoader());
+
                     });
                 }
             );

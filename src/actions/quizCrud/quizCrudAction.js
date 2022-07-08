@@ -2,11 +2,12 @@ import { Store } from "@material-ui/icons";
 import UNIVERSAL from "../../config/config";
 // import { SET_ALL_QUIZ } from "../../constants/allQuiz/allQuizConst";
 import { set_all_quiz } from "../allQuiz/allQuizAction";
+import { setLoader, unsetLoader } from "../loader/loaderAction";
 
 export function add_quiz(new_quiz) {
     console.log(new_quiz)
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
             return fetch(UNIVERSAL.BASEURL + "api/quiz/add_quiz", {
             method: "POST",
             headers: {
@@ -34,7 +35,7 @@ export function add_quiz(new_quiz) {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((error) => {
@@ -47,7 +48,7 @@ export function edit_quiz( quiz_id,newQuiz) {
 
     console.log(newQuiz)
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
             return fetch(UNIVERSAL.BASEURL + "api/quiz/update_quiz/"+ quiz_id, {
             method: "PUT",
             headers: {
@@ -75,7 +76,7 @@ export function edit_quiz( quiz_id,newQuiz) {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((error) => {
@@ -88,7 +89,7 @@ export function delete_quiz( quiz_id) {
 
     console.log(quiz_id)
     return (dispatch) => {
-        // dispatch(setLoader());
+        dispatch(setLoader());
             return fetch(UNIVERSAL.BASEURL + "api/quiz/delete_quiz/"+ quiz_id, {
             method: "DELETE",
             headers: {
@@ -116,7 +117,7 @@ export function delete_quiz( quiz_id) {
                     
                     // dispatch(set_snack_bar(true, responseJson.message));
                 }
-                // dispatch(unsetLoader())
+                dispatch(unsetLoader())
             })
 
             .catch((error) => {

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 import Modal from 'react-modal'
 // import { Link } from 'react-router-dom'
+import Loader_cont from "../../containers/loader/loader_cont";
 
 function StudentDash(props) {
   const {
@@ -17,7 +18,8 @@ function StudentDash(props) {
     currQuiz,
     start_exam,
     end_exam,view_quiz_by_id,
-    view_profile
+    view_profile,
+    loader
     
     // dashboardHistory
     // dashboardSummary,
@@ -70,15 +72,18 @@ if(redirect===true && startExam.question_set !=""){
 
   return (
     <section className="grey-bg">
+       {
+      loader.openLoader===true? <Loader_cont/>:<></>}
+   
       <div className="container">
         {/* Button LOGOUT */}
 
         {/* DETAILED CARDS */}
-        <div className="card1 row text-center justify-content-center align-item-center">
+        <div className="card1 row text-center justify-content-center align-items-center">
           <section className="col-lg-8 col-md-7 " style={{ marginTop: "60px" }}>
             <h3 className="exam-head text-center my-3">Exam Summary</h3>
             <div class="row ">
-              <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+              <div class="col-xl-> col-sm-6 col-md-3 col-12 mt-2">
                 <div class="card card-1">
                   <div class="card-content">
                     <div class="card-body text-center">
@@ -95,7 +100,7 @@ if(redirect===true && startExam.question_set !=""){
                   </div>
                 </div>
               </div>
-              <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+              <div class="col-xl-> col-sm-6 col-md-3 col-12 mt-2">
                 <div class="card card-1">
                   <div class="card-content">
                     <div class="card-body text-center">
@@ -129,7 +134,7 @@ if(redirect===true && startExam.question_set !=""){
                   </div>
                 </div>
               </div> */}
-              <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+              {/* <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
                 <div class="card card-1 text-center">
                   <div class="card-content text-center">
                     <div class="card-body text-center">
@@ -145,8 +150,8 @@ if(redirect===true && startExam.question_set !=""){
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+              </div> */}
+              <div class="col-xl-> col-sm-6 col-md-3 col-12 mt-2">
                 <div class="card card-1">
                   <div class="card-content">
                     <div class="card-body text-center">
@@ -163,7 +168,7 @@ if(redirect===true && startExam.question_set !=""){
                   </div>
                 </div>
               </div>
-              <div class="col-xl-> col-sm-6 col-md-4 col-12 mt-2">
+              <div class="col-xl-> col-sm-6 col-md-3 col-12 mt-2">
                 <div class="card card-1">
                   <div class="card-content">
                     <div class="card-body text-center">
@@ -182,7 +187,7 @@ if(redirect===true && startExam.question_set !=""){
               </div>
             </div>
           </section>
-          <section
+          {/* <section
             className="sidebar col-lg-4 col-md-4 "
             style={{ marginTop: "60px" }}
           >
@@ -193,7 +198,7 @@ if(redirect===true && startExam.question_set !=""){
                 Accusam tempor est magna sed ut et, et est.
               </h4>
             </div>
-          </section>
+          </section> */}
         </div>
 
         {/* Upcoming exam */}
@@ -350,12 +355,12 @@ if(redirect===true && startExam.question_set !=""){
       >
         <div>
 
-<button class="btn btn-danger" onClick={()=>{
+<button class="btn btn-danger m-1" onClick={()=>{
     setModalOpen(false)
 
 }}>Close</button>
-<h3>Are you ready to start exam</h3>
-<h2 style={{ textDecoration:"bold", color:"red"}}>NOTE : IF YOU RELOAD OR CHANGE PATH OF THE SITE YOUR EXAM WILL BE CANCELLED</h2>
+<h3>Are you ready to start exam ?</h3>
+<h3 style={{ textDecoration:"bold", color:"#dc3545"}}>NOTE : IF YOU RELOAD OR CHANGE PATH OF THE SITE YOUR EXAM WILL BE CANCELLED</h3>
 <button className="btn btn-success" onClick={()=>{
   start_exam(localStorage.getItem("curr_quiz"))
   view_quiz_by_id(localStorage.getItem("curr_quiz"))

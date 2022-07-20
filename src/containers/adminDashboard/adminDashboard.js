@@ -8,7 +8,7 @@ import { close_snack_bar} from "../../actions/snackbar/snackbar_action";
 import { setCurrQuiz, start_exam, view_all_questions } from "../../actions/startExam/startExamAction";
 import { set_all_quiz , view_quiz_by_id , set_curr_question, view_question_by_id} from "../../actions/allQuiz/allQuizAction";
 import { get_dashboard_data } from "../../actions/dashboard/dashboardActions";
-import { add_quiz , edit_quiz, delete_quiz} from "../../actions/quizCrud/quizCrudAction";
+import { add_quiz , edit_quiz, delete_quiz , student_marks} from "../../actions/quizCrud/quizCrudAction";
 import { add_question  , edit_question} from "../../actions/questionCrud/questionCrudAction";
 
 
@@ -82,6 +82,9 @@ export const mapDispatchToProps = dispatch => {
         view_question_by_id:(quiz_id, question_id)=>{
             dispatch(view_question_by_id(quiz_id, question_id));
     },
+    student_marks:(quiz_id)=>{
+        dispatch(student_marks(quiz_id))
+    }
             // curr_quiz : (payload) =>{
             //     dispatch(curr_quiz(payload));
             // }edit_question

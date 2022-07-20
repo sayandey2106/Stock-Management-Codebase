@@ -36,15 +36,16 @@ let  newQuiz ={name,date,time,subject,marks,duration}
             onChange={(e)=>setquiz_name(e.target.value)}/>
       </div>
       <div class="form-group">
-        <label for="recipient-name" class="col-form-label">Date</label>
-        <input type="text" class="form-control"  value={date}
-              onChange={(e)=>setquiz_date(e.target.value)}/>
-      </div>
-      <div class="form-group">
-        <label for="recipient-name" class="col-form-label">Time</label>
-        <input type="text" class="form-control" value={time} 
+            <label for="recipient-name" class="col-form-label">Date</label>
+            <input type="date" class="form-control" value={date} 
+             onChange={(e)=>setquiz_date(e.target.value)}/>
+      
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Time</label>
+            <input type="time" class="form-control" value={time} 
              onChange={(e)=>setquiz_time(e.target.value)}/>
-      </div>
+          </div>
       <div class="form-group">
         <label for="recipient-name" class="col-form-label">Subject</label>
         <input type="text" class="form-control"  value={subject} 

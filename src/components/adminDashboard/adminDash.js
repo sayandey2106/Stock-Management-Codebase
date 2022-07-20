@@ -9,6 +9,7 @@ import AddQuestionModal from "./addQuestionModal";
 import ViewQuestionModal from "./viewQuestionModal";
 // import { Link } from 'react-router-dom'
 import Loader_cont from "../../containers/loader/loader_cont";
+import { student_marks } from "../../actions/quizCrud/quizCrudAction";
 function AdminDash(props) {
   const {
     startExam,
@@ -29,7 +30,8 @@ function AdminDash(props) {
     edit_question,
     set_curr_question,
     view_question_by_id,
-    loader
+    loader,
+    student_marks
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
@@ -89,6 +91,7 @@ const customStyles = {
                 <th scope="col">Duration</th>
                 <th scope="col">QUIZ OPERATION</th>
                 <th scope="col">QUESTION OPERATION</th>
+                <th scope="col">STUDENT DETAILS</th>
               </tr>
             </thead>
             <tbody>
@@ -181,6 +184,25 @@ const customStyles = {
                         view & edit
                       </button>
             </td>
+            <td>
+            <button
+                        className="btn btn-warning m-1"
+                      
+                        onClick={(e) => {
+                        //   view_all_questions(quiz._id);
+                      //   setModalOpen(true)
+                        setModaltype("student_marks")
+                        setCurrentId(quiz._id)
+                        student_marks(quiz._id)
+                      //   setCurrQuiz(quiz._id)
+                      //  console.log(currentId)
+                      //  view_quiz_by_id(currQuiz.current_quiz)
+                        }}
+                      >
+                    
+                      Student's Marks
+                      </button>
+            </td>
                   </tr>
                 );
               })}
@@ -258,6 +280,57 @@ const customStyles = {
 }}>Close</button>
    <ViewQuestionModal data={props} />
    </div>
+      </Modal>
+
+      <Modal
+        isOpen={modalType==="student_marks" ? true : false}
+        // onAfterOpen={()=>}
+        // onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div>
+
+<button class="btn btn-danger" onClick={()=>{
+    setModalOpen(false)
+    setModaltype("")
+    dashboard.student_marks=[]
+}}>Close</button>
+     </div>
+
+<section>
+<table class="table table-striped table-responsive ">
+  <thead>
+    <tr>
+      <th scope="col">Sl No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Grade</th>
+      <th scope="col">Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    {
+      dashboard.student_marks.map((student,i)=>{
+
+        return(
+
+<tr>
+      <th scope="row">{i+1}</th>
+      <td>{student.name}</td>
+      <td>{student.grade}</td>
+      <td>{student.percentage}</td>
+    </tr>
+
+
+        );
+      })
+    }
+  
+  </tbody>
+</table>
+</section>
+
+
       </Modal>
 
       </div>

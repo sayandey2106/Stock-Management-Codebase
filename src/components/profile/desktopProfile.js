@@ -67,6 +67,7 @@ export default function DesktopProfile(props) {
                     alert("Are you sure ?")
                     console.log(img)
                     get_edit_profile_pic_link (img,profile.user_profile.name )
+                    setDisplay("d-none")
                   }
                   }>Upload</button>
                 </div>
@@ -94,41 +95,7 @@ export default function DesktopProfile(props) {
                     </div> */}
           </div>
           <div class="row">
-            {/* <div class="col-md-4">
-                        {/* <div class="skills card-1 card text-center" style={{marginTop: "60px"}}>
-                            <div className='card-body'>    
-                            <i class="fa-solid fab fa-graduation-cap"></i>
-                            <h3>SKILLS</h3>
-                           { profile.user_profile.education==="" ?<h5> Enter Your Skills</h5> : <h5> {profile.user_profile.education}</h5>
-                           }
-                           </div>
-                           <div className= {'edit ' + display}>
-                      <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
-                        name={name}
-                        
-                        onChange={(e)=>{
-                          setValue(e.target.value);
-                          setName("dob")
-                          console.log(value)
-                        }}
-                        
-                        />
-                        <label for="floatingInput">Skills</label>
-                      </div>
-                      <button className="btn btn-success" type="button" onClick={()=>
-                      {
-                        edit_dob(value)
-                        alert("Are you sure?")
-                        window.location.reload()
-                      }
-                      }>
-                        
-                            Submit
-                      </button>
-                    </div>
-                        </div> */}
-            {/* </div> */}
+      
             <div class="col-md-12">
               <div class="profile-tab text-center" id="myTabContent">
                 <div className="card1 row">
@@ -168,6 +135,7 @@ export default function DesktopProfile(props) {
                                   </div>
                                   <button className="btn btn-success" disabled type="button" onClick={() => {
                                     edit_caste(value)
+                                    setDisplay("d-none")
                                   }
                                   }>
 
@@ -211,11 +179,11 @@ export default function DesktopProfile(props) {
                                 </div>
 
                                 <button
-                                  className="btn btn-success" onClick={() => {
+                                  className="btn btn-success" type="button" onClick={() => {
                                     // edit_profile(name,value)
                                     edit_mobile(value)
                                     alert("Are you sure ?")
-                                    window.location.reload()
+                                    setDisplay("d-none")
                                   }
                                   }>
 
@@ -259,11 +227,11 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">College Name</label>
                                   </div>
-                                  <button className="btn btn-success" onClick={() => {
+                                  <button className="btn btn-success" type="button" onClick={() => {
                                     // edit_profile(name,value)
                                     edit_college_name(value)
                                     alert("Are you sure ?")
-                                    window.location.reload()
+                                    setDisplay("d-none")
                                   }
                                   }>
 
@@ -306,11 +274,11 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Branch</label>
                                   </div>
-                                  <button className="btn btn-success" onClick={() => {
+                                  <button className="btn btn-success" type="button" onClick={() => {
                                     // edit_profile(name,value)
                                     edit_branch(value);
                                     alert("Are you sure ?")
-                                    window.location.reload()
+                                    setDisplay("d-none")
                                   }
                                   }>
 
@@ -352,10 +320,10 @@ export default function DesktopProfile(props) {
                                     />
                                     <label for="floatingInput">Caste</label>
                                   </div>
-                                  <button className="btn btn-success"  onClick={() => {
+                                  <button className="btn btn-success" type="button" onClick={() => {
                                     edit_caste(value);
                                     alert("Are you sure ?");
-                                    window.location.reload()
+                                    setDisplay("d-none")
                                   }
                                   }>
 
@@ -385,22 +353,23 @@ export default function DesktopProfile(props) {
                                 </div>
                                 <div className={'edit ' + display}>
                                   <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                    <input type="date" class="form-control" id="floatingInput" placeholder="name@example.com"
                                       name={name}
 
                                       onChange={(e) => {
                                         setValue(e.target.value);
                                         setName("dob")
+                                        
                                         console.log(value)
                                       }}
 
                                     />
                                     <label for="floatingInput">Date Of Birth</label>
                                   </div>
-                                  <button className="btn btn-success"  onClick={() => {
+                                  <button className="btn btn-success" type="button"  onClick={() => {
                                     edit_dob(value)
                                     alert("Are you sure ?")
-                                   
+                                    setDisplay("d-none")
                                   }
 
                                   }>

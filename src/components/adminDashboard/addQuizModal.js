@@ -1,5 +1,8 @@
 import React ,{useState}from 'react'
 import Loader_cont from "../../containers/loader/loader_cont";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 export default function AddQuizModal(props) {
  
  
@@ -28,12 +31,13 @@ console.log(newQuiz)
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Date</label>
-            <input type="text" class="form-control"  value={date}
-              onChange={(e)=>setquiz_date(e.target.value)}/>
+            <input type="date" class="form-control" value={date} 
+             onChange={(e)=>setquiz_date(e.target.value)}/>
+      
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Time</label>
-            <input type="text" class="form-control" value={time} 
+            <input type="time" class="form-control" value={time} 
              onChange={(e)=>setquiz_time(e.target.value)}/>
           </div>
           <div class="form-group">

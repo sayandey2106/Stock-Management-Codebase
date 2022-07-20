@@ -370,8 +370,10 @@ export default function Drawer(props) {
 
       </Nav>
       <Nav>
-    
-      <h2 style={{color:"white", marginRight:"15px"}}>{profile.user_profile.name}</h2>
+    {
+        profile.user_profile.type==="S" ?<h2 style={{color:"white", marginRight:"15px"}}>{profile.user_profile.name}</h2> : <h2 style={{color:"white", marginRight:"15px"}}>{localStorage.getItem("sre_name")}</h2>
+    }
+      
 
       {
         profile.user_profile.type==="S" ?
@@ -384,9 +386,7 @@ export default function Drawer(props) {
       </Link>
 
 : <div>
-{
-  profile.user_profile.profile?  <Image src={profile.user_profile.profile} height="45" style={{marginRight:"15px" , borderRadius:"50%",width:"45px"}}></Image> :   <Image src="http://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png" height="45" style={{marginRight:"15px" , borderRadius:"50%",width:"45px"}}></Image>
-}
+
   </div>
 }
     

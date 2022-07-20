@@ -68,7 +68,7 @@ else{
                 <input
                   type="text"
                   class="form-control signup-form"
-                  placeholder="Username"
+                  placeholder="NAME"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required
@@ -81,7 +81,7 @@ else{
                 <input
                   type="email"
                   class="form-control signup-form"
-                  placeholder="Username"
+                  placeholder="EMAIL ID"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required
@@ -94,7 +94,7 @@ else{
                 <input
                   type="number"
                   class="form-control signup-form"
-                  placeholder="Username"
+                  placeholder="MOBILE NUMBER"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required
@@ -107,7 +107,7 @@ else{
                 <input
                   type="text"
                   class="form-control signup-form"
-                  placeholder="Username"
+                  placeholder="COLLEGE NAME"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required
@@ -121,7 +121,7 @@ else{
                 <input
                 //   type="email"
                   class="form-control signup-form "
-                  placeholder="Username"
+                  placeholder="CASTE"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required
@@ -134,7 +134,7 @@ else{
                 <input
                   type="password"
                   class="form-control signup-form "
-                  placeholder="Username"
+                  placeholder="PASSWORD"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required
@@ -148,7 +148,7 @@ else{
                 <input
                   type="text"
                   class="form-control signup-form"
-                  placeholder="Username"
+                  placeholder="GENDER"
                   aria-label="Username"
                   aria-describedby="addon-wrapping"
                   required

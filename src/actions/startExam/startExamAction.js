@@ -192,7 +192,7 @@ export function attempt_question(quiz_id, question_id, option_selected) {
                     // dispatch(view_profile(responseJson.authToken));
                     console.log(responseJson);
                     console.log("attemted exam");
-                    alert(responseJson.message)
+                    // alert(responseJson.message)
                     // dispatch(set_snack_bar(true, responseJson.message));
 
 

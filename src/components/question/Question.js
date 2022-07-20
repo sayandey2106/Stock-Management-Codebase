@@ -362,8 +362,9 @@ const percentage = ((((currQuiz.current_quiz_details.duration*60)-((minutes*60)+
 }}>Close</button>
 <h3>Are you sure to finish exam ?</h3>
 <button className="btn btn-danger" onClick={()=>{
-  
+   currQuiz.attempt_question_response =[]
   end_exam(localStorage.getItem("curr_quiz"))
+
   setTimeout(localStorage.removeItem('curr_quiz'), 2000)
 
 

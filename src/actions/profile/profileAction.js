@@ -115,6 +115,7 @@ export function edit_name(value) {
 
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
+                    dispatch(view_profile())
 
                 } else {
                     
@@ -149,7 +150,7 @@ export function edit_college_name( value) {
             .then((responseJson) => {
                 // console.log(responseJson)
                 if (responseJson.status) {
-
+                    dispatch(view_profile())
                     // dispatch({type:EDIT_PROFILE,payload:responseJson.profile_update});
 
                     // dispatch(set_snack_bar(true, responseJson.message));
@@ -191,7 +192,7 @@ export function edit_caste( value) {
                 if (responseJson.status) {
 
                     // dispatch({type:EDIT_PROFILE,payload:responseJson.profile_update});
-
+                    dispatch(view_profile())
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
 
@@ -230,7 +231,7 @@ export function edit_gender( value) {
                 if (responseJson.status) {
 
                     // dispatch({type:EDIT_PROFILE,payload:responseJson.profile_update});
-
+                    dispatch(view_profile())
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
 
@@ -268,7 +269,7 @@ export function edit_skills( value) {
             .then((responseJson) => {
                 // console.log(responseJson)
                 if (responseJson.status) {
-
+                    dispatch(view_profile())
                     // dispatch({type:EDIT_PROFILE,payload:responseJson.profile_update});
 
                     // dispatch(set_snack_bar(true, responseJson.message));
@@ -312,7 +313,7 @@ export function edit_mobile( value) {
 
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
-
+                    dispatch(view_profile());
                 } else {
                     
                     dispatch(set_snack_bar(true, responseJson.message));
@@ -348,7 +349,7 @@ export function edit_dob( value) {
                 if (responseJson.status) {
 
                     // dispatch({type:EDIT_PROFILE,payload:responseJson.profile_update});
-
+                    dispatch(view_profile())
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
 
@@ -387,7 +388,7 @@ export function edit_branch( value) {
                 if (responseJson.status) {
 
                     // dispatch({type:EDIT_PROFILE,payload:responseJson.profile_update});
-
+                    dispatch(view_profile())
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
 
@@ -429,7 +430,7 @@ export function edit_photo( value) {
 
                     // dispatch(set_snack_bar(true, responseJson.message));
                     console.log(responseJson.profile_update,"hi");
-
+                    dispatch(view_profile())
                 } else {
                     
                     dispatch(set_snack_bar(true, responseJson.message));

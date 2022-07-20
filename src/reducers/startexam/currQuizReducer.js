@@ -1,5 +1,6 @@
 import  {SET_QUESTIONS, CURR_QUIZ , CURR_QUIZ_DETAILS, CURR_QUESTION, CURR_QUESTION_DETAILS,CURR_QUESTION_DETAILS_STUDENT, START_EXAM_STATUS, ATTEMPT_QUESTION_RESPONSE }  from "../../constants/startExam/startExamConst";
 
+import CLEAR_LOGIN from "../../constants/ActionTypes";
 const initial_state = {
 
     current_quiz:"",
@@ -32,6 +33,8 @@ const initial_state = {
                     return state = { ...state, current_question_details_student: action.payload };
             case START_EXAM_STATUS:
                  return state = { ...state, start_exam_status: action.payload };
+                 case CLEAR_LOGIN:
+                    return state = { ...state, state:{} };   
         //   case ATTEMPT_QUESTION_RESPONSE:
         //          return state = { ...state: attempt_question_response: action.payload };
          default:

@@ -49,7 +49,7 @@ const customStyles = {
                         set_curr_question(questions._id);
                         view_question_by_id(currQuiz.current_quiz,questions._id)
                       }}
-                      >Edit Question {questions._id}</button>
+                      >Edit Question</button>
 
                     <div className="m-3">
                       <h4>{questions.question}</h4>

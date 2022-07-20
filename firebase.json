@@ -1,7 +1,7 @@
 {
   "hosting": {
-    "site": "nepaladmin",
     "public": "build",
+    "site": "srequez",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -1,5 +1,6 @@
 import { Store } from "@material-ui/icons";
 import UNIVERSAL from "../../config/config";
+import { STUDENT_MARKS } from "../../constants/dashboard/dashboardConstants";
 // import { SET_ALL_QUIZ } from "../../constants/allQuiz/allQuizConst";
 import { set_all_quiz } from "../allQuiz/allQuizAction";
 import { setLoader, unsetLoader } from "../loader/loaderAction";
@@ -108,6 +109,46 @@ export function delete_quiz( quiz_id) {
                     alert(responseJson.message)
 
                     dispatch(set_all_quiz())
+               
+                        // dispatch(view_profile(responseJson.authToken));
+                        console.log(responseJson);
+                    // dispatch(set_snack_bar(true, responseJson.message));
+
+                } else {
+                    
+                    // dispatch(set_snack_bar(true, responseJson.message));
+                }
+                dispatch(unsetLoader())
+            })
+
+            .catch((error) => {
+                console.error(error);
+            });
+    };
+}
+
+export function student_marks( quiz_id) {
+
+    console.log(quiz_id)
+    return (dispatch) => {
+        dispatch(setLoader());
+            return fetch(UNIVERSAL.BASEURL + "api/Aauth/dashboard/"+ quiz_id, {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                // "Auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                "Auth-token" : (localStorage.getItem('sre_auth_token'))
+                // user_token: token,
+                // organization_id: oid
+                // company_id:id
+            },
+            // body: JSON.stringify(quiz_id),
+        }).then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.status) {
+                    
+                    dispatch({type:STUDENT_MARKS,payload:responseJson.result});
                
                         // dispatch(view_profile(responseJson.authToken));
                         console.log(responseJson);

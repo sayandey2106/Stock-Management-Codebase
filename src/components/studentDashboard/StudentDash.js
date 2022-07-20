@@ -48,6 +48,7 @@ const customStyles = {
   
   }, []);
 
+  const [disable, setDisable] = useState(true)
 const [redirect, setRedirect] = useState(false);
 const [modalOpen,setModalOpen]= useState(false)
 const [id, setId] = useState();
@@ -68,6 +69,56 @@ if(redirect===true && startExam.question_set !=""){
   const handleClick = (quiz) => {
     console.log(quiz)
   };
+
+  let currentdate = new Date(); 
+  let date, time;
+
+// date fix
+
+
+
+if(((currentdate.getMonth()+1) < 10 ) && ((currentdate.getDate()) < 10 ) ){
+ 
+    date = currentdate.getFullYear()+"-0"
+    + (currentdate.getMonth()+1)+ "-0"+ currentdate.getDate() 
+ 
+}
+
+else if(((currentdate.getMonth()+1) < 10 ) && ((currentdate.getDate()) >= 10 )){
+  date = currentdate.getFullYear() + "-0"
+  + (currentdate.getMonth()+1)  + "-" +currentdate.getDate()  
+    
+}
+else if(((currentdate.getMonth()+1) >= 10 ) && ((currentdate.getDate()) < 10 )){
+  date = currentdate.getFullYear() +  "-"
+  + (currentdate.getMonth()+1) +"-0"+ currentdate.getDate()
+}
+else 
+{
+  date = currentdate.getFullYear() + "-"
+    + (currentdate.getMonth()+1) + "-" + currentdate.getDate() 
+}
+
+
+// date fix
+
+// time fix
+
+
+time = currentdate.getHours() + ":" 
++ currentdate.getMinutes() 
+
+// time fix
+console.log(date , " ", time)
+
+const chechDate =() =>{
+  if(date > "12/07/2022"){
+    console.log("exam passed")
+  }
+  else {
+    console.log("exam on")
+  }
+}
 
 
   return (
@@ -221,6 +272,8 @@ if(redirect===true && startExam.question_set !=""){
 
                 // const {_id}=quiz;
                 // const x = quiz._id
+                
+               
                 return (
                   <tr className="text-center">
                     <td>
@@ -228,6 +281,9 @@ if(redirect===true && startExam.question_set !=""){
                     </td>
                     <td>
                       <h5>{quiz.date}</h5>
+                      
+                        
+                      
                     </td>
                     <td>
                       <h5>{quiz.time}</h5>
@@ -245,17 +301,24 @@ if(redirect===true && startExam.question_set !=""){
                       <button
                         className="btn btn-success"
                         type="button"
+                        disabled={((quiz.date===date) && (time>=quiz.time)) ? false:true}
                         onClick={() => {
                           view_all_questions(quiz._id);
                           console.log(quiz._id)
                           // setRedirect(true)
                           // history.push("/quiz")
+                          if(quiz.date===date){
+                            console.log("equal")
+                          }
+                          else{console.log("not equal")}
                           setId (quiz._id);
                           setCurrQuiz(quiz._id);
                           localStorage.setItem('curr_quiz', quiz._id);
                           // start_exam(quiz._id)
                           setModalOpen(true)
-                       
+                       chechDate()
+
+
                         }}
                       >
                     

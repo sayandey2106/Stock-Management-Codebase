@@ -45,7 +45,8 @@ const[admin, setAdmin]=useState();
   };
 
   return (
-    <div>{
+    <div>
+      {
       loader.openLoader===true? <Loader_cont/>:<></>}
    
      

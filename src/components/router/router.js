@@ -22,6 +22,8 @@ import EditProfileCont from "../../containers/profile/editProfileCont";
 // Admin Imports
 import AdminSignupCont from "../../containers/signup/adminSignupCont";
 import AdminDashboardCont from "../../containers/adminDashboard/adminDashboard";
+// import ForgotPassword from "../login/forgotPassword";
+import ForgotPassword from "../login/forgotPassword";
 
 class Routes extends Component {
 
@@ -44,7 +46,7 @@ class Routes extends Component {
                         <Route path="/" component={Controller_con}/>
                         <Route exact path="/signup/student" component={SignupCont}/>
                         <Route exact path="/signup/admin" component={AdminSignupCont}/>
-                        
+                        <Route exact path="/change-password" component={ForgotPassword}/>
                         {/* <Route path="/" component={StudentDashboardContainer}/> */}
                         {/* <Route exact path="/" component={QuestionCont}/> */}
                         {/* <Route path="/" component={ProfileCont}/> */}
@@ -73,6 +75,7 @@ class Routes extends Component {
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
                         <Route exact path="/dashboard" component={AdminDashboardCont}/>
+                        <Route exact path="/change-password" component={ForgotPassword}/>
                         {/* <Route exact path="/" component={Users}/> */}
                         <Route exact path="/profile" component={ProfileCont}/>
                         {/* <Route exact path="/signup" component={SignupCont}/> */}

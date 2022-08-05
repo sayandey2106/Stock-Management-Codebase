@@ -57,7 +57,7 @@ let  newQuiz ={name,date,time,subject,marks,duration}
               onChange={(e)=>setquiz_marks(e.target.value)}/>
       </div>
       <div class="form-group">
-        <label for="recipient-name" class="col-form-label">Duration</label>
+        <label for="recipient-name" class="col-form-label">Duration (In minutes)</label>
         <input type="number" class="form-control"  value={duration} 
               onChange={(e)=>setquiz_duration(e.target.value)}/>
       </div>

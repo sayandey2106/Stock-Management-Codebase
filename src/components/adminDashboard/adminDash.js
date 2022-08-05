@@ -88,7 +88,7 @@ const customStyles = {
                 <th scope="col">Time</th>
                 <th scope="col">Subject</th>
                 <th scope="col">Full Marks</th>
-                <th scope="col">Duration</th>
+                <th scope="col">Duration (In minutes)</th>
                 <th scope="col">QUIZ OPERATION</th>
                 <th scope="col">QUESTION OPERATION</th>
                 <th scope="col">STUDENT DETAILS</th>
@@ -143,7 +143,7 @@ const customStyles = {
                       
                         onClick={() => {
                         //   view_all_questions(quiz._id);
-                        delete_quiz(quiz._id)
+                        // delete_quiz(quiz._id)
                         }}
                       >
                     

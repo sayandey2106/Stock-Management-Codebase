@@ -371,7 +371,7 @@ export default function Drawer(props) {
       </Nav>
       <Nav>
     {
-        profile.user_profile.type==="S" ?<h2 style={{color:"white", marginRight:"15px"}}>{profile.user_profile.name}</h2> : <h2 style={{color:"white", marginRight:"15px"}}>{localStorage.getItem("sre_name")}</h2>
+        profile.user_profile.type==="S" ?<h2 style={{color:"white", marginRight:"15px"}}>{profile.user_profile.name}</h2> : <h2 style={{color:"white", marginRight:"15px"}}>Hi Admin !</h2>
     }
       
 

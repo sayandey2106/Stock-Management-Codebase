@@ -86,3 +86,7 @@
   .modal-body{
     height: 500px;
   }
+
+  .ReactModal__Overlay{
+    background-color: rgba(0, 0, 0, 0.466) !important;
+  }

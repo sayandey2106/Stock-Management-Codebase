@@ -182,27 +182,11 @@ const[admin, setAdmin]=useState();
                    Create A New Student Account
                   </button>
                       </Link>
-                      {/* <Link to="/signup/admin">
-                  <button class="btn btn-primary google my-3" type="button">
-
-                    <img
-                      class="google-icon mx-3"
-                      // src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                      />
-                   Creat A New Admin Account
-                  </button>
-                      </Link> */}
-                  {/* <button
-                    class="btn btn-primary google justify-content-center text-center"
-                    id="fb-in-btn"
-                    type="button"
-                  >
-                    <img
-                      class="google-icon mx-3"
-                      src="https://www.freeiconspng.com/uploads/facebook-transparent-pics-18.png"
-                    />
-                    Sign in with Facebook
-                  </button> */}
+                      <Link to="change-password">
+                     <h4 className="" style={{color:"#fff", textDecoration:"underline"}}>
+                      forgot password?
+                     </h4>
+                      </Link>
                 </div>
               </div>
             </div>

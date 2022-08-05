@@ -36,12 +36,12 @@ const customStyles = {
                       <h2>QUESTIONS:</h2>
                     </div>
       {
-              startExam.question_set.filter((item, index) => index <= currQuestion).map((questions) => {
+              startExam.question_set.filter((item, index) => index <= currQuestion).map((questions,i) => {
 
                 return (
                   <>
                     <div className="m-3 q-label">
-                      <span className="q-label">Q{currQuestion + 1}</span>
+                      <span className="q-label">Q{i+ 1}</span>
                     </div>
                       <button className=' btn btn-warning ' 
                       onClick={()=>{

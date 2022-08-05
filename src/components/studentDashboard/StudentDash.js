@@ -50,7 +50,7 @@ const customStyles = {
 
   const [disable, setDisable] = useState(true)
 const [redirect, setRedirect] = useState(false);
-const [modalOpen,setModalOpen]= useState(false)
+const [modalOpen,setModalOpen]= useState("")
 const [id, setId] = useState();
 const history =useHistory()
 
@@ -258,12 +258,12 @@ const chechDate =() =>{
           <table class="table-light table table-striped table-responsive">
             <thead>
               <tr className="text-center">
-                <th scope="col">Name</th>
+                <th scope="col">Quiz Name</th>
                 <th scope="col">Date</th>
                 <th scope="col">Time</th>
                 <th scope="col">Subject</th>
                 <th scope="col">Full Marks</th>
-                <th scope="col">Duration</th>
+                <th scope="col">Duration (In minutes)</th>
                 <th scope="col">Exam Link</th>
               </tr>
             </thead>
@@ -301,22 +301,21 @@ const chechDate =() =>{
                       <button
                         className="btn btn-success"
                         type="button"
-                        disabled={((quiz.date===date) && (time>=quiz.time)) ? false:true}
+                        // disabled={((quiz.date===date) && (time>=quiz.time)) ? false:true}
                         onClick={() => {
                           view_all_questions(quiz._id);
                           console.log(quiz._id)
                           // setRedirect(true)
                           // history.push("/quiz")
-                          if(quiz.date===date){
-                            console.log("equal")
-                          }
-                          else{console.log("not equal")}
+                         
                           setId (quiz._id);
                           setCurrQuiz(quiz._id);
                           localStorage.setItem('curr_quiz', quiz._id);
                           // start_exam(quiz._id)
-                          setModalOpen(true)
-                       chechDate()
+
+                        
+                          ((quiz.date===date) && (time>=quiz.time)) ?
+                          setModalOpen("examOpen"): setModalOpen("examClosed")
 
 
                         }}
@@ -409,8 +408,8 @@ const chechDate =() =>{
 </section> */}
 
       </div>
-      <Modal
-        isOpen={modalOpen}
+    <Modal
+        isOpen={modalOpen==="examOpen"?true:false}
         // onAfterOpen={}
         // onRequestClose={closeModal}
         style={customStyles}
@@ -433,6 +432,27 @@ const chechDate =() =>{
 }}
 
 > Start exam</button>
+   </div>
+      </Modal>
+
+
+
+      <Modal
+        isOpen={modalOpen==="examClosed"?true:false}
+        // onAfterOpen={}
+        // onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div>
+
+<button class="btn btn-danger m-1" onClick={()=>{
+    setModalOpen(false)
+
+}}>Close</button>
+<h1>Exam is not started yet. Check the correct time</h1>
+
+
    </div>
       </Modal>
     </section>

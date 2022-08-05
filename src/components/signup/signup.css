@@ -35,3 +35,13 @@ font-weight: 400;
 .signup-form{
     margin: 10px 0;
 }
+
+.genderitem{
+    margin-left: 13px;
+    width: 14px;
+    height: 16px
+}
+.geni{
+    font-size:18px;
+    margin-left:2px;
+}

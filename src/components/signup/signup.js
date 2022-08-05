@@ -118,7 +118,27 @@ else{
                 />
                               
                 <h6>CASTE</h6>
-                <input
+                <select class="form-control signup-form castitems" 
+                placeholder="CASTE"
+                aria-label="Username"
+                
+                  aria-describedby="addon-wrapping"
+                  required
+                  value={signup.caste}
+                  onChange={(event) => {
+                    createCaste(event.target.value);
+                  }}
+                >
+               
+                  <option  value="1">General</option>
+
+                  <option  value="2">Obc</option>
+
+                  <option value="3">St</option>
+
+                  <option value="4">Sc</option>
+                </select>
+                {/* <input
                 //   type="email"
                   class="form-control signup-form "
                   placeholder="CASTE"
@@ -129,7 +149,7 @@ else{
                   onChange={(event) => {
                     createCaste(event.target.value);
                   }}
-                />
+                /> */}
                  <h6>PASSWORD</h6>
                 <input
                   type="password"
@@ -145,7 +165,44 @@ else{
                 />    
                 
                 <h6>GENDER</h6>
-                <input
+
+                <input type="radio" 
+                class="genderitem"
+                value={signup.gender.male}
+                onClick={() => {
+                    createGender('Male');
+                  }}
+
+
+                // aria-label="Username"
+                // aria-describedby="addon-wrapping"
+                //   required
+                //   value={signup.gender}
+                //   onChange={(event) => {
+                //     createGender(event.target.value);
+                //   }}
+                id="male" name="gender"/>
+<label for="male" class="geni">Male</label>
+
+<input type="radio" 
+class="genderitem"
+ value={signup.gender.female}
+                onClick={() => {
+                    createGender('female');
+                  }}
+id="female" name="gender" />
+<label for="female" class="geni">Female</label>
+
+<input type="radio"
+class="genderitem"
+ value={signup.gender.other}
+                onClick={() => {
+                    createGender('other');
+                  }}
+ id="other" name="gender"/>
+<label for="other" class="otheri">Other</label>
+
+                {/* <input
                   type="text"
                   class="form-control signup-form"
                   placeholder="GENDER"
@@ -156,7 +213,7 @@ else{
                   onChange={(event) => {
                     createGender(event.target.value);
                   }}
-                />
+                /> */}
                   <h6>PROFILE PIC</h6>
                      <div class="input-group mb-3">
 

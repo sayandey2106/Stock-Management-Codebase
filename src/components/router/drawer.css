@@ -23,3 +23,8 @@
     border-radius: 50%;
     align-items: center;
   }
+
+  .navbar-exam-portal{
+    padding-left: 20px;
+    padding-right: 30px;
+  }

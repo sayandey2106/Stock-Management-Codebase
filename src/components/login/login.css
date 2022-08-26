@@ -2,9 +2,10 @@
 
 .login-section{
     text-align: center;
-background: url("./unsplash_T0XLKgpyT_c.png") no-repeat ;
+background: url("./image/bg.jpg") no-repeat ;
 background-size: cover;
-height : 100vh;
+min-height: 100vh;
+height: auto;
 font-family:'League Spartan', sans-serif;
 font-weight: 400;
 }
@@ -13,9 +14,11 @@ font-weight: 400;
 .login-card{
     width: 500px;
     height: 100%;
-    background-color: #00000080 !important;
+    background-color: rgba(0, 0, 0, 0.6) !important;
 
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 30px;
     margin-top: 10%;
 }
@@ -25,26 +28,25 @@ font-size: 24px !important;
     /* width:auto; */
     color: #fff !important;
     margin-bottom: 15px;
-    margin-top: 30px
+    margin-top: 30px;
+  
     
 }
-.sign-in-btn{
-    background-color: #6B73FE!important;
-    border: 0;
-    font-size: 20px !important;
 
-    
-}
+
 
 .google{
-    background-color: #fff!important;
-    color: black !important;
+    background-color: black !important;
+    color:aliceblue !important;
     font-size: 20px !important;
+    border: 2px solid rgba(0, 85, 255, 0.684);
 }
 .login-form::placeholder{
     color: #fff !important;
     /* text-decoration: solid; */
     opacity: 0.85 !important;
+    outline: none !important;
+
     
 }
 input{

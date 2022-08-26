@@ -356,11 +356,11 @@ export default function Drawer(props) {
 
   const {login, profile} = props;
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-    <Container>
+    <Navbar className='navbar-exam-portal' collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top"  >
+    
       <div className='brand-bg'>
 
-    <Image src={logo} height="45"></Image>
+    <Image src={logo} height="45px"></Image>
    
       </div>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -392,12 +392,12 @@ export default function Drawer(props) {
     
 
       </Nav>
-     <div style={{marginRight:"15px"}}>
+     <div style={{marginleftt:"15px"}}>
       <Lg_Cont/>
      </div>
   
     </Navbar.Collapse>
-    </Container>
+
   </Navbar>
   )
 }

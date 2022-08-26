@@ -2,6 +2,7 @@ import React , {useState} from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import "./signup.css";
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 export default function Signup(props) {
     const{
         createCaste,
@@ -23,10 +24,14 @@ export default function Signup(props) {
     console.log("props", props);
     const history = useHistory();
     const [img, setimg] = useState()
+    useEffect(()=>{
+      createCaste("1");
+    
+    },[])
 
 const handleSignUp = () =>{
 
-console.log("hendle sign up");
+
 
 if(signup.name==="" || signup.email==="" || signup.college_name==="" || signup.caste==="" || signup.gender==="" || signup.password===""){
   alert("input all data");
@@ -126,11 +131,12 @@ else{
                   required
                   value={signup.caste}
                   onChange={(event) => {
+                    console.log(event.target.value)
                     createCaste(event.target.value);
                   }}
                 >
                
-                  <option  value="1">General</option>
+                  <option   value="1">General</option>
 
                   <option  value="2">Obc</option>
 
@@ -138,18 +144,7 @@ else{
 
                   <option value="4">Sc</option>
                 </select>
-                {/* <input
-                //   type="email"
-                  class="form-control signup-form "
-                  placeholder="CASTE"
-                  aria-label="Username"
-                  aria-describedby="addon-wrapping"
-                  required
-                  value={signup.caste}
-                  onChange={(event) => {
-                    createCaste(event.target.value);
-                  }}
-                /> */}
+               
                  <h6>PASSWORD</h6>
                 <input
                   type="password"

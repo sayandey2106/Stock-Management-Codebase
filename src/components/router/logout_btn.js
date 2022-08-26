@@ -5,6 +5,7 @@ import {
   Redirect
 } from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
+import { Button } from "@material-ui/core";
 
 import {NavLink} from "react-router-dom";
 
@@ -54,7 +55,7 @@ onClick={() => {
       }}
       
       style={{position:"relative",
-      height:"50px",
+      height:"30px",
       width:"80px",
       border:"1px solid",
            borderRadius:"5px",

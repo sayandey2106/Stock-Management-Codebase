@@ -1,7 +1,7 @@
 import { Redirect, useHistory } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import "./style.css";
-import Modal from 'react-modal'
+import Modal from "react-modal";
 // import { Link } from 'react-router-dom'
 import Loader_cont from "../../containers/loader/loader_cont";
 
@@ -17,115 +17,112 @@ function StudentDash(props) {
     setCurrQuiz,
     currQuiz,
     start_exam,
-    end_exam,view_quiz_by_id,
+    end_exam,
+    view_quiz_by_id,
     view_profile,
-    loader
-    
+    loader,
+
     // dashboardHistory
     // dashboardSummary,
     // dashboardHistory,
   } = props;
 
-  
-const customStyles = {
-  content: {
-    top: '60%',
-    left: '50%',
-    right: 'auto',
-    width:"800px",
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-
+  const customStyles = {
+    content: {
+      top: "60%",
+      left: "50%",
+      right: "auto",
+      width: "800px",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
 
   useEffect(() => {
     // window.location.reload(true)
     set_all_quiz();
     get_dashboard_data();
     view_profile();
-  
   }, []);
 
-  const [disable, setDisable] = useState(true)
-const [redirect, setRedirect] = useState(false);
-const [modalOpen,setModalOpen]= useState("")
-const [id, setId] = useState();
-const history =useHistory()
+  const [disable, setDisable] = useState(true);
+  const [redirect, setRedirect] = useState(false);
+  const [modalOpen, setModalOpen] = useState("");
+  const [id, setId] = useState();
+  const history = useHistory();
 
-if(redirect===true && startExam.question_set !=""){
-  return(
-
-    <Redirect to={{
-
-      pathname: '/quiz',
-    
-    }} />
-    // props.history.push("/quiz" , startExam)
-  );
-}
+  if (redirect === true && startExam.question_set != "") {
+    return (
+      <Redirect
+        to={{
+          pathname: "/quiz",
+        }}
+      />
+      // props.history.push("/quiz" , startExam)
+    );
+  }
 
   const handleClick = (quiz) => {
-    console.log(quiz)
+    console.log(quiz);
   };
 
-  let currentdate = new Date(); 
+  let currentdate = new Date();
   let date, time;
 
-// date fix
+  // date fix
 
-
-
-if(((currentdate.getMonth()+1) < 10 ) && ((currentdate.getDate()) < 10 ) ){
- 
-    date = currentdate.getFullYear()+"-0"
-    + (currentdate.getMonth()+1)+ "-0"+ currentdate.getDate() 
- 
-}
-
-else if(((currentdate.getMonth()+1) < 10 ) && ((currentdate.getDate()) >= 10 )){
-  date = currentdate.getFullYear() + "-0"
-  + (currentdate.getMonth()+1)  + "-" +currentdate.getDate()  
-    
-}
-else if(((currentdate.getMonth()+1) >= 10 ) && ((currentdate.getDate()) < 10 )){
-  date = currentdate.getFullYear() +  "-"
-  + (currentdate.getMonth()+1) +"-0"+ currentdate.getDate()
-}
-else 
-{
-  date = currentdate.getFullYear() + "-"
-    + (currentdate.getMonth()+1) + "-" + currentdate.getDate() 
-}
-
-
-// date fix
-
-// time fix
-
-
-time = currentdate.getHours() + ":" 
-+ currentdate.getMinutes() 
-
-// time fix
-console.log(date , " ", time)
-
-const chechDate =() =>{
-  if(date > "12/07/2022"){
-    console.log("exam passed")
+  if (currentdate.getMonth() + 1 < 10 && currentdate.getDate() < 10) {
+    date =
+      currentdate.getFullYear() +
+      "-0" +
+      (currentdate.getMonth() + 1) +
+      "-0" +
+      currentdate.getDate();
+  } else if (currentdate.getMonth() + 1 < 10 && currentdate.getDate() >= 10) {
+    date =
+      currentdate.getFullYear() +
+      "-0" +
+      (currentdate.getMonth() + 1) +
+      "-" +
+      currentdate.getDate();
+  } else if (currentdate.getMonth() + 1 >= 10 && currentdate.getDate() < 10) {
+    date =
+      currentdate.getFullYear() +
+      "-" +
+      (currentdate.getMonth() + 1) +
+      "-0" +
+      currentdate.getDate();
+  } else {
+    date =
+      currentdate.getFullYear() +
+      "-" +
+      (currentdate.getMonth() + 1) +
+      "-" +
+      currentdate.getDate();
   }
-  else {
-    console.log("exam on")
-  }
-}
 
+  // date fix
+
+  // time fix
+
+  time = currentdate.getHours() + ":" + currentdate.getMinutes();
+
+  // time fix
+  console.log(date, " ", time);
+
+  const chechDate = () => {
+    if (date > "12/07/2022") {
+      console.log("exam passed");
+    } else {
+      console.log("exam on");
+    }
+  };
 
   return (
     <section className="grey-bg">
-       {
-      loader.openLoader===true? <Loader_cont/>:<></>}
-   
+      {loader.openLoader === true ? <Loader_cont /> : <></>}
+
       <div className="container">
         {/* Button LOGOUT */}
 
@@ -255,92 +252,86 @@ const chechDate =() =>{
         {/* Upcoming exam */}
         <section className="" style={{ marginTop: "70px" }}>
           <h3 className="exam-history-head text-center my-3">Upcoming Exam</h3>
-          <table class="table-light table table-striped table-responsive">
-            <thead>
-              <tr className="text-center">
-                <th scope="col">Quiz Name</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col">Subject</th>
-                <th scope="col">Full Marks</th>
-                <th scope="col">Duration (In minutes)</th>
-                <th scope="col">Exam Link</th>
-              </tr>
-            </thead>
-            <tbody>
-              {dashboard.upcoming.map((quiz) => {
+          <div className="table-responsive">
+            <table class="table-light table table-striped ">
+              <thead>
+                <tr className="text-center">
+                  <th scope="col">Quiz Name</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Full Marks</th>
+                  <th scope="col">Duration (In minutes)</th>
+                  <th scope="col">Exam Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dashboard.upcoming.map((quiz) => {
+                  // const {_id}=quiz;
+                  // const x = quiz._id
 
-                // const {_id}=quiz;
-                // const x = quiz._id
-                
-               
-                return (
-                  <tr className="text-center">
-                    <td>
-                      <h5>{quiz.name}</h5>
-                    </td>
-                    <td>
-                      <h5>{quiz.date}</h5>
-                      
-                        
-                      
-                    </td>
-                    <td>
-                      <h5>{quiz.time}</h5>
-                    </td>
-                    <td>
-                      <h5>{quiz.subject}</h5>
-                    </td>
-                    <td>
-                      <h5>{quiz.marks}</h5>
-                    </td>
-                    <td>
-                      <h5>{quiz.duration}</h5>
-                    </td>
-                    <td>
-                      <button
-                        className="btn btn-success"
-                        type="button"
-                        // disabled={((quiz.date===date) && (time>=quiz.time)) ? false:true}
-                        onClick={() => {
-                          view_all_questions(quiz._id);
-                          console.log(quiz._id)
-                          // setRedirect(true)
-                          // history.push("/quiz")
-                         
-                          setId (quiz._id);
-                          setCurrQuiz(quiz._id);
-                          localStorage.setItem('curr_quiz', quiz._id);
-                          // start_exam(quiz._id)
+                  return (
+                    <tr className="text-center">
+                      <td>
+                        <h5>{quiz.name}</h5>
+                      </td>
+                      <td>
+                        <h5>{quiz.date}</h5>
+                      </td>
+                      <td>
+                        <h5>{quiz.time}</h5>
+                      </td>
+                      <td>
+                        <h5>{quiz.subject}</h5>
+                      </td>
+                      <td>
+                        <h5>{quiz.marks}</h5>
+                      </td>
+                      <td>
+                        <h5>{quiz.duration}</h5>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-success"
+                          type="button"
+                          // disabled={((quiz.date===date) && (time>=quiz.time)) ? false:true}
+                          onClick={() => {
+                            view_all_questions(quiz._id);
+                            console.log(quiz._id);
+                            // setRedirect(true)
+                            // history.push("/quiz")
 
-                        
-                          ((quiz.date===date) && (time>=quiz.time)) ?
-                          setModalOpen("examOpen"): setModalOpen("examClosed")
+                            setId(quiz._id);
+                            setCurrQuiz(quiz._id);
+                            localStorage.setItem("curr_quiz", quiz._id);
+                            // start_exam(quiz._id)
 
-
-                        }}
-                      >
-                    
-                        Start Exam
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            
-            </tbody>
-          </table>
+                            quiz.date === date && time >= quiz.time
+                              ? setModalOpen("examOpen")
+                              : setModalOpen("examClosed");
+                          }}
+                        >
+                          Start Exam
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </section>
 
         {/* exam history */}
         <section className="" style={{ marginTop: "70px" }}>
           <h3 className="exam-history-head text-center my-3">Exam History</h3>
-          <table class="table-light table table-striped table-responsive">
-            <thead>
-              <tr>
-                <th scope="col">Subject</th>
-
-                <th scope="col">Score (Percentage)</th>
+          <div className="table-responsive" >
+          <table class="table-light table table-striped ">
+          <thead>
+          <tr>
+          <th scope="col">Subject</th>
+          
+          <th scope="col">Score (Percentage)</th>
                 <th scope="col">Grade</th>
                 <th scope="col">Date</th>
                 <th scope="col">Full Marks</th>
@@ -358,8 +349,9 @@ const chechDate =() =>{
                   </tr>
                 );
               })}
-            </tbody>
-          </table>
+              </tbody>
+              </table>
+              </div>
         </section>
 
         {/* 
@@ -406,59 +398,65 @@ const chechDate =() =>{
 
   </div>
 </section> */}
-
       </div>
-    <Modal
-        isOpen={modalOpen==="examOpen"?true:false}
+      <Modal
+        isOpen={modalOpen === "examOpen" ? true : false}
         // onAfterOpen={}
         // onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <div>
-
-<button class="btn btn-danger m-1" onClick={()=>{
-    setModalOpen(false)
-
-}}>Close</button>
-<h3>Are you ready to start exam ?</h3>
-<h3 style={{ textDecoration:"bold", color:"#dc3545"}}>NOTE : IF YOU RELOAD OR CHANGE PATH OF THE SITE YOUR EXAM WILL BE CANCELLED</h3>
-<button className="btn btn-success" onClick={()=>{
-  start_exam(localStorage.getItem("curr_quiz"))
-  view_quiz_by_id(localStorage.getItem("curr_quiz"))
-  // currQuiz.start_exam_status ===true ?
-  history.push('/quiz')
-  // : alert("already done")
-}}
-
-> Start exam</button>
-   </div>
+          <button
+            class="btn btn-danger m-1"
+            onClick={() => {
+              setModalOpen(false);
+            }}
+          >
+            Close
+          </button>
+          <h3>Are you ready to start exam ?</h3>
+          <h3 style={{ textDecoration: "bold", color: "#dc3545" }}>
+            NOTE : IF YOU RELOAD OR CHANGE PATH OF THE SITE YOUR EXAM WILL BE
+            CANCELLED
+          </h3>
+          <button
+            className="btn btn-success"
+            onClick={() => {
+              start_exam(localStorage.getItem("curr_quiz"));
+              view_quiz_by_id(localStorage.getItem("curr_quiz"));
+              // currQuiz.start_exam_status ===true ?
+              history.push("/quiz");
+              // : alert("already done")
+            }}
+          >
+            {" "}
+            Start exam
+          </button>
+        </div>
       </Modal>
-
-
 
       <Modal
-        isOpen={modalOpen==="examClosed"?true:false}
+        isOpen={modalOpen === "examClosed" ? true : false}
         // onAfterOpen={}
         // onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <div>
-
-<button class="btn btn-danger m-1" onClick={()=>{
-    setModalOpen(false)
-
-}}>Close</button>
-<h1>Exam is not started yet. Check the correct time</h1>
-
-
-   </div>
+          <button
+            class="btn btn-danger m-1"
+            onClick={() => {
+              setModalOpen(false);
+            }}
+          >
+            Close
+          </button>
+          <h1>Exam is not started yet. Check the correct time</h1>
+        </div>
       </Modal>
     </section>
-
-    
-  );}
-
+  );
+}
 
 export default StudentDash;

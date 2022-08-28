@@ -14,6 +14,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^3.2.10",
+    "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
     "@syncfusion/ej2-base": "^17.4.51",
     "@syncfusion/ej2-react-navigations": "^17.4.55",

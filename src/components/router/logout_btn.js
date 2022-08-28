@@ -55,9 +55,11 @@ onClick={() => {
       }}
       
       style={{position:"relative",
-      height:"30px",
+      height:"40px",
       width:"80px",
-      border:"1px solid",
+      backgroundColor:"red",
+      color:"aliceblue",
+      
            borderRadius:"5px",
            // background:"#fadde1",
            fontSize:"15px",

@@ -6,14 +6,13 @@
     margin: 10px;
 }
 .option-number{
-    background-color: #1A378B;
+    background-color: black;
     color: white;
     width: 30px;
     height: 30px;
-    /* border-radius: 20px; */
-    /* width: 100%; */
-    /* padding: 2px; */
+    padding-top: 2px;
     text-align: center;
+    border-radius: 50%;
     margin : 0 8px;
     /* line-height: 1px; */
 }
@@ -45,13 +44,17 @@
 }
 .q-label{
     font-size: larger;
-    width: 80px !important;
-    background-color: #1A378B;
-    padding: 10px;
+    width: 70px !important;
+    height: 40px !important;
+    background-color: #1976d2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
+    border-radius: 4px;
 }
 .selected {
-    background-color: #68EB4E !important;
+    background-color: aliceblue ;
 }
 .q-no{
     width: 95% !important;

@@ -57,49 +57,9 @@ export default function Login(props) {
             <div class=" content">
               {/* for email */}
               <div className="d-flex text-center justify-content-center">
-                <div class="form-check mx-3">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                    onChange={() => {
-                      setAdmin(true);
-                      console.log(admin);
-                    }}
-                  />
-                  <h3>
-                    <label
-                      class="form-check-label"
-                      for="flexRadioDefault1"
-                      style={{ color: "white" }}
-                    >
-                      Admin
-                    </label>
-                  </h3>
-                </div>
+               
 
-                <div class="form-check mx-3">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    onChange={() => {
-                      setAdmin(false);
-                      console.log(admin);
-                    }}
-                  />
-                  <h3>
-                    <label
-                      class="form-check-label"
-                      for="flexRadioDefault2"
-                      style={{ color: "white" }}
-                    >
-                      Student
-                    </label>
-                  </h3>
-                </div>
+                
               </div>
              
               <input
@@ -183,7 +143,7 @@ export default function Login(props) {
                   
                     <button class="btn btn-primary google my-3" type="button">
                     
-                      Create A New Student Account
+                      Create A New Admin
                     </button>
                   </Link>
                   <Link to="change-password">

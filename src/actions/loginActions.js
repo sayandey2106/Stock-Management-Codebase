@@ -11,11 +11,9 @@ import {
 import UNIVERSAL from "../config/config.js";
 import { setLoader, unsetLoader }
     from "./loader/loaderAction";
-import { set_snack_bar } from "../actions/snackbar/snackbar_action";
 import firebase from "firebase";
 import { view_profile , view_profile_admin} from "./profile/profileAction";
 import { get_dashboard_data } from "./dashboard/dashboardActions";
-import { set_all_quiz } from "./allQuiz/allQuizAction";
 
 export function setEmail(payload) {
     return {
@@ -55,7 +53,7 @@ export function login_email(login) {
                     dispatch(setLogin(responseJson))
                
                         dispatch(view_profile(responseJson.authToken));
-                        dispatch( set_all_quiz());
+                   
                        dispatch( get_dashboard_data());
                     
                         console.log(responseJson);
@@ -63,7 +61,7 @@ export function login_email(login) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
+                   
                 }
                 dispatch(unsetLoader())
             })
@@ -100,7 +98,7 @@ export function admin_login_email(login) {
                     dispatch(setLogin(responseJson))
                
                         dispatch(view_profile_admin(responseJson.authToken));
-                        dispatch( set_all_quiz());
+                        
                        dispatch( get_dashboard_data());
                     
                         console.log(responseJson);
@@ -108,7 +106,6 @@ export function admin_login_email(login) {
 
                 } else {
                     console.log(responseJson.error)
-                    dispatch(set_snack_bar(true, responseJson.error));
                 }
                 dispatch(unsetLoader())
             })

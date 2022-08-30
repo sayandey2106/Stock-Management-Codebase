@@ -6,7 +6,6 @@ import {setLoader, unsetLoader}
     from "../loader/loaderAction";
     import firebase from "firebase";
     import { storage } from "../../constants/ActionTypes";
-import {set_snack_bar} from "../snackbar/snackbar_action";
 
 
 export function view_profile(authToken) {
@@ -38,7 +37,7 @@ export function view_profile(authToken) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
+                   
                 }
                 dispatch(unsetLoader())
             })
@@ -77,7 +76,7 @@ export function view_profile_admin(authToken) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
+                   
                 }
                 dispatch(unsetLoader())
             })
@@ -119,7 +118,7 @@ export function edit_name(value) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
+                  
                 }
                 dispatch(unsetLoader())
             })
@@ -158,7 +157,6 @@ export function edit_college_name( value) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -198,7 +196,6 @@ export function edit_caste( value) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -237,7 +234,6 @@ export function edit_gender( value) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -277,7 +273,6 @@ export function edit_skills( value) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -316,7 +311,6 @@ export function edit_mobile( value) {
                     dispatch(view_profile());
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -354,8 +348,6 @@ export function edit_dob( value) {
                     console.log(responseJson.profile_update,"hi");
 
                 } else {
-                    
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -394,7 +386,6 @@ export function edit_branch( value) {
 
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })
@@ -433,7 +424,6 @@ export function edit_photo( value) {
                     dispatch(view_profile())
                 } else {
                     
-                    dispatch(set_snack_bar(true, responseJson.message));
                 }
                 dispatch(unsetLoader())
             })

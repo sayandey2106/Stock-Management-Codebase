@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 // import Login from "../components/login";
 import Login from "../components/login/login";
 
-import {
-  close_snack_bar
-} from "../actions/snackbar/snackbar_action";
+
 import {
   setLogin,
   set_home,
@@ -35,9 +33,7 @@ export const mapDispatchToProps = dispatch => {
     clear_login: () => {
       dispatch(clear_login())
     },
-    close_snack_bar: () => {
-      dispatch(close_snack_bar());
-    },
+   
     setEmail: (payload) => {
       dispatch(setEmail(payload));
     },

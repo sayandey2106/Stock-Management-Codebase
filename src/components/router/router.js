@@ -4,24 +4,16 @@ import Controller_con from "../../containers/router/controller_cont";
 import Login from "../../containers/loginCont";
 import Drawer_option_con from "../../containers/router/drawer_cont";
 
-import Category from "../../containers/category/categoryContainer"
-import Request from "../../containers/request/requestContainer";
-import Dashboard from "../../containers/dashboard/dashboardContainer";
 
-import Users from "../../containers/user/userContainer"
-import Lead from "../../containers/lead/viewLeadCont";
-import AddLead from "../../containers/lead/addLeadCont";
 import ProfileCont from "../../containers/profile/profileCont";
-import QuestionCont  from "../../containers/question/questionCont";
-import Question from "../question/Question";
 // import studentDashCont from "../../containers/studentDashboard/studentDashCont";
-import  StudentDashboardContainer  from "../../containers/studentDashboard/studentDashCont";
+// import  StudentDashboardContainer  from "../../containers/studentDashboard/studentDashCont";
 import  SignupCont  from "../../containers/signup/signupCont";
 // import QuestionCont from "../../containers/question/questionCont";
 import EditProfileCont from "../../containers/profile/editProfileCont";
 // Admin Imports
 import AdminSignupCont from "../../containers/signup/adminSignupCont";
-import AdminDashboardCont from "../../containers/adminDashboard/adminDashboard";
+// import AdminDashboardCont from "../../containers/adminDashboard/adminDashboard";
 // import ForgotPassword from "../login/forgotPassword";
 import ForgotPassword from "../login/forgotPassword";
 
@@ -74,13 +66,11 @@ class Routes extends Component {
                         {/* <Route exact path="/login" component={Login} /> */}
                         <Route path="/" component={Controller_con}/>
                         {/* ADMIN ROUTES */}
-                        <Route exact path="/dashboard" component={AdminDashboardCont}/>
+                        {/* <Route exact path="/dashboard" component={AdminDashboardCont}/> */}
                         <Route exact path="/change-password" component={ForgotPassword}/>
                         {/* <Route exact path="/" component={Users}/> */}
                         <Route exact path="/profile" component={ProfileCont}/>
                         {/* <Route exact path="/signup" component={SignupCont}/> */}
-                        <Route exact path="/" component={StudentDashboardContainer}/> 
-                        <Route exact path="/quiz" component={QuestionCont}/> 
                         <Route exact path="/edit-profile" component={EditProfileCont}/> 
 
                         {/* <Route path="/" component={Controller_con}/> */}
@@ -114,7 +104,7 @@ class Routes extends Component {
                         {/* STUDENT ROUTES */}
                       
                         {/* <Route exact path="/" component={ProfileCont}/> */}
-                        <Route exact path="/" component={AdminDashboardCont}/>
+                        {/* <Route exact path="/" component={AdminDashboardCont}/> */}
                         {/* <Route exact path="/category" component={Category}/> */}
                         {/* <Route exact path="/request" component={Request}/> */}
                         {/* <Route exact activeClassName="active" path="/" component={Dashboard}/> */}

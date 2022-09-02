@@ -2,6 +2,9 @@
   "name": "taxopliance",
   "homepage": "https://taxopliance.com/",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.18.0"
+  },
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",

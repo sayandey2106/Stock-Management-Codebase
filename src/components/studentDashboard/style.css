@@ -1,4 +1,6 @@
-
+body{
+  background-color: #f8f9fa!important
+}
 .grey-bg{
   background-color: #efebeb;
   height: 100%;

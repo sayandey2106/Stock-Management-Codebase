@@ -7,13 +7,14 @@
 .signup{
 
 
-    background: url("./image\ 1.png") no-repeat ;
+    background: url("shopping3.jpg") no-repeat ;
     /* text-align: center; */
 padding: 50px;
 background-size: cover;
-height : 100%;
+height : 100vh;
 font-family:'League Spartan', sans-serif;
 font-weight: 400;
+/* filter: blur(2px); */
 }
 .signup-admin{
 
@@ -44,4 +45,14 @@ font-weight: 400;
 .geni{
     font-size:18px;
     margin-left:2px;
+}
+
+@media (max-width:900px){
+    .signup-box{
+        width: 100%;
+    }
+    .signup{
+        height: 150vh;
+        padding: 50px 20px;
+    }
 }

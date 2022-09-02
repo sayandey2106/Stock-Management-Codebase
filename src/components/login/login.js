@@ -122,15 +122,9 @@ export default function Login(props) {
               <div className="btn-grp">
                 <div class="d-grid ">
               
-<Button variant="contained"  onClick={() => {
-  if (admin === true) {
-    admin_login_email(login);
-  } else if (admin === false) {
-    login_email(login);
-  } else {
-    alert("Plese Select a login type");
-  }
-}}>Sign In</Button>
+<button className="btn btn-primary" style={{fontSize:"20px"}}  onClick={() => {
+ login_email(login)
+}}>Sign In</button>
 
                  
                 </div>
@@ -141,9 +135,9 @@ export default function Login(props) {
                 <div class="d-grid ">
                   <Link to="/signup/student">
                   
-                    <button class="btn btn-primary google my-3" type="button">
+                    <button  class="btn btn-primary google my-3" type="button">
                     
-                      Create A New Admin
+                      Create A New User
                     </button>
                   </Link>
                   <Link to="change-password">

@@ -68,8 +68,9 @@ else{
 
              
               <div className="content ">
-              
-                <h6>NAME</h6>
+              <form>
+
+               <h6>NAME</h6>
                 <input
                   type="text"
                   class="form-control signup-form"
@@ -108,43 +109,7 @@ else{
                     createPhone(event.target.value);
                   }}
                 />
-                <h6>COLLEGE NAME</h6>
-                <input
-                  type="text"
-                  class="form-control signup-form"
-                  placeholder="COLLEGE NAME"
-                  aria-label="Username"
-                  aria-describedby="addon-wrapping"
-                  required
-                  value={signup.college}
-                  onChange={(event) => {
-                    createCollege(event.target.value);
-                  }}
-                />
-                              
-                <h6>CASTE</h6>
-                <select class="form-control signup-form castitems" 
-                placeholder="CASTE"
-                aria-label="Username"
                 
-                  aria-describedby="addon-wrapping"
-                  required
-                  value={signup.caste}
-                  onChange={(event) => {
-                    console.log(event.target.value)
-                    createCaste(event.target.value);
-                  }}
-                >
-               
-                  <option   value="1">General</option>
-
-                  <option  value="2">Obc</option>
-
-                  <option value="3">St</option>
-
-                  <option value="4">Sc</option>
-                </select>
-               
                  <h6>PASSWORD</h6>
                 <input
                   type="password"
@@ -159,84 +124,37 @@ else{
                   }}
                 />    
                 
-                <h6>GENDER</h6>
-
-                <input type="radio" 
-                class="genderitem"
-                value={signup.gender.male}
-                onClick={() => {
-                    createGender('Male');
-                  }}
-
-
-                // aria-label="Username"
-                // aria-describedby="addon-wrapping"
-                //   required
-                //   value={signup.gender}
-                //   onChange={(event) => {
-                //     createGender(event.target.value);
-                //   }}
-                id="male" name="gender"/>
-<label for="male" class="geni">Male</label>
-
-<input type="radio" 
-class="genderitem"
- value={signup.gender.female}
-                onClick={() => {
-                    createGender('female');
-                  }}
-id="female" name="gender" />
-<label for="female" class="geni">Female</label>
-
-<input type="radio"
-class="genderitem"
- value={signup.gender.other}
-                onClick={() => {
-                    createGender('other');
-                  }}
- id="other" name="gender"/>
-<label for="other" class="otheri">Other</label>
-
-                {/* <input
-                  type="text"
-                  class="form-control signup-form"
-                  placeholder="GENDER"
-                  aria-label="Username"
-                  aria-describedby="addon-wrapping"
-                  required
-                  value={signup.gender}
-                  onChange={(event) => {
-                    createGender(event.target.value);
-                  }}
-                /> */}
-                  <h6>PROFILE PIC</h6>
+                         
+                  <h6>ID PROOF</h6>
                      <div class="input-group mb-3">
 
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01"  onChange={(e)=>{
+    <input type="file" class="custom-file-input my-1" id="inputGroupFile01"  onChange={(e)=>{
                 
                 setimg((e.target.files[0]));
 console.log(img)
               }}/>
    {/* <label class="custom-file-label" for="inputGroupFile01">Choose file</label>  */}
-     <button class=" btn btn-warning" onClick={()=>{
+     <button class=" btn btn-warning my-1" onClick={()=>{
       get_profile_pic_link(img,signup.name)
     }}>Upload</button>
   </div>
 </div>
-                <button className="btn btn-primary"
-                type="button"
+                <button className="btn btn-primary my-2"
+                type="submit"
                   onClick= {handleSignUp}
                 >Sign Up
                     </button>
                     <Link to="/">
-                    <button className="btn btn-primary mx-1"
-                type="button"
-                
-                >Already An User
-                    </button>
-                </Link>
+                    <h4
+                      className="my-1"
+                      style={{ color: "black", fontSize:"20px", textDecoration: "underline" }}
+                    >
+                      Already have an account
+                    </h4>
+                  </Link>
            
+              </form>
               </div>
             </div>
             <div className="col-md-5">

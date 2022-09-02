@@ -17,8 +17,8 @@ export const OPEN_LOGIN_MODAL = "OPEN_LOGIN_MODAL";
 export const CLOSE_LOGIN_MODAL = "CLOSE_LOGIN_MODAL";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC_xE_UhX9Kt2swPj7E9NzUkpo3Zy-3fQ8",
-  authDomain: "skyyriderev.firebaseapp.com",
+  apiKey: "AIzaSyC_xE_UhX9Kt2swPj7E9NzUkpdado3Zy-3fQ8",
+  // authDomain: "skyyriderev.firebaseapp.com",
   projectId: "skyyriderev",
   storageBucket: "skyyriderev.appspot.com",
   messagingSenderId: "99935744531",

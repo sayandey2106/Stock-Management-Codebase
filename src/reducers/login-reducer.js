@@ -20,7 +20,7 @@ const initial_state = {
   // password: "",
   // confirmpassword: "",
   // newpassword: "",
-  type: "",
+  type: "S",
   // isRegistered: false,
   // response_received: false,
   // isPasswordchange: false,

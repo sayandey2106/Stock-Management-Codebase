@@ -2,7 +2,7 @@
 
 .login-section{
     text-align: center;
-background: url("./shopping.jpg") no-repeat ;
+background: url("shopping3.jpg") no-repeat ;
 background-size: cover;
 min-height: 100vh;
 height: auto;
@@ -95,4 +95,10 @@ hr {
 
 #fb-in-btn img{
     width: 30px;
+}
+
+@media (max-width : 500px){
+    .login-section{
+        min-height: 150vh;
+    }
 }
